@@ -38,13 +38,15 @@ import { TrPipe } from '../core/tr.pipe';
     <h3>{{ 'Kina chests on the Exchange' | tr }}</h3>
     <p class="muted">{{ 'Enter the current lowest price of each chest; costs are converted using the best rate.' | tr }}</p>
     <table>
-      <thead><tr><th>{{ 'Kina in chest' | tr }}</th><th>{{ 'Price' | tr }}</th><th>{{ 'Kina per 1 currency' | tr }}</th><th></th></tr></thead>
+      <thead><tr><th>{{ 'Kina in chest' | tr }}</th><th>{{ 'Price' | tr }}</th><th>{{ 'Kina per 1 currency' | tr }}</th><th>{{ 'Cost per 1M Kina' | tr }}</th><th>{{ 'Comparison' | tr }}</th><th></th></tr></thead>
       <tbody>
         @for (c of s.kinahChests ?? []; track $index) {
           <tr>
             <td><input type="number" min="1" step="any" [ngModel]="c.kinah" (ngModelChange)="setChest($index, 'kinah', $event)" /></td>
             <td><input type="number" min="1" step="any" [ngModel]="c.price" (ngModelChange)="setChest($index, 'price', $event)" /></td>
             <td>{{ c.kinah / c.price | number: '1.0-0' }}</td>
+            <td>{{ c.price / c.kinah * 1000000 | number: '1.0-1' }}</td>
+            <td [class]="isBest(c) ? 'pos' : 'muted'">@if (isBest(c)) { ★ {{ 'Best value' | tr }} } @else { +{{ extraPercent(c) | number: '1.0-1' }}% {{ 'more expensive' | tr }} }</td>
             <td><button type="button" (click)="removeChest($index)">{{ 'Remove' | tr }}</button></td>
           </tr>
         }
@@ -56,6 +58,18 @@ import { TrPipe } from '../core/tr.pipe';
 })
 export class SettingsPage {
   protected readonly store = inject(AppStore);
+
+  private bestRate(): number {
+    return Math.max(0, ...(this.store.settings().kinahChests ?? []).map((c) => c.kinah / c.price));
+  }
+
+  isBest(c: { kinah: number; price: number }): boolean {
+    return c.kinah / c.price >= this.bestRate();
+  }
+
+  extraPercent(c: { kinah: number; price: number }): number {
+    return (this.bestRate() / (c.kinah / c.price) - 1) * 100;
+  }
 
   setChest(i: number, key: 'kinah' | 'price', v: number | null): void {
     const n = Number(v);
