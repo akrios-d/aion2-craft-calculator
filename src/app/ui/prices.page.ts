@@ -61,19 +61,6 @@ import { ImportPanel } from './import-panel';
       </table>
     } @else { <p class="muted">{{ 'No prices yet.' | tr }}</p> }
 
-    <h3>{{ 'Price history' | tr }} <small class="muted">({{ '{n} observations' | tr: { n: store.data().priceHistory.length } }})</small></h3>
-    <details>
-      <summary>{{ 'Show latest 100' | tr }}</summary>
-      <table>
-        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Listing price' | tr }}</th><th>{{ 'Price I want to pay' | tr }}</th><th>{{ 'Observed' | tr }}</th></tr></thead>
-        <tbody>
-          @for (h of history(); track $index) {
-            <tr><td><app-ico [id]="h.itemId" />{{ store.nameOf(h.itemId) }}</td><td>{{ h.sellListingPrice ?? '–' }}</td><td>{{ h.buyPrice ?? '–' }}</td><td>{{ h.observedAt | date: 'yyyy-MM-dd HH:mm' }}</td></tr>
-          }
-        </tbody>
-      </table>
-    </details>
-
     <h3>{{ 'Import prices from CSV' | tr }}</h3>
     <p class="muted">{{ 'Columns:' | tr }} <code>itemId</code> (or <code>itemName</code>), <code>buyPrice</code>, <code>sellListingPrice</code>, <code>quantityObserved</code>, <code>observedAt</code>, <code>notes</code>. {{ 'At least one price per row.' | tr }}</p>
     <app-import-panel kind="prices" />
@@ -89,7 +76,6 @@ export class PricesPage {
       .filter((p) => p.server === this.store.settings().server)
       .sort((a, b) => this.store.nameOf(a.itemId).localeCompare(this.store.nameOf(b.itemId))),
   );
-  readonly history = computed(() => this.store.data().priceHistory.slice(-100).reverse());
 
   private blank() {
     return { item: '', wantBuy: false, buy: null as number | null, sell: null as number | null, qty: null as number | null, at: this.localNow(), notes: '' };
