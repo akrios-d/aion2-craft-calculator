@@ -211,6 +211,8 @@ export function normalizeUserData(raw: Raw, warnings: string[] = []): UserData {
     itemNameLanguage: settingsRaw['itemNameLanguage'] === 'en' || settingsRaw['itemNameLanguage'] === 'pt' ? settingsRaw['itemNameLanguage'] : base.settings.itemNameLanguage,
     faction: settingsRaw['faction'] === 'Elyos' || settingsRaw['faction'] === 'Asmodians' ? settingsRaw['faction'] : 'all',
   };
+  if (typeof settingsRaw['kinahPerMoney'] === 'number' && settingsRaw['kinahPerMoney'] > 0 && Number.isFinite(settingsRaw['kinahPerMoney'])) base.settings.kinahPerMoney = settingsRaw['kinahPerMoney'];
+  if (typeof settingsRaw['currency'] === 'string' && settingsRaw['currency'].trim()) base.settings.currency = settingsRaw['currency'].trim().slice(0, 8);
 
   for (const [id, e] of Object.entries<any>(isObj(raw['inventory']) ? raw['inventory'] : {})) {
     const qty = isObj(e) ? e['quantity'] : e;

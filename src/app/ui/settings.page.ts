@@ -30,12 +30,23 @@ import { TrPipe } from '../core/tr.pipe';
       <label>{{ 'Default Auction House fee %' | tr }} <small class="muted">{{ '(placeholder default, verify in game)' | tr }}</small>
         <input type="number" min="0" max="100" step="any" [ngModel]="s.defaultFeePercent" (ngModelChange)="setFee($event)" />
       </label>
+      <label>{{ 'Kinah per 1 real-money unit (Kinah chests)' | tr }} <small class="muted">{{ '(0 = off; used to show costs in real money)' | tr }}</small>
+        <input type="number" min="0" step="any" [ngModel]="s.kinahPerMoney ?? 0" (ngModelChange)="setRate($event)" />
+      </label>
+      <label>{{ 'Currency' | tr }}
+        <input type="text" maxlength="8" [ngModel]="s.currency ?? 'EUR'" (ngModelChange)="store.setSettings({ currency: ($event || 'EUR').trim() })" />
+      </label>
     </div>
     <p class="muted">{{ 'Settings are saved in your browser.' | tr }}</p>
   `,
 })
 export class SettingsPage {
   protected readonly store = inject(AppStore);
+
+  setRate(v: number | null): void {
+    const n = Number(v);
+    if (Number.isFinite(n) && n >= 0) this.store.setSettings({ kinahPerMoney: n > 0 ? n : undefined });
+  }
 
   setFee(v: number | null): void {
     const n = Number(v);

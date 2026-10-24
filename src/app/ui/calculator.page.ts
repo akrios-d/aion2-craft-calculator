@@ -71,9 +71,9 @@ import { Strategy } from '../core/models';
 
       @if (r.tree || r.isTotal) {
         <div class="cards">
-          <div class="card"><span>{{ 'Cash cost (to buy)' | tr }}</span><strong>{{ r.cashCost | number: '1.0-2' }}</strong></div>
+          <div class="card"><span>{{ 'Cash cost (to buy)' | tr }}</span><strong>{{ r.cashCost | number: '1.0-2' }}</strong>@if (money(r.cashCost); as m) { <small class="muted">≈ {{ m }}</small> }</div>
           <div class="card"><span>{{ 'Inventory used (value)' | tr }}</span><strong>{{ r.inventoryValue | number: '1.0-2' }}</strong></div>
-          <div class="card"><span>{{ 'Full cost' | tr }}</span><strong>{{ r.fullCost | number: '1.0-2' }}</strong>@if (!r.costComplete) { <small class="warn">{{ 'incomplete' | tr }}</small> }</div>
+          <div class="card"><span>{{ 'Full cost' | tr }}</span><strong>{{ r.fullCost | number: '1.0-2' }}</strong>@if (money(r.fullCost); as m) { <small class="muted">≈ {{ m }}</small> }@if (!r.costComplete) { <small class="warn">{{ 'incomplete' | tr }}</small> }</div>
           @if (r.directBuyCost !== undefined) {
             <div class="card"><span>{{ 'Buying the finished item' | tr }}</span><strong>{{ r.directBuyCost | number: '1.0-2' }}</strong></div>
           }
@@ -273,6 +273,13 @@ export class CalculatorPage {
       defaultStrategy: d.settings.defaultStrategy,
       defaultFeePercent: d.settings.defaultFeePercent,
     });
+  }
+
+  /** Real-money equivalent of a Kinah amount, or '' when no rate is set. */
+  money(kinah: number): string {
+    const rate = this.store.settings().kinahPerMoney;
+    if (!rate || !Number.isFinite(kinah)) return '';
+    return (kinah / rate).toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 }) + ' ' + (this.store.settings().currency ?? 'EUR');
   }
 
   setTab(t: string): void {

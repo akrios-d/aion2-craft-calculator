@@ -89,6 +89,10 @@ export interface Settings {
   itemNameLanguage: 'en' | 'pt';
   /** Faction whose same-named item variants are shown; 'all' shows both. */
   faction: 'all' | 'Elyos' | 'Asmodians';
+  /** Kinah obtained per 1 unit of real money (e.g. from Kinah chests); unset or 0 hides conversions. */
+  kinahPerMoney?: number;
+  /** Real-money currency label, e.g. EUR. */
+  currency?: string;
 }
 
 export interface SavedPlan {
