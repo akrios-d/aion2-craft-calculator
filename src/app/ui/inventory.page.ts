@@ -4,6 +4,7 @@ import { ItemIcon } from '../core/item-icon';
 import { ItemPicker } from '../core/item-picker';
 import { AppStore } from '../core/app-store';
 import { TrPipe } from '../core/tr.pipe';
+import { groupThousands } from '../core/listings';
 import { downloadText } from '../core/download';
 import { exportInventoryCsv } from '../core/io/backup';
 import { ImportPanel } from './import-panel';
@@ -14,8 +15,8 @@ import { ImportPanel } from './import-panel';
   template: `
     <h2>{{ 'Inventory' | tr }}</h2>
     <p class="muted">{{ 'Your calculations deduct this inventory but never change it automatically.' | tr }}</p>
-    <label class="kinah">{{ 'Kinah' | tr }}
-      <input type="number" min="0" step="1" [value]="store.data().kinah" (change)="setKinah($event)" />
+    <label class="kinah">{{ 'Kina' | tr }}
+      <input type="text" inputmode="numeric" [value]="fmt(store.data().kinah)" (input)="groupKinah($event)" (change)="setKinah($event)" />
     </label>
     <form class="row" (ngSubmit)="add()">
       <app-item-picker [items]="store.items()" [(selectedId)]="itemId" />
@@ -66,8 +67,20 @@ export class InventoryPage {
     this.itemId.set('');
   }
 
+  fmt(n: number): string {
+    return groupThousands(String(n));
+  }
+
+  groupKinah(ev: Event): void {
+    const el = ev.target as HTMLInputElement;
+    el.value = groupThousands(el.value.replace(/[^\d,]/g, ''));
+  }
+
   setKinah(ev: Event): void {
-    this.store.setKinah(Number((ev.target as HTMLInputElement).value));
+    const el = ev.target as HTMLInputElement;
+    const n = Number(el.value.replace(/,/g, '') || 0);
+    this.store.setKinah(n);
+    el.value = this.fmt(this.store.data().kinah);
   }
 
   setQty(id: string, ev: Event): void {

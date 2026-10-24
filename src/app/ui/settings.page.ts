@@ -38,7 +38,7 @@ import { TrPipe } from '../core/tr.pipe';
     <h3>{{ 'Kina chests on the Exchange' | tr }}</h3>
     <p class="muted">{{ 'Enter the current lowest price of each chest; costs are converted using the best rate.' | tr }}</p>
     <table>
-      <thead><tr><th>{{ 'Kinah in chest' | tr }}</th><th>{{ 'Price' | tr }}</th><th>{{ 'Kinah per 1 currency' | tr }}</th><th></th></tr></thead>
+      <thead><tr><th>{{ 'Kina in chest' | tr }}</th><th>{{ 'Price' | tr }}</th><th>{{ 'Kina per 1 currency' | tr }}</th><th></th></tr></thead>
       <tbody>
         @for (c of s.kinahChests ?? []; track $index) {
           <tr>
