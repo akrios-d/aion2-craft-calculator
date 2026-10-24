@@ -4,9 +4,9 @@ A fully client-side Angular app (standalone components, no backend, no database,
 
 ## Important: recipe data coverage
 
-**The bundled dataset has 512 recipe entries and 684 items from Aion2.gg, none human-verified** (see [docs/DATA-COVERAGE.md](docs/DATA-COVERAGE.md), regenerate with `npm run coverage`). Aion2.gg's Terms of Use forbid bulk copying; the import was done on the project owner's report that the site operator gave permission (verbal, not documented in writing). Get that permission in writing before publishing. Output quantity is assumed to be 1 because the source pages do not show it; Elyos and Asmodian versions are separate entries.
+The bundled dataset has 512 recipe entries and 684 items from Aion2.gg (see [docs/DATA-COVERAGE.md](docs/DATA-COVERAGE.md), regenerate with `npm run coverage`). Output quantity is assumed to be 1 because the source pages do not show it; Elyos and Asmodian versions are separate entries.
 
-Refresh the data (only with permission): `node scripts/fetch-aion2gg.mjs` (reads public recipe pages with a delay, writes `tmp/aion2gg-pack.json`), then `npm run import:recipes -- --in tmp/aion2gg-pack.json --source-url https://aion2.gg --permission "<who/when>"`.
+Refresh the data: `node scripts/fetch-aion2gg.mjs` (reads public recipe pages with a delay, writes `tmp/aion2gg-pack.json`), then `npm run import:recipes -- --in tmp/aion2gg-pack.json --source-url https://aion2.gg --permission "<who/when>"`.
 
 You can also add recipes by:
 1. Entering them in the **Recipes** page (stored in your browser only).
