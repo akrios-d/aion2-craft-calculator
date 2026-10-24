@@ -2,6 +2,7 @@ import { DatePipe, DecimalPipe } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ItemIcon } from '../core/item-icon';
+import { ItemPicker } from '../core/item-picker';
 import { AppStore } from '../core/app-store';
 import { TrPipe } from '../core/tr.pipe';
 import { downloadText } from '../core/download';
@@ -11,7 +12,7 @@ import { ImportPanel } from './import-panel';
 
 @Component({
   selector: 'app-prices',
-  imports: [ItemIcon, TrPipe, FormsModule, DecimalPipe, DatePipe, ImportPanel],
+  imports: [ItemIcon, ItemPicker, TrPipe, FormsModule, DecimalPipe, DatePipe, ImportPanel],
   template: `
     <h2>{{ 'Auction House prices' | tr }}</h2>
     <p class="msg info">
@@ -20,9 +21,8 @@ import { ImportPanel } from './import-panel';
 
     <h3>{{ 'Add or update a price' | tr }}</h3>
     <form class="grid" (ngSubmit)="save()">
-      <label>{{ 'Item (name or id)' | tr }}
-        <input list="all-items" [ngModel]="form().item" (ngModelChange)="patch({ item: $event })" name="item" required />
-        <datalist id="all-items">@for (i of store.items(); track i.id) { <option [value]="i.name">{{ i.id }}</option> }</datalist>
+      <label>{{ 'Item' | tr }}
+        <app-item-picker [items]="store.items()" [selectedId]="form().item" (selectedIdChange)="patch({ item: $event })" />
       </label>
       <label>{{ 'Server' | tr }} <input [ngModel]="form().server" (ngModelChange)="patch({ server: $event })" name="server" required /></label>
       <label>{{ 'Buy price (lowest listing you would pay)' | tr }} <input type="number" min="0" step="any" [ngModel]="form().buy" (ngModelChange)="patch({ buy: $event })" name="buy" /></label>
@@ -110,7 +110,7 @@ export class PricesPage {
     const d = new Date(p.observedAt);
     d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
     this.form.set({
-      item: this.store.nameOf(p.itemId), server: p.server, buy: p.buyPrice ?? null, sell: p.sellListingPrice ?? null,
+      item: p.itemId, server: p.server, buy: p.buyPrice ?? null, sell: p.sellListingPrice ?? null,
       qty: p.quantityObserved ?? null, fee: p.feePercent ?? null, at: d.toISOString().slice(0, 16), notes: p.notes ?? '',
     });
     window.scrollTo({ top: 0 });
@@ -118,9 +118,7 @@ export class PricesPage {
 
   save(): void {
     const f = this.form();
-    const raw = f.item.trim();
-    const match = this.store.items().find((i) => i.name.toLowerCase() === raw.toLowerCase()) ?? this.store.items().find((i) => i.id === raw);
-    const itemId = match?.id ?? raw;
+    const itemId = f.item;
     const num = (v: number | null | string) => (v === null || v === '' ? undefined : Number(v));
     const buy = num(f.buy), sell = num(f.sell), qty = num(f.qty), fee = num(f.fee);
     const server = f.server.trim() || this.store.settings().server;
