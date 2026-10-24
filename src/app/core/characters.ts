@@ -5,7 +5,7 @@ export function syncActiveCharacter(d: UserData): UserData {
   return {
     ...d,
     characters: d.characters.map((c) =>
-      c.id === d.activeCharacterId ? { ...c, inventory: d.inventory, strategies: d.strategies, recipeChoices: d.recipeChoices } : c,
+      c.id === d.activeCharacterId ? { ...c, strategies: d.strategies, recipeChoices: d.recipeChoices } : c,
     ),
   };
 }
@@ -14,11 +14,11 @@ export function switchCharacter(d: UserData, id: string): UserData {
   const synced = syncActiveCharacter(d);
   const target = synced.characters.find((c) => c.id === id);
   if (!target) return d;
-  return { ...synced, activeCharacterId: id, inventory: target.inventory, strategies: target.strategies, recipeChoices: target.recipeChoices };
+  return { ...synced, activeCharacterId: id, strategies: target.strategies, recipeChoices: target.recipeChoices };
 }
 
 export function addCharacter(d: UserData, name: string, id: string): UserData {
-  const ch: Character = { id, name: name.trim() || 'Character', inventory: {}, strategies: {}, recipeChoices: {} };
+  const ch: Character = { id, name: name.trim() || 'Character', strategies: {}, recipeChoices: {} };
   return switchCharacter({ ...syncActiveCharacter(d), characters: [...d.characters, ch] }, id);
 }
 

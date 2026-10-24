@@ -16,7 +16,7 @@ const PT: Record<string, string> = {
   'Character name': 'Nome do personagem',
   'New': 'Novo',
   'Rename': 'Renomear',
-  'Delete character {name} and its inventory and plans?': 'Excluir o personagem {name} com seu inventário e planos?',
+  'Delete character {name} and its plans?': 'Excluir o personagem {name} e seus planos?',
   'Item names': 'Nomes dos itens',
   'English': 'Inglês',
   'Portuguese': 'Português',

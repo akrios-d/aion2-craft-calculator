@@ -47,5 +47,5 @@ Deployment itself has not been performed from this repository; only configuratio
 
 ## Characters
 
-Each character has its own inventory, buy/craft strategies, recipe choices and saved craft plans. Prices, price history and settings are shared. Use the character selector in the header to create, rename, switch or delete characters; JSON backups include all characters.
+The inventory is account-wide. Each character has its own buy/craft strategies, recipe choices and saved craft plans. Inventory, prices, price history and settings are shared. Use the character selector in the header to create, rename, switch or delete characters; JSON backups include all characters.
 

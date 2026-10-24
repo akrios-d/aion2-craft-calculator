@@ -95,7 +95,7 @@ export class App {
 
   removeCharacter(): void {
     const c = this.store.activeCharacter();
-    if (confirm(this.t('Delete character {name} and its inventory and plans?', { name: c.name }))) this.store.deleteActiveCharacter();
+    if (confirm(this.t('Delete character {name} and its plans?', { name: c.name }))) this.store.deleteActiveCharacter();
   }
 
   async restore(ev: Event): Promise<void> {

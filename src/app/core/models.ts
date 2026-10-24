@@ -96,11 +96,10 @@ export interface InventoryEntry {
   updatedAt: string;
 }
 
-/** Per-character data. The active character's copy lives in the top-level UserData fields and is synced on save. */
+/** Per-character data (the inventory is account-wide). The active character's copy lives in the top-level UserData fields and is synced on save. */
 export interface Character {
   id: string;
   name: string;
-  inventory: Record<string, InventoryEntry>;
   strategies: Record<string, Strategy>;
   recipeChoices: Record<string, string>;
 }
@@ -111,7 +110,7 @@ export interface UserData {
   schemaVersion: number;
   characters: Character[];
   activeCharacterId: string;
-  /** Active character's inventory. */
+  /** Account-wide inventory, shared by all characters. */
   inventory: Record<string, InventoryEntry>;
   /** Latest price per `server|itemId`. */
   prices: Record<string, PriceEntry>;

@@ -31,7 +31,7 @@ export function defaultSettings(): Settings {
 export function emptyUserData(): UserData {
   return {
     schemaVersion: CURRENT_SCHEMA_VERSION,
-    characters: [{ id: DEFAULT_CHARACTER_ID, name: 'Main', inventory: {}, strategies: {}, recipeChoices: {} }],
+    characters: [{ id: DEFAULT_CHARACTER_ID, name: 'Main', strategies: {}, recipeChoices: {} }],
     activeCharacterId: DEFAULT_CHARACTER_ID,
     inventory: {},
     prices: {},
@@ -109,7 +109,7 @@ export const MIGRATIONS: Record<number, Migration> = {
 MIGRATIONS[2] = (d) => ({
   ...d,
   schemaVersion: 3,
-  characters: [{ id: DEFAULT_CHARACTER_ID, name: 'Main', inventory: d['inventory'] ?? {}, strategies: d['strategies'] ?? {}, recipeChoices: d['recipeChoices'] ?? {} }],
+  characters: [{ id: DEFAULT_CHARACTER_ID, name: 'Main', strategies: d['strategies'] ?? {}, recipeChoices: d['recipeChoices'] ?? {} }],
   activeCharacterId: DEFAULT_CHARACTER_ID,
   plans: (Array.isArray(d['plans']) ? d['plans'] : []).map((p: any) => ({ ...p, characterId: DEFAULT_CHARACTER_ID })),
 });
@@ -263,24 +263,16 @@ export function normalizeUserData(raw: Raw, warnings: string[] = []): UserData {
     const ch: Character = {
       id: c['id'],
       name: typeof c['name'] === 'string' && c['name'].trim() ? c['name'].trim() : c['id'],
-      inventory: {},
       strategies: {},
       recipeChoices: {},
     };
-    for (const [id, e] of Object.entries<any>(isObj(c['inventory']) ? c['inventory'] : {})) {
-      const qty = isObj(e) ? e['quantity'] : e;
-      if (isNum(qty) && qty >= 0 && Number.isInteger(qty)) {
-        ch.inventory[id] = { quantity: qty, updatedAt: isObj(e) && typeof e['updatedAt'] === 'string' ? e['updatedAt'] : new Date(0).toISOString() };
-      }
-    }
     for (const [id, s] of Object.entries<any>(isObj(c['strategies']) ? c['strategies'] : {})) if (isStrategy(s)) ch.strategies[id] = s;
     for (const [id, r] of Object.entries<any>(isObj(c['recipeChoices']) ? c['recipeChoices'] : {})) if (typeof r === 'string') ch.recipeChoices[id] = r;
     characters.push(ch);
   }
-  if (!characters.length) characters.push({ id: DEFAULT_CHARACTER_ID, name: 'Main', inventory: {}, strategies: {}, recipeChoices: {} });
+  if (!characters.length) characters.push({ id: DEFAULT_CHARACTER_ID, name: 'Main', strategies: {}, recipeChoices: {} });
   const active = characters.find((c) => c.id === raw['activeCharacterId']) ?? characters[0];
   // The top-level fields are the active character's working copy and win over the stored copy.
-  active.inventory = base.inventory;
   active.strategies = base.strategies;
   active.recipeChoices = base.recipeChoices;
   base.characters = characters;

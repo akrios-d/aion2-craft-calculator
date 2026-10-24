@@ -21,18 +21,19 @@ describe('characters', () => {
     };
     const d = migrateUserData(v2).data;
     expect(d.characters).toHaveLength(1);
-    expect(d.characters[0].inventory['a'].quantity).toBe(3);
+    expect(d.inventory['a'].quantity).toBe(3);
     expect(d.plans[0].characterId).toBe(d.activeCharacterId);
   });
 
-  it('keeps inventories separate when switching', () => {
+  it('keeps the inventory shared and strategies separate when switching', () => {
     let d = emptyUserData();
-    d = { ...d, inventory: { a: { quantity: 1, updatedAt: '' } } };
+    d = { ...d, inventory: { a: { quantity: 1, updatedAt: '' } }, strategies: { a: 'buy' } };
     d = addCharacter(d, 'Alt', 'alt');
     expect(d.activeCharacterId).toBe('alt');
-    expect(d.inventory).toEqual({});
-    d = switchCharacter(d, 'main');
     expect(d.inventory['a'].quantity).toBe(1);
+    expect(d.strategies).toEqual({});
+    d = switchCharacter(d, 'main');
+    expect(d.strategies['a']).toBe('buy');
   });
 
   it('renames and deletes characters with their plans, keeping at least one', () => {

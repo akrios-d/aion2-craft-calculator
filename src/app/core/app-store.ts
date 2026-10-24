@@ -120,12 +120,12 @@ export class AppStore {
     const { data, report } = reconcileUserData(current, this.catalog().items);
     // Characters other than the active one are reconciled through the same working fields.
     const characters = data.characters.map((c) => {
-      if (c.id === data.activeCharacterId) return { ...c, inventory: data.inventory, strategies: data.strategies, recipeChoices: data.recipeChoices };
-      const r = reconcileUserData({ ...data, inventory: c.inventory, strategies: c.strategies, recipeChoices: c.recipeChoices }, this.catalog().items);
+      if (c.id === data.activeCharacterId) return { ...c, strategies: data.strategies, recipeChoices: data.recipeChoices };
+      const r = reconcileUserData({ ...data, strategies: c.strategies, recipeChoices: c.recipeChoices }, this.catalog().items);
       report.remapped.push(...r.report.remapped);
       report.unresolved.push(...r.report.unresolved.map((u) => ({ ...u, kind: `${u.kind} (${c.name})` })));
       report.changed = report.changed || r.report.changed;
-      return { ...c, inventory: r.data.inventory, strategies: r.data.strategies, recipeChoices: r.data.recipeChoices };
+      return { ...c, strategies: r.data.strategies, recipeChoices: r.data.recipeChoices };
     });
     this.reconcileReport.set(report);
     const version = this.catalog().manifest.dataVersion;
