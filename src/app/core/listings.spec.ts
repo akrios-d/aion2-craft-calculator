@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { averagePrice, listingsOf, withListings } from './listings';
+import { averagePrice, listingsOf, parsePriceList, withListings } from './listings';
 import { normalizePrice } from './storage/schema';
 import { PriceEntry } from './models';
 
@@ -27,5 +27,12 @@ describe('listings', () => {
     const e = normalizePrice({ ...base, listings: [10, 'x', -1, 30], sellListingPrice: 999 });
     expect(e?.listings).toEqual([10, 30]);
     expect(e?.sellListingPrice).toBe(20);
+  });
+});
+
+describe('parsePriceList', () => {
+  it('splits several prices and reports invalid tokens', () => {
+    expect(parsePriceList('100, 120;95 7.5')).toEqual({ values: [100, 120, 95, 7.5], invalid: [] });
+    expect(parsePriceList('10 abc -3').invalid).toEqual(['abc', '-3']);
   });
 });

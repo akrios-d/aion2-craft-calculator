@@ -76,3 +76,12 @@ details > summary { cursor: pointer; }
 .subtabs button { background: transparent; border: 0; border-bottom: 3px solid transparent; border-radius: 0; padding: .5rem 1rem; color: var(--muted); font-weight: 600; margin-bottom: -1px; }
 .subtabs button:hover { color: #fff; }
 .subtabs button.active { color: var(--acc); border-bottom-color: var(--acc); }
+.picker { max-width: 28rem; }
+.price-editor { margin: 1rem 0; padding: .9rem 1rem; background: linear-gradient(180deg,#ffffff0b,#fff0 140px), var(--win); border: 1px solid #ffffff24; border-top: 2px solid var(--gold); border-radius: var(--radius); display: flex; flex-direction: column; gap: .7rem; }
+.price-editor .head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; }
+.price-editor .avg strong { color: var(--acc); font-size: 1.15rem; }
+.price-editor .chips { display: flex; flex-wrap: wrap; gap: .3rem; min-height: 1.8rem; }
+.price-editor .chip { font-size: .9rem; padding: .15rem .3rem .15rem .7rem; }
+.price-editor .add-row { display: flex; gap: .5rem; }
+.price-editor .add-row input { flex: 1; }
+.price-editor label.check { flex-direction: row; align-items: center; gap: .4rem; }

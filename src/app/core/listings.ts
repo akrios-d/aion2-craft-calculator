@@ -23,3 +23,14 @@ export function withListings(entry: PriceEntry, listings: readonly number[]): Pr
   }
   return next;
 }
+
+/** Parses prices separated by commas, semicolons or whitespace. */
+export function parsePriceList(text: string): { values: number[]; invalid: string[] } {
+  const values: number[] = [];
+  const invalid: string[] = [];
+  for (const tok of text.split(/[\s,;]+/).filter(Boolean)) {
+    if (/^\d+(\.\d+)?$/.test(tok)) values.push(Number(tok));
+    else invalid.push(tok);
+  }
+  return { values, invalid };
+}

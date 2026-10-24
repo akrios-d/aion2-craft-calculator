@@ -192,16 +192,23 @@ export class AppStore {
     }));
   }
 
-  addListing(itemId: string, price: number, buyPrice?: number): void {
+  addListings(itemId: string, prices: number[]): void {
     const server = this.settings().server;
-    const key = priceKey(server, itemId);
-    const current = this.data().prices[key];
-    let entry: PriceEntry = { ...(current ?? { itemId, server }), observedAt: new Date().toISOString() };
-    entry = withListings(entry, [...(current ? listingsOf(current) : []), price]);
-    if (buyPrice !== undefined) entry.buyPrice = buyPrice;
-    this.setPrice(entry);
+    const current = this.data().prices[priceKey(server, itemId)];
+    const base: PriceEntry = { ...(current ?? { itemId, server }), observedAt: new Date().toISOString() };
+    this.setPrice(withListings(base, [...(current ? listingsOf(current) : []), ...prices]));
   }
 
+  setBuyPrice(itemId: string, buyPrice: number | undefined): void {
+    const server = this.settings().server;
+    const current = this.data().prices[priceKey(server, itemId)];
+    if (!current && buyPrice === undefined) return;
+    const entry: PriceEntry = { ...(current ?? { itemId, server }), observedAt: new Date().toISOString() };
+    if (buyPrice === undefined) delete entry.buyPrice;
+    else entry.buyPrice = buyPrice;
+    if (entry.buyPrice === undefined && entry.sellListingPrice === undefined) this.removePrice(server, itemId);
+    else this.setPrice(entry);
+  }
   removeListing(itemId: string, index: number): void {
     const server = this.settings().server;
     const current = this.data().prices[priceKey(server, itemId)];
