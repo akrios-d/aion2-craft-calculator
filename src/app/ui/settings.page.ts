@@ -30,6 +30,9 @@ import { TrPipe } from '../core/tr.pipe';
       <label>{{ 'Default Auction House fee %' | tr }} <small class="muted">{{ '(placeholder default, verify in game)' | tr }}</small>
         <input type="number" min="0" max="100" step="any" [ngModel]="s.defaultFeePercent" (ngModelChange)="setFee($event)" />
       </label>
+      <label>{{ 'Real-money currency' | tr }}
+        <input type="text" maxlength="6" [ngModel]="s.realCurrency ?? 'R$'" (ngModelChange)="store.setSettings({ realCurrency: ($event || 'R$').trim() })" />
+      </label>
     </div>
     <p class="muted">{{ 'Settings are saved in your browser.' | tr }}</p>
   `,

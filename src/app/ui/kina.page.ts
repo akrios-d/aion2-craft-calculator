@@ -34,11 +34,6 @@ import { TrPipe } from '../core/tr.pipe';
     </div>
 
     <h2>{{ 'Quna shop (real money)' | tr }}</h2>
-    <div class="grid">
-      <label>{{ 'Real-money currency' | tr }}
-        <input type="text" maxlength="6" [ngModel]="s.realCurrency ?? 'R$'" (ngModelChange)="store.setSettings({ realCurrency: ($event || 'R$').trim() })" />
-      </label>
-    </div>
     <p class="muted">{{ 'Enter the packs from the Quna shop and what each costs; the best rate converts Quna to real money.' | tr }}</p>
     <table>
       <thead><tr><th>Quna</th><th>{{ 'Price' | tr }} ({{ s.realCurrency ?? 'R$' }})</th><th>{{ 'Cost per 1,000 Quna' | tr }}</th><th>{{ 'Comparison' | tr }}</th><th></th></tr></thead>
