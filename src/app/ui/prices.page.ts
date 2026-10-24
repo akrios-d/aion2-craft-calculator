@@ -116,6 +116,8 @@ export class PricesPage {
     this.store.addListings(this.itemId(), parsed.values);
     this.error.set('');
     this.draft.set('');
+    this.itemId.set('');
+    this.buyOpen.set(false);
   }
 
   toggleBuy(on: boolean): void {
