@@ -144,7 +144,7 @@ import { Strategy } from '../core/models';
       <ul class="plain">
         @for (p of store.characterPlans(); track p.id) {
           <li>
-            <strong>{{ p.name }}</strong> — {{ p.quantity }}× <app-ico [id]="p.targetItemId" />{{ store.nameOf(p.targetItemId) }} ({{ p.server }})
+            <strong>{{ p.name }}</strong> — {{ p.quantity }}× <app-ico [id]="p.targetItemId" />{{ store.nameOf(p.targetItemId) }}
             <button (click)="loadPlan(p.id)">{{ 'Load' | tr }}</button>
             <button (click)="store.deletePlan(p.id)">{{ 'Delete' | tr }}</button>
           </li>
