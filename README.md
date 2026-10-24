@@ -31,6 +31,7 @@ npm run build      # output: dist/aion2-craft-lab/browser
 - CSV import (prices, inventory) and JSON backup/restore, each with validation, duplicate detection, preview, and explicit merge/replace. Never silent overwrites.
 - Dataset updates: user data is matched by stable item id (`previousIds` supported); unmatched records are reported, never deleted.
 - Prices are listing prices observed by the user, not completed sales. Default server: Zikel SA.
+- Two independent language options (header and Settings): **interface language** (English / Português) and **item-name language** (English / Português). Portuguese item names come from the pt-br Aion2.gg pages (`node scripts/fetch-aion2gg-names.mjs`, writes `names.pt` into `public/data/items.json`). Items without a Portuguese name fall back to English.
 
 CSV columns. Prices: `itemId` or `itemName`, `buyPrice`, `sellListingPrice`, `quantityObserved`, `feePercent`, `observedAt`, `server`, `notes`. Inventory: `itemId` or `itemName`, `quantity`.
 

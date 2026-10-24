@@ -1,53 +1,54 @@
 import { DatePipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { AppStore } from '../core/app-store';
+import { TrPipe } from '../core/tr.pipe';
 import { APP_VERSION, downloadText } from '../core/download';
 import { buildBackup } from '../core/io/backup';
 import { ImportPanel } from './import-panel';
 
 @Component({
   selector: 'app-data',
-  imports: [ImportPanel, DatePipe],
+  imports: [TrPipe, ImportPanel, DatePipe],
   template: `
-    <h2>Data, backup &amp; coverage</h2>
+    <h2>{{ 'Data, backup & coverage' | tr }}</h2>
 
-    <h3>Static recipe dataset</h3>
-    @if (store.catalogError()) { <p class="msg error">{{ store.catalogError() }}</p> }
+    <h3>{{ 'Static recipe dataset' | tr }}</h3>
+    @if (store.catalogError()) { <p class="msg error">{{ store.catalogError() | tr }}</p> }
     @let m = store.catalog().manifest;
     <table class="kv">
-      <tr><td>Data version</td><td>{{ m.dataVersion }}</td></tr>
-      <tr><td>Source</td><td>{{ m.sourceUrl }}</td></tr>
-      <tr><td>Import date</td><td>{{ m.importDate ? (m.importDate | date: 'yyyy-MM-dd') : 'never imported' }}</td></tr>
-      <tr><td>Items / recipes / professions</td><td>{{ store.catalog().items.length }} / {{ store.catalog().recipes.length }} / {{ store.catalog().professions.length }}</td></tr>
-      <tr><td>Verified recipes</td><td>{{ verified() }} of {{ store.catalog().recipes.length }}</td></tr>
-      <tr><td>Verification status</td><td>{{ m.verificationStatus }}</td></tr>
-      <tr><td>Your own items / recipes</td><td>{{ store.data().customItems.length }} / {{ store.data().customRecipes.length }}</td></tr>
+      <tr><td>{{ 'Data version' | tr }}</td><td>{{ m.dataVersion }}</td></tr>
+      <tr><td>{{ 'Source' | tr }}</td><td>{{ m.sourceUrl }}</td></tr>
+      <tr><td>{{ 'Import date' | tr }}</td><td>{{ m.importDate ? (m.importDate | date: 'yyyy-MM-dd') : ('never imported' | tr) }}</td></tr>
+      <tr><td>{{ 'Items / recipes / professions' | tr }}</td><td>{{ store.catalog().items.length }} / {{ store.catalog().recipes.length }} / {{ store.catalog().professions.length }}</td></tr>
+      <tr><td>{{ 'Verified recipes' | tr }}</td><td>{{ '{n} of {total}' | tr: { n: verified(), total: store.catalog().recipes.length } }}</td></tr>
+      <tr><td>{{ 'Verification status' | tr }}</td><td>{{ m.verificationStatus }}</td></tr>
+      <tr><td>{{ 'Your own items / recipes' | tr }}</td><td>{{ store.data().customItems.length }} / {{ store.data().customRecipes.length }}</td></tr>
     </table>
-    <h4>Known limitations</h4>
-    <ul>@for (l of m.knownLimitations; track $index) { <li>{{ l }}</li> }</ul>
+    <h4>{{ 'Known limitations' | tr }}</h4>
+    <ul>@for (l of m.knownLimitations; track $index) { <li>{{ l | tr }}</li> }</ul>
 
     @if (store.reconcileReport(); as rep) {
       @if (rep.remapped.length || rep.unresolved.length) {
-        <h3>Dataset update report</h3>
+        <h3>{{ 'Dataset update report' | tr }}</h3>
         @if (rep.remapped.length) {
-          <p>{{ rep.remapped.length }} record(s) moved to new item ids:</p>
+          <p>{{ '{n} record(s) moved to new item ids:' | tr: { n: rep.remapped.length } }}</p>
           <ul>@for (r of rep.remapped; track $index) { <li>{{ r.kind }}: {{ r.fromId }} → {{ r.toId }}</li> }</ul>
         }
         @if (rep.unresolved.length) {
-          <p class="msg warn">{{ rep.unresolved.length }} record(s) could not be matched to a known item. They were kept untouched:</p>
-          <ul>@for (u of rep.unresolved.slice(0, 100); track $index) { <li>{{ u.kind }}: <code>{{ u.itemId }}</code> — {{ u.reason }}</li> }</ul>
+          <p class="msg warn">{{ '{n} record(s) could not be matched to a known item. They were kept untouched:' | tr: { n: rep.unresolved.length } }}</p>
+          <ul>@for (u of rep.unresolved.slice(0, 100); track $index) { <li>{{ u.kind }}: <code>{{ u.itemId }}</code> — {{ u.reason | tr }}</li> }</ul>
         }
       }
     }
 
-    <h3>Backup (all user data)</h3>
-    <p class="muted">Includes inventory, prices, price history, settings, plans, buy/craft preferences and your custom items/recipes. Stored only in this browser unless you export it.</p>
-    <div class="row"><button class="primary" (click)="exportBackup()">Download JSON backup</button></div>
-    <h4>Restore from JSON backup</h4>
+    <h3>{{ 'Backup (all user data)' | tr }}</h3>
+    <p class="muted">{{ 'Includes inventory, prices, price history, settings, plans, buy/craft preferences and your custom items/recipes. Stored only in this browser unless you export it.' | tr }}</p>
+    <div class="row"><button class="primary" (click)="exportBackup()">{{ 'Download JSON backup' | tr }}</button></div>
+    <h4>{{ 'Restore from JSON backup' | tr }}</h4>
     <app-import-panel kind="backup" />
 
-    <h3>Reset</h3>
-    <button class="danger" (click)="reset()">Delete all my data in this browser</button>
+    <h3>{{ 'Reset' | tr }}</h3>
+    <button class="danger" (click)="reset()">{{ 'Delete all my data in this browser' | tr }}</button>
   `,
 })
 export class DataPage {

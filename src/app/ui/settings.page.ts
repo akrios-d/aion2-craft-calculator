@@ -1,32 +1,45 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppStore } from '../core/app-store';
+import { TrPipe } from '../core/tr.pipe';
 
 @Component({
   selector: 'app-settings',
-  imports: [FormsModule],
+  imports: [FormsModule, TrPipe],
   template: `
-    <h2>Settings</h2>
+    <h2>{{ 'Settings' | tr }}</h2>
     @let s = store.settings();
     <div class="grid">
-      <label>Target server
-        <input [ngModel]="s.server" (ngModelChange)="setServer($event)" />
-      </label>
-      <label>Default Auction House fee % <small class="muted">(placeholder default, verify in game)</small>
-        <input type="number" min="0" max="100" step="any" [ngModel]="s.defaultFeePercent" (ngModelChange)="setFee($event)" />
-      </label>
-      <label>Default buy-or-craft strategy
-        <select [ngModel]="s.defaultStrategy" (ngModelChange)="store.setSettings({ defaultStrategy: $any($event) })">
-          <option value="auto">Auto (cheapest known)</option>
-          <option value="craft">Always craft</option>
-          <option value="buy">Always buy</option>
+      <label>{{ 'Interface language' | tr }}
+        <select [ngModel]="s.uiLanguage" (ngModelChange)="store.setSettings({ uiLanguage: $any($event) })">
+          <option value="en">English</option>
+          <option value="pt">Português</option>
         </select>
       </label>
-      <label>Currency label
+      <label>{{ 'Item name language' | tr }}
+        <select [ngModel]="s.itemNameLanguage" (ngModelChange)="store.setSettings({ itemNameLanguage: $any($event) })">
+          <option value="en">English</option>
+          <option value="pt">Português</option>
+        </select>
+      </label>
+      <label>{{ 'Target server' | tr }}
+        <input [ngModel]="s.server" (ngModelChange)="setServer($event)" />
+      </label>
+      <label>{{ 'Default Auction House fee %' | tr }} <small class="muted">{{ '(placeholder default, verify in game)' | tr }}</small>
+        <input type="number" min="0" max="100" step="any" [ngModel]="s.defaultFeePercent" (ngModelChange)="setFee($event)" />
+      </label>
+      <label>{{ 'Default buy-or-craft strategy' | tr }}
+        <select [ngModel]="s.defaultStrategy" (ngModelChange)="store.setSettings({ defaultStrategy: $any($event) })">
+          <option value="auto">{{ 'Auto (cheapest known)' | tr }}</option>
+          <option value="craft">{{ 'Always craft' | tr }}</option>
+          <option value="buy">{{ 'Always buy' | tr }}</option>
+        </select>
+      </label>
+      <label>{{ 'Currency label' | tr }}
         <input [ngModel]="s.currencyLabel" (ngModelChange)="store.setSettings({ currencyLabel: $event })" />
       </label>
     </div>
-    <p class="muted">Settings are saved in your browser. Prices are stored per server, so switching servers shows that server's prices.</p>
+    <p class="muted">{{ "Settings are saved in your browser. Prices are stored per server, so switching servers shows that server's prices." | tr }}</p>
   `,
 })
 export class SettingsPage {

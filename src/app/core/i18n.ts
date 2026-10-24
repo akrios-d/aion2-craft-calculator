@@ -1,0 +1,340 @@
+export type Language = 'en' | 'pt';
+export type Params = Record<string, string | number | null | undefined>;
+
+/** English text is the key. `{name}` marks a placeholder; templates also match dynamic engine/import messages. */
+const PT: Record<string, string> = {
+  // Shell
+  'Calculator': 'Calculadora',
+  'Prices': 'Preços',
+  'Inventory': 'Inventário',
+  'Recipes': 'Receitas',
+  'Data': 'Dados',
+  'Settings': 'Configurações',
+  'Server: {server}': 'Servidor: {server}',
+  'Language': 'Idioma',
+  'Item names': 'Nomes dos itens',
+  'English': 'Inglês',
+  'Portuguese': 'Português',
+  'Your saved data could not be read.': 'Não foi possível ler seus dados salvos.',
+  'The unreadable data has been kept aside and nothing new is being saved until you choose an option:':
+    'Os dados ilegíveis foram guardados à parte e nada novo será salvo até você escolher uma opção:',
+  'Restore from a JSON backup': 'Restaurar de um backup JSON',
+  'Download the unreadable data': 'Baixar os dados ilegíveis',
+  'Start fresh': 'Começar do zero',
+  'Backup could not be read.': 'Não foi possível ler o backup.',
+  '{error} Export a JSON backup from the Data page.': '{error} Exporte um backup JSON na página Dados.',
+  'Your saved data was upgraded to the latest format.': 'Seus dados salvos foram atualizados para o formato mais recente.',
+  'Fully client-side. Your data stays in this browser (LocalStorage). Prices are entered by you; listing prices are not completed sales.':
+    'Totalmente no navegador. Seus dados ficam neste navegador (LocalStorage). Os preços são digitados por você; preços anunciados não são vendas concluídas.',
+  'Not affiliated with NCSOFT or Aion2.gg.': 'Sem afiliação com a NCSOFT ou o Aion2.gg.',
+  'Could not load the recipe dataset: {error}': 'Não foi possível carregar o conjunto de receitas: {error}',
+  'Browser storage is unavailable (private mode or blocked). Changes will be lost when you close the tab. Export a JSON backup to keep your data.':
+    'O armazenamento do navegador não está disponível (modo privado ou bloqueado). As alterações serão perdidas ao fechar a aba. Exporte um backup JSON para guardar seus dados.',
+  'Browser storage could not be read: {error}': 'Não foi possível ler o armazenamento do navegador: {error}',
+  'Your saved data could not be read: {reason} It has not been deleted. Restore from a JSON backup, download the raw data, or start fresh.':
+    'Não foi possível ler seus dados salvos: {reason} Eles não foram apagados. Restaure de um backup JSON, baixe os dados brutos ou comece do zero.',
+  'The saved data is not valid JSON.': 'Os dados salvos não são um JSON válido.',
+  'Browser storage is unavailable.': 'O armazenamento do navegador não está disponível.',
+  'Could not save to browser storage (it may be full): {error}': 'Não foi possível salvar no armazenamento do navegador (pode estar cheio): {error}',
+
+  // Calculator
+  'Crafting calculator': 'Calculadora de criação',
+  'Prices are the ones you entered or imported': 'Os preços são os que você digitou ou importou',
+  'edit': 'editar',
+  'Listing prices are not completed sales.': 'Preços anunciados não são vendas concluídas.',
+  'No recipes are available yet.': 'Ainda não há receitas disponíveis.',
+  'Add your own items and recipes on the Recipes page or import a recipe pack.': 'Adicione seus itens e receitas na página Receitas ou importe um pacote de receitas.',
+  'Item to craft': 'Item a criar',
+  '— choose —': '— escolha —',
+  'Quantity': 'Quantidade',
+  'Cash cost (to buy)': 'Custo em dinheiro (compras)',
+  'Inventory used (value)': 'Inventário usado (valor)',
+  'Full cost': 'Custo total',
+  'incomplete': 'incompleto',
+  'Buying the finished item': 'Comprar o item pronto',
+  'Profitability': 'Lucratividade',
+  '(from your entered listing price, not a completed sale)': '(a partir do preço anunciado que você digitou, não de uma venda concluída)',
+  'Sell listing price per unit': 'Preço anunciado de venda por unidade',
+  'Auction House fee': 'Taxa da Casa de Leilões',
+  '{fee}% → net per unit {net}': '{fee}% → líquido por unidade {net}',
+  'Gross / fee / net revenue': 'Receita bruta / taxa / líquida',
+  'Profit (inventory free)': 'Lucro (inventário grátis)',
+  'Profit (inventory at buy price)': 'Lucro (inventário ao preço de compra)',
+  'Margin / ROI': 'Margem / ROI',
+  'Some costs are missing, so profit is overstated.': 'Faltam alguns custos, então o lucro está superestimado.',
+  'Crafting steps': 'Etapas de criação',
+  'Item': 'Item',
+  'Batches': 'Lotes',
+  'Produced': 'Produzido',
+  'Nothing needs crafting (covered by inventory).': 'Nada precisa ser criado (coberto pelo inventário).',
+  'Shopping list': 'Lista de compras',
+  'Qty': 'Qtd.',
+  'Unit buy price': 'Preço unitário de compra',
+  'Cost': 'Custo',
+  'missing': 'ausente',
+  'Nothing to buy.': 'Nada para comprar.',
+  'From your inventory': 'Do seu inventário',
+  '(not modified automatically)': '(não é alterado automaticamente)',
+  'Used': 'Usado',
+  'Have': 'Possui',
+  'Leftover from whole batches:': 'Sobra de lotes inteiros:',
+  'Dependency tree': 'Árvore de dependências',
+  'Save this plan': 'Salvar este plano',
+  'Plan name': 'Nome do plano',
+  'Save plan': 'Salvar plano',
+  '{n} from earlier batch surplus': '{n} de sobra de lotes anteriores',
+  '{n} from inventory': '{n} do inventário',
+  'craft {batches} batch(es) → {produced}': 'criar {batches} lote(s) → {produced}',
+  'buy {n}': 'comprar {n}',
+  '(no price)': '(sem preço)',
+  'circular dependency': 'dependência circular',
+  'Buy or craft this component': 'Comprar ou criar este componente',
+  'auto (cheapest)': 'auto (mais barato)',
+  'always craft': 'sempre criar',
+  'always buy': 'sempre comprar',
+  'Recipe': 'Receita',
+  'Saved plans': 'Planos salvos',
+  'Load': 'Carregar',
+  'Delete': 'Excluir',
+  'error': 'erro',
+  'warning': 'aviso',
+  'info': 'info',
+
+  // Engine messages
+  'Quantity must be a positive whole number.': 'A quantidade deve ser um número inteiro positivo.',
+  'Recipe {id} ignored: {err}.': 'Receita {id} ignorada: {err}.',
+  'Circular dependency: {chain}.': 'Dependência circular: {chain}.',
+  'Crafting chain deeper than {depth} levels at {name}.': 'Cadeia de criação com mais de {depth} níveis em {name}.',
+  'Recipe for {name} is {status}; check it in game.': 'A receita de {name} está {status}; confira no jogo.',
+  'No recipe found for {name}.': 'Nenhuma receita encontrada para {name}.',
+  'No recipe known for {name}; treated as a purchased or gathered material.': 'Nenhuma receita conhecida para {name}; tratado como material comprado ou coletado.',
+  'No buy price entered for {name}; its cost is not included.': 'Nenhum preço de compra informado para {name}; o custo não está incluído.',
+  'No sell listing price entered for {name}; profitability unavailable.': 'Nenhum preço anunciado de venda informado para {name}; lucratividade indisponível.',
+  'unverified': 'não verificada',
+  'verified': 'verificada',
+  'user-entered': 'digitada por você',
+
+  // Prices
+  'Auction House prices': 'Preços da Casa de Leilões',
+  'All prices are entered by you (or imported from CSV). They are observed listing prices, not completed sales, and are never fetched automatically.':
+    'Todos os preços são digitados por você (ou importados de CSV). São preços anunciados observados, não vendas concluídas, e nunca são buscados automaticamente.',
+  'Add or update a price': 'Adicionar ou atualizar um preço',
+  'Item (name or id)': 'Item (nome ou id)',
+  'Server': 'Servidor',
+  'Buy price (lowest listing you would pay)': 'Preço de compra (menor anúncio que você pagaria)',
+  'Sell listing price': 'Preço anunciado de venda',
+  'Quantity observed': 'Quantidade observada',
+  'AH fee % (blank = default {fee}%)': 'Taxa da CL % (vazio = padrão {fee}%)',
+  'Observed at': 'Observado em',
+  'Notes': 'Notas',
+  'Save price': 'Salvar preço',
+  'Current prices': 'Preços atuais',
+  'Show all servers': 'Mostrar todos os servidores',
+  'Export CSV': 'Exportar CSV',
+  'Buy': 'Compra',
+  'Sell listing': 'Anúncio de venda',
+  'Qty seen': 'Qtd. vista',
+  'Fee %': 'Taxa %',
+  'Observed': 'Observado',
+  'default': 'padrão',
+  'Edit': 'Editar',
+  'No prices yet.': 'Ainda não há preços.',
+  'Price history': 'Histórico de preços',
+  '{n} observations': '{n} observações',
+  'Show latest 100': 'Mostrar os últimos 100',
+  'Import prices from CSV': 'Importar preços de CSV',
+  'Columns:': 'Colunas:',
+  'or': 'ou',
+  'At least one price per row.': 'Pelo menos um preço por linha.',
+  'Choose an item.': 'Escolha um item.',
+  'Enter a buy price and/or a sell listing price.': 'Informe um preço de compra e/ou um preço anunciado de venda.',
+  '{label} must be a number of 0 or more.': '{label} deve ser um número maior ou igual a 0.',
+  'Buy price': 'Preço de compra',
+  'Fee': 'Taxa',
+  'Fee cannot exceed 100%.': 'A taxa não pode passar de 100%.',
+
+  // Inventory
+  'Your calculations deduct this inventory but never change it automatically.': 'Seus cálculos descontam este inventário, mas nunca o alteram automaticamente.',
+  'Item name or id': 'Nome ou id do item',
+  'Set quantity': 'Definir quantidade',
+  'Id': 'Id',
+  'Remove': 'Remover',
+  'Inventory is empty.': 'O inventário está vazio.',
+  'Import inventory from CSV': 'Importar inventário de CSV',
+  'and': 'e',
+  'Quantity must be a whole number, 0 or more.': 'A quantidade deve ser um número inteiro, 0 ou mais.',
+
+  // Recipes
+  'Recipes & items': 'Receitas e itens',
+  'Bundled dataset: {recipes} recipes / {items} items.': 'Conjunto incluído: {recipes} receitas / {items} itens.',
+  'Your own entries below are stored in this browser only and marked user-entered.': 'Suas próprias entradas abaixo ficam apenas neste navegador e são marcadas como digitadas por você.',
+  'Add an item': 'Adicionar um item',
+  'Item id (e.g. iron-ingot)': 'Id do item (ex.: iron-ingot)',
+  'Item name': 'Nome do item',
+  'Add item': 'Adicionar item',
+  'Add a recipe': 'Adicionar uma receita',
+  'Recipe id': 'Id da receita',
+  'Output item (name or id)': 'Item produzido (nome ou id)',
+  'Output quantity per batch': 'Quantidade produzida por lote',
+  'Ingredients, one per line as': 'Ingredientes, um por linha no formato',
+  'item name or id, quantity': 'nome ou id do item, quantidade',
+  'Add recipe': 'Adicionar receita',
+  'Import a recipe pack (JSON)': 'Importar um pacote de receitas (JSON)',
+  'Format:': 'Formato:',
+  'Only import data you are allowed to use.': 'Importe apenas dados que você tem permissão para usar.',
+  'All recipes': 'Todas as receitas',
+  'Filter…': 'Filtrar…',
+  'Output': 'Produto',
+  'Ingredients': 'Ingredientes',
+  'Status': 'Situação',
+  'Source': 'Fonte',
+  'No recipes.': 'Nenhuma receita.',
+  'Item id and name are required.': 'Id e nome do item são obrigatórios.',
+  '"{id}" already exists in the bundled catalogue.': '"{id}" já existe no catálogo incluído.',
+  'Ingredient line {n} must be "item, quantity".': 'A linha de ingrediente {n} deve ser "item, quantidade".',
+  'Recipe id is required': 'O id da receita é obrigatório',
+  'Cannot add recipe: {err}.': 'Não foi possível adicionar a receita: {err}.',
+  'Recipe id "{id}" already exists in the bundled catalogue.': 'O id de receita "{id}" já existe no catálogo incluído.',
+  'Add the output item first (above) so it can be selected in the calculator.': 'Adicione primeiro o item produzido (acima) para poder selecioná-lo na calculadora.',
+
+  // Data
+  'Data, backup & coverage': 'Dados, backup e cobertura',
+  'Static recipe dataset': 'Conjunto estático de receitas',
+  'Data version': 'Versão dos dados',
+  'Import date': 'Data de importação',
+  'never imported': 'nunca importado',
+  'Items / recipes / professions': 'Itens / receitas / profissões',
+  'Verified recipes': 'Receitas verificadas',
+  '{n} of {total}': '{n} de {total}',
+  'Verification status': 'Situação da verificação',
+  'Your own items / recipes': 'Seus itens / receitas',
+  'Known limitations': 'Limitações conhecidas',
+  'Dataset update report': 'Relatório de atualização dos dados',
+  '{n} record(s) moved to new item ids:': '{n} registro(s) movido(s) para novos ids de item:',
+  '{n} record(s) could not be matched to a known item. They were kept untouched:': '{n} registro(s) não puderam ser associados a um item conhecido. Foram mantidos intactos:',
+  'Backup (all user data)': 'Backup (todos os dados do usuário)',
+  'Includes inventory, prices, price history, settings, plans, buy/craft preferences and your custom items/recipes. Stored only in this browser unless you export it.':
+    'Inclui inventário, preços, histórico de preços, configurações, planos, preferências de comprar/criar e seus itens/receitas. Fica só neste navegador, a menos que você exporte.',
+  'Download JSON backup': 'Baixar backup JSON',
+  'Restore from JSON backup': 'Restaurar de backup JSON',
+  'Reset': 'Redefinir',
+  'Delete all my data in this browser': 'Apagar todos os meus dados neste navegador',
+  'Delete ALL inventory, prices, plans and settings stored in this browser? Download a backup first.': 'Apagar TODO o inventário, preços, planos e configurações salvos neste navegador? Baixe um backup antes.',
+  'No item with this id exists in the current dataset or your custom items.': 'Nenhum item com este id existe no conjunto atual nem nos seus itens personalizados.',
+  'Renamed to {to}, which already has an entry; both kept.': 'Renomeado para {to}, que já tem uma entrada; ambas mantidas.',
+  'Renamed to {to}, which already has a price; both kept.': 'Renomeado para {to}, que já tem um preço; ambos mantidos.',
+  'inventory': 'inventário',
+  'price': 'preço',
+
+  // Settings
+  'Target server': 'Servidor alvo',
+  'Default Auction House fee %': 'Taxa padrão da Casa de Leilões %',
+  '(placeholder default, verify in game)': '(valor provisório, confira no jogo)',
+  'Default buy-or-craft strategy': 'Estratégia padrão de comprar ou criar',
+  'Auto (cheapest known)': 'Auto (mais barato conhecido)',
+  'Always craft': 'Sempre criar',
+  'Always buy': 'Sempre comprar',
+  'Currency label': 'Rótulo da moeda',
+  'Interface language': 'Idioma da interface',
+  'Item name language': 'Idioma dos nomes dos itens',
+  "Settings are saved in your browser. Prices are stored per server, so switching servers shows that server's prices.":
+    'As configurações ficam salvas no seu navegador. Os preços são guardados por servidor, então trocar de servidor mostra os preços dele.',
+
+  // Import panel
+  '…or paste {what} here': '…ou cole {what} aqui',
+  'CSV text': 'texto CSV',
+  'JSON': 'JSON',
+  'Merge (keep what is not in the file)': 'Mesclar (manter o que não está no arquivo)',
+  'Replace (remove what is not in the file)': 'Substituir (remover o que não está no arquivo)',
+  '{rows} row(s) read · {valid} valid · {errors} error(s) · {warnings} warning(s). Rows with errors are skipped.':
+    '{rows} linha(s) lida(s) · {valid} válida(s) · {errors} erro(s) · {warnings} aviso(s). Linhas com erro são ignoradas.',
+  'Validation report': 'Relatório de validação',
+  'Line {line}: {message}': 'Linha {line}: {message}',
+  'Preview (nothing is applied yet):': 'Prévia (nada foi aplicado ainda):',
+  'Change': 'Alteração',
+  'Record': 'Registro',
+  'Before': 'Antes',
+  'After': 'Depois',
+  'Showing first 300 of {n} changes.': 'Mostrando as primeiras 300 de {n} alterações.',
+  'I understand replace removes existing records that are not in the file.': 'Entendo que substituir remove os registros existentes que não estão no arquivo.',
+  'Apply import': 'Aplicar importação',
+  'Clear': 'Limpar',
+  'File is too large (limit 5 MB).': 'O arquivo é grande demais (limite de 5 MB).',
+  'Import applied': 'Importação aplicada',
+  'Server:': 'Servidor:',
+  'Your own entries below are stored in this browser only and marked': 'Suas próprias entradas abaixo ficam salvas só neste navegador e são marcadas como',
+  'buy': 'comprar',
+  'added': 'adicionado',
+  'updated': 'atualizado',
+  'removed': 'removido',
+  'kept': 'mantido',
+  'unchanged': 'sem alteração',
+  'Item {name}': 'Item {name}',
+  'Recipe {id}': 'Receita {id}',
+  'Existing price is newer; imported observation added to history only.': 'O preço existente é mais recente; a observação importada foi adicionada só ao histórico.',
+
+  // Import validation
+  'The file is empty.': 'O arquivo está vazio.',
+  'No rows found.': 'Nenhuma linha encontrada.',
+  'Unknown column "{h}" ignored.': 'Coluna desconhecida "{h}" ignorada.',
+  'Column "{h}" duplicates an earlier column and was ignored.': 'A coluna "{h}" repete uma coluna anterior e foi ignorada.',
+  'Item id "{id}" is not in the known catalogue; imported as-is.': 'O id de item "{id}" não está no catálogo conhecido; importado como está.',
+  'Item name "{name}" is ambiguous ({n} matches); use the item id.': 'O nome de item "{name}" é ambíguo ({n} correspondências); use o id do item.',
+  'Item name "{name}" not found; use the item id.': 'Nome de item "{name}" não encontrado; use o id do item.',
+  'Row has neither an item id nor an item name.': 'A linha não tem id nem nome de item.',
+  'Missing required column: itemId (or itemName).': 'Falta a coluna obrigatória: itemId (ou itemName).',
+  'Missing price column: buyPrice and/or sellListingPrice.': 'Falta a coluna de preço: buyPrice e/ou sellListingPrice.',
+  'Missing required column: quantity.': 'Falta a coluna obrigatória: quantity.',
+  'Invalid {label}: "{raw}".': '{label} inválido(a): "{raw}".',
+  'Row has no buy price or sell listing price.': 'A linha não tem preço de compra nem preço anunciado de venda.',
+  'Invalid timestamp: "{raw}".': 'Data/hora inválida: "{raw}".',
+  'Duplicate of line {line} (same item and server); row skipped.': 'Duplicata da linha {line} (mesmo item e servidor); linha ignorada.',
+  'Duplicate of line {line} (same item); row skipped.': 'Duplicata da linha {line} (mesmo item); linha ignorada.',
+  'Invalid quantity: "{raw}" (must be a whole number, 0 or more).': 'Quantidade inválida: "{raw}" (deve ser um número inteiro, 0 ou mais).',
+  'The file is not valid JSON.': 'O arquivo não é um JSON válido.',
+  'Not a backup produced by this app (missing format "{format}").': 'Não é um backup gerado por este app (falta o formato "{format}").',
+  'The backup could not be read.': 'Não foi possível ler o backup.',
+  'Expected an object with "items" and/or "recipes" arrays.': 'Esperado um objeto com listas "items" e/ou "recipes".',
+  '{where}: id and name are required.': '{where}: id e nome são obrigatórios.',
+  '{where}: duplicate item id "{id}" in file.': '{where}: id de item "{id}" duplicado no arquivo.',
+  '{where}: item id "{id}" already exists in the catalogue; skipped.': '{where}: o id de item "{id}" já existe no catálogo; ignorado.',
+  '{where}: duplicate recipe id "{id}" in file.': '{where}: id de receita "{id}" duplicado no arquivo.',
+  '{where}: recipe id "{id}" already exists; skipped.': '{where}: o id de receita "{id}" já existe; ignorado.',
+  '{where}: item "{id}" has no known name.': '{where}: o item "{id}" não tem nome conhecido.',
+};
+
+const templates = Object.keys(PT)
+  .filter((k) => k.includes('{'))
+  .map((key) => {
+    const names: string[] = [];
+    const pattern = key
+      .split(/(\{\w+\})/)
+      .map((part) => {
+        const m = part.match(/^\{(\w+)\}$/);
+        if (m) {
+          names.push(m[1]);
+          return '([\\s\\S]+?)';
+        }
+        return part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      })
+      .join('');
+    return { regex: new RegExp(`^${pattern}$`), names, pt: PT[key] };
+  });
+
+const fill = (text: string, params: Params): string => text.replace(/\{(\w+)\}/g, (m, k) => (k in params ? String(params[k] ?? '') : m));
+
+export function translate(text: string, lang: Language, params: Params = {}): string {
+  if (lang !== 'pt' || !text) return fill(text, params);
+  const exact = PT[text];
+  if (exact !== undefined) return fill(exact, params);
+  for (const t of templates) {
+    const m = t.regex.exec(text);
+    if (m) {
+      const captured: Params = {};
+      t.names.forEach((n, i) => (captured[n] = translate(m[i + 1], lang)));
+      return fill(t.pt, { ...captured, ...params });
+    }
+  }
+  return fill(text, params);
+}
+

@@ -5,6 +5,8 @@ export interface Item {
   id: string;
   name: string;
   category?: string;
+  /** Localized names by language code (English is `name`). */
+  names?: { pt?: string };
   /** Earlier identifiers of this item, used to preserve user data when ids change. */
   previousIds?: string[];
   source: string;
@@ -71,6 +73,10 @@ export interface Settings {
   defaultFeePercent: number;
   defaultStrategy: Strategy;
   currencyLabel: string;
+  /** Language of the interface text. */
+  uiLanguage: 'en' | 'pt';
+  /** Language used for item names (independent of the interface language). */
+  itemNameLanguage: 'en' | 'pt';
 }
 
 export interface SavedPlan {

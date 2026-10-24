@@ -1,6 +1,7 @@
 import { Component, computed, inject, input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppStore } from '../core/app-store';
+import { TrPipe } from '../core/tr.pipe';
 import { applyBackup, applyRecipePack, parseBackup, parseRecipePack } from '../core/io/backup';
 import {
   ApplyResult,
@@ -30,7 +31,7 @@ const MAX_FILE_BYTES = 5_000_000;
 
 @Component({
   selector: 'app-import-panel',
-  imports: [FormsModule],
+  imports: [TrPipe, FormsModule],
   template: `
     <div class="import-panel">
       <div class="row">
@@ -42,24 +43,23 @@ const MAX_FILE_BYTES = 5_000_000;
       @if (text().trim()) {
         @let a = analysis();
         @if (a.fatal) {
-          <p class="msg error">{{ a.fatal }}</p>
+          <p class="msg error">{{ a.fatal | tr }}</p>
         }
         @if (kind() !== 'recipes') {
           <div class="row">
-            <label><input type="radio" name="mode-{{ kind() }}" value="merge" [ngModel]="mode()" (ngModelChange)="setMode('merge')" /> Merge (keep what is not in the file)</label>
-            <label><input type="radio" name="mode-{{ kind() }}" value="replace" [ngModel]="mode()" (ngModelChange)="setMode('replace')" /> Replace (remove what is not in the file)</label>
+            <label><input type="radio" name="mode-{{ kind() }}" value="merge" [ngModel]="mode()" (ngModelChange)="setMode('merge')" /> {{ 'Merge (keep what is not in the file)' | tr }}</label>
+            <label><input type="radio" name="mode-{{ kind() }}" value="replace" [ngModel]="mode()" (ngModelChange)="setMode('replace')" /> {{ 'Replace (remove what is not in the file)' | tr }}</label>
           </div>
         }
         <p class="muted">
-          {{ a.rowCount }} row(s) read · {{ a.validCount }} valid · {{ errorCount(a) }} error(s) · {{ warningCount(a) }} warning(s).
-          Rows with errors are skipped.
+          {{ '{rows} row(s) read · {valid} valid · {errors} error(s) · {warnings} warning(s). Rows with errors are skipped.' | tr: { rows: a.rowCount, valid: a.validCount, errors: errorCount(a), warnings: warningCount(a) } }}
         </p>
         @if (a.issues.length) {
           <details open>
-            <summary>Validation report</summary>
+            <summary>{{ 'Validation report' | tr }}</summary>
             <ul class="issues">
               @for (i of a.issues.slice(0, 200); track $index) {
-                <li [class]="i.severity">Line {{ i.line }}: {{ i.message }}</li>
+                <li [class]="i.severity">{{ 'Line {line}: {message}' | tr: { line: i.line, message: (i.message | tr) } }}</li>
               }
             </ul>
           </details>
@@ -67,34 +67,34 @@ const MAX_FILE_BYTES = 5_000_000;
         @if (a.changes.length) {
           <details open>
             <summary>
-              Preview (nothing is applied yet):
-              @for (k of summaryKeys(a); track k[0]) { <span class="chip {{ k[0] }}">{{ k[1] }} {{ k[0] }}</span> }
+              {{ 'Preview (nothing is applied yet):' | tr }}
+              @for (k of summaryKeys(a); track k[0]) { <span class="chip {{ k[0] }}">{{ k[1] }} {{ k[0] | tr }}</span> }
             </summary>
             <table>
-              <thead><tr><th>Change</th><th>Record</th><th>Before</th><th>After</th></tr></thead>
+              <thead><tr><th>{{ 'Change' | tr }}</th><th>{{ 'Record' | tr }}</th><th>{{ 'Before' | tr }}</th><th>{{ 'After' | tr }}</th></tr></thead>
               <tbody>
                 @for (c of a.changes.slice(0, 300); track $index) {
                   <tr>
-                    <td><span class="chip {{ c.kind }}">{{ c.kind }}</span></td>
-                    <td>{{ c.label }}</td>
-                    <td>{{ c.before }}</td>
-                    <td>{{ c.after }} @if (c.note) { <small class="muted">{{ c.note }}</small> }</td>
+                    <td><span class="chip {{ c.kind }}">{{ c.kind | tr }}</span></td>
+                    <td>{{ c.label | tr }}</td>
+                    <td>{{ c.before | tr }}</td>
+                    <td>{{ c.after | tr }} @if (c.note) { <small class="muted">{{ c.note | tr }}</small> }</td>
                   </tr>
                 }
               </tbody>
             </table>
-            @if (a.changes.length > 300) { <p class="muted">Showing first 300 of {{ a.changes.length }} changes.</p> }
+            @if (a.changes.length > 300) { <p class="muted">{{ 'Showing first 300 of {n} changes.' | tr: { n: a.changes.length } }}</p> }
           </details>
         }
         @if (mode() === 'replace' && kind() !== 'recipes') {
-          <label class="warn"><input type="checkbox" [ngModel]="confirmed()" (ngModelChange)="confirmed.set($event)" /> I understand replace removes existing records that are not in the file.</label>
+          <label class="warn"><input type="checkbox" [ngModel]="confirmed()" (ngModelChange)="confirmed.set($event)" /> {{ 'I understand replace removes existing records that are not in the file.' | tr }}</label>
         }
         <div class="row">
-          <button class="primary" [disabled]="!canApply(a)" (click)="apply(a)">Apply import</button>
-          <button (click)="reset()">Clear</button>
+          <button class="primary" [disabled]="!canApply(a)" (click)="apply(a)">{{ 'Apply import' | tr }}</button>
+          <button (click)="reset()">{{ 'Clear' | tr }}</button>
         </div>
       }
-      @if (done()) { <p class="msg ok">{{ done() }}</p> }
+      @if (done()) { <p class="msg ok">{{ done() | tr }}</p> }
     </div>
   `,
 })

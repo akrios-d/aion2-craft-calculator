@@ -2,6 +2,7 @@ import { DatePipe, DecimalPipe } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppStore } from '../core/app-store';
+import { TrPipe } from '../core/tr.pipe';
 import { downloadText } from '../core/download';
 import { exportPricesCsv } from '../core/io/backup';
 import { PriceEntry } from '../core/models';
@@ -9,62 +10,61 @@ import { ImportPanel } from './import-panel';
 
 @Component({
   selector: 'app-prices',
-  imports: [FormsModule, DecimalPipe, DatePipe, ImportPanel],
+  imports: [TrPipe, FormsModule, DecimalPipe, DatePipe, ImportPanel],
   template: `
-    <h2>Auction House prices</h2>
+    <h2>{{ 'Auction House prices' | tr }}</h2>
     <p class="msg info">
-      All prices are entered by you (or imported from CSV). They are observed <strong>listing</strong> prices,
-      not completed sales, and are never fetched automatically.
+      {{ 'All prices are entered by you (or imported from CSV). They are observed listing prices, not completed sales, and are never fetched automatically.' | tr }}
     </p>
 
-    <h3>Add or update a price</h3>
+    <h3>{{ 'Add or update a price' | tr }}</h3>
     <form class="grid" (ngSubmit)="save()">
-      <label>Item (name or id)
+      <label>{{ 'Item (name or id)' | tr }}
         <input list="all-items" [ngModel]="form().item" (ngModelChange)="patch({ item: $event })" name="item" required />
         <datalist id="all-items">@for (i of store.items(); track i.id) { <option [value]="i.name">{{ i.id }}</option> }</datalist>
       </label>
-      <label>Server <input [ngModel]="form().server" (ngModelChange)="patch({ server: $event })" name="server" required /></label>
-      <label>Buy price (lowest listing you would pay) <input type="number" min="0" step="any" [ngModel]="form().buy" (ngModelChange)="patch({ buy: $event })" name="buy" /></label>
-      <label>Sell listing price <input type="number" min="0" step="any" [ngModel]="form().sell" (ngModelChange)="patch({ sell: $event })" name="sell" /></label>
-      <label>Quantity observed <input type="number" min="0" step="1" [ngModel]="form().qty" (ngModelChange)="patch({ qty: $event })" name="qty" /></label>
-      <label>AH fee % (blank = default {{ store.settings().defaultFeePercent }}%) <input type="number" min="0" max="100" step="any" [ngModel]="form().fee" (ngModelChange)="patch({ fee: $event })" name="fee" /></label>
-      <label>Observed at <input type="datetime-local" [ngModel]="form().at" (ngModelChange)="patch({ at: $event })" name="at" /></label>
-      <label>Notes <input [ngModel]="form().notes" (ngModelChange)="patch({ notes: $event })" name="notes" /></label>
-      <div><button class="primary" type="submit">Save price</button></div>
+      <label>{{ 'Server' | tr }} <input [ngModel]="form().server" (ngModelChange)="patch({ server: $event })" name="server" required /></label>
+      <label>{{ 'Buy price (lowest listing you would pay)' | tr }} <input type="number" min="0" step="any" [ngModel]="form().buy" (ngModelChange)="patch({ buy: $event })" name="buy" /></label>
+      <label>{{ 'Sell listing price' | tr }} <input type="number" min="0" step="any" [ngModel]="form().sell" (ngModelChange)="patch({ sell: $event })" name="sell" /></label>
+      <label>{{ 'Quantity observed' | tr }} <input type="number" min="0" step="1" [ngModel]="form().qty" (ngModelChange)="patch({ qty: $event })" name="qty" /></label>
+      <label>{{ 'AH fee % (blank = default {fee}%)' | tr: { fee: store.settings().defaultFeePercent } }} <input type="number" min="0" max="100" step="any" [ngModel]="form().fee" (ngModelChange)="patch({ fee: $event })" name="fee" /></label>
+      <label>{{ 'Observed at' | tr }} <input type="datetime-local" [ngModel]="form().at" (ngModelChange)="patch({ at: $event })" name="at" /></label>
+      <label>{{ 'Notes' | tr }} <input [ngModel]="form().notes" (ngModelChange)="patch({ notes: $event })" name="notes" /></label>
+      <div><button class="primary" type="submit">{{ 'Save price' | tr }}</button></div>
     </form>
-    @if (error()) { <p class="msg error">{{ error() }}</p> }
+    @if (error()) { <p class="msg error">{{ error() | tr }}</p> }
 
-    <h3>Current prices <small class="muted">({{ rows().length }})</small></h3>
+    <h3>{{ 'Current prices' | tr }} <small class="muted">({{ rows().length }})</small></h3>
     <div class="row">
-      <label><input type="checkbox" [ngModel]="allServers()" (ngModelChange)="allServers.set($event)" /> Show all servers</label>
-      <button (click)="exportCsv()" [disabled]="!rows().length">Export CSV</button>
+      <label><input type="checkbox" [ngModel]="allServers()" (ngModelChange)="allServers.set($event)" /> {{ 'Show all servers' | tr }}</label>
+      <button (click)="exportCsv()" [disabled]="!rows().length">{{ 'Export CSV' | tr }}</button>
     </div>
     @if (rows().length) {
       <table>
-        <thead><tr><th>Item</th><th>Server</th><th>Buy</th><th>Sell listing</th><th>Qty seen</th><th>Fee %</th><th>Observed</th><th>Notes</th><th></th></tr></thead>
+        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Server' | tr }}</th><th>{{ 'Buy' | tr }}</th><th>{{ 'Sell listing' | tr }}</th><th>{{ 'Qty seen' | tr }}</th><th>{{ 'Fee %' | tr }}</th><th>{{ 'Observed' | tr }}</th><th>{{ 'Notes' | tr }}</th><th></th></tr></thead>
         <tbody>
           @for (p of rows(); track p.server + p.itemId) {
             <tr>
               <td>{{ store.nameOf(p.itemId) }}</td><td>{{ p.server }}</td>
               <td>{{ p.buyPrice === undefined ? '–' : (p.buyPrice | number: '1.0-2') }}</td>
               <td>{{ p.sellListingPrice === undefined ? '–' : (p.sellListingPrice | number: '1.0-2') }}</td>
-              <td>{{ p.quantityObserved ?? '–' }}</td><td>{{ p.feePercent ?? 'default' }}</td>
+              <td>{{ p.quantityObserved ?? '–' }}</td><td>{{ p.feePercent ?? ('default' | tr) }}</td>
               <td>{{ p.observedAt | date: 'yyyy-MM-dd HH:mm' }}</td><td>{{ p.notes }}</td>
               <td>
-                <button (click)="edit(p)">Edit</button>
-                <button (click)="store.removePrice(p.server, p.itemId)">Delete</button>
+                <button (click)="edit(p)">{{ 'Edit' | tr }}</button>
+                <button (click)="store.removePrice(p.server, p.itemId)">{{ 'Delete' | tr }}</button>
               </td>
             </tr>
           }
         </tbody>
       </table>
-    } @else { <p class="muted">No prices yet.</p> }
+    } @else { <p class="muted">{{ 'No prices yet.' | tr }}</p> }
 
-    <h3>Price history <small class="muted">({{ store.data().priceHistory.length }} observations)</small></h3>
+    <h3>{{ 'Price history' | tr }} <small class="muted">({{ '{n} observations' | tr: { n: store.data().priceHistory.length } }})</small></h3>
     <details>
-      <summary>Show latest 100</summary>
+      <summary>{{ 'Show latest 100' | tr }}</summary>
       <table>
-        <thead><tr><th>Item</th><th>Server</th><th>Buy</th><th>Sell listing</th><th>Observed</th></tr></thead>
+        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Server' | tr }}</th><th>{{ 'Buy' | tr }}</th><th>{{ 'Sell listing' | tr }}</th><th>{{ 'Observed' | tr }}</th></tr></thead>
         <tbody>
           @for (h of history(); track $index) {
             <tr><td>{{ store.nameOf(h.itemId) }}</td><td>{{ h.server }}</td><td>{{ h.buyPrice ?? '–' }}</td><td>{{ h.sellListingPrice ?? '–' }}</td><td>{{ h.observedAt | date: 'yyyy-MM-dd HH:mm' }}</td></tr>
@@ -73,8 +73,8 @@ import { ImportPanel } from './import-panel';
       </table>
     </details>
 
-    <h3>Import prices from CSV</h3>
-    <p class="muted">Columns: <code>itemId</code> (or <code>itemName</code>), <code>buyPrice</code>, <code>sellListingPrice</code>, <code>quantityObserved</code>, <code>feePercent</code>, <code>observedAt</code>, <code>server</code>, <code>notes</code>. At least one price per row.</p>
+    <h3>{{ 'Import prices from CSV' | tr }}</h3>
+    <p class="muted">{{ 'Columns:' | tr }} <code>itemId</code> (or <code>itemName</code>), <code>buyPrice</code>, <code>sellListingPrice</code>, <code>quantityObserved</code>, <code>feePercent</code>, <code>observedAt</code>, <code>server</code>, <code>notes</code>. {{ 'At least one price per row.' | tr }}</p>
     <app-import-panel kind="prices" />
   `,
 })

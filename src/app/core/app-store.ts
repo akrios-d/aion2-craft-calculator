@@ -13,6 +13,7 @@ import {
   priceKey,
 } from './models';
 import { ReconcileReport, reconcileUserData } from './reconcile';
+import { Params, translate } from './i18n';
 import { appendHistory } from './io/imports';
 import { LoadResult, UserDataStorage, getBrowserStorage } from './storage/user-data-storage';
 import { emptyUserData } from './storage/schema';
@@ -45,7 +46,9 @@ export class AppStore {
 
   readonly items = computed<Item[]>(() => {
     const known = new Set(this.catalog().items.map((i) => i.id));
-    return [...this.catalog().items, ...this.data().customItems.filter((i) => !known.has(i.id))];
+    const all = [...this.catalog().items, ...this.data().customItems.filter((i) => !known.has(i.id))];
+    if (this.settings().itemNameLanguage !== 'pt') return all;
+    return all.map((i) => (i.names?.pt ? { ...i, name: i.names.pt } : i));
   });
   readonly recipes = computed<Recipe[]>(() => [...this.catalog().recipes, ...this.data().customRecipes]);
   readonly professions = computed<Profession[]>(() => this.catalog().professions);
@@ -80,6 +83,7 @@ export class AppStore {
   }
 
   nameOf = (id: string): string => this.itemNames().get(id) ?? id;
+  tr = (text: string, params?: Params): string => translate(text, this.settings().uiLanguage, params);
 
   async loadCatalog(): Promise<void> {
     try {

@@ -3,49 +3,64 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AppStore } from './core/app-store';
 import { downloadText } from './core/download';
 import { parseBackup } from './core/io/backup';
+import { TrPipe } from './core/tr.pipe';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, TrPipe],
   template: `
     <header>
       <h1>Aion 2 Craft Lab</h1>
       <nav>
-        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Calculator</a>
-        <a routerLink="/prices" routerLinkActive="active">Prices</a>
-        <a routerLink="/inventory" routerLinkActive="active">Inventory</a>
-        <a routerLink="/recipes" routerLinkActive="active">Recipes</a>
-        <a routerLink="/data" routerLinkActive="active">Data</a>
-        <a routerLink="/settings" routerLinkActive="active">Settings</a>
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{ 'Calculator' | tr }}</a>
+        <a routerLink="/prices" routerLinkActive="active">{{ 'Prices' | tr }}</a>
+        <a routerLink="/inventory" routerLinkActive="active">{{ 'Inventory' | tr }}</a>
+        <a routerLink="/recipes" routerLinkActive="active">{{ 'Recipes' | tr }}</a>
+        <a routerLink="/data" routerLinkActive="active">{{ 'Data' | tr }}</a>
+        <a routerLink="/settings" routerLinkActive="active">{{ 'Settings' | tr }}</a>
       </nav>
-      <span class="server">Server: {{ store.settings().server }}</span>
+      <span class="server">{{ 'Server: {server}' | tr: { server: store.settings().server } }}</span>
+      <span class="langs">
+        <label>{{ 'Language' | tr }}
+          <select [value]="store.settings().uiLanguage" (change)="store.setSettings({ uiLanguage: $any($event.target).value })">
+            <option value="en">English</option>
+            <option value="pt">Português</option>
+          </select>
+        </label>
+        <label>{{ 'Item names' | tr }}
+          <select [value]="store.settings().itemNameLanguage" (change)="store.setSettings({ itemNameLanguage: $any($event.target).value })">
+            <option value="en">English</option>
+            <option value="pt">Português</option>
+          </select>
+        </label>
+      </span>
     </header>
 
     <main>
       @if (store.persistBlocked()) {
         <section class="msg error">
-          <strong>Your saved data could not be read.</strong>
-          <p>{{ store.health().message }}</p>
-          <p>The unreadable data has been kept aside and nothing new is being saved until you choose an option:</p>
+          <strong>{{ 'Your saved data could not be read.' | tr }}</strong>
+          <p>{{ store.health().message | tr }}</p>
+          <p>{{ 'The unreadable data has been kept aside and nothing new is being saved until you choose an option:' | tr }}</p>
           <div class="row">
-            <label>Restore from a JSON backup <input type="file" accept=".json,application/json" (change)="restore($event)" /></label>
-            <button (click)="downloadRaw()">Download the unreadable data</button>
-            <button class="danger" (click)="store.startFresh()">Start fresh</button>
+            <label>{{ 'Restore from a JSON backup' | tr }} <input type="file" accept=".json,application/json" (change)="restore($event)" /></label>
+            <button (click)="downloadRaw()">{{ 'Download the unreadable data' | tr }}</button>
+            <button class="danger" (click)="store.startFresh()">{{ 'Start fresh' | tr }}</button>
           </div>
-          @if (restoreError()) { <p class="neg">{{ restoreError() }}</p> }
+          @if (restoreError()) { <p class="neg">{{ restoreError() | tr }}</p> }
         </section>
       } @else if (store.health().status === 'unavailable') {
-        <section class="msg warn">{{ store.health().message }}</section>
+        <section class="msg warn">{{ store.health().message | tr }}</section>
       }
-      @if (store.saveError(); as e) { <section class="msg error">{{ e }} Export a JSON backup from the Data page.</section> }
-      @if (store.health().status === 'migrated') { <section class="msg info">Your saved data was upgraded to the latest format.</section> }
-      @if (store.catalogError(); as e) { <section class="msg error">{{ e }}</section> }
+      @if (store.saveError(); as e) { <section class="msg error">{{ '{error} Export a JSON backup from the Data page.' | tr: { error: (e | tr) } }}</section> }
+      @if (store.health().status === 'migrated') { <section class="msg info">{{ 'Your saved data was upgraded to the latest format.' | tr }}</section> }
+      @if (store.catalogError(); as e) { <section class="msg error">{{ e | tr }}</section> }
 
       <router-outlet />
     </main>
     <footer>
-      Fully client-side. Your data stays in this browser (LocalStorage). Prices are entered by you; listing prices are not completed sales.
-      Not affiliated with NCSOFT or Aion2.gg.
+      {{ 'Fully client-side. Your data stays in this browser (LocalStorage). Prices are entered by you; listing prices are not completed sales.' | tr }}
+      {{ 'Not affiliated with NCSOFT or Aion2.gg.' | tr }}
     </footer>
   `,
 })
