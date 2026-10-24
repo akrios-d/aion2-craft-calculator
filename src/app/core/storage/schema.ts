@@ -33,7 +33,7 @@ export function defaultSettings(): Settings {
     itemNameLanguage: lang,
     faction: 'all',
     kinahChests: DEFAULT_KINA_CHESTS.map((c) => ({ ...c })),
-    currency: 'Gems',
+    currency: 'Quna',
   };
 }
 
@@ -224,7 +224,7 @@ export function normalizeUserData(raw: Raw, warnings: string[] = []): UserData {
       .filter((c: any) => isObj(c) && Number.isFinite(c['kinah']) && c['kinah'] > 0 && Number.isFinite(c['price']) && c['price'] > 0)
       .map((c: any) => ({ kinah: c['kinah'], price: c['price'] }));
   }
-  if (typeof settingsRaw['currency'] === 'string' && settingsRaw['currency'].trim()) base.settings.currency = settingsRaw['currency'].trim().slice(0, 8);
+  if (typeof settingsRaw['currency'] === 'string' && settingsRaw['currency'].trim()) base.settings.currency = settingsRaw['currency'].trim() === 'Gems' ? 'Quna' : settingsRaw['currency'].trim().slice(0, 12);
 
   for (const [id, e] of Object.entries<any>(isObj(raw['inventory']) ? raw['inventory'] : {})) {
     const qty = isObj(e) ? e['quantity'] : e;

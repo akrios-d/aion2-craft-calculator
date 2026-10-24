@@ -14,7 +14,7 @@ import { TrPipe } from '../core/tr.pipe';
     @let s = store.settings();
     <div class="grid">
       <label>{{ 'Exchange currency' | tr }} <small class="muted">{{ '(what Kina chests are bought with)' | tr }}</small>
-        <input type="text" maxlength="12" [ngModel]="s.currency ?? 'Gems'" (ngModelChange)="store.setSettings({ currency: ($event || 'Gems').trim() })" />
+        <input type="text" maxlength="12" [ngModel]="s.currency ?? 'Quna'" (ngModelChange)="store.setSettings({ currency: ($event || 'Quna').trim() })" />
       </label>
     </div>
     <p class="muted">{{ 'Enter the current lowest price of each chest; costs are converted using the best rate.' | tr }}</p>
