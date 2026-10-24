@@ -63,7 +63,10 @@ export interface PriceEntry {
   itemId: string;
   server: string;
   buyPrice?: number;
+  /** Average of listings; this is the value calculations use. */
   sellListingPrice?: number;
+  /** Individual listing prices observed for this item. */
+  listings?: number[];
   quantityObserved?: number;
   feePercent?: number;
   observedAt: string;

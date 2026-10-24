@@ -16,6 +16,7 @@ import { ReconcileReport, reconcileUserData } from './reconcile';
 import { Params, translate } from './i18n';
 import { addCharacter, deleteCharacter, renameCharacter, switchCharacter, syncActiveCharacter } from './characters';
 import { appendHistory } from './io/imports';
+import { listingsOf, withListings } from './listings';
 import { LoadResult, UserDataStorage, getBrowserStorage } from './storage/user-data-storage';
 import { emptyUserData } from './storage/schema';
 
@@ -189,6 +190,26 @@ export class AppStore {
       prices: { ...d.prices, [priceKey(entry.server, entry.itemId)]: entry },
       priceHistory: appendHistory(d.priceHistory, entry),
     }));
+  }
+
+  addListing(itemId: string, price: number, buyPrice?: number): void {
+    const server = this.settings().server;
+    const key = priceKey(server, itemId);
+    const current = this.data().prices[key];
+    let entry: PriceEntry = { ...(current ?? { itemId, server }), observedAt: new Date().toISOString() };
+    entry = withListings(entry, [...(current ? listingsOf(current) : []), price]);
+    if (buyPrice !== undefined) entry.buyPrice = buyPrice;
+    this.setPrice(entry);
+  }
+
+  removeListing(itemId: string, index: number): void {
+    const server = this.settings().server;
+    const current = this.data().prices[priceKey(server, itemId)];
+    if (!current) return;
+    const rest = listingsOf(current).filter((_, i) => i !== index);
+    const entry = withListings({ ...current, observedAt: new Date().toISOString() }, rest);
+    if (entry.sellListingPrice === undefined && entry.buyPrice === undefined) this.removePrice(server, itemId);
+    else this.setPrice(entry);
   }
 
   removePrice(server: string, itemId: string): void {

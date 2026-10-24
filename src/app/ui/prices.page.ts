@@ -7,7 +7,7 @@ import { AppStore } from '../core/app-store';
 import { TrPipe } from '../core/tr.pipe';
 import { downloadText } from '../core/download';
 import { exportPricesCsv } from '../core/io/backup';
-import { PriceEntry } from '../core/models';
+import { listingsOf } from '../core/listings';
 import { ImportPanel } from './import-panel';
 
 @Component({
@@ -29,7 +29,7 @@ import { ImportPanel } from './import-panel';
       @if (form().wantBuy) {
         <label>{{ 'Price I want to pay' | tr }} <input type="number" min="0" step="any" [ngModel]="form().buy" (ngModelChange)="patch({ buy: $event })" name="buy" /></label>
       }
-      <div><button class="primary" type="submit">{{ 'Save price' | tr }}</button></div>
+      <div><button class="primary" type="submit">{{ 'Add price' | tr }}</button></div>
     </form>
     @if (error()) { <p class="msg error">{{ error() | tr }}</p> }
 
@@ -39,15 +39,16 @@ import { ImportPanel } from './import-panel';
     </div>
     @if (rows().length) {
       <table>
-        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Current price' | tr }}</th><th>{{ 'Price I want to pay' | tr }}</th><th></th></tr></thead>
+        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Prices' | tr }}</th><th>{{ 'Average price' | tr }}</th><th>{{ 'Price I want to pay' | tr }}</th><th></th></tr></thead>
         <tbody>
           @for (p of rows(); track p.server + p.itemId) {
             <tr>
               <td><app-ico [id]="p.itemId" />{{ store.nameOf(p.itemId) }}</td>
-              <td>{{ p.sellListingPrice === undefined ? '–' : (p.sellListingPrice | number: '1.0-2') }}</td>
+              <td>@for (v of listings(p); track $index) { <span class="chip">{{ v | number: '1.0-2' }} <button type="button" class="mini" [attr.aria-label]="'Delete' | tr" (click)="store.removeListing(p.itemId, $index)">✕</button></span> } @empty { – }</td>
+              <td><strong>{{ p.sellListingPrice === undefined ? '–' : (p.sellListingPrice | number: '1.0-2') }}</strong></td>
               <td>{{ p.buyPrice === undefined ? '–' : (p.buyPrice | number: '1.0-2') }}</td>
               <td>
-                <button (click)="edit(p)">{{ 'Edit' | tr }}</button>
+                <button type="button" (click)="form.set({ item: p.itemId, wantBuy: false, buy: null, sell: null })">{{ 'Add price' | tr }}</button>
                 <button (click)="store.removePrice(p.server, p.itemId)">{{ 'Delete' | tr }}</button>
               </td>
             </tr>
@@ -80,29 +81,21 @@ export class PricesPage {
     this.form.update((f) => ({ ...f, ...p }));
   }
 
-  edit(p: PriceEntry): void {
-    this.form.set({ item: p.itemId, wantBuy: p.buyPrice !== undefined && p.buyPrice !== p.sellListingPrice, buy: p.buyPrice ?? null, sell: p.sellListingPrice ?? null });
-    window.scrollTo({ top: 0 });
-  }
+  readonly listings = listingsOf;
+
   save(): void {
     const f = this.form();
-    const itemId = f.item;
     const num = (v: number | null | string) => (v === null || v === '' ? undefined : Number(v));
     const buy = f.wantBuy ? num(f.buy) : undefined, sell = num(f.sell);
-    const server = this.store.settings().server;
-    if (!itemId) return void this.error.set('Choose an item.');
-    if (buy === undefined && sell === undefined) return void this.error.set('Enter a current price and/or a price you want to pay.');
+    if (!f.item) return void this.error.set('Choose an item.');
+    if (sell === undefined) return void this.error.set('Enter a current price.');
     for (const [label, v] of [['Price I want to pay', buy], ['Current price', sell]] as const) {
       if (v !== undefined && (!Number.isFinite(v) || v < 0)) return void this.error.set(`${label} must be a number of 0 or more.`);
     }
-    const entry: PriceEntry = { itemId, server, observedAt: new Date().toISOString() };
-    if (buy !== undefined) entry.buyPrice = buy;
-    if (sell !== undefined) entry.sellListingPrice = sell;
-    this.store.setPrice(entry);
+    this.store.addListing(f.item, sell, buy);
     this.error.set('');
-    this.form.set(this.blank());
+    this.form.update((x) => ({ ...x, sell: null }));
   }
-
   exportCsv(): void {
     const subset = Object.fromEntries(this.rows().map((p) => [p.server + '|' + p.itemId, p]));
     downloadText('aion2-prices.csv', exportPricesCsv(subset, this.store.nameOf), 'text/csv');

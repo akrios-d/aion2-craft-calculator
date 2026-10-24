@@ -160,7 +160,11 @@ export function normalizePrice(p: unknown, fallbackServer = DEFAULT_SERVER): Pri
     observedAt: observed,
   };
   if (buy !== undefined) entry.buyPrice = buy;
-  if (sell !== undefined) entry.sellListingPrice = sell;
+  const listings = Array.isArray(p['listings']) ? p['listings'].map(optNum).filter((v): v is number => v !== undefined) : [];
+  if (listings.length) {
+    entry.listings = listings;
+    entry.sellListingPrice = listings.reduce((a, b) => a + b, 0) / listings.length;
+  } else if (sell !== undefined) entry.sellListingPrice = sell;
   const qty = optNum(p['quantityObserved']);
   if (qty !== undefined) entry.quantityObserved = qty;
   const fee = optNum(p['feePercent']);
