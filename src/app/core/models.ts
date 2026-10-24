@@ -9,6 +9,8 @@ export interface Item {
   names?: { pt?: string };
   /** Icon image URL from the source site (linked, not bundled). */
   icon?: string;
+  /** Set only on same-named items that exist once per faction. */
+  faction?: 'Elyos' | 'Asmodians';
   /** Earlier identifiers of this item, used to preserve user data when ids change. */
   previousIds?: string[];
   source: string;

@@ -107,7 +107,8 @@
     "names": {
       "pt": "Grimório da Verdade"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbb5b99018ae8d848aa50c5de109c8fa8fefc5179"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbb5b99018ae8d848aa50c5de109c8fa8fefc5179",
+    "faction": "Elyos"
   },
   {
     "id": "110560024",
@@ -118,7 +119,8 @@
     "names": {
       "pt": "Grimório da Verdade"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbb5b99018ae8d848aa50c5de109c8fa8fefc5179"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbb5b99018ae8d848aa50c5de109c8fa8fefc5179",
+    "faction": "Asmodians"
   },
   {
     "id": "110660023",
@@ -129,7 +131,8 @@
     "names": {
       "pt": "Orbe da Verdade"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc78e6ade2a4a0113bc1871c6b33e93ce74c156ef9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc78e6ade2a4a0113bc1871c6b33e93ce74c156ef9",
+    "faction": "Elyos"
   },
   {
     "id": "110660024",
@@ -140,7 +143,8 @@
     "names": {
       "pt": "Orbe da Verdade"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc78e6ade2a4a0113bc1871c6b33e93ce74c156ef9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc78e6ade2a4a0113bc1871c6b33e93ce74c156ef9",
+    "faction": "Asmodians"
   },
   {
     "id": "610740001",
@@ -261,7 +265,8 @@
     "names": {
       "pt": "Grimório da Verdade Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbb5b99018ae8d848aa50c5de109c8fa8fefc5179"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbb5b99018ae8d848aa50c5de109c8fa8fefc5179",
+    "faction": "Elyos"
   },
   {
     "id": "610530005",
@@ -305,7 +310,8 @@
     "names": {
       "pt": "Grimório da Verdade do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc918dbd94ea282c2b26c52c312d62112e536b6ab7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc918dbd94ea282c2b26c52c312d62112e536b6ab7",
+    "faction": "Elyos"
   },
   {
     "id": "110550016",
@@ -316,7 +322,8 @@
     "names": {
       "pt": "Grimório da Verdade Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbb5b99018ae8d848aa50c5de109c8fa8fefc5179"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbb5b99018ae8d848aa50c5de109c8fa8fefc5179",
+    "faction": "Asmodians"
   },
   {
     "id": "110550017",
@@ -327,7 +334,8 @@
     "names": {
       "pt": "Grimório da Verdade do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc918dbd94ea282c2b26c52c312d62112e536b6ab7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc918dbd94ea282c2b26c52c312d62112e536b6ab7",
+    "faction": "Asmodians"
   },
   {
     "id": "110650014",
@@ -338,7 +346,8 @@
     "names": {
       "pt": "Orbe da Verdade Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc78e6ade2a4a0113bc1871c6b33e93ce74c156ef9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc78e6ade2a4a0113bc1871c6b33e93ce74c156ef9",
+    "faction": "Elyos"
   },
   {
     "id": "610660028",
@@ -360,7 +369,8 @@
     "names": {
       "pt": "Orbe da Verdade do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcf4cad838a6caceb989fcaf4be7571dc3de518ca9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcf4cad838a6caceb989fcaf4be7571dc3de518ca9",
+    "faction": "Elyos"
   },
   {
     "id": "110650016",
@@ -371,7 +381,8 @@
     "names": {
       "pt": "Orbe da Verdade Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc78e6ade2a4a0113bc1871c6b33e93ce74c156ef9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc78e6ade2a4a0113bc1871c6b33e93ce74c156ef9",
+    "faction": "Asmodians"
   },
   {
     "id": "110650017",
@@ -382,7 +393,8 @@
     "names": {
       "pt": "Orbe da Verdade do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcf4cad838a6caceb989fcaf4be7571dc3de518ca9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcf4cad838a6caceb989fcaf4be7571dc3de518ca9",
+    "faction": "Asmodians"
   },
   {
     "id": "610660025",
@@ -514,7 +526,8 @@
     "names": {
       "pt": "Grimório da Verdade Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc918dbd94ea282c2b26c52c312d62112e536b6ab7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc918dbd94ea282c2b26c52c312d62112e536b6ab7",
+    "faction": "Elyos"
   },
   {
     "id": "610530008",
@@ -558,7 +571,8 @@
     "names": {
       "pt": "Grimório da Verdade do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc879ee63112fd54233fe312679dcf884866b9c76"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc879ee63112fd54233fe312679dcf884866b9c76",
+    "faction": "Elyos"
   },
   {
     "id": "110540014",
@@ -569,7 +583,8 @@
     "names": {
       "pt": "Grimório da Verdade Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc918dbd94ea282c2b26c52c312d62112e536b6ab7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc918dbd94ea282c2b26c52c312d62112e536b6ab7",
+    "faction": "Asmodians"
   },
   {
     "id": "110540015",
@@ -580,7 +595,8 @@
     "names": {
       "pt": "Grimório da Verdade do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc879ee63112fd54233fe312679dcf884866b9c76"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc879ee63112fd54233fe312679dcf884866b9c76",
+    "faction": "Asmodians"
   },
   {
     "id": "110640012",
@@ -591,7 +607,8 @@
     "names": {
       "pt": "Orbe da Verdade Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcf4cad838a6caceb989fcaf4be7571dc3de518ca9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcf4cad838a6caceb989fcaf4be7571dc3de518ca9",
+    "faction": "Elyos"
   },
   {
     "id": "610660031",
@@ -613,7 +630,8 @@
     "names": {
       "pt": "Orbe da Verdade do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7619fe97dc5508d672220f30eb8b5ec0d75d78f6"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7619fe97dc5508d672220f30eb8b5ec0d75d78f6",
+    "faction": "Elyos"
   },
   {
     "id": "110640014",
@@ -624,7 +642,8 @@
     "names": {
       "pt": "Orbe da Verdade Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcf4cad838a6caceb989fcaf4be7571dc3de518ca9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcf4cad838a6caceb989fcaf4be7571dc3de518ca9",
+    "faction": "Asmodians"
   },
   {
     "id": "110640015",
@@ -635,7 +654,8 @@
     "names": {
       "pt": "Orbe da Verdade do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7619fe97dc5508d672220f30eb8b5ec0d75d78f6"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7619fe97dc5508d672220f30eb8b5ec0d75d78f6",
+    "faction": "Asmodians"
   },
   {
     "id": "630543002",
@@ -668,7 +688,8 @@
     "names": {
       "pt": "Balança de Alquimista Aprendiz (Vinculado)"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc4f5b42be08a6248c397ec408202820a73c2e5078"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc4f5b42be08a6248c397ec408202820a73c2e5078",
+    "faction": "Elyos"
   },
   {
     "id": "631060005",
@@ -679,7 +700,8 @@
     "names": {
       "pt": "Balança de Alquimista Aprendiz (Vinculado)"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc4f5b42be08a6248c397ec408202820a73c2e5078"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc4f5b42be08a6248c397ec408202820a73c2e5078",
+    "faction": "Asmodians"
   },
   {
     "id": "600590001",
@@ -745,7 +767,8 @@
     "names": {
       "pt": "Grimório da Verdade Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc879ee63112fd54233fe312679dcf884866b9c76"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc879ee63112fd54233fe312679dcf884866b9c76",
+    "faction": "Elyos"
   },
   {
     "id": "610530010",
@@ -811,7 +834,8 @@
     "names": {
       "pt": "Grimório da Verdade Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc879ee63112fd54233fe312679dcf884866b9c76"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc879ee63112fd54233fe312679dcf884866b9c76",
+    "faction": "Asmodians"
   },
   {
     "id": "110530019",
@@ -833,7 +857,8 @@
     "names": {
       "pt": "Orbe da Verdade Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7619fe97dc5508d672220f30eb8b5ec0d75d78f6"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7619fe97dc5508d672220f30eb8b5ec0d75d78f6",
+    "faction": "Elyos"
   },
   {
     "id": "610660034",
@@ -866,7 +891,8 @@
     "names": {
       "pt": "Orbe da Verdade Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7619fe97dc5508d672220f30eb8b5ec0d75d78f6"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7619fe97dc5508d672220f30eb8b5ec0d75d78f6",
+    "faction": "Asmodians"
   },
   {
     "id": "110630019",
@@ -1163,7 +1189,8 @@
     "names": {
       "pt": "Balança de Alquimista Especialista (Vinculado)"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc697faa2f83475d5fa1e6fb392f866596bc7a13c"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc697faa2f83475d5fa1e6fb392f866596bc7a13c",
+    "faction": "Elyos"
   },
   {
     "id": "631060006",
@@ -1174,7 +1201,8 @@
     "names": {
       "pt": "Balança de Alquimista Especialista (Vinculado)"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc697faa2f83475d5fa1e6fb392f866596bc7a13c"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc697faa2f83475d5fa1e6fb392f866596bc7a13c",
+    "faction": "Asmodians"
   },
   {
     "id": "610620013",
@@ -1218,7 +1246,8 @@
     "names": {
       "pt": "Espada Longa de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc970047481ea0c29886dc5ee4a704154fca006f1f"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc970047481ea0c29886dc5ee4a704154fca006f1f",
+    "faction": "Elyos"
   },
   {
     "id": "110260024",
@@ -1229,7 +1258,8 @@
     "names": {
       "pt": "Espada Longa de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc970047481ea0c29886dc5ee4a704154fca006f1f"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc970047481ea0c29886dc5ee4a704154fca006f1f",
+    "faction": "Asmodians"
   },
   {
     "id": "110160023",
@@ -1240,7 +1270,8 @@
     "names": {
       "pt": "Montante de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca420f17caa06538ab88bd332cbff8dc826a5e4b0"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca420f17caa06538ab88bd332cbff8dc826a5e4b0",
+    "faction": "Elyos"
   },
   {
     "id": "110160024",
@@ -1251,7 +1282,8 @@
     "names": {
       "pt": "Montante de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca420f17caa06538ab88bd332cbff8dc826a5e4b0"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca420f17caa06538ab88bd332cbff8dc826a5e4b0",
+    "faction": "Asmodians"
   },
   {
     "id": "110360023",
@@ -1262,7 +1294,8 @@
     "names": {
       "pt": "Adaga de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca85d2520828babe5765b334dd92f31f53e309c42"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca85d2520828babe5765b334dd92f31f53e309c42",
+    "faction": "Elyos"
   },
   {
     "id": "110360024",
@@ -1273,7 +1306,8 @@
     "names": {
       "pt": "Adaga de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca85d2520828babe5765b334dd92f31f53e309c42"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca85d2520828babe5765b334dd92f31f53e309c42",
+    "faction": "Asmodians"
   },
   {
     "id": "110760023",
@@ -1284,7 +1318,8 @@
     "names": {
       "pt": "Maça de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc63f3d02e3c2ed93595515ff59382981ce78bdf9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc63f3d02e3c2ed93595515ff59382981ce78bdf9",
+    "faction": "Elyos"
   },
   {
     "id": "110760024",
@@ -1295,7 +1330,8 @@
     "names": {
       "pt": "Maça de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc63f3d02e3c2ed93595515ff59382981ce78bdf9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc63f3d02e3c2ed93595515ff59382981ce78bdf9",
+    "faction": "Asmodians"
   },
   {
     "id": "115060023",
@@ -1306,7 +1342,8 @@
     "names": {
       "pt": "Guarda-braço de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6697102198059d6b6eccba171304045ba6c9f377"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6697102198059d6b6eccba171304045ba6c9f377",
+    "faction": "Elyos"
   },
   {
     "id": "115060024",
@@ -1317,7 +1354,8 @@
     "names": {
       "pt": "Guarda-braço de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6697102198059d6b6eccba171304045ba6c9f377"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6697102198059d6b6eccba171304045ba6c9f377",
+    "faction": "Asmodians"
   },
   {
     "id": "110250014",
@@ -1328,7 +1366,8 @@
     "names": {
       "pt": "Espada Longa de Orichalcum Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc970047481ea0c29886dc5ee4a704154fca006f1f"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc970047481ea0c29886dc5ee4a704154fca006f1f",
+    "faction": "Elyos"
   },
   {
     "id": "610620014",
@@ -1350,7 +1389,8 @@
     "names": {
       "pt": "Espada Longa de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8429b8d3f9e82c42818da4d784bcfecb41182b21"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8429b8d3f9e82c42818da4d784bcfecb41182b21",
+    "faction": "Elyos"
   },
   {
     "id": "110250016",
@@ -1361,7 +1401,8 @@
     "names": {
       "pt": "Espada Longa de Orichalcum Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc970047481ea0c29886dc5ee4a704154fca006f1f"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc970047481ea0c29886dc5ee4a704154fca006f1f",
+    "faction": "Asmodians"
   },
   {
     "id": "110250017",
@@ -1372,7 +1413,8 @@
     "names": {
       "pt": "Espada Longa de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8429b8d3f9e82c42818da4d784bcfecb41182b21"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8429b8d3f9e82c42818da4d784bcfecb41182b21",
+    "faction": "Asmodians"
   },
   {
     "id": "110150014",
@@ -1383,7 +1425,8 @@
     "names": {
       "pt": "Montante de Orichalcum Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca420f17caa06538ab88bd332cbff8dc826a5e4b0"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca420f17caa06538ab88bd332cbff8dc826a5e4b0",
+    "faction": "Elyos"
   },
   {
     "id": "110150015",
@@ -1394,7 +1437,8 @@
     "names": {
       "pt": "Montante de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcb7f19b8f00ae10a3f71b75792f31acc7dc6cddd7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcb7f19b8f00ae10a3f71b75792f31acc7dc6cddd7",
+    "faction": "Elyos"
   },
   {
     "id": "110150016",
@@ -1405,7 +1449,8 @@
     "names": {
       "pt": "Montante de Orichalcum Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca420f17caa06538ab88bd332cbff8dc826a5e4b0"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca420f17caa06538ab88bd332cbff8dc826a5e4b0",
+    "faction": "Asmodians"
   },
   {
     "id": "110150017",
@@ -1416,7 +1461,8 @@
     "names": {
       "pt": "Montante de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcb7f19b8f00ae10a3f71b75792f31acc7dc6cddd7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcb7f19b8f00ae10a3f71b75792f31acc7dc6cddd7",
+    "faction": "Asmodians"
   },
   {
     "id": "110350014",
@@ -1427,7 +1473,8 @@
     "names": {
       "pt": "Adaga de Orichalcum Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca85d2520828babe5765b334dd92f31f53e309c42"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca85d2520828babe5765b334dd92f31f53e309c42",
+    "faction": "Elyos"
   },
   {
     "id": "110350015",
@@ -1438,7 +1485,8 @@
     "names": {
       "pt": "Adaga de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7e008b1ea0d5d6fb480cece4f59eb528f6c38197"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7e008b1ea0d5d6fb480cece4f59eb528f6c38197",
+    "faction": "Elyos"
   },
   {
     "id": "110350016",
@@ -1449,7 +1497,8 @@
     "names": {
       "pt": "Adaga de Orichalcum Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca85d2520828babe5765b334dd92f31f53e309c42"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca85d2520828babe5765b334dd92f31f53e309c42",
+    "faction": "Asmodians"
   },
   {
     "id": "110350017",
@@ -1460,7 +1509,8 @@
     "names": {
       "pt": "Adaga de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7e008b1ea0d5d6fb480cece4f59eb528f6c38197"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7e008b1ea0d5d6fb480cece4f59eb528f6c38197",
+    "faction": "Asmodians"
   },
   {
     "id": "110750014",
@@ -1471,7 +1521,8 @@
     "names": {
       "pt": "Maça de Orichalcum Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc63f3d02e3c2ed93595515ff59382981ce78bdf9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc63f3d02e3c2ed93595515ff59382981ce78bdf9",
+    "faction": "Elyos"
   },
   {
     "id": "110750015",
@@ -1482,7 +1533,8 @@
     "names": {
       "pt": "Maça de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7d3928b879f36c040a9a277ed7f0292b86d07147"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7d3928b879f36c040a9a277ed7f0292b86d07147",
+    "faction": "Elyos"
   },
   {
     "id": "110750016",
@@ -1493,7 +1545,8 @@
     "names": {
       "pt": "Maça de Orichalcum Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc63f3d02e3c2ed93595515ff59382981ce78bdf9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc63f3d02e3c2ed93595515ff59382981ce78bdf9",
+    "faction": "Asmodians"
   },
   {
     "id": "110750017",
@@ -1504,7 +1557,8 @@
     "names": {
       "pt": "Maça de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7d3928b879f36c040a9a277ed7f0292b86d07147"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7d3928b879f36c040a9a277ed7f0292b86d07147",
+    "faction": "Asmodians"
   },
   {
     "id": "115050014",
@@ -1515,7 +1569,8 @@
     "names": {
       "pt": "Guarda-braço de Orichalcum Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6697102198059d6b6eccba171304045ba6c9f377"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6697102198059d6b6eccba171304045ba6c9f377",
+    "faction": "Elyos"
   },
   {
     "id": "115050015",
@@ -1526,7 +1581,8 @@
     "names": {
       "pt": "Guarda-braço de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbfdad481b5d40dd760f121822b1e426d9f02a21e"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbfdad481b5d40dd760f121822b1e426d9f02a21e",
+    "faction": "Elyos"
   },
   {
     "id": "115050016",
@@ -1537,7 +1593,8 @@
     "names": {
       "pt": "Guarda-braço de Orichalcum Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6697102198059d6b6eccba171304045ba6c9f377"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6697102198059d6b6eccba171304045ba6c9f377",
+    "faction": "Asmodians"
   },
   {
     "id": "115050017",
@@ -1548,7 +1605,8 @@
     "names": {
       "pt": "Guarda-braço de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbfdad481b5d40dd760f121822b1e426d9f02a21e"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbfdad481b5d40dd760f121822b1e426d9f02a21e",
+    "faction": "Asmodians"
   },
   {
     "id": "110240012",
@@ -1559,7 +1617,8 @@
     "names": {
       "pt": "Espada Longa de Orichalcum Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8429b8d3f9e82c42818da4d784bcfecb41182b21"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8429b8d3f9e82c42818da4d784bcfecb41182b21",
+    "faction": "Elyos"
   },
   {
     "id": "610620015",
@@ -1581,7 +1640,8 @@
     "names": {
       "pt": "Espada Longa de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc867a90c91e7da98fa3afe122ce96fd785681930"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc867a90c91e7da98fa3afe122ce96fd785681930",
+    "faction": "Elyos"
   },
   {
     "id": "110240014",
@@ -1592,7 +1652,8 @@
     "names": {
       "pt": "Espada Longa de Orichalcum Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8429b8d3f9e82c42818da4d784bcfecb41182b21"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8429b8d3f9e82c42818da4d784bcfecb41182b21",
+    "faction": "Asmodians"
   },
   {
     "id": "110240015",
@@ -1603,7 +1664,8 @@
     "names": {
       "pt": "Espada Longa de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc867a90c91e7da98fa3afe122ce96fd785681930"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc867a90c91e7da98fa3afe122ce96fd785681930",
+    "faction": "Asmodians"
   },
   {
     "id": "110140012",
@@ -1614,7 +1676,8 @@
     "names": {
       "pt": "Montante de Orichalcum Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcb7f19b8f00ae10a3f71b75792f31acc7dc6cddd7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcb7f19b8f00ae10a3f71b75792f31acc7dc6cddd7",
+    "faction": "Elyos"
   },
   {
     "id": "110140013",
@@ -1625,7 +1688,8 @@
     "names": {
       "pt": "Montante de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce745ff317f4b0f65019c761b3403a391dc967552"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce745ff317f4b0f65019c761b3403a391dc967552",
+    "faction": "Elyos"
   },
   {
     "id": "110140014",
@@ -1636,7 +1700,8 @@
     "names": {
       "pt": "Montante de Orichalcum Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcb7f19b8f00ae10a3f71b75792f31acc7dc6cddd7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcb7f19b8f00ae10a3f71b75792f31acc7dc6cddd7",
+    "faction": "Asmodians"
   },
   {
     "id": "110140015",
@@ -1647,7 +1712,8 @@
     "names": {
       "pt": "Montante de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce745ff317f4b0f65019c761b3403a391dc967552"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce745ff317f4b0f65019c761b3403a391dc967552",
+    "faction": "Asmodians"
   },
   {
     "id": "110340012",
@@ -1658,7 +1724,8 @@
     "names": {
       "pt": "Adaga de Orichalcum Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7e008b1ea0d5d6fb480cece4f59eb528f6c38197"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7e008b1ea0d5d6fb480cece4f59eb528f6c38197",
+    "faction": "Elyos"
   },
   {
     "id": "110340013",
@@ -1669,7 +1736,8 @@
     "names": {
       "pt": "Adaga de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3c61b5ab0c76d5c5756fddf3362803ef540947b0"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3c61b5ab0c76d5c5756fddf3362803ef540947b0",
+    "faction": "Elyos"
   },
   {
     "id": "110340014",
@@ -1680,7 +1748,8 @@
     "names": {
       "pt": "Adaga de Orichalcum Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7e008b1ea0d5d6fb480cece4f59eb528f6c38197"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7e008b1ea0d5d6fb480cece4f59eb528f6c38197",
+    "faction": "Asmodians"
   },
   {
     "id": "110340015",
@@ -1691,7 +1760,8 @@
     "names": {
       "pt": "Adaga de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3c61b5ab0c76d5c5756fddf3362803ef540947b0"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3c61b5ab0c76d5c5756fddf3362803ef540947b0",
+    "faction": "Asmodians"
   },
   {
     "id": "110740012",
@@ -1702,7 +1772,8 @@
     "names": {
       "pt": "Maça de Orichalcum Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7d3928b879f36c040a9a277ed7f0292b86d07147"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7d3928b879f36c040a9a277ed7f0292b86d07147",
+    "faction": "Elyos"
   },
   {
     "id": "110740013",
@@ -1713,7 +1784,8 @@
     "names": {
       "pt": "Maça de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc963d9373dd9fed759a1982ce9d736e14a91d0357"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc963d9373dd9fed759a1982ce9d736e14a91d0357",
+    "faction": "Elyos"
   },
   {
     "id": "110740014",
@@ -1724,7 +1796,8 @@
     "names": {
       "pt": "Maça de Orichalcum Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7d3928b879f36c040a9a277ed7f0292b86d07147"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7d3928b879f36c040a9a277ed7f0292b86d07147",
+    "faction": "Asmodians"
   },
   {
     "id": "110740015",
@@ -1735,7 +1808,8 @@
     "names": {
       "pt": "Maça de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc963d9373dd9fed759a1982ce9d736e14a91d0357"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc963d9373dd9fed759a1982ce9d736e14a91d0357",
+    "faction": "Asmodians"
   },
   {
     "id": "115040012",
@@ -1746,7 +1820,8 @@
     "names": {
       "pt": "Guarda-braço de Orichalcum Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbfdad481b5d40dd760f121822b1e426d9f02a21e"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbfdad481b5d40dd760f121822b1e426d9f02a21e",
+    "faction": "Elyos"
   },
   {
     "id": "115040013",
@@ -1757,7 +1832,8 @@
     "names": {
       "pt": "Guarda-braço de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc828d92523a1bae3b54b3ac4c0beb40278f4a399d"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc828d92523a1bae3b54b3ac4c0beb40278f4a399d",
+    "faction": "Elyos"
   },
   {
     "id": "115040014",
@@ -1768,7 +1844,8 @@
     "names": {
       "pt": "Guarda-braço de Orichalcum Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbfdad481b5d40dd760f121822b1e426d9f02a21e"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbfdad481b5d40dd760f121822b1e426d9f02a21e",
+    "faction": "Asmodians"
   },
   {
     "id": "115040015",
@@ -1779,7 +1856,8 @@
     "names": {
       "pt": "Guarda-braço de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc828d92523a1bae3b54b3ac4c0beb40278f4a399d"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc828d92523a1bae3b54b3ac4c0beb40278f4a399d",
+    "faction": "Asmodians"
   },
   {
     "id": "631030001",
@@ -1790,7 +1868,8 @@
     "names": {
       "pt": "Martelo de Ferreiro Aprendiz (Vinculado)"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0049058ff28e647c339bb528222bde4f3e0a852c"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0049058ff28e647c339bb528222bde4f3e0a852c",
+    "faction": "Elyos"
   },
   {
     "id": "631030005",
@@ -1801,7 +1880,8 @@
     "names": {
       "pt": "Martelo de Ferreiro Aprendiz (Vinculado)"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0049058ff28e647c339bb528222bde4f3e0a852c"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0049058ff28e647c339bb528222bde4f3e0a852c",
+    "faction": "Asmodians"
   },
   {
     "id": "630520001",
@@ -1834,7 +1914,8 @@
     "names": {
       "pt": "Espada Longa de Orichalcum Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc867a90c91e7da98fa3afe122ce96fd785681930"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc867a90c91e7da98fa3afe122ce96fd785681930",
+    "faction": "Elyos"
   },
   {
     "id": "610620016",
@@ -1867,7 +1948,8 @@
     "names": {
       "pt": "Espada Longa de Orichalcum Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc867a90c91e7da98fa3afe122ce96fd785681930"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc867a90c91e7da98fa3afe122ce96fd785681930",
+    "faction": "Asmodians"
   },
   {
     "id": "110230019",
@@ -1889,7 +1971,8 @@
     "names": {
       "pt": "Montante de Orichalcum Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce745ff317f4b0f65019c761b3403a391dc967552"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce745ff317f4b0f65019c761b3403a391dc967552",
+    "faction": "Elyos"
   },
   {
     "id": "110130015",
@@ -1911,7 +1994,8 @@
     "names": {
       "pt": "Montante de Orichalcum Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce745ff317f4b0f65019c761b3403a391dc967552"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce745ff317f4b0f65019c761b3403a391dc967552",
+    "faction": "Asmodians"
   },
   {
     "id": "110130019",
@@ -1933,7 +2017,8 @@
     "names": {
       "pt": "Adaga de Orichalcum Brilhante de Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3c61b5ab0c76d5c5756fddf3362803ef540947b0"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3c61b5ab0c76d5c5756fddf3362803ef540947b0",
+    "faction": "Elyos"
   },
   {
     "id": "110330015",
@@ -1955,7 +2040,8 @@
     "names": {
       "pt": "Adaga de Orichalcum Brilhante de Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3c61b5ab0c76d5c5756fddf3362803ef540947b0"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3c61b5ab0c76d5c5756fddf3362803ef540947b0",
+    "faction": "Asmodians"
   },
   {
     "id": "110330019",
@@ -1977,7 +2063,8 @@
     "names": {
       "pt": "Maça de Orichalcum Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc963d9373dd9fed759a1982ce9d736e14a91d0357"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc963d9373dd9fed759a1982ce9d736e14a91d0357",
+    "faction": "Elyos"
   },
   {
     "id": "110730015",
@@ -1999,7 +2086,8 @@
     "names": {
       "pt": "Maça de Orichalcum Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc963d9373dd9fed759a1982ce9d736e14a91d0357"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc963d9373dd9fed759a1982ce9d736e14a91d0357",
+    "faction": "Asmodians"
   },
   {
     "id": "110730019",
@@ -2021,7 +2109,8 @@
     "names": {
       "pt": "Guarda-braço de Orichalcum Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc828d92523a1bae3b54b3ac4c0beb40278f4a399d"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc828d92523a1bae3b54b3ac4c0beb40278f4a399d",
+    "faction": "Elyos"
   },
   {
     "id": "115030015",
@@ -2043,7 +2132,8 @@
     "names": {
       "pt": "Guarda-braço de Orichalcum Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc828d92523a1bae3b54b3ac4c0beb40278f4a399d"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc828d92523a1bae3b54b3ac4c0beb40278f4a399d",
+    "faction": "Asmodians"
   },
   {
     "id": "115030019",
@@ -2109,7 +2199,8 @@
     "names": {
       "pt": "Martelo de Ferreiro Especialista (Vinculado)"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbe3e3a3ec35aac13652473c3f7a71dddbe7baf7f"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbe3e3a3ec35aac13652473c3f7a71dddbe7baf7f",
+    "faction": "Elyos"
   },
   {
     "id": "631030006",
@@ -2120,7 +2211,8 @@
     "names": {
       "pt": "Martelo de Ferreiro Especialista (Vinculado)"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbe3e3a3ec35aac13652473c3f7a71dddbe7baf7f"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbe3e3a3ec35aac13652473c3f7a71dddbe7baf7f",
+    "faction": "Asmodians"
   },
   {
     "id": "610531001",
@@ -2164,7 +2256,8 @@
     "names": {
       "pt": "Carne ao Curry Salteada"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc27cac4c6422ac557d5224d6dfc745c1d73173fe5"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc27cac4c6422ac557d5224d6dfc745c1d73173fe5",
+    "faction": "Elyos"
   },
   {
     "id": "510716013",
@@ -2175,7 +2268,8 @@
     "names": {
       "pt": "Carne ao Curry Salteada"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc27cac4c6422ac557d5224d6dfc745c1d73173fe5"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc27cac4c6422ac557d5224d6dfc745c1d73173fe5",
+    "faction": "Asmodians"
   },
   {
     "id": "610531002",
@@ -2208,7 +2302,8 @@
     "names": {
       "pt": "Salada de Frutas"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc1c3ff4c4af19e7bcc092b6e590630e632912db38"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc1c3ff4c4af19e7bcc092b6e590630e632912db38",
+    "faction": "Elyos"
   },
   {
     "id": "630554011",
@@ -2230,7 +2325,8 @@
     "names": {
       "pt": "Salada de Frutas"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc1c3ff4c4af19e7bcc092b6e590630e632912db38"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc1c3ff4c4af19e7bcc092b6e590630e632912db38",
+    "faction": "Asmodians"
   },
   {
     "id": "610680048",
@@ -2450,7 +2546,8 @@
     "names": {
       "pt": "Carne ao Curry Salteada do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc27cac4c6422ac557d5224d6dfc745c1d73173fe5"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc27cac4c6422ac557d5224d6dfc745c1d73173fe5",
+    "faction": "Elyos"
   },
   {
     "id": "510716019",
@@ -2461,7 +2558,8 @@
     "names": {
       "pt": "Carne ao Curry Salteada do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc27cac4c6422ac557d5224d6dfc745c1d73173fe5"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc27cac4c6422ac557d5224d6dfc745c1d73173fe5",
+    "faction": "Asmodians"
   },
   {
     "id": "510716008",
@@ -2472,7 +2570,8 @@
     "names": {
       "pt": "Salada de Frutas do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc1c3ff4c4af19e7bcc092b6e590630e632912db38"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc1c3ff4c4af19e7bcc092b6e590630e632912db38",
+    "faction": "Elyos"
   },
   {
     "id": "510716020",
@@ -2483,7 +2582,8 @@
     "names": {
       "pt": "Salada de Frutas do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc1c3ff4c4af19e7bcc092b6e590630e632912db38"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc1c3ff4c4af19e7bcc092b6e590630e632912db38",
+    "faction": "Asmodians"
   },
   {
     "id": "510716009",
@@ -2582,7 +2682,8 @@
     "names": {
       "pt": "Tempero de Cozinheiro Aprendiz (Vinculado)"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc244c613c51961dde95d535ce26ae3c0abf166caa"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc244c613c51961dde95d535ce26ae3c0abf166caa",
+    "faction": "Elyos"
   },
   {
     "id": "631070005",
@@ -2593,7 +2694,8 @@
     "names": {
       "pt": "Tempero de Cozinheiro Aprendiz (Vinculado)"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc244c613c51961dde95d535ce26ae3c0abf166caa"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc244c613c51961dde95d535ce26ae3c0abf166caa",
+    "faction": "Asmodians"
   },
   {
     "id": "610512002",
@@ -2725,7 +2827,8 @@
     "names": {
       "pt": "Tempero de Cozinheiro Especialista (Vinculado)"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc1168362a19a33442e264bb16ceae0627448c312a"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc1168362a19a33442e264bb16ceae0627448c312a",
+    "faction": "Elyos"
   },
   {
     "id": "631070006",
@@ -2736,7 +2839,8 @@
     "names": {
       "pt": "Tempero de Cozinheiro Especialista (Vinculado)"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc1168362a19a33442e264bb16ceae0627448c312a"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc1168362a19a33442e264bb16ceae0627448c312a",
+    "faction": "Asmodians"
   },
   {
     "id": "630542001",
@@ -2868,7 +2972,8 @@
     "names": {
       "pt": "Anel de Safira"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc164f7d8479dd889f193553cd59e561917b5fdca9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc164f7d8479dd889f193553cd59e561917b5fdca9",
+    "faction": "Elyos"
   },
   {
     "id": "310360018",
@@ -2879,7 +2984,8 @@
     "names": {
       "pt": "Anel de Safira"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc164f7d8479dd889f193553cd59e561917b5fdca9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc164f7d8479dd889f193553cd59e561917b5fdca9",
+    "faction": "Asmodians"
   },
   {
     "id": "310260017",
@@ -2890,7 +2996,8 @@
     "names": {
       "pt": "Brinco de Diamantes"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcd55bfae82a994b4d691130be6450b9bfa26d5181"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcd55bfae82a994b4d691130be6450b9bfa26d5181",
+    "faction": "Elyos"
   },
   {
     "id": "310260018",
@@ -2901,7 +3008,8 @@
     "names": {
       "pt": "Brinco de Diamantes"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcd55bfae82a994b4d691130be6450b9bfa26d5181"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcd55bfae82a994b4d691130be6450b9bfa26d5181",
+    "faction": "Asmodians"
   },
   {
     "id": "310160017",
@@ -2912,7 +3020,8 @@
     "names": {
       "pt": "Colar de Rubi"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc713b02a14a676227a980a6f800729df8545458f2"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc713b02a14a676227a980a6f800729df8545458f2",
+    "faction": "Elyos"
   },
   {
     "id": "310160018",
@@ -2923,7 +3032,8 @@
     "names": {
       "pt": "Colar de Rubi"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc713b02a14a676227a980a6f800729df8545458f2"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc713b02a14a676227a980a6f800729df8545458f2",
+    "faction": "Asmodians"
   },
   {
     "id": "310460003",
@@ -3066,7 +3176,8 @@
     "names": {
       "pt": "Anel de Safira Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc164f7d8479dd889f193553cd59e561917b5fdca9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc164f7d8479dd889f193553cd59e561917b5fdca9",
+    "faction": "Elyos"
   },
   {
     "id": "310350011",
@@ -3077,7 +3188,8 @@
     "names": {
       "pt": "Anel de Safira do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce298fc4bfcb59dee87b6237feeef95710258caff"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce298fc4bfcb59dee87b6237feeef95710258caff",
+    "faction": "Elyos"
   },
   {
     "id": "310350012",
@@ -3088,7 +3200,8 @@
     "names": {
       "pt": "Anel de Safira Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc164f7d8479dd889f193553cd59e561917b5fdca9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc164f7d8479dd889f193553cd59e561917b5fdca9",
+    "faction": "Asmodians"
   },
   {
     "id": "310350013",
@@ -3099,7 +3212,8 @@
     "names": {
       "pt": "Anel de Safira do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce298fc4bfcb59dee87b6237feeef95710258caff"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce298fc4bfcb59dee87b6237feeef95710258caff",
+    "faction": "Asmodians"
   },
   {
     "id": "310250010",
@@ -3110,7 +3224,8 @@
     "names": {
       "pt": "Brinco de Diamantes Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcd55bfae82a994b4d691130be6450b9bfa26d5181"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcd55bfae82a994b4d691130be6450b9bfa26d5181",
+    "faction": "Elyos"
   },
   {
     "id": "610660029",
@@ -3132,7 +3247,8 @@
     "names": {
       "pt": "Brinco de Diamantes do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0a796c5e03b21233487b3d5024cd22b04d164fa7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0a796c5e03b21233487b3d5024cd22b04d164fa7",
+    "faction": "Elyos"
   },
   {
     "id": "310250012",
@@ -3143,7 +3259,8 @@
     "names": {
       "pt": "Brinco de Diamantes Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcd55bfae82a994b4d691130be6450b9bfa26d5181"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcd55bfae82a994b4d691130be6450b9bfa26d5181",
+    "faction": "Asmodians"
   },
   {
     "id": "310250013",
@@ -3154,7 +3271,8 @@
     "names": {
       "pt": "Brinco de Diamantes do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0a796c5e03b21233487b3d5024cd22b04d164fa7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0a796c5e03b21233487b3d5024cd22b04d164fa7",
+    "faction": "Asmodians"
   },
   {
     "id": "310150010",
@@ -3165,7 +3283,8 @@
     "names": {
       "pt": "Colar de Rubi Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc713b02a14a676227a980a6f800729df8545458f2"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc713b02a14a676227a980a6f800729df8545458f2",
+    "faction": "Elyos"
   },
   {
     "id": "310150011",
@@ -3176,7 +3295,8 @@
     "names": {
       "pt": "Colar de Rubi do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc20801e4e68e364295e24d3ab522290eab06ad5bc"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc20801e4e68e364295e24d3ab522290eab06ad5bc",
+    "faction": "Elyos"
   },
   {
     "id": "310150012",
@@ -3187,7 +3307,8 @@
     "names": {
       "pt": "Colar de Rubi Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc713b02a14a676227a980a6f800729df8545458f2"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc713b02a14a676227a980a6f800729df8545458f2",
+    "faction": "Asmodians"
   },
   {
     "id": "310150013",
@@ -3198,7 +3319,8 @@
     "names": {
       "pt": "Colar de Rubi do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc20801e4e68e364295e24d3ab522290eab06ad5bc"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc20801e4e68e364295e24d3ab522290eab06ad5bc",
+    "faction": "Asmodians"
   },
   {
     "id": "310450017",
@@ -3341,7 +3463,8 @@
     "names": {
       "pt": "Anel de Safira Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce298fc4bfcb59dee87b6237feeef95710258caff"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce298fc4bfcb59dee87b6237feeef95710258caff",
+    "faction": "Elyos"
   },
   {
     "id": "310340013",
@@ -3352,7 +3475,8 @@
     "names": {
       "pt": "Anel de Safira do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc69e108d3fbe46e45579c684f480df27d29ea6b8"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc69e108d3fbe46e45579c684f480df27d29ea6b8",
+    "faction": "Elyos"
   },
   {
     "id": "310340014",
@@ -3363,7 +3487,8 @@
     "names": {
       "pt": "Anel de Safira Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce298fc4bfcb59dee87b6237feeef95710258caff"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce298fc4bfcb59dee87b6237feeef95710258caff",
+    "faction": "Asmodians"
   },
   {
     "id": "310340015",
@@ -3374,7 +3499,8 @@
     "names": {
       "pt": "Anel de Safira do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc69e108d3fbe46e45579c684f480df27d29ea6b8"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc69e108d3fbe46e45579c684f480df27d29ea6b8",
+    "faction": "Asmodians"
   },
   {
     "id": "310240012",
@@ -3385,7 +3511,8 @@
     "names": {
       "pt": "Brinco de Diamantes Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0a796c5e03b21233487b3d5024cd22b04d164fa7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0a796c5e03b21233487b3d5024cd22b04d164fa7",
+    "faction": "Elyos"
   },
   {
     "id": "310240013",
@@ -3396,7 +3523,8 @@
     "names": {
       "pt": "Brinco de Diamantes do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc26fe53b3154e1552af7d3bdf198bcc4413d31f93"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc26fe53b3154e1552af7d3bdf198bcc4413d31f93",
+    "faction": "Elyos"
   },
   {
     "id": "310240014",
@@ -3407,7 +3535,8 @@
     "names": {
       "pt": "Brinco de Diamantes Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0a796c5e03b21233487b3d5024cd22b04d164fa7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0a796c5e03b21233487b3d5024cd22b04d164fa7",
+    "faction": "Asmodians"
   },
   {
     "id": "310240015",
@@ -3418,7 +3547,8 @@
     "names": {
       "pt": "Brinco de Diamantes do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc26fe53b3154e1552af7d3bdf198bcc4413d31f93"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc26fe53b3154e1552af7d3bdf198bcc4413d31f93",
+    "faction": "Asmodians"
   },
   {
     "id": "310140012",
@@ -3429,7 +3559,8 @@
     "names": {
       "pt": "Colar de Rubi Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc20801e4e68e364295e24d3ab522290eab06ad5bc"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc20801e4e68e364295e24d3ab522290eab06ad5bc",
+    "faction": "Elyos"
   },
   {
     "id": "310140013",
@@ -3440,7 +3571,8 @@
     "names": {
       "pt": "Colar de Rubi do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc26922958e90f9f135590d99c0687a499557f4741"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc26922958e90f9f135590d99c0687a499557f4741",
+    "faction": "Elyos"
   },
   {
     "id": "310140014",
@@ -3451,7 +3583,8 @@
     "names": {
       "pt": "Colar de Rubi Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc20801e4e68e364295e24d3ab522290eab06ad5bc"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc20801e4e68e364295e24d3ab522290eab06ad5bc",
+    "faction": "Asmodians"
   },
   {
     "id": "310140015",
@@ -3462,7 +3595,8 @@
     "names": {
       "pt": "Colar de Rubi do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc26922958e90f9f135590d99c0687a499557f4741"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc26922958e90f9f135590d99c0687a499557f4741",
+    "faction": "Asmodians"
   },
   {
     "id": "310440017",
@@ -3495,7 +3629,8 @@
     "names": {
       "pt": "Lupa de Artesão Aprendiz (Vinculado)"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcebcc5b484cc4385651f930cd7cc5dc30a598ce8f"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcebcc5b484cc4385651f930cd7cc5dc30a598ce8f",
+    "faction": "Elyos"
   },
   {
     "id": "631050005",
@@ -3506,7 +3641,8 @@
     "names": {
       "pt": "Lupa de Artesão Aprendiz (Vinculado)"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcebcc5b484cc4385651f930cd7cc5dc30a598ce8f"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcebcc5b484cc4385651f930cd7cc5dc30a598ce8f",
+    "faction": "Asmodians"
   },
   {
     "id": "110430013",
@@ -3627,7 +3763,8 @@
     "names": {
       "pt": "Anel de Safira Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc69e108d3fbe46e45579c684f480df27d29ea6b8"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc69e108d3fbe46e45579c684f480df27d29ea6b8",
+    "faction": "Elyos"
   },
   {
     "id": "310330015",
@@ -3649,7 +3786,8 @@
     "names": {
       "pt": "Anel de Safira Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc69e108d3fbe46e45579c684f480df27d29ea6b8"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc69e108d3fbe46e45579c684f480df27d29ea6b8",
+    "faction": "Asmodians"
   },
   {
     "id": "310330019",
@@ -3671,7 +3809,8 @@
     "names": {
       "pt": "Brinco de Diamantes Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc26fe53b3154e1552af7d3bdf198bcc4413d31f93"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc26fe53b3154e1552af7d3bdf198bcc4413d31f93",
+    "faction": "Elyos"
   },
   {
     "id": "610660035",
@@ -3704,7 +3843,8 @@
     "names": {
       "pt": "Brinco de Diamantes Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc26fe53b3154e1552af7d3bdf198bcc4413d31f93"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc26fe53b3154e1552af7d3bdf198bcc4413d31f93",
+    "faction": "Asmodians"
   },
   {
     "id": "310230019",
@@ -3726,7 +3866,8 @@
     "names": {
       "pt": "Colar de Rubi Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc26922958e90f9f135590d99c0687a499557f4741"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc26922958e90f9f135590d99c0687a499557f4741",
+    "faction": "Elyos"
   },
   {
     "id": "310130015",
@@ -3748,7 +3889,8 @@
     "names": {
       "pt": "Colar de Rubi Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc26922958e90f9f135590d99c0687a499557f4741"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc26922958e90f9f135590d99c0687a499557f4741",
+    "faction": "Asmodians"
   },
   {
     "id": "310130019",
@@ -3770,7 +3912,8 @@
     "names": {
       "pt": "Lupa de Artesão Especialista (Vinculado)"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0183a738df406614405b31a01d1897c753d0afe6"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0183a738df406614405b31a01d1897c753d0afe6",
+    "faction": "Elyos"
   },
   {
     "id": "631050006",
@@ -3781,7 +3924,8 @@
     "names": {
       "pt": "Lupa de Artesão Especialista (Vinculado)"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0183a738df406614405b31a01d1897c753d0afe6"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0183a738df406614405b31a01d1897c753d0afe6",
+    "faction": "Asmodians"
   },
   {
     "id": "610530011",
@@ -3814,7 +3958,8 @@
     "names": {
       "pt": "Peitoral de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7632e99a11eb657adb0e9e6b626809a854cc8bb5"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7632e99a11eb657adb0e9e6b626809a854cc8bb5",
+    "faction": "Elyos"
   },
   {
     "id": "210160024",
@@ -3825,7 +3970,8 @@
     "names": {
       "pt": "Peitoral de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7632e99a11eb657adb0e9e6b626809a854cc8bb5"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7632e99a11eb657adb0e9e6b626809a854cc8bb5",
+    "faction": "Asmodians"
   },
   {
     "id": "210260023",
@@ -3836,7 +3982,8 @@
     "names": {
       "pt": "Grevas de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc9684eba6b4549088489a588779d65531cd5a0ad2"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc9684eba6b4549088489a588779d65531cd5a0ad2",
+    "faction": "Elyos"
   },
   {
     "id": "210260024",
@@ -3847,7 +3994,8 @@
     "names": {
       "pt": "Grevas de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc9684eba6b4549088489a588779d65531cd5a0ad2"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc9684eba6b4549088489a588779d65531cd5a0ad2",
+    "faction": "Asmodians"
   },
   {
     "id": "210360023",
@@ -3858,7 +4006,8 @@
     "names": {
       "pt": "Elmo de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc61eb9481a32af44428e905fc67513a894d93d1d7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc61eb9481a32af44428e905fc67513a894d93d1d7",
+    "faction": "Elyos"
   },
   {
     "id": "210360024",
@@ -3869,7 +4018,8 @@
     "names": {
       "pt": "Elmo de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc61eb9481a32af44428e905fc67513a894d93d1d7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc61eb9481a32af44428e905fc67513a894d93d1d7",
+    "faction": "Asmodians"
   },
   {
     "id": "210460023",
@@ -3880,7 +4030,8 @@
     "names": {
       "pt": "Espaldeiras de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc204252dffe120a9b551eacf062046a3e15bd27d9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc204252dffe120a9b551eacf062046a3e15bd27d9",
+    "faction": "Elyos"
   },
   {
     "id": "210460024",
@@ -3891,7 +4042,8 @@
     "names": {
       "pt": "Espaldeiras de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc204252dffe120a9b551eacf062046a3e15bd27d9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc204252dffe120a9b551eacf062046a3e15bd27d9",
+    "faction": "Asmodians"
   },
   {
     "id": "210560023",
@@ -3902,7 +4054,8 @@
     "names": {
       "pt": "Luvas de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7d9b5b57927369deb4e63659a3d35b3460e35035"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7d9b5b57927369deb4e63659a3d35b3460e35035",
+    "faction": "Elyos"
   },
   {
     "id": "210560024",
@@ -3913,7 +4066,8 @@
     "names": {
       "pt": "Luvas de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7d9b5b57927369deb4e63659a3d35b3460e35035"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7d9b5b57927369deb4e63659a3d35b3460e35035",
+    "faction": "Asmodians"
   },
   {
     "id": "210660023",
@@ -3924,7 +4078,8 @@
     "names": {
       "pt": "Botas de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcae6858e08ab6cc2b141343834d840e3dd1bf7dea"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcae6858e08ab6cc2b141343834d840e3dd1bf7dea",
+    "faction": "Elyos"
   },
   {
     "id": "210660024",
@@ -3935,7 +4090,8 @@
     "names": {
       "pt": "Botas de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcae6858e08ab6cc2b141343834d840e3dd1bf7dea"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcae6858e08ab6cc2b141343834d840e3dd1bf7dea",
+    "faction": "Asmodians"
   },
   {
     "id": "210760023",
@@ -3946,7 +4102,8 @@
     "names": {
       "pt": "Capa de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc98217f2bdb830d870856ecdf2a032f68babf1031"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc98217f2bdb830d870856ecdf2a032f68babf1031",
+    "faction": "Elyos"
   },
   {
     "id": "210760024",
@@ -3957,7 +4114,8 @@
     "names": {
       "pt": "Capa de Orichalcum"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc98217f2bdb830d870856ecdf2a032f68babf1031"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc98217f2bdb830d870856ecdf2a032f68babf1031",
+    "faction": "Asmodians"
   },
   {
     "id": "210150014",
@@ -3968,7 +4126,8 @@
     "names": {
       "pt": "Peitoral de Orichalcum Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7632e99a11eb657adb0e9e6b626809a854cc8bb5"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7632e99a11eb657adb0e9e6b626809a854cc8bb5",
+    "faction": "Elyos"
   },
   {
     "id": "210150015",
@@ -3979,7 +4138,8 @@
     "names": {
       "pt": "Peitoral de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce966233e94fbe55ba66bafdfb002181b879473b7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce966233e94fbe55ba66bafdfb002181b879473b7",
+    "faction": "Elyos"
   },
   {
     "id": "210150016",
@@ -3990,7 +4150,8 @@
     "names": {
       "pt": "Peitoral de Orichalcum Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7632e99a11eb657adb0e9e6b626809a854cc8bb5"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7632e99a11eb657adb0e9e6b626809a854cc8bb5",
+    "faction": "Asmodians"
   },
   {
     "id": "210150017",
@@ -4001,7 +4162,8 @@
     "names": {
       "pt": "Peitoral de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce966233e94fbe55ba66bafdfb002181b879473b7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce966233e94fbe55ba66bafdfb002181b879473b7",
+    "faction": "Asmodians"
   },
   {
     "id": "210250014",
@@ -4012,7 +4174,8 @@
     "names": {
       "pt": "Grevas de Orichalcum Brilhantes"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc9684eba6b4549088489a588779d65531cd5a0ad2"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc9684eba6b4549088489a588779d65531cd5a0ad2",
+    "faction": "Elyos"
   },
   {
     "id": "210250015",
@@ -4023,7 +4186,8 @@
     "names": {
       "pt": "Grevas de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce19c0fc1808e01ec1296800996b42ce33878b59b"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce19c0fc1808e01ec1296800996b42ce33878b59b",
+    "faction": "Elyos"
   },
   {
     "id": "210250016",
@@ -4034,7 +4198,8 @@
     "names": {
       "pt": "Grevas de Orichalcum Brilhantes"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc9684eba6b4549088489a588779d65531cd5a0ad2"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc9684eba6b4549088489a588779d65531cd5a0ad2",
+    "faction": "Asmodians"
   },
   {
     "id": "210250017",
@@ -4045,7 +4210,8 @@
     "names": {
       "pt": "Grevas de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce19c0fc1808e01ec1296800996b42ce33878b59b"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce19c0fc1808e01ec1296800996b42ce33878b59b",
+    "faction": "Asmodians"
   },
   {
     "id": "210350014",
@@ -4056,7 +4222,8 @@
     "names": {
       "pt": "Elmo de Orichalcum Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc61eb9481a32af44428e905fc67513a894d93d1d7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc61eb9481a32af44428e905fc67513a894d93d1d7",
+    "faction": "Elyos"
   },
   {
     "id": "210350015",
@@ -4067,7 +4234,8 @@
     "names": {
       "pt": "Elmo de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce84f0b3344d7c8133db65b44b7100e689388cfb5"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce84f0b3344d7c8133db65b44b7100e689388cfb5",
+    "faction": "Elyos"
   },
   {
     "id": "210350016",
@@ -4078,7 +4246,8 @@
     "names": {
       "pt": "Elmo de Orichalcum Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc61eb9481a32af44428e905fc67513a894d93d1d7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc61eb9481a32af44428e905fc67513a894d93d1d7",
+    "faction": "Asmodians"
   },
   {
     "id": "210350017",
@@ -4089,7 +4258,8 @@
     "names": {
       "pt": "Elmo de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce84f0b3344d7c8133db65b44b7100e689388cfb5"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce84f0b3344d7c8133db65b44b7100e689388cfb5",
+    "faction": "Asmodians"
   },
   {
     "id": "210450014",
@@ -4100,7 +4270,8 @@
     "names": {
       "pt": "Espaldeiras de Orichalcum Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc204252dffe120a9b551eacf062046a3e15bd27d9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc204252dffe120a9b551eacf062046a3e15bd27d9",
+    "faction": "Elyos"
   },
   {
     "id": "210450015",
@@ -4111,7 +4282,8 @@
     "names": {
       "pt": "Espaldeiras de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc763de671a16438842718145d075fd2f38d5766c8"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc763de671a16438842718145d075fd2f38d5766c8",
+    "faction": "Elyos"
   },
   {
     "id": "210450016",
@@ -4122,7 +4294,8 @@
     "names": {
       "pt": "Espaldeiras de Orichalcum Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc204252dffe120a9b551eacf062046a3e15bd27d9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc204252dffe120a9b551eacf062046a3e15bd27d9",
+    "faction": "Asmodians"
   },
   {
     "id": "210450017",
@@ -4133,7 +4306,8 @@
     "names": {
       "pt": "Espaldeiras de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc763de671a16438842718145d075fd2f38d5766c8"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc763de671a16438842718145d075fd2f38d5766c8",
+    "faction": "Asmodians"
   },
   {
     "id": "210550014",
@@ -4144,7 +4318,8 @@
     "names": {
       "pt": "Luvas de Orichalcum Brilhantes"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7d9b5b57927369deb4e63659a3d35b3460e35035"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7d9b5b57927369deb4e63659a3d35b3460e35035",
+    "faction": "Elyos"
   },
   {
     "id": "210550015",
@@ -4155,7 +4330,8 @@
     "names": {
       "pt": "Luvas de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3a07b66f5af26c474c9cb03d55fca88ee5b6dbad"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3a07b66f5af26c474c9cb03d55fca88ee5b6dbad",
+    "faction": "Elyos"
   },
   {
     "id": "210550016",
@@ -4166,7 +4342,8 @@
     "names": {
       "pt": "Luvas de Orichalcum Brilhantes"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7d9b5b57927369deb4e63659a3d35b3460e35035"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7d9b5b57927369deb4e63659a3d35b3460e35035",
+    "faction": "Asmodians"
   },
   {
     "id": "210550017",
@@ -4177,7 +4354,8 @@
     "names": {
       "pt": "Luvas de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3a07b66f5af26c474c9cb03d55fca88ee5b6dbad"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3a07b66f5af26c474c9cb03d55fca88ee5b6dbad",
+    "faction": "Asmodians"
   },
   {
     "id": "210650014",
@@ -4188,7 +4366,8 @@
     "names": {
       "pt": "Botas de Orichalcum Brilhantes"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcae6858e08ab6cc2b141343834d840e3dd1bf7dea"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcae6858e08ab6cc2b141343834d840e3dd1bf7dea",
+    "faction": "Elyos"
   },
   {
     "id": "210650015",
@@ -4199,7 +4378,8 @@
     "names": {
       "pt": "Botas de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcb8d71e03b0bb1b5831a5da7b06b2564721cd0e13"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcb8d71e03b0bb1b5831a5da7b06b2564721cd0e13",
+    "faction": "Elyos"
   },
   {
     "id": "210650016",
@@ -4210,7 +4390,8 @@
     "names": {
       "pt": "Botas de Orichalcum Brilhantes"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcae6858e08ab6cc2b141343834d840e3dd1bf7dea"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcae6858e08ab6cc2b141343834d840e3dd1bf7dea",
+    "faction": "Asmodians"
   },
   {
     "id": "210650017",
@@ -4221,7 +4402,8 @@
     "names": {
       "pt": "Botas de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcb8d71e03b0bb1b5831a5da7b06b2564721cd0e13"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcb8d71e03b0bb1b5831a5da7b06b2564721cd0e13",
+    "faction": "Asmodians"
   },
   {
     "id": "210750014",
@@ -4232,7 +4414,8 @@
     "names": {
       "pt": "Capa de Orichalcum Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc98217f2bdb830d870856ecdf2a032f68babf1031"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc98217f2bdb830d870856ecdf2a032f68babf1031",
+    "faction": "Elyos"
   },
   {
     "id": "210750015",
@@ -4243,7 +4426,8 @@
     "names": {
       "pt": "Capa de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8f150d43223bb6195c4082b63936d9a960b9c44c"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8f150d43223bb6195c4082b63936d9a960b9c44c",
+    "faction": "Elyos"
   },
   {
     "id": "210750016",
@@ -4254,7 +4438,8 @@
     "names": {
       "pt": "Capa de Orichalcum Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc98217f2bdb830d870856ecdf2a032f68babf1031"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc98217f2bdb830d870856ecdf2a032f68babf1031",
+    "faction": "Asmodians"
   },
   {
     "id": "210750017",
@@ -4265,7 +4450,8 @@
     "names": {
       "pt": "Capa de Orichalcum do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8f150d43223bb6195c4082b63936d9a960b9c44c"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8f150d43223bb6195c4082b63936d9a960b9c44c",
+    "faction": "Asmodians"
   },
   {
     "id": "210140012",
@@ -4276,7 +4462,8 @@
     "names": {
       "pt": "Peitoral de Orichalcum Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce966233e94fbe55ba66bafdfb002181b879473b7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce966233e94fbe55ba66bafdfb002181b879473b7",
+    "faction": "Elyos"
   },
   {
     "id": "210140013",
@@ -4287,7 +4474,8 @@
     "names": {
       "pt": "Peitoral de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7671716e00b1e61e5a1b866050d6726c0a2f073b"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7671716e00b1e61e5a1b866050d6726c0a2f073b",
+    "faction": "Elyos"
   },
   {
     "id": "210140014",
@@ -4298,7 +4486,8 @@
     "names": {
       "pt": "Peitoral de Orichalcum Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce966233e94fbe55ba66bafdfb002181b879473b7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce966233e94fbe55ba66bafdfb002181b879473b7",
+    "faction": "Asmodians"
   },
   {
     "id": "210140015",
@@ -4309,7 +4498,8 @@
     "names": {
       "pt": "Peitoral de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7671716e00b1e61e5a1b866050d6726c0a2f073b"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7671716e00b1e61e5a1b866050d6726c0a2f073b",
+    "faction": "Asmodians"
   },
   {
     "id": "210240012",
@@ -4320,7 +4510,8 @@
     "names": {
       "pt": "Grevas de Orichalcum Brilhantes do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce19c0fc1808e01ec1296800996b42ce33878b59b"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce19c0fc1808e01ec1296800996b42ce33878b59b",
+    "faction": "Elyos"
   },
   {
     "id": "210240013",
@@ -4331,7 +4522,8 @@
     "names": {
       "pt": "Grevas de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc68ff9b11bde6714ecee18a6ae25d579d3a6064fa"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc68ff9b11bde6714ecee18a6ae25d579d3a6064fa",
+    "faction": "Elyos"
   },
   {
     "id": "210240014",
@@ -4342,7 +4534,8 @@
     "names": {
       "pt": "Grevas de Orichalcum Brilhantes do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce19c0fc1808e01ec1296800996b42ce33878b59b"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce19c0fc1808e01ec1296800996b42ce33878b59b",
+    "faction": "Asmodians"
   },
   {
     "id": "210240015",
@@ -4353,7 +4546,8 @@
     "names": {
       "pt": "Grevas de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc68ff9b11bde6714ecee18a6ae25d579d3a6064fa"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc68ff9b11bde6714ecee18a6ae25d579d3a6064fa",
+    "faction": "Asmodians"
   },
   {
     "id": "210340012",
@@ -4364,7 +4558,8 @@
     "names": {
       "pt": "Elmo de Orichalcum Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce84f0b3344d7c8133db65b44b7100e689388cfb5"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce84f0b3344d7c8133db65b44b7100e689388cfb5",
+    "faction": "Elyos"
   },
   {
     "id": "210340013",
@@ -4375,7 +4570,8 @@
     "names": {
       "pt": "Elmo de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc12745de3d281a37a1689d6648d5adb7555497e9c"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc12745de3d281a37a1689d6648d5adb7555497e9c",
+    "faction": "Elyos"
   },
   {
     "id": "210340014",
@@ -4386,7 +4582,8 @@
     "names": {
       "pt": "Elmo de Orichalcum Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce84f0b3344d7c8133db65b44b7100e689388cfb5"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qce84f0b3344d7c8133db65b44b7100e689388cfb5",
+    "faction": "Asmodians"
   },
   {
     "id": "210340015",
@@ -4397,7 +4594,8 @@
     "names": {
       "pt": "Elmo de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc12745de3d281a37a1689d6648d5adb7555497e9c"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc12745de3d281a37a1689d6648d5adb7555497e9c",
+    "faction": "Asmodians"
   },
   {
     "id": "210440012",
@@ -4408,7 +4606,8 @@
     "names": {
       "pt": "Espaldeiras de Orichalcum Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc763de671a16438842718145d075fd2f38d5766c8"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc763de671a16438842718145d075fd2f38d5766c8",
+    "faction": "Elyos"
   },
   {
     "id": "210440013",
@@ -4419,7 +4618,8 @@
     "names": {
       "pt": "Espaldeiras de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca0ebc64797e7e45291fbe77766aae0bf930f8631"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca0ebc64797e7e45291fbe77766aae0bf930f8631",
+    "faction": "Elyos"
   },
   {
     "id": "210440014",
@@ -4430,7 +4630,8 @@
     "names": {
       "pt": "Espaldeiras de Orichalcum Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc763de671a16438842718145d075fd2f38d5766c8"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc763de671a16438842718145d075fd2f38d5766c8",
+    "faction": "Asmodians"
   },
   {
     "id": "210440015",
@@ -4441,7 +4642,8 @@
     "names": {
       "pt": "Espaldeiras de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca0ebc64797e7e45291fbe77766aae0bf930f8631"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca0ebc64797e7e45291fbe77766aae0bf930f8631",
+    "faction": "Asmodians"
   },
   {
     "id": "210540012",
@@ -4452,7 +4654,8 @@
     "names": {
       "pt": "Luvas de Orichalcum Brilhantes do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3a07b66f5af26c474c9cb03d55fca88ee5b6dbad"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3a07b66f5af26c474c9cb03d55fca88ee5b6dbad",
+    "faction": "Elyos"
   },
   {
     "id": "210540013",
@@ -4463,7 +4666,8 @@
     "names": {
       "pt": "Luvas de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca833978c4066d6ddf34c5af924de8ab83ad3ba3b"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca833978c4066d6ddf34c5af924de8ab83ad3ba3b",
+    "faction": "Elyos"
   },
   {
     "id": "210540014",
@@ -4474,7 +4678,8 @@
     "names": {
       "pt": "Luvas de Orichalcum Brilhantes do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3a07b66f5af26c474c9cb03d55fca88ee5b6dbad"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3a07b66f5af26c474c9cb03d55fca88ee5b6dbad",
+    "faction": "Asmodians"
   },
   {
     "id": "210540015",
@@ -4485,7 +4690,8 @@
     "names": {
       "pt": "Luvas de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca833978c4066d6ddf34c5af924de8ab83ad3ba3b"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca833978c4066d6ddf34c5af924de8ab83ad3ba3b",
+    "faction": "Asmodians"
   },
   {
     "id": "210640012",
@@ -4496,7 +4702,8 @@
     "names": {
       "pt": "Botas de Orichalcum Brilhantes do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcb8d71e03b0bb1b5831a5da7b06b2564721cd0e13"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcb8d71e03b0bb1b5831a5da7b06b2564721cd0e13",
+    "faction": "Elyos"
   },
   {
     "id": "210640013",
@@ -4507,7 +4714,8 @@
     "names": {
       "pt": "Botas de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7e1597fb4f196310be6e80ee9de57b7528659d62"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7e1597fb4f196310be6e80ee9de57b7528659d62",
+    "faction": "Elyos"
   },
   {
     "id": "210640014",
@@ -4518,7 +4726,8 @@
     "names": {
       "pt": "Botas de Orichalcum Brilhantes do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcb8d71e03b0bb1b5831a5da7b06b2564721cd0e13"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcb8d71e03b0bb1b5831a5da7b06b2564721cd0e13",
+    "faction": "Asmodians"
   },
   {
     "id": "210640015",
@@ -4529,7 +4738,8 @@
     "names": {
       "pt": "Botas de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7e1597fb4f196310be6e80ee9de57b7528659d62"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7e1597fb4f196310be6e80ee9de57b7528659d62",
+    "faction": "Asmodians"
   },
   {
     "id": "210740012",
@@ -4540,7 +4750,8 @@
     "names": {
       "pt": "Capa de Orichalcum Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8f150d43223bb6195c4082b63936d9a960b9c44c"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8f150d43223bb6195c4082b63936d9a960b9c44c",
+    "faction": "Elyos"
   },
   {
     "id": "210740013",
@@ -4551,7 +4762,8 @@
     "names": {
       "pt": "Capa de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6df653fefdf2ab6ebb759206d42ac67f912d50db"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6df653fefdf2ab6ebb759206d42ac67f912d50db",
+    "faction": "Elyos"
   },
   {
     "id": "210740014",
@@ -4562,7 +4774,8 @@
     "names": {
       "pt": "Capa de Orichalcum Brilhante do Magistral"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8f150d43223bb6195c4082b63936d9a960b9c44c"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8f150d43223bb6195c4082b63936d9a960b9c44c",
+    "faction": "Asmodians"
   },
   {
     "id": "210740015",
@@ -4573,7 +4786,8 @@
     "names": {
       "pt": "Capa de Orichalcum do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6df653fefdf2ab6ebb759206d42ac67f912d50db"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6df653fefdf2ab6ebb759206d42ac67f912d50db",
+    "faction": "Asmodians"
   },
   {
     "id": "631040001",
@@ -4584,7 +4798,8 @@
     "names": {
       "pt": "Tecido de Armoreiro Aprendiz (Vinculado)"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc2622cda80c20a2a6b1f2eb53d699cd6287a2ef49"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc2622cda80c20a2a6b1f2eb53d699cd6287a2ef49",
+    "faction": "Elyos"
   },
   {
     "id": "631040005",
@@ -4595,7 +4810,8 @@
     "names": {
       "pt": "Tecido de Armoreiro Aprendiz (Vinculado)"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc2622cda80c20a2a6b1f2eb53d699cd6287a2ef49"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc2622cda80c20a2a6b1f2eb53d699cd6287a2ef49",
+    "faction": "Asmodians"
   },
   {
     "id": "630520004",
@@ -4628,7 +4844,8 @@
     "names": {
       "pt": "Peitoral de Orichalcum Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7671716e00b1e61e5a1b866050d6726c0a2f073b"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7671716e00b1e61e5a1b866050d6726c0a2f073b",
+    "faction": "Elyos"
   },
   {
     "id": "210130015",
@@ -4650,7 +4867,8 @@
     "names": {
       "pt": "Peitoral de Orichalcum Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7671716e00b1e61e5a1b866050d6726c0a2f073b"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7671716e00b1e61e5a1b866050d6726c0a2f073b",
+    "faction": "Asmodians"
   },
   {
     "id": "210130019",
@@ -4672,7 +4890,8 @@
     "names": {
       "pt": "Grevas de Orichalcum Brilhantes do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc68ff9b11bde6714ecee18a6ae25d579d3a6064fa"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc68ff9b11bde6714ecee18a6ae25d579d3a6064fa",
+    "faction": "Elyos"
   },
   {
     "id": "210230015",
@@ -4694,7 +4913,8 @@
     "names": {
       "pt": "Grevas de Orichalcum Brilhantes do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc68ff9b11bde6714ecee18a6ae25d579d3a6064fa"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc68ff9b11bde6714ecee18a6ae25d579d3a6064fa",
+    "faction": "Asmodians"
   },
   {
     "id": "210230019",
@@ -4716,7 +4936,8 @@
     "names": {
       "pt": "Elmo de Orichalcum Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc12745de3d281a37a1689d6648d5adb7555497e9c"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc12745de3d281a37a1689d6648d5adb7555497e9c",
+    "faction": "Elyos"
   },
   {
     "id": "210330015",
@@ -4738,7 +4959,8 @@
     "names": {
       "pt": "Elmo de Orichalcum Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc12745de3d281a37a1689d6648d5adb7555497e9c"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc12745de3d281a37a1689d6648d5adb7555497e9c",
+    "faction": "Asmodians"
   },
   {
     "id": "210330019",
@@ -4760,7 +4982,8 @@
     "names": {
       "pt": "Espaldeiras de Orichalcum Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca0ebc64797e7e45291fbe77766aae0bf930f8631"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca0ebc64797e7e45291fbe77766aae0bf930f8631",
+    "faction": "Elyos"
   },
   {
     "id": "210430015",
@@ -4782,7 +5005,8 @@
     "names": {
       "pt": "Espaldeiras de Orichalcum Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca0ebc64797e7e45291fbe77766aae0bf930f8631"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca0ebc64797e7e45291fbe77766aae0bf930f8631",
+    "faction": "Asmodians"
   },
   {
     "id": "210430019",
@@ -4804,7 +5028,8 @@
     "names": {
       "pt": "Luvas de Orichalcum Brilhantes do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca833978c4066d6ddf34c5af924de8ab83ad3ba3b"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca833978c4066d6ddf34c5af924de8ab83ad3ba3b",
+    "faction": "Elyos"
   },
   {
     "id": "210530015",
@@ -4826,7 +5051,8 @@
     "names": {
       "pt": "Luvas de Orichalcum Brilhantes do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca833978c4066d6ddf34c5af924de8ab83ad3ba3b"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca833978c4066d6ddf34c5af924de8ab83ad3ba3b",
+    "faction": "Asmodians"
   },
   {
     "id": "210530019",
@@ -4848,7 +5074,8 @@
     "names": {
       "pt": "Botas de Orichalcum Brilhantes do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7e1597fb4f196310be6e80ee9de57b7528659d62"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7e1597fb4f196310be6e80ee9de57b7528659d62",
+    "faction": "Elyos"
   },
   {
     "id": "210630015",
@@ -4870,7 +5097,8 @@
     "names": {
       "pt": "Botas de Orichalcum Brilhantes do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7e1597fb4f196310be6e80ee9de57b7528659d62"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc7e1597fb4f196310be6e80ee9de57b7528659d62",
+    "faction": "Asmodians"
   },
   {
     "id": "210630019",
@@ -4892,7 +5120,8 @@
     "names": {
       "pt": "Capa de Orichalcum Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6df653fefdf2ab6ebb759206d42ac67f912d50db"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6df653fefdf2ab6ebb759206d42ac67f912d50db",
+    "faction": "Elyos"
   },
   {
     "id": "210730015",
@@ -4914,7 +5143,8 @@
     "names": {
       "pt": "Capa de Orichalcum Brilhante do Perito"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6df653fefdf2ab6ebb759206d42ac67f912d50db"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6df653fefdf2ab6ebb759206d42ac67f912d50db",
+    "faction": "Asmodians"
   },
   {
     "id": "210730019",
@@ -4980,7 +5210,8 @@
     "names": {
       "pt": "Tecido de Armoreiro Especialista (Vinculado)"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc81fb423981054beb1191db3ccb242dd65ab0323b"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc81fb423981054beb1191db3ccb242dd65ab0323b",
+    "faction": "Elyos"
   },
   {
     "id": "631040006",
@@ -4991,7 +5222,8 @@
     "names": {
       "pt": "Tecido de Armoreiro Especialista (Vinculado)"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc81fb423981054beb1191db3ccb242dd65ab0323b"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc81fb423981054beb1191db3ccb242dd65ab0323b",
+    "faction": "Asmodians"
   },
   {
     "id": "110530096",
@@ -5002,7 +5234,8 @@
     "names": {
       "pt": "Grimório do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec38038d8b9e0c8a714bd4270ab1dec23b5559c9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec38038d8b9e0c8a714bd4270ab1dec23b5559c9",
+    "faction": "Elyos"
   },
   {
     "id": "110530100",
@@ -5013,7 +5246,8 @@
     "names": {
       "pt": "Grimório do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec38038d8b9e0c8a714bd4270ab1dec23b5559c9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec38038d8b9e0c8a714bd4270ab1dec23b5559c9",
+    "faction": "Asmodians"
   },
   {
     "id": "110630096",
@@ -5024,7 +5258,8 @@
     "names": {
       "pt": "Orbe do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc41aa29a1eb993db49108d9978704eac396064f10"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc41aa29a1eb993db49108d9978704eac396064f10",
+    "faction": "Elyos"
   },
   {
     "id": "110630100",
@@ -5035,7 +5270,8 @@
     "names": {
       "pt": "Orbe do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc41aa29a1eb993db49108d9978704eac396064f10"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc41aa29a1eb993db49108d9978704eac396064f10",
+    "faction": "Asmodians"
   },
   {
     "id": "110530017",
@@ -5046,7 +5282,8 @@
     "names": {
       "pt": "Grimório do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec38038d8b9e0c8a714bd4270ab1dec23b5559c9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec38038d8b9e0c8a714bd4270ab1dec23b5559c9",
+    "faction": "Elyos"
   },
   {
     "id": "610511014",
@@ -5079,7 +5316,8 @@
     "names": {
       "pt": "Grimório do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec38038d8b9e0c8a714bd4270ab1dec23b5559c9"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec38038d8b9e0c8a714bd4270ab1dec23b5559c9",
+    "faction": "Asmodians"
   },
   {
     "id": "110530099",
@@ -5101,7 +5339,8 @@
     "names": {
       "pt": "Orbe do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc41aa29a1eb993db49108d9978704eac396064f10"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc41aa29a1eb993db49108d9978704eac396064f10",
+    "faction": "Elyos"
   },
   {
     "id": "110630095",
@@ -5123,7 +5362,8 @@
     "names": {
       "pt": "Orbe do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc41aa29a1eb993db49108d9978704eac396064f10"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc41aa29a1eb993db49108d9978704eac396064f10",
+    "faction": "Asmodians"
   },
   {
     "id": "110630099",
@@ -5288,7 +5528,8 @@
     "names": {
       "pt": "Espada Longa do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3dfb8c2a26aa4076345c8e97294b60d40f6e33dd"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3dfb8c2a26aa4076345c8e97294b60d40f6e33dd",
+    "faction": "Elyos"
   },
   {
     "id": "110230100",
@@ -5299,7 +5540,8 @@
     "names": {
       "pt": "Espada Longa do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3dfb8c2a26aa4076345c8e97294b60d40f6e33dd"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3dfb8c2a26aa4076345c8e97294b60d40f6e33dd",
+    "faction": "Asmodians"
   },
   {
     "id": "110130096",
@@ -5310,7 +5552,8 @@
     "names": {
       "pt": "Montante do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6397bc4b16445cfbff0756c37ecdccc69c281f66"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6397bc4b16445cfbff0756c37ecdccc69c281f66",
+    "faction": "Elyos"
   },
   {
     "id": "110130100",
@@ -5321,7 +5564,8 @@
     "names": {
       "pt": "Montante do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6397bc4b16445cfbff0756c37ecdccc69c281f66"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6397bc4b16445cfbff0756c37ecdccc69c281f66",
+    "faction": "Asmodians"
   },
   {
     "id": "110330096",
@@ -5332,7 +5576,8 @@
     "names": {
       "pt": "Adaga do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0a4e2188cdbadfec7d049418dce28b26c6a7d3fb"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0a4e2188cdbadfec7d049418dce28b26c6a7d3fb",
+    "faction": "Elyos"
   },
   {
     "id": "110330100",
@@ -5343,7 +5588,8 @@
     "names": {
       "pt": "Adaga do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0a4e2188cdbadfec7d049418dce28b26c6a7d3fb"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0a4e2188cdbadfec7d049418dce28b26c6a7d3fb",
+    "faction": "Asmodians"
   },
   {
     "id": "110730096",
@@ -5354,7 +5600,8 @@
     "names": {
       "pt": "Maça do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3be0eb622417e87ae7e51a38aff8a0c8358a2df4"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3be0eb622417e87ae7e51a38aff8a0c8358a2df4",
+    "faction": "Elyos"
   },
   {
     "id": "110730100",
@@ -5365,7 +5612,8 @@
     "names": {
       "pt": "Maça do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3be0eb622417e87ae7e51a38aff8a0c8358a2df4"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3be0eb622417e87ae7e51a38aff8a0c8358a2df4",
+    "faction": "Asmodians"
   },
   {
     "id": "115030094",
@@ -5376,7 +5624,8 @@
     "names": {
       "pt": "Guarda-braço do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8e542465f96ef562900ceaa35f2c822bddbb1657"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8e542465f96ef562900ceaa35f2c822bddbb1657",
+    "faction": "Elyos"
   },
   {
     "id": "115030098",
@@ -5387,7 +5636,8 @@
     "names": {
       "pt": "Guarda-braço do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8e542465f96ef562900ceaa35f2c822bddbb1657"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8e542465f96ef562900ceaa35f2c822bddbb1657",
+    "faction": "Asmodians"
   },
   {
     "id": "110230017",
@@ -5398,7 +5648,8 @@
     "names": {
       "pt": "Espada Longa do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3dfb8c2a26aa4076345c8e97294b60d40f6e33dd"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3dfb8c2a26aa4076345c8e97294b60d40f6e33dd",
+    "faction": "Elyos"
   },
   {
     "id": "110230095",
@@ -5420,7 +5671,8 @@
     "names": {
       "pt": "Espada Longa do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3dfb8c2a26aa4076345c8e97294b60d40f6e33dd"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3dfb8c2a26aa4076345c8e97294b60d40f6e33dd",
+    "faction": "Asmodians"
   },
   {
     "id": "110230099",
@@ -5442,7 +5694,8 @@
     "names": {
       "pt": "Montante do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6397bc4b16445cfbff0756c37ecdccc69c281f66"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6397bc4b16445cfbff0756c37ecdccc69c281f66",
+    "faction": "Elyos"
   },
   {
     "id": "110130095",
@@ -5464,7 +5717,8 @@
     "names": {
       "pt": "Montante do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6397bc4b16445cfbff0756c37ecdccc69c281f66"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6397bc4b16445cfbff0756c37ecdccc69c281f66",
+    "faction": "Asmodians"
   },
   {
     "id": "110130099",
@@ -5486,7 +5740,8 @@
     "names": {
       "pt": "Adaga do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0a4e2188cdbadfec7d049418dce28b26c6a7d3fb"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0a4e2188cdbadfec7d049418dce28b26c6a7d3fb",
+    "faction": "Elyos"
   },
   {
     "id": "110330095",
@@ -5508,7 +5763,8 @@
     "names": {
       "pt": "Adaga do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0a4e2188cdbadfec7d049418dce28b26c6a7d3fb"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0a4e2188cdbadfec7d049418dce28b26c6a7d3fb",
+    "faction": "Asmodians"
   },
   {
     "id": "110330099",
@@ -5530,7 +5786,8 @@
     "names": {
       "pt": "Maça do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3be0eb622417e87ae7e51a38aff8a0c8358a2df4"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3be0eb622417e87ae7e51a38aff8a0c8358a2df4",
+    "faction": "Elyos"
   },
   {
     "id": "110730095",
@@ -5552,7 +5809,8 @@
     "names": {
       "pt": "Maça do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3be0eb622417e87ae7e51a38aff8a0c8358a2df4"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3be0eb622417e87ae7e51a38aff8a0c8358a2df4",
+    "faction": "Asmodians"
   },
   {
     "id": "110730099",
@@ -5662,7 +5920,8 @@
     "names": {
       "pt": "Guarda-braço do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8e542465f96ef562900ceaa35f2c822bddbb1657"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8e542465f96ef562900ceaa35f2c822bddbb1657",
+    "faction": "Elyos"
   },
   {
     "id": "115030093",
@@ -5684,7 +5943,8 @@
     "names": {
       "pt": "Guarda-braço do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8e542465f96ef562900ceaa35f2c822bddbb1657"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8e542465f96ef562900ceaa35f2c822bddbb1657",
+    "faction": "Asmodians"
   },
   {
     "id": "115030097",
@@ -5948,7 +6208,8 @@
     "names": {
       "pt": "Arco do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbdc4c886445a22b804067a05c5ace9793a8d07e8"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbdc4c886445a22b804067a05c5ace9793a8d07e8",
+    "faction": "Elyos"
   },
   {
     "id": "110430100",
@@ -5959,7 +6220,8 @@
     "names": {
       "pt": "Arco do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbdc4c886445a22b804067a05c5ace9793a8d07e8"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbdc4c886445a22b804067a05c5ace9793a8d07e8",
+    "faction": "Asmodians"
   },
   {
     "id": "110830096",
@@ -5970,7 +6232,8 @@
     "names": {
       "pt": "Cajado do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc315203b183184d7b2a4fb81a0a4b6b93f72479bd"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc315203b183184d7b2a4fb81a0a4b6b93f72479bd",
+    "faction": "Elyos"
   },
   {
     "id": "110830100",
@@ -5981,7 +6244,8 @@
     "names": {
       "pt": "Cajado do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc315203b183184d7b2a4fb81a0a4b6b93f72479bd"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc315203b183184d7b2a4fb81a0a4b6b93f72479bd",
+    "faction": "Asmodians"
   },
   {
     "id": "310330113",
@@ -5992,7 +6256,8 @@
     "names": {
       "pt": "Anel do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcdc69102866f8f88728e49e1566ea10d6de2375f7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcdc69102866f8f88728e49e1566ea10d6de2375f7",
+    "faction": "Elyos"
   },
   {
     "id": "310330117",
@@ -6003,7 +6268,8 @@
     "names": {
       "pt": "Anel do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcdc69102866f8f88728e49e1566ea10d6de2375f7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcdc69102866f8f88728e49e1566ea10d6de2375f7",
+    "faction": "Asmodians"
   },
   {
     "id": "310230113",
@@ -6014,7 +6280,8 @@
     "names": {
       "pt": "Brinco do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc576333ca754ec03d82a398712ba00fa1b2642017"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc576333ca754ec03d82a398712ba00fa1b2642017",
+    "faction": "Elyos"
   },
   {
     "id": "310230117",
@@ -6025,7 +6292,8 @@
     "names": {
       "pt": "Brinco do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc576333ca754ec03d82a398712ba00fa1b2642017"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc576333ca754ec03d82a398712ba00fa1b2642017",
+    "faction": "Asmodians"
   },
   {
     "id": "310130111",
@@ -6036,7 +6304,8 @@
     "names": {
       "pt": "Colar do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcab6ff1cd0f9717b41373d8258af4b44a7520272e"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcab6ff1cd0f9717b41373d8258af4b44a7520272e",
+    "faction": "Elyos"
   },
   {
     "id": "310130115",
@@ -6047,7 +6316,8 @@
     "names": {
       "pt": "Colar do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcab6ff1cd0f9717b41373d8258af4b44a7520272e"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcab6ff1cd0f9717b41373d8258af4b44a7520272e",
+    "faction": "Asmodians"
   },
   {
     "id": "110430017",
@@ -6058,7 +6328,8 @@
     "names": {
       "pt": "Arco do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbdc4c886445a22b804067a05c5ace9793a8d07e8"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbdc4c886445a22b804067a05c5ace9793a8d07e8",
+    "faction": "Elyos"
   },
   {
     "id": "110430095",
@@ -6080,7 +6351,8 @@
     "names": {
       "pt": "Arco do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbdc4c886445a22b804067a05c5ace9793a8d07e8"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbdc4c886445a22b804067a05c5ace9793a8d07e8",
+    "faction": "Asmodians"
   },
   {
     "id": "110430099",
@@ -6102,7 +6374,8 @@
     "names": {
       "pt": "Cajado do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc315203b183184d7b2a4fb81a0a4b6b93f72479bd"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc315203b183184d7b2a4fb81a0a4b6b93f72479bd",
+    "faction": "Elyos"
   },
   {
     "id": "110830095",
@@ -6124,7 +6397,8 @@
     "names": {
       "pt": "Cajado do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc315203b183184d7b2a4fb81a0a4b6b93f72479bd"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc315203b183184d7b2a4fb81a0a4b6b93f72479bd",
+    "faction": "Asmodians"
   },
   {
     "id": "110830099",
@@ -6190,7 +6464,8 @@
     "names": {
       "pt": "Anel do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcdc69102866f8f88728e49e1566ea10d6de2375f7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcdc69102866f8f88728e49e1566ea10d6de2375f7",
+    "faction": "Elyos"
   },
   {
     "id": "310330112",
@@ -6212,7 +6487,8 @@
     "names": {
       "pt": "Anel do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcdc69102866f8f88728e49e1566ea10d6de2375f7"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcdc69102866f8f88728e49e1566ea10d6de2375f7",
+    "faction": "Asmodians"
   },
   {
     "id": "310330116",
@@ -6256,7 +6532,8 @@
     "names": {
       "pt": "Brinco do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc576333ca754ec03d82a398712ba00fa1b2642017"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc576333ca754ec03d82a398712ba00fa1b2642017",
+    "faction": "Elyos"
   },
   {
     "id": "310230112",
@@ -6278,7 +6555,8 @@
     "names": {
       "pt": "Brinco do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc576333ca754ec03d82a398712ba00fa1b2642017"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc576333ca754ec03d82a398712ba00fa1b2642017",
+    "faction": "Asmodians"
   },
   {
     "id": "310230116",
@@ -6300,7 +6578,8 @@
     "names": {
       "pt": "Colar do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcab6ff1cd0f9717b41373d8258af4b44a7520272e"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcab6ff1cd0f9717b41373d8258af4b44a7520272e",
+    "faction": "Elyos"
   },
   {
     "id": "310130110",
@@ -6322,7 +6601,8 @@
     "names": {
       "pt": "Colar do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcab6ff1cd0f9717b41373d8258af4b44a7520272e"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcab6ff1cd0f9717b41373d8258af4b44a7520272e",
+    "faction": "Asmodians"
   },
   {
     "id": "310130114",
@@ -6608,7 +6888,8 @@
     "names": {
       "pt": "Peitoral do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc877045236daa100e493b24430b8c2213f5e8cd3a"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc877045236daa100e493b24430b8c2213f5e8cd3a",
+    "faction": "Elyos"
   },
   {
     "id": "210130114",
@@ -6619,7 +6900,8 @@
     "names": {
       "pt": "Peitoral do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc877045236daa100e493b24430b8c2213f5e8cd3a"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc877045236daa100e493b24430b8c2213f5e8cd3a",
+    "faction": "Asmodians"
   },
   {
     "id": "210230109",
@@ -6630,7 +6912,8 @@
     "names": {
       "pt": "Grevas do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca58a5bd47751829a1596f82c9a3b115bef134857"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca58a5bd47751829a1596f82c9a3b115bef134857",
+    "faction": "Elyos"
   },
   {
     "id": "210230113",
@@ -6641,7 +6924,8 @@
     "names": {
       "pt": "Grevas do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca58a5bd47751829a1596f82c9a3b115bef134857"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca58a5bd47751829a1596f82c9a3b115bef134857",
+    "faction": "Asmodians"
   },
   {
     "id": "210330109",
@@ -6652,7 +6936,8 @@
     "names": {
       "pt": "Elmo do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec5ac002cb91750880cd2230e51c7678e7d08210"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec5ac002cb91750880cd2230e51c7678e7d08210",
+    "faction": "Elyos"
   },
   {
     "id": "210330113",
@@ -6663,7 +6948,8 @@
     "names": {
       "pt": "Elmo do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec5ac002cb91750880cd2230e51c7678e7d08210"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec5ac002cb91750880cd2230e51c7678e7d08210",
+    "faction": "Asmodians"
   },
   {
     "id": "210430109",
@@ -6674,7 +6960,8 @@
     "names": {
       "pt": "Espaldeiras do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc40f92ee6fd9497643832deb82c96e38b4037e84c"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc40f92ee6fd9497643832deb82c96e38b4037e84c",
+    "faction": "Elyos"
   },
   {
     "id": "210430113",
@@ -6685,7 +6972,8 @@
     "names": {
       "pt": "Espaldeiras do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc40f92ee6fd9497643832deb82c96e38b4037e84c"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc40f92ee6fd9497643832deb82c96e38b4037e84c",
+    "faction": "Asmodians"
   },
   {
     "id": "210530109",
@@ -6696,7 +6984,8 @@
     "names": {
       "pt": "Luvas do Lorde Dragão Verdadeiro Brilhantes"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc09da244eb263be143fdf9a664b43fe561656939f"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc09da244eb263be143fdf9a664b43fe561656939f",
+    "faction": "Elyos"
   },
   {
     "id": "210530113",
@@ -6707,7 +6996,8 @@
     "names": {
       "pt": "Luvas do Lorde Dragão Estelar Brilhantes"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc09da244eb263be143fdf9a664b43fe561656939f"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc09da244eb263be143fdf9a664b43fe561656939f",
+    "faction": "Asmodians"
   },
   {
     "id": "210630109",
@@ -6718,7 +7008,8 @@
     "names": {
       "pt": "Botas do Lorde Dragão Verdadeiro Brilhantes"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcfb8184a325c754725f1d20354deaf31c0f221128"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcfb8184a325c754725f1d20354deaf31c0f221128",
+    "faction": "Elyos"
   },
   {
     "id": "210630113",
@@ -6729,7 +7020,8 @@
     "names": {
       "pt": "Botas do Lorde Dragão Estelar Brilhantes"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcfb8184a325c754725f1d20354deaf31c0f221128"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcfb8184a325c754725f1d20354deaf31c0f221128",
+    "faction": "Asmodians"
   },
   {
     "id": "210730109",
@@ -6740,7 +7032,8 @@
     "names": {
       "pt": "Capa do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc8cd6636c0c99081459b93c981c8f51451e75d9e"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc8cd6636c0c99081459b93c981c8f51451e75d9e",
+    "faction": "Elyos"
   },
   {
     "id": "210730113",
@@ -6751,7 +7044,8 @@
     "names": {
       "pt": "Capa do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc8cd6636c0c99081459b93c981c8f51451e75d9e"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc8cd6636c0c99081459b93c981c8f51451e75d9e",
+    "faction": "Asmodians"
   },
   {
     "id": "210130017",
@@ -6762,7 +7056,8 @@
     "names": {
       "pt": "Peitoral do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc877045236daa100e493b24430b8c2213f5e8cd3a"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc877045236daa100e493b24430b8c2213f5e8cd3a",
+    "faction": "Elyos"
   },
   {
     "id": "210130109",
@@ -6784,7 +7079,8 @@
     "names": {
       "pt": "Peitoral do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc877045236daa100e493b24430b8c2213f5e8cd3a"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc877045236daa100e493b24430b8c2213f5e8cd3a",
+    "faction": "Asmodians"
   },
   {
     "id": "210130113",
@@ -6806,7 +7102,8 @@
     "names": {
       "pt": "Grevas do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca58a5bd47751829a1596f82c9a3b115bef134857"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca58a5bd47751829a1596f82c9a3b115bef134857",
+    "faction": "Elyos"
   },
   {
     "id": "210230108",
@@ -6828,7 +7125,8 @@
     "names": {
       "pt": "Grevas do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca58a5bd47751829a1596f82c9a3b115bef134857"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca58a5bd47751829a1596f82c9a3b115bef134857",
+    "faction": "Asmodians"
   },
   {
     "id": "210230112",
@@ -6850,7 +7148,8 @@
     "names": {
       "pt": "Elmo do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec5ac002cb91750880cd2230e51c7678e7d08210"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec5ac002cb91750880cd2230e51c7678e7d08210",
+    "faction": "Elyos"
   },
   {
     "id": "210330108",
@@ -6872,7 +7171,8 @@
     "names": {
       "pt": "Elmo do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec5ac002cb91750880cd2230e51c7678e7d08210"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec5ac002cb91750880cd2230e51c7678e7d08210",
+    "faction": "Asmodians"
   },
   {
     "id": "210330112",
@@ -6894,7 +7194,8 @@
     "names": {
       "pt": "Espaldeiras do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc40f92ee6fd9497643832deb82c96e38b4037e84c"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc40f92ee6fd9497643832deb82c96e38b4037e84c",
+    "faction": "Elyos"
   },
   {
     "id": "210430108",
@@ -6916,7 +7217,8 @@
     "names": {
       "pt": "Espaldeiras do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc40f92ee6fd9497643832deb82c96e38b4037e84c"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc40f92ee6fd9497643832deb82c96e38b4037e84c",
+    "faction": "Asmodians"
   },
   {
     "id": "210430112",
@@ -7026,7 +7328,8 @@
     "names": {
       "pt": "Luvas do Lorde Dragão Verdadeiro Brilhantes"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc09da244eb263be143fdf9a664b43fe561656939f"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc09da244eb263be143fdf9a664b43fe561656939f",
+    "faction": "Elyos"
   },
   {
     "id": "210530108",
@@ -7048,7 +7351,8 @@
     "names": {
       "pt": "Luvas do Lorde Dragão Estelar Brilhantes"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc09da244eb263be143fdf9a664b43fe561656939f"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc09da244eb263be143fdf9a664b43fe561656939f",
+    "faction": "Asmodians"
   },
   {
     "id": "210530112",
@@ -7070,7 +7374,8 @@
     "names": {
       "pt": "Botas do Lorde Dragão Verdadeiro Brilhantes"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcfb8184a325c754725f1d20354deaf31c0f221128"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcfb8184a325c754725f1d20354deaf31c0f221128",
+    "faction": "Elyos"
   },
   {
     "id": "210630108",
@@ -7092,7 +7397,8 @@
     "names": {
       "pt": "Botas do Lorde Dragão Estelar Brilhantes"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcfb8184a325c754725f1d20354deaf31c0f221128"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcfb8184a325c754725f1d20354deaf31c0f221128",
+    "faction": "Asmodians"
   },
   {
     "id": "210630112",
@@ -7114,7 +7420,8 @@
     "names": {
       "pt": "Capa do Lorde Dragão Verdadeiro Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc8cd6636c0c99081459b93c981c8f51451e75d9e"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc8cd6636c0c99081459b93c981c8f51451e75d9e",
+    "faction": "Elyos"
   },
   {
     "id": "210730108",
@@ -7136,7 +7443,8 @@
     "names": {
       "pt": "Capa do Lorde Dragão Estelar Brilhante"
     },
-    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc8cd6636c0c99081459b93c981c8f51451e75d9e"
+    "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc8cd6636c0c99081459b93c981c8f51451e75d9e",
+    "faction": "Asmodians"
   },
   {
     "id": "210730112",

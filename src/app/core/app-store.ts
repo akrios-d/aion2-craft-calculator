@@ -50,9 +50,12 @@ export class AppStore {
 
   readonly items = computed<Item[]>(() => {
     const known = new Set(this.catalog().items.map((i) => i.id));
+    const pt = this.settings().itemNameLanguage === 'pt';
     const all = [...this.catalog().items, ...this.data().customItems.filter((i) => !known.has(i.id))];
-    if (this.settings().itemNameLanguage !== 'pt') return all;
-    return all.map((i) => (i.names?.pt ? { ...i, name: i.names.pt } : i));
+    return all.map((i) => {
+      const name = (pt && i.names?.pt) || i.name;
+      return i.faction ? { ...i, name: `\ (\)` } : name === i.name ? i : { ...i, name };
+    });
   });
   readonly recipes = computed<Recipe[]>(() => [...this.catalog().recipes, ...this.data().customRecipes]);
   readonly professions = computed<Profession[]>(() => this.catalog().professions);
