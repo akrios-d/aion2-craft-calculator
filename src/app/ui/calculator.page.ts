@@ -72,10 +72,10 @@ import { Strategy } from '../core/models';
       @if (r.tree || r.isTotal) {
         <div class="cards">
           <div class="card"><span>{{ 'Cash cost (to buy)' | tr }}</span><strong>{{ r.cashCost | number: '1.0-2' }}</strong>@if (money(r.cashCost); as m) { <small class="muted">≈ {{ m }}</small> }</div>
-          <div class="card"><span>{{ 'Inventory used (value)' | tr }}</span><strong>{{ r.inventoryValue | number: '1.0-2' }}</strong></div>
+          <div class="card"><span>{{ 'Inventory used (value)' | tr }}</span><strong>{{ r.inventoryValue | number: '1.0-2' }}</strong>@if (money(r.inventoryValue); as m) { <small class="muted">≈ {{ m }}</small> }</div>
           <div class="card"><span>{{ 'Full cost' | tr }}</span><strong>{{ r.fullCost | number: '1.0-2' }}</strong>@if (money(r.fullCost); as m) { <small class="muted">≈ {{ m }}</small> }@if (!r.costComplete) { <small class="warn">{{ 'incomplete' | tr }}</small> }</div>
           @if (r.directBuyCost !== undefined) {
-            <div class="card"><span>{{ 'Buying the finished item' | tr }}</span><strong>{{ r.directBuyCost | number: '1.0-2' }}</strong></div>
+            <div class="card"><span>{{ 'Buying the finished item' | tr }}</span><strong>{{ r.directBuyCost | number: '1.0-2' }}</strong>@if (money(r.directBuyCost); as m) { <small class="muted">≈ {{ m }}</small> }</div>
           }
         </div>
 
@@ -106,7 +106,7 @@ import { Strategy } from '../core/models';
             <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Qty' | tr }}</th><th>{{ 'Unit buy price' | tr }}</th><th>{{ 'Cost' | tr }}</th><th></th></tr></thead>
             <tbody>
               @for (p of r.purchases; track p.itemId) {
-                <tr><td><app-ico [id]="p.itemId" />{{ p.name }}</td><td>{{ p.quantity }}</td><td>{{ p.unitPrice === undefined ? ('missing' | tr) : (p.unitPrice | number: '1.0-2') }}</td><td>{{ p.cost | number: '1.0-2' }}</td><td><button type="button" [title]="'Adds the quantity to your inventory' | tr" (click)="markBought(p.itemId, p.quantity)">{{ 'Bought: add to inventory' | tr }}</button></td></tr>
+                <tr><td><app-ico [id]="p.itemId" />{{ p.name }}</td><td>{{ p.quantity }}</td><td>{{ p.unitPrice === undefined ? ('missing' | tr) : (p.unitPrice | number: '1.0-2') }}</td><td>{{ p.cost | number: '1.0-2' }}@if (money(p.cost); as m) { <br /><small class="muted">≈ {{ m }}</small> }</td><td><button type="button" [title]="'Adds the quantity to your inventory' | tr" (click)="markBought(p.itemId, p.quantity)">{{ 'Bought: add to inventory' | tr }}</button></td></tr>
               }
             </tbody>
           </table>
