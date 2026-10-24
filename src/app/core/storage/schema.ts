@@ -17,6 +17,12 @@ import {
 export const CURRENT_SCHEMA_VERSION = 3;
 export const MAX_PRICE_HISTORY = 5000;
 
+export const DEFAULT_KINA_CHESTS: { kinah: number; price: number }[] = [
+  { kinah: 10_000_000, price: 2990 },
+  { kinah: 2_000_000, price: 517 },
+  { kinah: 400_000, price: 120 },
+];
+
 export function defaultSettings(): Settings {
   const lang = typeof navigator !== 'undefined' && /^pt/i.test(navigator.language ?? '') ? 'pt' : 'en';
   return {
@@ -26,11 +32,7 @@ export function defaultSettings(): Settings {
     uiLanguage: lang,
     itemNameLanguage: lang,
     faction: 'all',
-    kinahChests: [
-      { kinah: 10_000_000, price: 2990 },
-      { kinah: 2_000_000, price: 517 },
-      { kinah: 400_000, price: 120 },
-    ],
+    kinahChests: DEFAULT_KINA_CHESTS.map((c) => ({ ...c })),
     currency: 'Gems',
   };
 }

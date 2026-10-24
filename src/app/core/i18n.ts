@@ -154,6 +154,8 @@ const PT: Record<string, string> = {
   'Kina per 1 currency': 'Kina por 1 moeda',
   'Kina': 'Kina',
   'Add chest': 'Adicionar baú',
+  'Kina chests': 'Baús de Kina',
+  'Restore default chests': 'Restaurar baús padrão',
   'Cost per 1M Kina': 'Custo por 1M de Kina',
   'Comparison': 'Comparação',
   'Best value': 'Melhor custo-benefício',

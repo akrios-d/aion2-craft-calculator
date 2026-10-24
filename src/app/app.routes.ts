@@ -4,6 +4,7 @@ import { DataPage } from './ui/data.page';
 import { InventoryPage } from './ui/inventory.page';
 import { PricesPage } from './ui/prices.page';
 import { RecipesPage } from './ui/recipes.page';
+import { KinaPage } from './ui/kina.page';
 import { SettingsPage } from './ui/settings.page';
 
 export const routes: Routes = [
@@ -12,6 +13,7 @@ export const routes: Routes = [
   { path: 'inventory', component: InventoryPage, title: 'Inventory · Aion 2 Craft Lab' },
   { path: 'recipes', component: RecipesPage, title: 'Recipes · Aion 2 Craft Lab' },
   { path: 'data', component: DataPage, title: 'Data · Aion 2 Craft Lab' },
+  { path: 'kina', component: KinaPage, title: 'Kina chests · Aion 2 Craft Lab' },
   { path: 'settings', component: SettingsPage, title: 'Settings · Aion 2 Craft Lab' },
   { path: '**', redirectTo: '' },
 ];
