@@ -14,6 +14,9 @@ import { ImportPanel } from './import-panel';
   template: `
     <h2>{{ 'Inventory' | tr }}</h2>
     <p class="muted">{{ 'Your calculations deduct this inventory but never change it automatically.' | tr }}</p>
+    <label class="kinah">{{ 'Kinah' | tr }}
+      <input type="number" min="0" step="1" [value]="store.data().kinah" (change)="setKinah($event)" />
+    </label>
     <form class="row" (ngSubmit)="add()">
       <app-item-picker [items]="store.items()" [(selectedId)]="itemId" />
       <input type="number" min="0" step="1" [ngModel]="qty()" (ngModelChange)="qty.set($event)" name="qty" required />
@@ -61,6 +64,10 @@ export class InventoryPage {
     this.store.setInventory(this.itemId(), q);
     this.error.set('');
     this.itemId.set('');
+  }
+
+  setKinah(ev: Event): void {
+    this.store.setKinah(Number((ev.target as HTMLInputElement).value));
   }
 
   setQty(id: string, ev: Event): void {

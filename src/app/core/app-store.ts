@@ -159,6 +159,10 @@ export class AppStore {
     this.replaceAll(emptyUserData());
   }
 
+  setKinah(amount: number): void {
+    if (Number.isInteger(amount) && amount >= 0) this.update((d) => ({ ...d, kinah: amount }));
+  }
+
   selectCharacter(id: string): void {
     this.update((d) => switchCharacter(d, id));
   }

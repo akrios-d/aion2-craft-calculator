@@ -110,6 +110,8 @@ export interface UserData {
   schemaVersion: number;
   characters: Character[];
   activeCharacterId: string;
+  /** Kinah the user has, account-wide. */
+  kinah: number;
   /** Account-wide inventory, shared by all characters. */
   inventory: Record<string, InventoryEntry>;
   /** Latest price per `server|itemId`. */

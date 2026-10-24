@@ -33,6 +33,7 @@ export function emptyUserData(): UserData {
     schemaVersion: CURRENT_SCHEMA_VERSION,
     characters: [{ id: DEFAULT_CHARACTER_ID, name: 'Main', strategies: {}, recipeChoices: {} }],
     activeCharacterId: DEFAULT_CHARACTER_ID,
+    kinah: 0,
     inventory: {},
     prices: {},
     priceHistory: [],
@@ -279,6 +280,7 @@ export function normalizeUserData(raw: Raw, warnings: string[] = []): UserData {
   base.activeCharacterId = active.id;
   const ids = new Set(characters.map((c) => c.id));
   for (const p of base.plans) if (!ids.has(p.characterId)) p.characterId = active.id;
+  base.kinah = isNum(raw['kinah']) && raw['kinah'] >= 0 && Number.isInteger(raw['kinah']) ? raw['kinah'] : 0;
   base.lastSeenDataVersion = typeof raw['lastSeenDataVersion'] === 'string' ? raw['lastSeenDataVersion'] : null;
   return base;
 }
