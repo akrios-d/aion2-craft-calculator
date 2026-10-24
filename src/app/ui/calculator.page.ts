@@ -16,7 +16,7 @@ import { Strategy } from '../core/models';
   template: `
     <h2>{{ 'Crafting calculator' | tr }}</h2>
     <p class="muted">
-      {{ 'Server:' | tr }} <strong>{{ store.settings().server }}</strong> · {{ 'Prices are the ones you entered or imported' | tr }}
+      {{ 'Prices are the ones you entered or imported' | tr }}
       (<a routerLink="/prices">{{ 'edit' | tr }}</a>). {{ 'Listing prices are not completed sales.' | tr }}
     </p>
 
