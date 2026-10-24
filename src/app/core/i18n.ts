@@ -131,6 +131,7 @@ const PT: Record<string, string> = {
   'Buy price (lowest listing you would pay)': 'Preço de compra (menor anúncio que você pagaria)',
   'Sell listing price': 'Preço anunciado de venda',
   'Listing price': 'Preço anunciado',
+  'Current price': 'Preço atual',
   'Price I want to pay': 'Preço que quero pagar',
   'Enter a listing price and/or a price you want to pay.': 'Informe um preço anunciado e/ou o preço que você quer pagar.',
   'Quantity observed': 'Quantidade observada',
