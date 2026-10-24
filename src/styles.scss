@@ -1,0 +1,50 @@
+:root { color-scheme: dark; --bg:#0f1218; --panel:#171c26; --line:#2a3242; --fg:#e6e9ef; --muted:#8b94a7; --acc:#6aa7ff; --ok:#5bd38b; --warn:#f2b84b; --err:#ff6b6b; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 14px/1.5 system-ui, sans-serif; }
+header { display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap; padding: .6rem 1.25rem; background: var(--panel); border-bottom: 1px solid var(--line); }
+header h1 { margin: 0; font-size: 1.1rem; }
+nav { display: flex; gap: .25rem; flex: 1; flex-wrap: wrap; }
+nav a { padding: .3rem .7rem; border-radius: 6px; color: var(--fg); text-decoration: none; }
+nav a.active, nav a:hover { background: var(--line); }
+.server, .muted, footer { color: var(--muted); }
+main { max-width: 1100px; margin: 0 auto; padding: 1rem 1.25rem 3rem; }
+footer { text-align: center; padding: 1rem; font-size: .8rem; border-top: 1px solid var(--line); }
+h2 { margin-top: .5rem; } h3 { margin-top: 1.6rem; border-bottom: 1px solid var(--line); padding-bottom: .25rem; }
+a { color: var(--acc); }
+input, select, textarea, button { font: inherit; color: var(--fg); background: #0c0f15; border: 1px solid var(--line); border-radius: 6px; padding: .35rem .55rem; }
+input[type=checkbox], input[type=radio] { width: auto; }
+textarea { width: 100%; font-family: ui-monospace, monospace; }
+button { cursor: pointer; background: var(--line); }
+button.primary { background: var(--acc); color: #04101f; border-color: var(--acc); }
+button.danger { background: #5a1f24; border-color: var(--err); }
+button:disabled { opacity: .45; cursor: not-allowed; }
+label { display: flex; flex-direction: column; gap: .2rem; font-size: .85rem; color: var(--muted); }
+label input[type=checkbox], label input[type=radio] { align-self: flex-start; }
+.row { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin: .5rem 0; }
+.row label { flex-direction: row; align-items: center; gap: .4rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: .75rem; align-items: end; }
+.grid .wide { grid-column: 1 / -1; }
+table { width: 100%; border-collapse: collapse; margin: .5rem 0; }
+th, td { text-align: left; padding: .3rem .5rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 600; }
+table.kv td:first-child { color: var(--muted); width: 18rem; }
+.narrow { width: 6rem; }
+.mini { font-size: .75rem; padding: .1rem .3rem; margin-left: .5rem; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: .75rem; margin: 1rem 0; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: .75rem; display: flex; flex-direction: column; }
+.card span { color: var(--muted); font-size: .8rem; } .card strong { font-size: 1.3rem; }
+.msg { padding: .6rem .9rem; border-radius: 8px; border: 1px solid var(--line); background: var(--panel); margin: .6rem 0; }
+.msg.error { border-color: var(--err); } .msg.warn { border-color: var(--warn); } .msg.ok { border-color: var(--ok); } .msg.info { border-color: var(--acc); }
+.issues { list-style: none; padding: 0; } .issues li { padding: .2rem .5rem; border-left: 3px solid var(--line); margin: .2rem 0; }
+.issues li.error { border-color: var(--err); color: var(--err); }
+.issues li.warning { border-color: var(--warn); color: var(--warn); }
+.neg { color: var(--err); }
+small.warn, em.warn, label.warn { color: var(--warn); }
+.pos { color: var(--ok); }
+.chip { display: inline-block; padding: 0 .5rem; margin: .1rem .2rem; border-radius: 999px; background: var(--line); font-size: .78rem; }
+.chip.added { background: #1d4a31; } .chip.updated { background: #1f3d63; } .chip.removed { background: #5a1f24; } .chip.kept { background: #5a4a1f; }
+ul.tree, ul.tree ul { list-style: none; padding-left: 1.25rem; border-left: 1px dashed var(--line); } ul.tree { border: 0; padding: 0; }
+.node.buy { color: var(--warn); } .node.inventory { color: var(--ok); } .node.circular { color: var(--err); }
+ul.plain { padding-left: 1rem; }
+.import-panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: .75rem; }
+details > summary { cursor: pointer; }

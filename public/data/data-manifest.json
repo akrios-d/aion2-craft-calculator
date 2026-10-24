@@ -1,0 +1,15 @@
+{
+  "dataVersion": "0.0.0-empty",
+  "sourceUrl": "https://aion2.gg",
+  "importDate": null,
+  "itemCount": 0,
+  "recipeCount": 0,
+  "professionCount": 0,
+  "verifiedRecipeCount": 0,
+  "verificationStatus": "empty: no recipes imported",
+  "knownLimitations": [
+    "No recipes have been imported. Aion2.gg's Terms of Use (https://aion2.gg/terms, last updated 2026-10-06) prohibit downloading its data in bulk with scripts, building datasets from it, and re-hosting its data; robots.txt disallows /api/ and /data-dump/. This project therefore does not scrape Aion2.gg.",
+    "Recipes can be added in the app (stored in your browser only) or by importing a JSON recipe pack you created or are licensed to use. Maintainers can ship a larger dataset with scripts/import-recipes.mjs once a permitted data source or written permission exists.",
+    "The Auction House fee default (10%) is a placeholder and not verified against the game."
+  ]
+}
