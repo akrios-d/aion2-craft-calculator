@@ -176,7 +176,7 @@ export class CalculatorPage {
   readonly targetId = signal('');
   readonly quantity = signal<number>(1);
   readonly planName = signal('');
-  readonly tab = signal<'plans' | 'new'>('new');
+  readonly tab = signal<'plans' | 'new'>(this.store.characterPlans().length ? 'plans' : 'new');
 
   readonly craftable = computed(() => new Set(this.store.recipes().map((r) => r.outputItemId)));
 
