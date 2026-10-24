@@ -58,7 +58,7 @@ import { ImportPanel } from './import-panel';
     } @else { <p class="muted">{{ 'No prices yet.' | tr }}</p> }
 
     <h3>{{ 'Import prices from CSV' | tr }}</h3>
-    <p class="muted">{{ 'Columns:' | tr }} <code>itemId</code> (or <code>itemName</code>), <code>buyPrice</code>, <code>sellListingPrice</code>, <code>quantityObserved</code>, <code>observedAt</code>, <code>notes</code>. {{ 'At least one price per row.' | tr }}</p>
+    <p class="muted">{{ 'Columns:' | tr }} <code>itemId</code> (or <code>itemName</code>), <code>price</code> ({{ 'current price' | tr }}), <code>buyPrice</code> ({{ 'optional' | tr }}). {{ 'Repeat an item on several rows to add several prices; the average is used.' | tr }}</p>
     <app-import-panel kind="prices" />
   `,
 })

@@ -1,4 +1,4 @@
-﻿# Aion 2 Craft Lab
+# Aion 2 Craft Lab
 
 A fully client-side Angular app (standalone components, no backend, no database, no auth, no env vars) for planning Aion 2 crafting: recursive material expansion, inventory deduction, buy-or-craft choices, and profitability from **manually entered** Auction House prices.
 
@@ -33,7 +33,7 @@ npm run build      # output: dist/aion2-craft-lab/browser
 - Prices are listing prices observed by the user, not completed sales. Default server: Zikel SA.
 - Two independent language options (header and Settings): **interface language** (English / Português) and **item-name language** (English / Português). Portuguese item names come from the pt-br Aion2.gg pages (`node scripts/fetch-aion2gg-names.mjs`, writes `names.pt` into `public/data/items.json`). Items without a Portuguese name fall back to English.
 
-CSV columns. Prices: `itemId` or `itemName`, `buyPrice`, `sellListingPrice`, `quantityObserved`, `feePercent`, `observedAt`, `server`, `notes`. Inventory: `itemId` or `itemName`, `quantity`.
+CSV columns. Prices: `itemId` or `itemName`, `price` (current price; repeat the item on several rows to add several prices, the average is used), optional `buyPrice`. Inventory: `itemId` or `itemName`, `quantity`.
 
 ## Deploy to Vercel
 

@@ -1,3 +1,4 @@
+import { listingsOf } from '../listings';
 import { Item, PriceEntry, Recipe, UserData } from '../models';
 import { MAX_PRICE_HISTORY, SchemaError, migrateUserData } from '../storage/schema';
 import { validateRecipe } from '../engine/craft-engine';
@@ -93,12 +94,14 @@ export function applyBackup(current: UserData, incoming: UserData, mode: ImportM
 }
 
 export function exportPricesCsv(prices: Record<string, PriceEntry>, nameOf: (id: string) => string): string {
-  const rows = Object.values(prices)
-    .sort((a, b) => a.server.localeCompare(b.server) || a.itemId.localeCompare(b.itemId))
-    .map((p) => [p.itemId, nameOf(p.itemId), p.buyPrice, p.sellListingPrice, p.quantityObserved, p.feePercent, p.observedAt, p.server, p.notes ?? '']);
-  return toCsv(['itemId', 'itemName', 'buyPrice', 'sellListingPrice', 'quantityObserved', 'feePercent', 'observedAt', 'server', 'notes'], rows, [1, 7, 8]);
+  const rows: (string | number | undefined)[][] = [];
+  for (const p of Object.values(prices).sort((a, b) => a.server.localeCompare(b.server) || a.itemId.localeCompare(b.itemId))) {
+    const listings = listingsOf(p);
+    if (!listings.length) rows.push([p.itemId, nameOf(p.itemId), undefined, p.buyPrice, p.server]);
+    listings.forEach((price, i) => rows.push([p.itemId, nameOf(p.itemId), price, i === 0 ? p.buyPrice : undefined, p.server]));
+  }
+  return toCsv(['itemId', 'itemName', 'price', 'buyPrice', 'server'], rows, [1, 4]);
 }
-
 export function exportInventoryCsv(inventory: UserData['inventory'], nameOf: (id: string) => string): string {
   const rows = Object.entries(inventory)
     .sort(([a], [b]) => a.localeCompare(b))

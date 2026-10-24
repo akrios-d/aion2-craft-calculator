@@ -1,3 +1,4 @@
+import { listingsOf, withListings } from '../listings';
 import { InventoryEntry, Item, PriceEntry, UserData, priceKey } from '../models';
 import { MAX_PRICE_HISTORY } from '../storage/schema';
 import { parseCsv } from './csv';
@@ -46,6 +47,8 @@ const HEADER_ALIASES: Record<string, string> = {
   sell: 'sellListingPrice',
   selllistingprice: 'sellListingPrice',
   listingprice: 'sellListingPrice',
+  price: 'sellListingPrice',
+  currentprice: 'sellListingPrice',
   quantityobserved: 'quantityObserved',
   observedquantity: 'quantityObserved',
   feepercent: 'feePercent',
@@ -174,7 +177,15 @@ export function parsePriceCsv(text: string, ctx: ResolveContext): ParsedImport<P
     if (bad || itemId === null) return;
     const key = priceKey(server, itemId);
     if (seen.has(key)) {
-      issues.push({ line, severity: 'error', message: `Duplicate of line ${seen.get(key)} (same item and server); row skipped.` });
+      const at = records.findIndex((r) => priceKey(r.server, r.itemId) === key);
+      const prev = records[at];
+      if (entry.sellListingPrice === undefined || prev.sellListingPrice === undefined) {
+        issues.push({ line, severity: 'error', message: `Duplicate of line ${seen.get(key)} (same item and server); row skipped.` });
+        return;
+      }
+      const merged = withListings(prev, [...listingsOf(prev), entry.sellListingPrice]);
+      if (entry.buyPrice !== undefined) merged.buyPrice = entry.buyPrice;
+      records[at] = merged;
       return;
     }
     seen.set(key, line);
@@ -225,8 +236,12 @@ export function parseInventoryCsv(text: string, ctx: ResolveContext): ParsedImpo
   return { records, lines, issues, rowCount: table.rows.length };
 }
 
-const fmtPrice = (p?: PriceEntry) =>
-  p ? `buy ${p.buyPrice ?? '–'} / listing ${p.sellListingPrice ?? '–'} @ ${p.observedAt.slice(0, 10)}` : '';
+const fmtPrice = (p?: PriceEntry) => {
+  if (!p) return '';
+  const l = listingsOf(p);
+  const prices = l.length > 1 ? `${l.length} prices, avg ${Math.round((p.sellListingPrice ?? 0) * 100) / 100}` : `${p.sellListingPrice ?? '–'}`;
+  return `buy ${p.buyPrice ?? '–'} / price ${prices} @ ${p.observedAt.slice(0, 10)}`;
+};
 
 export function appendHistory(history: PriceEntry[], entry: PriceEntry): PriceEntry[] {
   const dup = history.some(

@@ -54,6 +54,22 @@ describe('price CSV import validation', () => {
     expect(p.issues.filter((i) => i.severity === 'error').length).toBeGreaterThanOrEqual(5);
   });
 
+  it('merges repeated rows of the same item into several prices with an average', () => {
+    const p = parsePriceCsv('itemId,price\nore,100\nore,200\nore,300\nwood,5\n', ctx);
+    expect(p.issues.filter((i) => i.severity === 'error')).toEqual([]);
+    expect(p.records).toHaveLength(2);
+    expect(p.records[0].listings).toEqual([100, 200, 300]);
+    expect(p.records[0].sellListingPrice).toBe(200);
+    expect(p.records[1].listings).toBeUndefined();
+  });
+
+  it('round-trips several prices through the CSV export', () => {
+    const entry = { itemId: 'ore', server: 'Zikel SA', observedAt: '2026-05-01T00:00:00.000Z', listings: [10, 30], sellListingPrice: 20, buyPrice: 15 };
+    const csv = exportPricesCsv({ 'Zikel SA|ore': entry }, () => 'Iron Ore');
+    const p = parsePriceCsv(csv, ctx);
+    expect(p.records[0].listings).toEqual([10, 30]);
+    expect(p.records[0].buyPrice).toBe(15);
+  });
   it('detects duplicates within the file and reports the first line', () => {
     const p = parsePriceCsv('itemId,buyPrice\nore,1\nore,2\nwood,3\n', ctx);
     expect(p.records.map((r) => r.itemId)).toEqual(['ore', 'wood']);
