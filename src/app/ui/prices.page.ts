@@ -24,10 +24,12 @@ import { ImportPanel } from './import-panel';
       <label>{{ 'Item' | tr }}
         <app-item-picker [items]="store.items()" [selectedId]="form().item" (selectedIdChange)="patch({ item: $event })" />
       </label>
-      <label>{{ 'Buy price (lowest listing you would pay)' | tr }} <input type="number" min="0" step="any" [ngModel]="form().buy" (ngModelChange)="patch({ buy: $event })" name="buy" /></label>
-      <label>{{ 'Sell listing price' | tr }} <input type="number" min="0" step="any" [ngModel]="form().sell" (ngModelChange)="patch({ sell: $event })" name="sell" /></label>
+      <label>{{ 'Listing price' | tr }} <input type="number" min="0" step="any" [ngModel]="form().sell" (ngModelChange)="patch({ sell: $event })" name="sell" /></label>
+      <label class="check"><input type="checkbox" [ngModel]="form().wantBuy" (ngModelChange)="patch({ wantBuy: $event })" name="wantBuy" /> {{ 'Price I want to pay' | tr }}</label>
+      @if (form().wantBuy) {
+        <label>{{ 'Price I want to pay' | tr }} <input type="number" min="0" step="any" [ngModel]="form().buy" (ngModelChange)="patch({ buy: $event })" name="buy" /></label>
+      }
       <label>{{ 'Quantity observed' | tr }} <input type="number" min="0" step="1" [ngModel]="form().qty" (ngModelChange)="patch({ qty: $event })" name="qty" /></label>
-      <label>{{ 'AH fee % (blank = default {fee}%)' | tr: { fee: store.settings().defaultFeePercent } }} <input type="number" min="0" max="100" step="any" [ngModel]="form().fee" (ngModelChange)="patch({ fee: $event })" name="fee" /></label>
       <label>{{ 'Observed at' | tr }} <input type="datetime-local" [ngModel]="form().at" (ngModelChange)="patch({ at: $event })" name="at" /></label>
       <label>{{ 'Notes' | tr }} <input [ngModel]="form().notes" (ngModelChange)="patch({ notes: $event })" name="notes" /></label>
       <div><button class="primary" type="submit">{{ 'Save price' | tr }}</button></div>
@@ -40,14 +42,14 @@ import { ImportPanel } from './import-panel';
     </div>
     @if (rows().length) {
       <table>
-        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Buy' | tr }}</th><th>{{ 'Sell listing' | tr }}</th><th>{{ 'Qty seen' | tr }}</th><th>{{ 'Fee %' | tr }}</th><th>{{ 'Observed' | tr }}</th><th>{{ 'Notes' | tr }}</th><th></th></tr></thead>
+        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Listing price' | tr }}</th><th>{{ 'Price I want to pay' | tr }}</th><th>{{ 'Qty seen' | tr }}</th><th>{{ 'Observed' | tr }}</th><th>{{ 'Notes' | tr }}</th><th></th></tr></thead>
         <tbody>
           @for (p of rows(); track p.server + p.itemId) {
             <tr>
               <td><app-ico [id]="p.itemId" />{{ store.nameOf(p.itemId) }}</td>
-              <td>{{ p.buyPrice === undefined ? '–' : (p.buyPrice | number: '1.0-2') }}</td>
               <td>{{ p.sellListingPrice === undefined ? '–' : (p.sellListingPrice | number: '1.0-2') }}</td>
-              <td>{{ p.quantityObserved ?? '–' }}</td><td>{{ p.feePercent ?? ('default' | tr) }}</td>
+              <td>{{ p.buyPrice === undefined ? '–' : (p.buyPrice | number: '1.0-2') }}</td>
+              <td>{{ p.quantityObserved ?? '–' }}</td>
               <td>{{ p.observedAt | date: 'yyyy-MM-dd HH:mm' }}</td><td>{{ p.notes }}</td>
               <td>
                 <button (click)="edit(p)">{{ 'Edit' | tr }}</button>
@@ -63,17 +65,17 @@ import { ImportPanel } from './import-panel';
     <details>
       <summary>{{ 'Show latest 100' | tr }}</summary>
       <table>
-        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Buy' | tr }}</th><th>{{ 'Sell listing' | tr }}</th><th>{{ 'Observed' | tr }}</th></tr></thead>
+        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Listing price' | tr }}</th><th>{{ 'Price I want to pay' | tr }}</th><th>{{ 'Observed' | tr }}</th></tr></thead>
         <tbody>
           @for (h of history(); track $index) {
-            <tr><td><app-ico [id]="h.itemId" />{{ store.nameOf(h.itemId) }}</td><td>{{ h.buyPrice ?? '–' }}</td><td>{{ h.sellListingPrice ?? '–' }}</td><td>{{ h.observedAt | date: 'yyyy-MM-dd HH:mm' }}</td></tr>
+            <tr><td><app-ico [id]="h.itemId" />{{ store.nameOf(h.itemId) }}</td><td>{{ h.sellListingPrice ?? '–' }}</td><td>{{ h.buyPrice ?? '–' }}</td><td>{{ h.observedAt | date: 'yyyy-MM-dd HH:mm' }}</td></tr>
           }
         </tbody>
       </table>
     </details>
 
     <h3>{{ 'Import prices from CSV' | tr }}</h3>
-    <p class="muted">{{ 'Columns:' | tr }} <code>itemId</code> (or <code>itemName</code>), <code>buyPrice</code>, <code>sellListingPrice</code>, <code>quantityObserved</code>, <code>feePercent</code>, <code>observedAt</code>, <code>notes</code>. {{ 'At least one price per row.' | tr }}</p>
+    <p class="muted">{{ 'Columns:' | tr }} <code>itemId</code> (or <code>itemName</code>), <code>buyPrice</code>, <code>sellListingPrice</code>, <code>quantityObserved</code>, <code>observedAt</code>, <code>notes</code>. {{ 'At least one price per row.' | tr }}</p>
     <app-import-panel kind="prices" />
   `,
 })
@@ -90,7 +92,7 @@ export class PricesPage {
   readonly history = computed(() => this.store.data().priceHistory.slice(-100).reverse());
 
   private blank() {
-    return { item: '', buy: null as number | null, sell: null as number | null, qty: null as number | null, fee: null as number | null, at: this.localNow(), notes: '' };
+    return { item: '', wantBuy: false, buy: null as number | null, sell: null as number | null, qty: null as number | null, at: this.localNow(), notes: '' };
   }
 
   private localNow(): string {
@@ -107,8 +109,8 @@ export class PricesPage {
     const d = new Date(p.observedAt);
     d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
     this.form.set({
-      item: p.itemId, buy: p.buyPrice ?? null, sell: p.sellListingPrice ?? null,
-      qty: p.quantityObserved ?? null, fee: p.feePercent ?? null, at: d.toISOString().slice(0, 16), notes: p.notes ?? '',
+      item: p.itemId, wantBuy: p.buyPrice !== undefined, buy: p.buyPrice ?? null, sell: p.sellListingPrice ?? null,
+      qty: p.quantityObserved ?? null, at: d.toISOString().slice(0, 16), notes: p.notes ?? '',
     });
     window.scrollTo({ top: 0 });
   }
@@ -117,20 +119,18 @@ export class PricesPage {
     const f = this.form();
     const itemId = f.item;
     const num = (v: number | null | string) => (v === null || v === '' ? undefined : Number(v));
-    const buy = num(f.buy), sell = num(f.sell), qty = num(f.qty), fee = num(f.fee);
+    const buy = f.wantBuy ? num(f.buy) : undefined, sell = num(f.sell), qty = num(f.qty);
     const server = this.store.settings().server;
     if (!itemId) return void this.error.set('Choose an item.');
-    if (buy === undefined && sell === undefined) return void this.error.set('Enter a buy price and/or a sell listing price.');
-    for (const [label, v] of [['Buy price', buy], ['Sell listing price', sell], ['Quantity', qty], ['Fee', fee]] as const) {
+    if (buy === undefined && sell === undefined) return void this.error.set('Enter a listing price and/or a price you want to pay.');
+    for (const [label, v] of [['Price I want to pay', buy], ['Listing price', sell], ['Quantity', qty]] as const) {
       if (v !== undefined && (!Number.isFinite(v) || v < 0)) return void this.error.set(`${label} must be a number of 0 or more.`);
     }
-    if (fee !== undefined && fee > 100) return void this.error.set('Fee cannot exceed 100%.');
     const at = Date.parse(f.at);
     const entry: PriceEntry = { itemId, server, observedAt: new Date(isNaN(at) ? Date.now() : at).toISOString() };
     if (buy !== undefined) entry.buyPrice = buy;
     if (sell !== undefined) entry.sellListingPrice = sell;
     if (qty !== undefined) entry.quantityObserved = qty;
-    if (fee !== undefined) entry.feePercent = fee;
     if (f.notes.trim()) entry.notes = f.notes.trim();
     this.store.setPrice(entry);
     this.error.set('');

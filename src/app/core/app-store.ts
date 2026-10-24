@@ -67,7 +67,10 @@ export class AppStore {
   readonly serverPrices = computed(() => {
     const server = this.settings().server;
     const out: Record<string, PriceEntry> = {};
-    for (const p of Object.values(this.data().prices)) if (p.server === server) out[p.itemId] = p;
+    // Without a price the user wants to pay, the listing price is what buying costs.
+    for (const p of Object.values(this.data().prices)) {
+      if (p.server === server) out[p.itemId] = p.buyPrice === undefined && p.sellListingPrice !== undefined ? { ...p, buyPrice: p.sellListingPrice } : p;
+    }
     return out;
   });
   readonly inventoryQuantities = computed(() => {
