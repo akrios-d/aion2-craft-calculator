@@ -141,6 +141,8 @@ const PT: Record<string, string> = {
   'Save price': 'Salvar preço',
   'Add price': 'Adicionar preço',
   'Undo': 'Desfazer',
+  'Bought: add to inventory': 'Comprei: somar ao inventário',
+  'Adds the quantity to your inventory': 'Soma essa quantidade ao seu inventário',
   'Redo': 'Refazer',
   'Type a price and press Enter (several: 100 120 95)': 'Digite um preço e tecle Enter (vários: 100 120 95)',
   'current price': 'preço atual',

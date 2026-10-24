@@ -82,10 +82,10 @@ import { Strategy } from '../core/models';
         <h3>{{ 'Shopping list' | tr }}</h3>
         @if (r.purchases.length) {
           <table>
-            <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Qty' | tr }}</th><th>{{ 'Unit buy price' | tr }}</th><th>{{ 'Cost' | tr }}</th></tr></thead>
+            <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Qty' | tr }}</th><th>{{ 'Unit buy price' | tr }}</th><th>{{ 'Cost' | tr }}</th><th></th></tr></thead>
             <tbody>
               @for (p of r.purchases; track p.itemId) {
-                <tr><td><app-ico [id]="p.itemId" />{{ p.name }}</td><td>{{ p.quantity }}</td><td>{{ p.unitPrice === undefined ? ('missing' | tr) : (p.unitPrice | number: '1.0-2') }}</td><td>{{ p.cost | number: '1.0-2' }}</td></tr>
+                <tr><td><app-ico [id]="p.itemId" />{{ p.name }}</td><td>{{ p.quantity }}</td><td>{{ p.unitPrice === undefined ? ('missing' | tr) : (p.unitPrice | number: '1.0-2') }}</td><td>{{ p.cost | number: '1.0-2' }}</td><td><button type="button" [title]="'Adds the quantity to your inventory' | tr" (click)="markBought(p.itemId, p.quantity)">{{ 'Bought: add to inventory' | tr }}</button></td></tr>
               }
             </tbody>
           </table>
@@ -95,7 +95,7 @@ import { Strategy } from '../core/models';
           <h3>{{ 'From your inventory' | tr }} <small class="muted">{{ '(not modified automatically)' | tr }}</small></h3>
           <table>
             <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Used' | tr }}</th><th>{{ 'Have' | tr }}</th></tr></thead>
-            <tbody>@for (u of r.inventoryUsed; track u.itemId) { <tr><td><app-ico [id]="u.itemId" />{{ u.name }}</td><td>{{ u.used }}</td><td>{{ u.available }}</td></tr> }</tbody>
+            <tbody>@for (u of r.inventoryUsed; track u.itemId) { <tr><td><app-ico [id]="u.itemId" />{{ u.name }}</td><td>{{ u.used }}</td><td><input type="number" class="narrow" min="0" step="1" [value]="u.available" (change)="setHave(u.itemId, $any($event.target).value)" [attr.aria-label]="'Have' | tr" /></td></tr> }</tbody>
           </table>
         }
         @if (r.surplus.length) {
@@ -201,6 +201,15 @@ export class CalculatorPage {
   // Bundled recipes are assumed correct, so the per-recipe "unverified" notice is not shown.
   visibleIssues(r: { issues: { type: string; severity: string }[] }): any[] {
     return r.issues.filter((i) => !['unverified-recipe', 'missing-price', 'missing-sell-price'].includes(i.type) && i.severity !== 'info');
+  }
+
+  markBought(itemId: string, qty: number): void {
+    this.store.setInventory(itemId, (this.store.inventoryQuantities()[itemId] ?? 0) + qty);
+  }
+
+  setHave(itemId: string, raw: string): void {
+    const n = Number(raw);
+    if (Number.isInteger(n) && n >= 0) this.store.setInventory(itemId, n);
   }
 
   strategyFor(id: string): Strategy {
