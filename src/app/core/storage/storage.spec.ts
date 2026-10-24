@@ -1,3 +1,4 @@
+import { syncActiveCharacter } from '../characters';
 import { CURRENT_SCHEMA_VERSION, MIGRATIONS, SchemaError, emptyUserData, migrateUserData } from './schema';
 import { CORRUPT_BACKUP_KEY, STORAGE_KEY, StorageLike, UserDataStorage } from './user-data-storage';
 
@@ -46,9 +47,9 @@ describe('LocalStorage schema migrations', () => {
     const cur = emptyUserData();
     cur.inventory['x'] = { quantity: 2, updatedAt: '2026-01-01T00:00:00.000Z' };
     cur.strategies['x'] = 'buy';
-    const { data, fromVersion } = migrateUserData(JSON.parse(JSON.stringify(cur)));
+    const { data, fromVersion } = migrateUserData(JSON.parse(JSON.stringify(syncActiveCharacter(cur))));
     expect(fromVersion).toBe(CURRENT_SCHEMA_VERSION);
-    expect(data).toEqual(cur);
+    expect(data).toEqual(syncActiveCharacter(cur));
   });
 
   it('drops malformed records with warnings rather than failing', () => {

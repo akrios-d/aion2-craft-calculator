@@ -3,6 +3,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AppStore } from './core/app-store';
 import { downloadText } from './core/download';
 import { parseBackup } from './core/io/backup';
+import { translate } from './core/i18n';
 import { TrPipe } from './core/tr.pipe';
 
 @Component({
@@ -21,6 +22,16 @@ import { TrPipe } from './core/tr.pipe';
       </nav>
       <span class="server">{{ 'Server: {server}' | tr: { server: store.settings().server } }}</span>
       <span class="langs">
+        <label>{{ 'Character' | tr }}
+          <select (change)="store.selectCharacter($any($event.target).value)">
+            @for (c of store.characters(); track c.id) {
+              <option [value]="c.id" [selected]="c.id === store.activeCharacter().id">{{ c.name }}</option>
+            }
+          </select>
+        </label>
+        <button type="button" (click)="newCharacter()">{{ 'New' | tr }}</button>
+        <button type="button" (click)="renameCharacter()">{{ 'Rename' | tr }}</button>
+        <button type="button" [disabled]="store.characters().length < 2" (click)="removeCharacter()">{{ 'Delete' | tr }}</button>
         <label>{{ 'Language' | tr }}
           <select [value]="store.settings().uiLanguage" (change)="store.setSettings({ uiLanguage: $any($event.target).value })">
             <option value="en">English</option>
@@ -67,6 +78,25 @@ import { TrPipe } from './core/tr.pipe';
 export class App {
   protected readonly store = inject(AppStore);
   readonly restoreError = signal('');
+
+  private t(text: string, params = {}): string {
+    return translate(text, this.store.settings().uiLanguage, params);
+  }
+
+  newCharacter(): void {
+    const name = prompt(this.t('Character name'));
+    if (name?.trim()) this.store.createCharacter(name);
+  }
+
+  renameCharacter(): void {
+    const name = prompt(this.t('Character name'), this.store.activeCharacter().name);
+    if (name?.trim()) this.store.renameActiveCharacter(name);
+  }
+
+  removeCharacter(): void {
+    const c = this.store.activeCharacter();
+    if (confirm(this.t('Delete character {name} and its inventory and plans?', { name: c.name }))) this.store.deleteActiveCharacter();
+  }
 
   async restore(ev: Event): Promise<void> {
     const file = (ev.target as HTMLInputElement).files?.[0];

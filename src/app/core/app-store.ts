@@ -14,6 +14,7 @@ import {
 } from './models';
 import { ReconcileReport, reconcileUserData } from './reconcile';
 import { Params, translate } from './i18n';
+import { addCharacter, deleteCharacter, renameCharacter, switchCharacter, syncActiveCharacter } from './characters';
 import { appendHistory } from './io/imports';
 import { LoadResult, UserDataStorage, getBrowserStorage } from './storage/user-data-storage';
 import { emptyUserData } from './storage/schema';
@@ -55,6 +56,9 @@ export class AppStore {
   readonly itemIcons = computed(() => new Map(this.items().filter((i) => i.icon).map((i) => [i.id, i.icon as string])));
   readonly itemNames = computed(() => new Map(this.items().map((i) => [i.id, i.name])));
   readonly settings = computed(() => this.data().settings);
+  readonly characters = computed(() => this.data().characters);
+  readonly activeCharacter = computed(() => this.data().characters.find((c) => c.id === this.data().activeCharacterId) ?? this.data().characters[0]);
+  readonly characterPlans = computed(() => this.data().plans.filter((p) => p.characterId === this.data().activeCharacterId));
   readonly craftableItems = computed(() => {
     const ids = new Set(this.recipes().map((r) => r.outputItemId));
     return this.items().filter((i) => ids.has(i.id)).sort((a, b) => a.name.localeCompare(b.name));
@@ -112,15 +116,26 @@ export class AppStore {
 
   private reconcileWithCatalog(): void {
     if (this.persistBlocked()) return;
-    const { data, report } = reconcileUserData(this.data(), this.catalog().items);
+    const current = syncActiveCharacter(this.data());
+    const { data, report } = reconcileUserData(current, this.catalog().items);
+    // Characters other than the active one are reconciled through the same working fields.
+    const characters = data.characters.map((c) => {
+      if (c.id === data.activeCharacterId) return { ...c, inventory: data.inventory, strategies: data.strategies, recipeChoices: data.recipeChoices };
+      const r = reconcileUserData({ ...data, inventory: c.inventory, strategies: c.strategies, recipeChoices: c.recipeChoices }, this.catalog().items);
+      report.remapped.push(...r.report.remapped);
+      report.unresolved.push(...r.report.unresolved.map((u) => ({ ...u, kind: `${u.kind} (${c.name})` })));
+      report.changed = report.changed || r.report.changed;
+      return { ...c, inventory: r.data.inventory, strategies: r.data.strategies, recipeChoices: r.data.recipeChoices };
+    });
     this.reconcileReport.set(report);
     const version = this.catalog().manifest.dataVersion;
     if (report.changed || this.data().lastSeenDataVersion !== version) {
-      this.commit({ ...data, lastSeenDataVersion: version });
+      this.commit({ ...data, characters, lastSeenDataVersion: version });
     }
   }
 
   private commit(next: UserData): void {
+    next = syncActiveCharacter(next);
     this.data.set(next);
     if (this.persistBlocked()) return;
     this.saveError.set(this.storage.save(next));
@@ -139,6 +154,22 @@ export class AppStore {
 
   startFresh(): void {
     this.replaceAll(emptyUserData());
+  }
+
+  selectCharacter(id: string): void {
+    this.update((d) => switchCharacter(d, id));
+  }
+
+  createCharacter(name: string): void {
+    this.update((d) => addCharacter(d, name, crypto.randomUUID()));
+  }
+
+  renameActiveCharacter(name: string): void {
+    this.update((d) => renameCharacter(d, d.activeCharacterId, name));
+  }
+
+  deleteActiveCharacter(): void {
+    this.update((d) => deleteCharacter(d, d.activeCharacterId));
   }
 
   setSettings(patch: Partial<Settings>): void {
@@ -183,8 +214,11 @@ export class AppStore {
     this.update((d) => ({ ...d, recipeChoices: { ...d.recipeChoices, [itemId]: recipeId } }));
   }
 
-  savePlan(plan: SavedPlan): void {
-    this.update((d) => ({ ...d, plans: [...d.plans.filter((p) => p.id !== plan.id), plan] }));
+  savePlan(plan: Omit<SavedPlan, 'characterId'>): void {
+    this.update((d) => ({
+      ...d,
+      plans: [...d.plans.filter((p) => p.id !== plan.id), { ...plan, characterId: d.activeCharacterId }],
+    }));
   }
 
   deletePlan(id: string): void {

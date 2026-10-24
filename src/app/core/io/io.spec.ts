@@ -1,3 +1,4 @@
+import { syncActiveCharacter } from '../characters';
 import { Item, UserData } from '../models';
 import { emptyUserData } from '../storage/schema';
 import { applyBackup, applyRecipePack, buildBackup, exportInventoryCsv, exportPricesCsv, parseBackup, parseRecipePack } from './backup';
@@ -137,12 +138,12 @@ describe('inventory CSV import', () => {
 });
 
 describe('JSON backup and restore', () => {
-  const data: UserData = {
+  const data: UserData = syncActiveCharacter({
     ...emptyUserData(),
     inventory: { ore: { quantity: 5, updatedAt: '2026-01-01T00:00:00.000Z' } },
     prices: { 'Zikel SA|ore': { itemId: 'ore', server: 'Zikel SA', buyPrice: 9, observedAt: '2026-04-01T00:00:00.000Z' } },
     strategies: { ingot: 'buy' },
-  };
+  });
 
   it('round-trips through export and parse', () => {
     const parsed = parseBackup(JSON.stringify(buildBackup(data, '1.0.0')));

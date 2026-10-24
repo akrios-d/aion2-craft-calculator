@@ -44,3 +44,8 @@ CSV columns. Prices: `itemId` or `itemName`, `buyPrice`, `sellListingPrice`, `qu
 Deployment itself has not been performed from this repository; only configuration and docs are provided.
 
 - Item icons are linked from the Aion2.gg image CDN (not bundled); refresh with `node scripts/fetch-aion2gg-icons.mjs`. The calculator's item picker is a searchable list.
+
+## Characters
+
+Each character has its own inventory, buy/craft strategies, recipe choices and saved craft plans. Prices, price history and settings are shared. Use the character selector in the header to create, rename, switch or delete characters; JSON backups include all characters.
+

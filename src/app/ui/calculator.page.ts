@@ -139,10 +139,10 @@ import { Strategy } from '../core/models';
       </li>
     </ng-template>
 
-    @if (store.data().plans.length) {
+    @if (store.characterPlans().length) {
       <h3>{{ 'Saved plans' | tr }}</h3>
       <ul class="plain">
-        @for (p of store.data().plans; track p.id) {
+        @for (p of store.characterPlans(); track p.id) {
           <li>
             <strong>{{ p.name }}</strong> — {{ p.quantity }}× <app-ico [id]="p.targetItemId" />{{ store.nameOf(p.targetItemId) }} ({{ p.server }})
             <button (click)="loadPlan(p.id)">{{ 'Load' | tr }}</button>
@@ -209,7 +209,7 @@ export class CalculatorPage {
   }
 
   loadPlan(id: string): void {
-    const p = this.store.data().plans.find((x) => x.id === id);
+    const p = this.store.characterPlans().find((x) => x.id === id);
     if (!p) return;
     this.targetId.set(p.targetItemId);
     this.quantity.set(p.quantity);

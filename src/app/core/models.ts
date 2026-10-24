@@ -82,6 +82,8 @@ export interface Settings {
 
 export interface SavedPlan {
   id: string;
+  /** Character the plan belongs to. */
+  characterId: string;
   name: string;
   targetItemId: string;
   quantity: number;
@@ -94,8 +96,22 @@ export interface InventoryEntry {
   updatedAt: string;
 }
 
+/** Per-character data. The active character's copy lives in the top-level UserData fields and is synced on save. */
+export interface Character {
+  id: string;
+  name: string;
+  inventory: Record<string, InventoryEntry>;
+  strategies: Record<string, Strategy>;
+  recipeChoices: Record<string, string>;
+}
+
+export const DEFAULT_CHARACTER_ID = 'main';
+
 export interface UserData {
   schemaVersion: number;
+  characters: Character[];
+  activeCharacterId: string;
+  /** Active character's inventory. */
   inventory: Record<string, InventoryEntry>;
   /** Latest price per `server|itemId`. */
   prices: Record<string, PriceEntry>;
