@@ -263,6 +263,8 @@ const PT: Record<string, string> = {
   'Server:': 'Servidor:',
   'Your own entries below are stored in this browser only and marked': 'Suas próprias entradas abaixo ficam salvas só neste navegador e são marcadas como',
   'buy': 'comprar',
+  'Search item…': 'Buscar item…',
+  'No matches.': 'Nenhum resultado.',
   'added': 'adicionado',
   'updated': 'atualizado',
   'removed': 'removido',

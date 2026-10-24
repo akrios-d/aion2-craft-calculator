@@ -3,6 +3,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { NgTemplateOutlet } from '@angular/common';
+import { ItemIcon } from '../core/item-icon';
 import { AppStore } from '../core/app-store';
 import { TrPipe } from '../core/tr.pipe';
 import { calculateCraft } from '../core/engine/craft-engine';
@@ -10,7 +11,7 @@ import { Strategy } from '../core/models';
 
 @Component({
   selector: 'app-calculator',
-  imports: [TrPipe, FormsModule, DecimalPipe, NgTemplateOutlet, RouterLink],
+  imports: [ItemIcon, TrPipe, FormsModule, DecimalPipe, NgTemplateOutlet, RouterLink],
   template: `
     <h2>{{ 'Crafting calculator' | tr }}</h2>
     <p class="muted">
@@ -24,12 +25,19 @@ import { Strategy } from '../core/models';
       </div>
     } @else {
       <div class="row">
-        <label>{{ 'Item to craft' | tr }}
-          <select [ngModel]="targetId()" (ngModelChange)="targetId.set($event)">
-            <option value="">{{ '— choose —' | tr }}</option>
-            @for (i of store.craftableItems(); track i.id) { <option [value]="i.id">{{ i.name }}</option> }
-          </select>
-        </label>
+        <div class="combo">
+          <label>{{ 'Item to craft' | tr }}
+            <input type="search" autocomplete="off" [placeholder]="'Search item…' | tr" [ngModel]="query()"
+              (ngModelChange)="onQuery($event)" (focus)="open.set(true)" (blur)="closeSoon()" (keydown.enter)="pickFirst($event)" (keydown.escape)="open.set(false)" />
+          </label>
+          @if (open()) {
+            <ul class="combo-list">
+              @for (i of matches(); track i.id) {
+                <li (mousedown)="pick(i.id)"><app-ico [id]="i.id" />{{ i.name }}</li>
+              } @empty { <li class="muted">{{ 'No matches.' | tr }}</li> }
+            </ul>
+          }
+        </div>
         <label>{{ 'Quantity' | tr }}
           <input type="number" min="1" step="1" [ngModel]="quantity()" (ngModelChange)="quantity.set($event)" />
         </label>
@@ -70,7 +78,7 @@ import { Strategy } from '../core/models';
         @if (r.crafts.length) {
           <table>
             <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Batches' | tr }}</th><th>{{ 'Produced' | tr }}</th></tr></thead>
-            <tbody>@for (c of r.crafts; track c.itemId) { <tr><td>{{ c.name }}</td><td>{{ c.batches }}</td><td>{{ c.produced }}</td></tr> }</tbody>
+            <tbody>@for (c of r.crafts; track c.itemId) { <tr><td><app-ico [id]="c.itemId" />{{ c.name }}</td><td>{{ c.batches }}</td><td>{{ c.produced }}</td></tr> }</tbody>
           </table>
         } @else { <p class="muted">{{ 'Nothing needs crafting (covered by inventory).' | tr }}</p> }
 
@@ -80,7 +88,7 @@ import { Strategy } from '../core/models';
             <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Qty' | tr }}</th><th>{{ 'Unit buy price' | tr }}</th><th>{{ 'Cost' | tr }}</th></tr></thead>
             <tbody>
               @for (p of r.purchases; track p.itemId) {
-                <tr><td>{{ p.name }}</td><td>{{ p.quantity }}</td><td>{{ p.unitPrice === undefined ? ('missing' | tr) : (p.unitPrice | number: '1.0-2') }}</td><td>{{ p.cost | number: '1.0-2' }}</td></tr>
+                <tr><td><app-ico [id]="p.itemId" />{{ p.name }}</td><td>{{ p.quantity }}</td><td>{{ p.unitPrice === undefined ? ('missing' | tr) : (p.unitPrice | number: '1.0-2') }}</td><td>{{ p.cost | number: '1.0-2' }}</td></tr>
               }
             </tbody>
           </table>
@@ -90,11 +98,11 @@ import { Strategy } from '../core/models';
           <h3>{{ 'From your inventory' | tr }} <small class="muted">{{ '(not modified automatically)' | tr }}</small></h3>
           <table>
             <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Used' | tr }}</th><th>{{ 'Have' | tr }}</th></tr></thead>
-            <tbody>@for (u of r.inventoryUsed; track u.itemId) { <tr><td>{{ u.name }}</td><td>{{ u.used }}</td><td>{{ u.available }}</td></tr> }</tbody>
+            <tbody>@for (u of r.inventoryUsed; track u.itemId) { <tr><td><app-ico [id]="u.itemId" />{{ u.name }}</td><td>{{ u.used }}</td><td>{{ u.available }}</td></tr> }</tbody>
           </table>
         }
         @if (r.surplus.length) {
-          <p class="muted">{{ 'Leftover from whole batches:' | tr }} @for (s of r.surplus; track s.itemId) { <span class="chip">{{ s.quantity }}× {{ s.name }}</span> }</p>
+          <p class="muted">{{ 'Leftover from whole batches:' | tr }} @for (s of r.surplus; track s.itemId) { <span class="chip"><app-ico [id]="s.itemId" />{{ s.quantity }}× {{ s.name }}</span> }</p>
         }
 
         <h3>{{ 'Dependency tree' | tr }}</h3>
@@ -111,7 +119,7 @@ import { Strategy } from '../core/models';
     <ng-template #nodeTpl let-n let-depth="depth">
       <li>
         <span class="node {{ n.action }}">
-          <strong>{{ n.required }}× {{ n.name }}</strong>
+          <app-ico [id]="n.itemId" /><strong>{{ n.required }}× {{ n.name }}</strong>
           @if (n.fromSurplus) { · {{ '{n} from earlier batch surplus' | tr: { n: n.fromSurplus } }} }
           @if (n.fromInventory) { · {{ '{n} from inventory' | tr: { n: n.fromInventory } }} }
           @if (n.action === 'craft') { · {{ 'craft {batches} batch(es) → {produced}' | tr: { batches: n.batches, produced: n.produced } }} }
@@ -145,7 +153,7 @@ import { Strategy } from '../core/models';
       <ul class="plain">
         @for (p of store.data().plans; track p.id) {
           <li>
-            <strong>{{ p.name }}</strong> — {{ p.quantity }}× {{ store.nameOf(p.targetItemId) }} ({{ p.server }})
+            <strong>{{ p.name }}</strong> — {{ p.quantity }}× <app-ico [id]="p.targetItemId" />{{ store.nameOf(p.targetItemId) }} ({{ p.server }})
             <button (click)="loadPlan(p.id)">{{ 'Load' | tr }}</button>
             <button (click)="store.deletePlan(p.id)">{{ 'Delete' | tr }}</button>
           </li>
@@ -159,6 +167,38 @@ export class CalculatorPage {
   readonly targetId = signal('');
   readonly quantity = signal<number>(1);
   readonly planName = signal('');
+  readonly query = signal('');
+  readonly open = signal(false);
+
+  readonly matches = computed(() => {
+    const q = this.query().trim().toLowerCase();
+    const all = this.store.craftableItems();
+    const hit = q ? all.filter((i) => i.name.toLowerCase().includes(q)) : all;
+    return hit.slice(0, 50);
+  });
+
+  onQuery(v: string): void {
+    this.query.set(v);
+    this.open.set(true);
+    const exact = this.store.craftableItems().find((i) => i.name.toLowerCase() === v.trim().toLowerCase());
+    this.targetId.set(exact?.id ?? '');
+  }
+
+  pick(id: string): void {
+    this.targetId.set(id);
+    this.query.set(this.store.nameOf(id));
+    this.open.set(false);
+  }
+
+  pickFirst(ev: Event): void {
+    ev.preventDefault();
+    const first = this.matches()[0];
+    if (first) this.pick(first.id);
+  }
+
+  closeSoon(): void {
+    setTimeout(() => this.open.set(false), 150);
+  }
 
   readonly craftable = computed(() => new Set(this.store.recipes().map((r) => r.outputItemId)));
 
@@ -207,7 +247,7 @@ export class CalculatorPage {
   loadPlan(id: string): void {
     const p = this.store.data().plans.find((x) => x.id === id);
     if (!p) return;
-    this.targetId.set(p.targetItemId);
+    this.pick(p.targetItemId);
     this.quantity.set(p.quantity);
     if (p.server !== this.store.settings().server) this.store.setSettings({ server: p.server });
   }

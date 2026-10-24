@@ -42,3 +42,5 @@ CSV columns. Prices: `itemId` or `itemName`, `buyPrice`, `sellListingPrice`, `qu
 3. No environment variables are needed. Deploy.
 
 Deployment itself has not been performed from this repository; only configuration and docs are provided.
+
+- Item icons are linked from the Aion2.gg image CDN (not bundled); refresh with `node scripts/fetch-aion2gg-icons.mjs`. The calculator's item picker is a searchable list.

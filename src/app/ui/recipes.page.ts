@@ -1,5 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ItemIcon } from '../core/item-icon';
 import { AppStore } from '../core/app-store';
 import { TrPipe } from '../core/tr.pipe';
 import { validateRecipe } from '../core/engine/craft-engine';
@@ -8,7 +9,7 @@ import { ImportPanel } from './import-panel';
 
 @Component({
   selector: 'app-recipes',
-  imports: [TrPipe, FormsModule, ImportPanel],
+  imports: [ItemIcon, TrPipe, FormsModule, ImportPanel],
   template: `
     <h2>{{ 'Recipes & items' | tr }}</h2>
     <p class="muted">
@@ -48,8 +49,8 @@ import { ImportPanel } from './import-panel';
         <tbody>
           @for (r of rows().slice(0, 300); track r.id) {
             <tr>
-              <td>{{ r.outputQuantity }}× {{ store.nameOf(r.outputItemId) }}</td>
-              <td>@for (g of r.ingredients; track $index) { <span class="chip">{{ g.quantity }}× {{ store.nameOf(g.itemId) }}</span> }</td>
+              <td><app-ico [id]="r.outputItemId" />{{ r.outputQuantity }}× {{ store.nameOf(r.outputItemId) }}</td>
+              <td>@for (g of r.ingredients; track $index) { <span class="chip"><app-ico [id]="g.itemId" />{{ g.quantity }}× {{ store.nameOf(g.itemId) }}</span> }</td>
               <td>{{ r.verification | tr }}</td><td>{{ r.source }}</td>
               <td>@if (r.verification === 'user-entered') { <button (click)="store.deleteCustomRecipe(r.id)">{{ 'Delete' | tr }}</button> }</td>
             </tr>

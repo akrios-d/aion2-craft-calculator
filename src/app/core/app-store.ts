@@ -52,6 +52,7 @@ export class AppStore {
   });
   readonly recipes = computed<Recipe[]>(() => [...this.catalog().recipes, ...this.data().customRecipes]);
   readonly professions = computed<Profession[]>(() => this.catalog().professions);
+  readonly itemIcons = computed(() => new Map(this.items().filter((i) => i.icon).map((i) => [i.id, i.icon as string])));
   readonly itemNames = computed(() => new Map(this.items().map((i) => [i.id, i.name])));
   readonly settings = computed(() => this.data().settings);
   readonly craftableItems = computed(() => {
@@ -82,6 +83,7 @@ export class AppStore {
     void this.loadCatalog();
   }
 
+  iconOf = (id: string): string | undefined => this.itemIcons().get(id);
   nameOf = (id: string): string => this.itemNames().get(id) ?? id;
   tr = (text: string, params?: Params): string => translate(text, this.settings().uiLanguage, params);
 

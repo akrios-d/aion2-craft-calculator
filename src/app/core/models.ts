@@ -7,6 +7,8 @@ export interface Item {
   category?: string;
   /** Localized names by language code (English is `name`). */
   names?: { pt?: string };
+  /** Icon image URL from the source site (linked, not bundled). */
+  icon?: string;
   /** Earlier identifiers of this item, used to preserve user data when ids change. */
   previousIds?: string[];
   source: string;

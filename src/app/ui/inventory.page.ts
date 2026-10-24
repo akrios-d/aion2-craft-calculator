@@ -1,5 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ItemIcon } from '../core/item-icon';
 import { AppStore } from '../core/app-store';
 import { TrPipe } from '../core/tr.pipe';
 import { downloadText } from '../core/download';
@@ -8,7 +9,7 @@ import { ImportPanel } from './import-panel';
 
 @Component({
   selector: 'app-inventory',
-  imports: [TrPipe, FormsModule, ImportPanel],
+  imports: [ItemIcon, TrPipe, FormsModule, ImportPanel],
   template: `
     <h2>{{ 'Inventory' | tr }}</h2>
     <p class="muted">{{ 'Your calculations deduct this inventory but never change it automatically.' | tr }}</p>
@@ -27,7 +28,7 @@ import { ImportPanel } from './import-panel';
         <tbody>
           @for (r of rows(); track r.id) {
             <tr>
-              <td>{{ store.nameOf(r.id) }}</td><td>{{ r.id }}</td>
+              <td><app-ico [id]="r.id" />{{ store.nameOf(r.id) }}</td><td>{{ r.id }}</td>
               <td><input class="narrow" type="number" min="0" step="1" [value]="r.quantity" (change)="setQty(r.id, $event)" /></td>
               <td><button (click)="store.setInventory(r.id, 0)">{{ 'Remove' | tr }}</button></td>
             </tr>

@@ -48,3 +48,10 @@ ul.tree, ul.tree ul { list-style: none; padding-left: 1.25rem; border-left: 1px 
 ul.plain { padding-left: 1rem; }
 .import-panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: .75rem; }
 details > summary { cursor: pointer; }
+.combo { position: relative; min-width: 22rem; }
+.combo-list {
+  position: absolute; z-index: 20; left: 0; right: 0; max-height: 18rem; overflow-y: auto;
+  margin: 2px 0 0; padding: 0; list-style: none;
+  background: #161b22; border: 1px solid #30363d; border-radius: 6px;
+  li { padding: 0.4rem 0.6rem; cursor: pointer; &:hover { background: #21262d; } }
+}

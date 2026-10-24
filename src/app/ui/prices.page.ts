@@ -1,6 +1,7 @@
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ItemIcon } from '../core/item-icon';
 import { AppStore } from '../core/app-store';
 import { TrPipe } from '../core/tr.pipe';
 import { downloadText } from '../core/download';
@@ -10,7 +11,7 @@ import { ImportPanel } from './import-panel';
 
 @Component({
   selector: 'app-prices',
-  imports: [TrPipe, FormsModule, DecimalPipe, DatePipe, ImportPanel],
+  imports: [ItemIcon, TrPipe, FormsModule, DecimalPipe, DatePipe, ImportPanel],
   template: `
     <h2>{{ 'Auction House prices' | tr }}</h2>
     <p class="msg info">
@@ -45,7 +46,7 @@ import { ImportPanel } from './import-panel';
         <tbody>
           @for (p of rows(); track p.server + p.itemId) {
             <tr>
-              <td>{{ store.nameOf(p.itemId) }}</td><td>{{ p.server }}</td>
+              <td><app-ico [id]="p.itemId" />{{ store.nameOf(p.itemId) }}</td><td>{{ p.server }}</td>
               <td>{{ p.buyPrice === undefined ? '–' : (p.buyPrice | number: '1.0-2') }}</td>
               <td>{{ p.sellListingPrice === undefined ? '–' : (p.sellListingPrice | number: '1.0-2') }}</td>
               <td>{{ p.quantityObserved ?? '–' }}</td><td>{{ p.feePercent ?? ('default' | tr) }}</td>
@@ -67,7 +68,7 @@ import { ImportPanel } from './import-panel';
         <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Server' | tr }}</th><th>{{ 'Buy' | tr }}</th><th>{{ 'Sell listing' | tr }}</th><th>{{ 'Observed' | tr }}</th></tr></thead>
         <tbody>
           @for (h of history(); track $index) {
-            <tr><td>{{ store.nameOf(h.itemId) }}</td><td>{{ h.server }}</td><td>{{ h.buyPrice ?? '–' }}</td><td>{{ h.sellListingPrice ?? '–' }}</td><td>{{ h.observedAt | date: 'yyyy-MM-dd HH:mm' }}</td></tr>
+            <tr><td><app-ico [id]="h.itemId" />{{ store.nameOf(h.itemId) }}</td><td>{{ h.server }}</td><td>{{ h.buyPrice ?? '–' }}</td><td>{{ h.sellListingPrice ?? '–' }}</td><td>{{ h.observedAt | date: 'yyyy-MM-dd HH:mm' }}</td></tr>
           }
         </tbody>
       </table>
