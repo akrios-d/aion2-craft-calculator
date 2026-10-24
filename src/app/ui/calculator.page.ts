@@ -103,7 +103,12 @@ import { Strategy } from '../core/models';
         }
 
         <h3>{{ 'Dependency tree' | tr }}</h3>
-        <ul class="tree"><ng-container *ngTemplateOutlet="nodeTpl; context: { $implicit: r.tree, depth: 0 }" /></ul>
+        <div class="row">
+          <button type="button" (click)="expandAll()">{{ 'Expand all' | tr }}</button>
+          <button type="button" (click)="collapseAll(r.tree)">{{ 'Collapse all' | tr }}</button>
+          <button type="button" class="primary" [disabled]="!checked().size" (click)="addChecked(r.tree)">{{ 'Add checked to inventory' | tr }} ({{ checked().size }})</button>
+        </div>
+        <ul class="tree"><ng-container *ngTemplateOutlet="nodeTpl; context: { $implicit: r.tree, depth: 0, path: '0' }" /></ul>
 
         <h3>{{ 'Save this plan' | tr }}</h3>
         <div class="row">
@@ -115,9 +120,15 @@ import { Strategy } from '../core/models';
 
     }
 
-    <ng-template #nodeTpl let-n let-depth="depth">
+    <ng-template #nodeTpl let-n let-depth="depth" let-path="path">
       <li>
         <span class="node {{ n.action }}">
+          @if (n.children.length) {
+            <button type="button" class="mini" (click)="toggle(path)" [attr.aria-expanded]="!collapsed().has(path)">{{ collapsed().has(path) ? '+' : '−' }}</button>
+          }
+          @if (acquired(n) > 0) {
+            <input type="checkbox" [checked]="checked().has(path)" (change)="check(path)" [title]="'Add to inventory' | tr" />
+          }
           <app-ico [id]="n.itemId" /><strong>{{ n.required }}× {{ n.name }}</strong>
           @if (n.fromSurplus) { · {{ '{n} from earlier batch surplus' | tr: { n: n.fromSurplus } }} }
           @if (n.fromInventory) { · {{ '{n} from inventory' | tr: { n: n.fromInventory } }} }
@@ -137,10 +148,10 @@ import { Strategy } from '../core/models';
             </select>
           }
         </span>
-        @if (n.children.length) {
+        @if (n.children.length && !collapsed().has(path)) {
           <ul>
             @for (c of n.children; track $index) {
-              <ng-container *ngTemplateOutlet="nodeTpl; context: { $implicit: c, depth: depth + 1 }" />
+              <ng-container *ngTemplateOutlet="nodeTpl; context: { $implicit: c, depth: depth + 1, path: path + '.' + $index }" />
             }
           </ul>
         }
@@ -177,6 +188,52 @@ export class CalculatorPage {
   readonly quantity = signal<number>(1);
   readonly planName = signal('');
   readonly tab = signal<'plans' | 'new'>(this.store.characterPlans().length ? 'plans' : 'new');
+
+  readonly collapsed = signal<ReadonlySet<string>>(new Set());
+  readonly checked = signal<ReadonlySet<string>>(new Set());
+
+  /** Units that planning this node adds to your stock: bought or crafted, not already owned. */
+  acquired(n: any): number {
+    return n.action === 'buy' ? n.toAcquire : n.action === 'craft' ? n.produced : 0;
+  }
+
+  toggle(path: string): void {
+    const s = new Set(this.collapsed());
+    if (!s.delete(path)) s.add(path);
+    this.collapsed.set(s);
+  }
+
+  expandAll(): void {
+    this.collapsed.set(new Set());
+  }
+
+  collapseAll(root: any): void {
+    const s = new Set<string>();
+    const walk = (n: any, p: string): void => {
+      if (n.children.length) s.add(p);
+      n.children.forEach((c: any, i: number) => walk(c, p + '.' + i));
+    };
+    walk(root, '0');
+    this.collapsed.set(s);
+  }
+
+  check(path: string): void {
+    const s = new Set(this.checked());
+    if (!s.delete(path)) s.add(path);
+    this.checked.set(s);
+  }
+
+  addChecked(root: any): void {
+    const totals = new Map<string, number>();
+    const walk = (n: any, p: string): void => {
+      if (this.checked().has(p)) totals.set(n.itemId, (totals.get(n.itemId) ?? 0) + this.acquired(n));
+      n.children.forEach((c: any, i: number) => walk(c, p + '.' + i));
+    };
+    walk(root, '0');
+    const inv = this.store.inventoryQuantities();
+    totals.forEach((q, id) => this.store.setInventory(id, (inv[id] ?? 0) + q));
+    this.checked.set(new Set());
+  }
 
   readonly craftable = computed(() => new Set(this.store.recipes().map((r) => r.outputItemId)));
 
@@ -240,6 +297,8 @@ export class CalculatorPage {
     const p = this.store.characterPlans().find((x) => x.id === id);
     if (!p) return;
     this.targetId.set(p.targetItemId);
+    this.collapsed.set(new Set());
+    this.checked.set(new Set());
     this.quantity.set(p.quantity);
     this.tab.set('new');
     if (p.server !== this.store.settings().server) this.store.setSettings({ server: p.server });
