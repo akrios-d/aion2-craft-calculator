@@ -17,6 +17,12 @@ import { ImportPanel } from './import-panel';
       {{ 'Your own entries below are stored in this browser only and marked' | tr }} <em>{{ 'user-entered' | tr }}</em>.
     </p>
 
+    <div class="row">
+      <button type="button" [class.primary]="tab() === 'all'" (click)="tab.set('all')">{{ 'All' | tr }}</button>
+      <button type="button" [class.primary]="tab() === 'custom'" (click)="tab.set('custom')">{{ 'Custom' | tr }} ({{ customCount() }})</button>
+    </div>
+
+    @if (tab() === 'custom') {
     <h3>{{ 'Add an item' | tr }}</h3>
     <form class="row" (ngSubmit)="addItem()">
       <input [placeholder]="'Item id (e.g. iron-ingot)' | tr" [ngModel]="itemId()" (ngModelChange)="itemId.set($event)" name="iid" required />
@@ -40,8 +46,9 @@ import { ImportPanel } from './import-panel';
     <h3>{{ 'Import a recipe pack (JSON)' | tr }}</h3>
     <p class="muted">{{ 'Format:' | tr }} <code>{{ '{' }} "items": [{{ '{' }}"id","name"{{ '}' }}], "recipes": [{{ '{' }}"id","outputItemId","outputQuantity","ingredients":[{{ '{' }}"itemId","quantity"{{ '}' }}]{{ '}' }}] {{ '}' }}</code>. {{ 'Only import data you are allowed to use.' | tr }}</p>
     <app-import-panel kind="recipes" />
+    }
 
-    <h3>{{ 'All recipes' | tr }} <small class="muted">({{ rows().length }})</small></h3>
+    <h3>{{ (tab() === 'custom' ? 'Custom recipes' : 'All recipes') | tr }} <small class="muted">({{ rows().length }})</small></h3>
     <input [placeholder]="'Filter…' | tr" [ngModel]="filter()" (ngModelChange)="filter.set($event)" />
     @if (rows().length) {
       <table>
@@ -70,10 +77,16 @@ export class RecipesPage {
   readonly ingText = signal('');
   readonly error = signal('');
   readonly filter = signal('');
+  readonly tab = signal<'all' | 'custom'>('all');
+  readonly customCount = computed(() => this.store.recipes().filter((r) => r.verification === 'user-entered').length);
 
   readonly rows = computed(() => {
     const f = this.filter().trim().toLowerCase();
-    return this.store.recipes().filter((r) => !f || this.store.nameOf(r.outputItemId).toLowerCase().includes(f) || r.id.toLowerCase().includes(f));
+    const custom = this.tab() === 'custom';
+    return this.store
+      .recipes()
+      .filter((r) => !custom || r.verification === 'user-entered')
+      .filter((r) => !f || this.store.nameOf(r.outputItemId).toLowerCase().includes(f) || r.id.toLowerCase().includes(f));
   });
 
   private resolve(raw: string): string {
