@@ -4,9 +4,11 @@ A fully client-side Angular app (standalone components, no backend, no database,
 
 ## Important: recipe data coverage
 
-**The bundled dataset is empty (0 recipes).** Aion2.gg's Terms of Use (https://aion2.gg/terms) forbid bulk downloading, dataset building and re-hosting, and its robots.txt disallows `/api/` and `/data-dump/`. Nothing was scraped and nothing was invented. See [docs/DATA-COVERAGE.md](docs/DATA-COVERAGE.md) (regenerate with `npm run coverage`).
+**The bundled dataset has 512 recipe entries and 684 items from Aion2.gg, none human-verified** (see [docs/DATA-COVERAGE.md](docs/DATA-COVERAGE.md), regenerate with `npm run coverage`). Aion2.gg's Terms of Use forbid bulk copying; the import was done on the project owner's report that the site operator gave permission (verbal, not documented in writing). Get that permission in writing before publishing. Output quantity is assumed to be 1 because the source pages do not show it; Elyos and Asmodian versions are separate entries.
 
-Add recipes by:
+Refresh the data (only with permission): `node scripts/fetch-aion2gg.mjs` (reads public recipe pages with a delay, writes `tmp/aion2gg-pack.json`), then `npm run import:recipes -- --in tmp/aion2gg-pack.json --source-url https://aion2.gg --permission "<who/when>"`.
+
+You can also add recipes by:
 1. Entering them in the **Recipes** page (stored in your browser only).
 2. Importing a JSON recipe pack (`{ "items": [...], "recipes": [...] }`) on the **Data** page.
 3. Maintainers: `npm run import:recipes -- --in <local-file> --source-url <url> --permission "<who/where permission was granted>"` converts a local file into `public/data/*.json` and updates the manifest. It never downloads anything.

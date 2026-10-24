@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "id": "alchemy",
+    "name": "Alchemy"
+  },
+  {
+    "id": "blacksmithing",
+    "name": "Blacksmithing"
+  },
+  {
+    "id": "cooking",
+    "name": "Cooking"
+  },
+  {
+    "id": "jewelcrafting",
+    "name": "Jewelcrafting"
+  },
+  {
+    "id": "tailoring",
+    "name": "Tailoring"
+  }
+]

@@ -1,15 +1,17 @@
-{
-  "dataVersion": "0.0.0-empty",
-  "sourceUrl": "https://aion2.gg",
-  "importDate": null,
-  "itemCount": 0,
-  "recipeCount": 0,
-  "professionCount": 0,
-  "verifiedRecipeCount": 0,
-  "verificationStatus": "empty: no recipes imported",
-  "knownLimitations": [
-    "No recipes have been imported. Aion2.gg's Terms of Use (https://aion2.gg/terms, last updated 2026-10-06) prohibit downloading its data in bulk with scripts, building datasets from it, and re-hosting its data; robots.txt disallows /api/ and /data-dump/. This project therefore does not scrape Aion2.gg.",
-    "Recipes can be added in the app (stored in your browser only) or by importing a JSON recipe pack you created or are licensed to use. Maintainers can ship a larger dataset with scripts/import-recipes.mjs once a permitted data source or written permission exists.",
-    "The Auction House fee default (10%) is a placeholder and not verified against the game."
-  ]
+﻿{
+    "dataVersion":  "2026.10.24",
+    "sourceUrl":  "https://aion2.gg",
+    "importDate":  "2026-10-24T05:07:17.904Z",
+    "itemCount":  684,
+    "recipeCount":  512,
+    "professionCount":  5,
+    "verifiedRecipeCount":  0,
+    "verificationStatus":  "0 of 512 recipes verified",
+    "knownLimitations":  [
+                             "Permission/licence basis: Site operator permission reported by the project owner (verbal, not documented in writing); fetched from public recipe pages on 2026-10-24",
+                             "Coverage of the full Global recipe list has not been established.",
+                             "Output quantity is assumed to be 1 for every recipe: the source pages do not show it. Recipes are not human-verified, so all are marked unverified.",
+                             "The source lists Elyos and Asmodian versions as separate recipes (512 recipe entries for about 394 distinct products); both are kept with their own source ids.",
+                             "Success chance, COMBO odds and other source fields are not imported. Aion2.gg describes itself as an unofficial database in beta."
+                         ]
 }
