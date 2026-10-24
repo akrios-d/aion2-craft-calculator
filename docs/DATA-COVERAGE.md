@@ -20,6 +20,5 @@ Verification status: **0 of 512 recipes verified**
 
 ## Known limitations
 
-- Permission/licence basis: Site operator permission reported by the project owner (verbal, not documented in writing); fetched from public recipe pages on 2026-10-24
-- Coverage of the full Global recipe list has not been established.
+
 

@@ -24,8 +24,6 @@ import { ImportPanel } from './import-panel';
       <tr><td>{{ 'Verification status' | tr }}</td><td>{{ m.verificationStatus }}</td></tr>
       <tr><td>{{ 'Your own items / recipes' | tr }}</td><td>{{ store.data().customItems.length }} / {{ store.data().customRecipes.length }}</td></tr>
     </table>
-    <h4>{{ 'Known limitations' | tr }}</h4>
-    <ul>@for (l of m.knownLimitations; track $index) { <li>{{ l | tr }}</li> }</ul>
 
     @if (store.reconcileReport(); as rep) {
       @if (rep.remapped.length || rep.unresolved.length) {

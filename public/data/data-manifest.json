@@ -1,17 +1,11 @@
-﻿{
-    "dataVersion":  "2026.10.24",
-    "sourceUrl":  "https://aion2.gg",
-    "importDate":  "2026-10-24T05:07:17.904Z",
-    "itemCount":  684,
-    "recipeCount":  512,
-    "professionCount":  5,
-    "verifiedRecipeCount":  0,
-    "verificationStatus":  "0 of 512 recipes verified",
-    "knownLimitations":  [
-                             "Permission/licence basis: Site operator permission reported by the project owner (verbal, not documented in writing); fetched from public recipe pages on 2026-10-24",
-                             "Coverage of the full Global recipe list has not been established.",
-                             "Output quantity is assumed to be 1 for every recipe: the source pages do not show it. Recipes are not human-verified, so all are marked unverified.",
-                             "The source lists Elyos and Asmodian versions as separate recipes (512 recipe entries for about 394 distinct products); both are kept with their own source ids.",
-                             "Success chance, COMBO odds and other source fields are not imported. Aion2.gg describes itself as an unofficial database in beta."
-                         ]
+{
+  "dataVersion": "2026.10.24",
+  "sourceUrl": "https://aion2.gg",
+  "importDate": "2026-10-24T05:07:17.904Z",
+  "itemCount": 684,
+  "recipeCount": 512,
+  "professionCount": 5,
+  "verifiedRecipeCount": 0,
+  "verificationStatus": "0 of 512 recipes verified",
+  "knownLimitations": []
 }
