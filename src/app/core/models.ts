@@ -72,7 +72,6 @@ export interface Settings {
   server: string;
   defaultFeePercent: number;
   defaultStrategy: Strategy;
-  currencyLabel: string;
   /** Language of the interface text. */
   uiLanguage: 'en' | 'pt';
   /** Language used for item names (independent of the interface language). */

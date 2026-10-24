@@ -21,7 +21,6 @@ export function defaultSettings(): Settings {
     server: DEFAULT_SERVER,
     defaultFeePercent: DEFAULT_FEE_PERCENT,
     defaultStrategy: 'auto',
-    currencyLabel: 'Kinah',
     uiLanguage: lang,
     itemNameLanguage: lang,
   };
@@ -189,7 +188,6 @@ export function normalizeUserData(raw: Raw, warnings: string[] = []): UserData {
     server: typeof settingsRaw['server'] === 'string' && settingsRaw['server'].trim() ? settingsRaw['server'].trim() : base.settings.server,
     defaultFeePercent: optNum(settingsRaw['defaultFeePercent']) !== undefined && settingsRaw['defaultFeePercent'] <= 100 ? settingsRaw['defaultFeePercent'] : base.settings.defaultFeePercent,
     defaultStrategy: isStrategy(settingsRaw['defaultStrategy']) ? settingsRaw['defaultStrategy'] : 'auto',
-    currencyLabel: typeof settingsRaw['currencyLabel'] === 'string' && settingsRaw['currencyLabel'] ? settingsRaw['currencyLabel'] : base.settings.currencyLabel,
     uiLanguage: settingsRaw['uiLanguage'] === 'en' || settingsRaw['uiLanguage'] === 'pt' ? settingsRaw['uiLanguage'] : base.settings.uiLanguage,
     itemNameLanguage: settingsRaw['itemNameLanguage'] === 'en' || settingsRaw['itemNameLanguage'] === 'pt' ? settingsRaw['itemNameLanguage'] : base.settings.itemNameLanguage,
   };

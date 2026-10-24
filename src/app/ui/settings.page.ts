@@ -35,9 +35,6 @@ import { TrPipe } from '../core/tr.pipe';
           <option value="buy">{{ 'Always buy' | tr }}</option>
         </select>
       </label>
-      <label>{{ 'Currency label' | tr }}
-        <input [ngModel]="s.currencyLabel" (ngModelChange)="store.setSettings({ currencyLabel: $event })" />
-      </label>
     </div>
     <p class="muted">{{ "Settings are saved in your browser. Prices are stored per server, so switching servers shows that server's prices." | tr }}</p>
   `,

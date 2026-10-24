@@ -234,7 +234,6 @@ const PT: Record<string, string> = {
   'Auto (cheapest known)': 'Auto (mais barato conhecido)',
   'Always craft': 'Sempre criar',
   'Always buy': 'Sempre comprar',
-  'Currency label': 'Rótulo da moeda',
   'Interface language': 'Idioma da interface',
   'Item name language': 'Idioma dos nomes dos itens',
   "Settings are saved in your browser. Prices are stored per server, so switching servers shows that server's prices.":
