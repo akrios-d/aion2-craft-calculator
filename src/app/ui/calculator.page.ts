@@ -20,6 +20,12 @@ import { Strategy } from '../core/models';
       (<a routerLink="/prices">{{ 'edit' | tr }}</a>). {{ 'Listing prices are not completed sales.' | tr }}
     </p>
 
+    <div class="subtabs" role="tablist">
+      <button type="button" role="tab" [class.active]="tab() === 'plans'" (click)="tab.set('plans')">{{ 'My plans' | tr }} ({{ store.characterPlans().length }})</button>
+      <button type="button" role="tab" [class.active]="tab() === 'new'" (click)="tab.set('new')">{{ 'New plan' | tr }}</button>
+    </div>
+
+    @if (tab() === 'new') {
     @if (store.craftableItems().length === 0) {
       <div class="msg warn">
         {{ 'No recipes are available yet.' | tr }} <a routerLink="/data">{{ 'Data' | tr }}</a> ? <a routerLink="/recipes">{{ 'Recipes' | tr }}</a>
@@ -107,6 +113,8 @@ import { Strategy } from '../core/models';
       }
     }
 
+    }
+
     <ng-template #nodeTpl let-n let-depth="depth">
       <li>
         <span class="node {{ n.action }}">
@@ -139,17 +147,27 @@ import { Strategy } from '../core/models';
       </li>
     </ng-template>
 
-    @if (store.characterPlans().length) {
-      <h3>{{ 'Saved plans' | tr }}</h3>
-      <ul class="plain">
-        @for (p of store.characterPlans(); track p.id) {
-          <li>
-            <strong>{{ p.name }}</strong> — {{ p.quantity }}× <app-ico [id]="p.targetItemId" />{{ store.nameOf(p.targetItemId) }}
-            <button (click)="loadPlan(p.id)">{{ 'Load' | tr }}</button>
-            <button (click)="store.deletePlan(p.id)">{{ 'Delete' | tr }}</button>
-          </li>
-        }
-      </ul>
+    @if (tab() === 'plans') {
+      @if (store.characterPlans().length) {
+        <table>
+          <thead><tr><th>{{ 'Plan name' | tr }}</th><th>{{ 'Item' | tr }}</th><th>{{ 'Quantity' | tr }}</th><th></th></tr></thead>
+          <tbody>
+            @for (p of store.characterPlans(); track p.id) {
+              <tr>
+                <td><strong>{{ p.name }}</strong></td>
+                <td><app-ico [id]="p.targetItemId" />{{ store.nameOf(p.targetItemId) }}</td>
+                <td>{{ p.quantity }}</td>
+                <td>
+                  <button class="primary" (click)="loadPlan(p.id)">{{ 'Load' | tr }}</button>
+                  <button (click)="store.deletePlan(p.id)">{{ 'Delete' | tr }}</button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      } @else {
+        <p class="muted">{{ 'No saved plans yet.' | tr }} <a href="javascript:void(0)" (click)="tab.set('new')">{{ 'New plan' | tr }}</a></p>
+      }
     }
   `,
 })
@@ -158,6 +176,7 @@ export class CalculatorPage {
   readonly targetId = signal('');
   readonly quantity = signal<number>(1);
   readonly planName = signal('');
+  readonly tab = signal<'plans' | 'new'>('new');
 
   readonly craftable = computed(() => new Set(this.store.recipes().map((r) => r.outputItemId)));
 
@@ -213,6 +232,7 @@ export class CalculatorPage {
     if (!p) return;
     this.targetId.set(p.targetItemId);
     this.quantity.set(p.quantity);
+    this.tab.set('new');
     if (p.server !== this.store.settings().server) this.store.setSettings({ server: p.server });
   }
 }

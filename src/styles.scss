@@ -72,3 +72,7 @@ details > summary { cursor: pointer; }
 .modal p { margin: 0 0 .8rem; font-weight: 600; }
 .modal input { width: 100%; }
 .row.end { justify-content: flex-end; }
+.subtabs { display: flex; gap: .25rem; margin: 1rem 0; border-bottom: 1px solid var(--line); }
+.subtabs button { background: transparent; border: 0; border-bottom: 3px solid transparent; border-radius: 0; padding: .5rem 1rem; color: var(--muted); font-weight: 600; margin-bottom: -1px; }
+.subtabs button:hover { color: #fff; }
+.subtabs button.active { color: var(--acc); border-bottom-color: var(--acc); }

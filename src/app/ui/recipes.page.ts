@@ -17,9 +17,9 @@ import { ImportPanel } from './import-panel';
       {{ 'Your own entries below are stored in this browser only and marked' | tr }} <em>{{ 'user-entered' | tr }}</em>.
     </p>
 
-    <div class="row">
-      <button type="button" [class.primary]="tab() === 'all'" (click)="tab.set('all')">{{ 'All' | tr }}</button>
-      <button type="button" [class.primary]="tab() === 'custom'" (click)="tab.set('custom')">{{ 'Custom' | tr }} ({{ customCount() }})</button>
+    <div class="subtabs" role="tablist">
+      <button type="button" role="tab" [class.active]="tab() === 'all'" (click)="tab.set('all')">{{ 'All' | tr }}</button>
+      <button type="button" role="tab" [class.active]="tab() === 'custom'" (click)="tab.set('custom')">{{ 'Custom' | tr }} ({{ customCount() }})</button>
     </div>
 
     @if (tab() === 'custom') {
