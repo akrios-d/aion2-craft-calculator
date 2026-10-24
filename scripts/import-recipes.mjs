@@ -92,6 +92,16 @@ for (const [i, r] of (input.recipes ?? []).entries()) {
 }
 if (errors.length) fail(`Validation failed:\n  ${errors.join('\n  ')}`);
 
+// Faction variants (Elyos/Asmodian) with identical output and ingredients are the same recipe for the calculator.
+const seenRecipes = new Set();
+const unique = recipes.filter((r) => {
+  const key = `${r.outputItemId}|${r.outputQuantity}|${r.ingredients.map((g) => `${g.itemId}:${g.quantity}`).sort().join(',')}`;
+  if (seenRecipes.has(key)) return false;
+  seenRecipes.add(key);
+  return true;
+});
+recipes.splice(0, recipes.length, ...unique);
+
 const verified = recipes.filter((r) => r.verification === 'verified').length;
 const manifest = {
   dataVersion: typeof args.version === 'string' ? args.version : new Date().toISOString().slice(0, 10),

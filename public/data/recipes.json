@@ -21,27 +21,6 @@
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
   {
-    "id": "325016001",
-    "outputItemId": "610740015",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610530014",
-        "quantity": 2
-      },
-      {
-        "itemId": "630543005",
-        "quantity": 1
-      }
-    ],
-    "professionId": "alchemy",
-    "professionLevel": 1,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/magic-crystal-325016001",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
     "id": "314016001",
     "outputItemId": "530116001",
     "outputQuantity": 1,
@@ -197,23 +176,6 @@
     "professionLevel": 5,
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/spiritstone-powder-315016006",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "325016006",
-    "outputItemId": "610740001",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610530014",
-        "quantity": 1
-      }
-    ],
-    "professionId": "alchemy",
-    "professionLevel": 5,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/spiritstone-powder-325016006",
     "verification": "unverified",
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
@@ -435,23 +397,6 @@
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
   {
-    "id": "325016003",
-    "outputItemId": "610740008",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610660025",
-        "quantity": 1
-      }
-    ],
-    "professionId": "alchemy",
-    "professionLevel": 20,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/sapphire-powder-325016003",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
     "id": "315016004",
     "outputItemId": "610740009",
     "outputQuantity": 1,
@@ -469,23 +414,6 @@
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
   {
-    "id": "325016004",
-    "outputItemId": "610740009",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610660026",
-        "quantity": 1
-      }
-    ],
-    "professionId": "alchemy",
-    "professionLevel": 20,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/diamond-powder-325016004",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
     "id": "315016005",
     "outputItemId": "610740010",
     "outputQuantity": 1,
@@ -499,23 +427,6 @@
     "professionLevel": 20,
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/ruby-powder-315016005",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "325016005",
-    "outputItemId": "610740010",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610660027",
-        "quantity": 1
-      }
-    ],
-    "professionId": "alchemy",
-    "professionLevel": 20,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/ruby-powder-325016005",
     "verification": "unverified",
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
@@ -545,31 +456,6 @@
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
   {
-    "id": "324046001",
-    "outputItemId": "511360003",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "511360001",
-        "quantity": 5
-      },
-      {
-        "itemId": "610740001",
-        "quantity": 3
-      },
-      {
-        "itemId": "630543008",
-        "quantity": 2
-      }
-    ],
-    "professionId": "alchemy",
-    "professionLevel": 20,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/intermediate-manastone-324046001",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
     "id": "315016002",
     "outputItemId": "610740015",
     "outputQuantity": 1,
@@ -591,27 +477,6 @@
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
   {
-    "id": "325016002",
-    "outputItemId": "610740015",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610530014",
-        "quantity": 20
-      },
-      {
-        "itemId": "630543005",
-        "quantity": 10
-      }
-    ],
-    "professionId": "alchemy",
-    "professionLevel": 25,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/magic-crystal-325016002",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
     "id": "315016011",
     "outputItemId": "610740001",
     "outputQuantity": 1,
@@ -625,23 +490,6 @@
     "professionLevel": 25,
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/spiritstone-powder-315016011",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "325016011",
-    "outputItemId": "610740001",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610530014",
-        "quantity": 10
-      }
-    ],
-    "professionId": "alchemy",
-    "professionLevel": 25,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/spiritstone-powder-325016011",
     "verification": "unverified",
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
@@ -701,31 +549,6 @@
     "professionLevel": 25,
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/intermediate-soulstone-314046002",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "324046002",
-    "outputItemId": "513560003",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "513560001",
-        "quantity": 5
-      },
-      {
-        "itemId": "610740001",
-        "quantity": 3
-      },
-      {
-        "itemId": "630543008",
-        "quantity": 2
-      }
-    ],
-    "professionId": "alchemy",
-    "professionLevel": 25,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/intermediate-soulstone-324046002",
     "verification": "unverified",
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
@@ -913,23 +736,6 @@
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
   {
-    "id": "325016008",
-    "outputItemId": "610740008",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610660025",
-        "quantity": 10
-      }
-    ],
-    "professionId": "alchemy",
-    "professionLevel": 45,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/sapphire-powder-325016008",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
     "id": "315016009",
     "outputItemId": "610740009",
     "outputQuantity": 1,
@@ -947,23 +753,6 @@
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
   {
-    "id": "325016009",
-    "outputItemId": "610740009",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610660026",
-        "quantity": 10
-      }
-    ],
-    "professionId": "alchemy",
-    "professionLevel": 45,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/diamond-powder-325016009",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
     "id": "315016010",
     "outputItemId": "610740010",
     "outputQuantity": 1,
@@ -977,23 +766,6 @@
     "professionLevel": 45,
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/ruby-powder-315016010",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "325016010",
-    "outputItemId": "610740010",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610660027",
-        "quantity": 10
-      }
-    ],
-    "professionId": "alchemy",
-    "professionLevel": 45,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/ruby-powder-325016010",
     "verification": "unverified",
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
@@ -1065,27 +837,6 @@
     "professionLevel": 51,
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/enhanced-thick-balaur-scale-315024001",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "325024001",
-    "outputItemId": "610730022",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "600590001",
-        "quantity": 2
-      },
-      {
-        "itemId": "630520007",
-        "quantity": 1
-      }
-    ],
-    "professionId": "alchemy",
-    "professionLevel": 51,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/enhanced-thick-balaur-scale-325024001",
     "verification": "unverified",
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
@@ -1467,27 +1218,6 @@
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
   {
-    "id": "325024002",
-    "outputItemId": "610730023",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "600590001",
-        "quantity": 2
-      },
-      {
-        "itemId": "630520008",
-        "quantity": 1
-      }
-    ],
-    "professionId": "alchemy",
-    "professionLevel": 65,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/enhanced-hard-balaur-scale-325024002",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
     "id": "314036001",
     "outputItemId": "511060015",
     "outputQuantity": 1,
@@ -1683,27 +1413,6 @@
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
   {
-    "id": "325024003",
-    "outputItemId": "610730024",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "600590001",
-        "quantity": 2
-      },
-      {
-        "itemId": "630520009",
-        "quantity": 1
-      }
-    ],
-    "professionId": "alchemy",
-    "professionLevel": 80,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/enhanced-durable-balaur-scale-325024003",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
     "id": "314045001",
     "outputItemId": "511351002",
     "outputQuantity": 1,
@@ -1725,31 +1434,6 @@
     "professionLevel": 85,
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/intermediate-abyssal-manastone-314045001",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "324045001",
-    "outputItemId": "511351002",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "511351001",
-        "quantity": 5
-      },
-      {
-        "itemId": "610740001",
-        "quantity": 5
-      },
-      {
-        "itemId": "630543008",
-        "quantity": 3
-      }
-    ],
-    "professionId": "alchemy",
-    "professionLevel": 85,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/intermediate-abyssal-manastone-324045001",
     "verification": "unverified",
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
@@ -1779,31 +1463,6 @@
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
   {
-    "id": "324046003",
-    "outputItemId": "511360004",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "511360003",
-        "quantity": 30
-      },
-      {
-        "itemId": "610740001",
-        "quantity": 10
-      },
-      {
-        "itemId": "630543013",
-        "quantity": 2
-      }
-    ],
-    "professionId": "alchemy",
-    "professionLevel": 85,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/superior-manastone-324046003",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
     "id": "314045002",
     "outputItemId": "513551002",
     "outputQuantity": 1,
@@ -1829,31 +1488,6 @@
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
   {
-    "id": "324045002",
-    "outputItemId": "513551002",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "513551001",
-        "quantity": 5
-      },
-      {
-        "itemId": "610740001",
-        "quantity": 5
-      },
-      {
-        "itemId": "630543008",
-        "quantity": 3
-      }
-    ],
-    "professionId": "alchemy",
-    "professionLevel": 90,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/intermediate-abyssal-soulstone-324045002",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
     "id": "314046004",
     "outputItemId": "513560004",
     "outputQuantity": 1,
@@ -1875,31 +1509,6 @@
     "professionLevel": 90,
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/superior-soulstone-314046004",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "324046004",
-    "outputItemId": "513560004",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "513560003",
-        "quantity": 30
-      },
-      {
-        "itemId": "610740001",
-        "quantity": 10
-      },
-      {
-        "itemId": "630543013",
-        "quantity": 2
-      }
-    ],
-    "professionId": "alchemy",
-    "professionLevel": 90,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/superior-soulstone-324046004",
     "verification": "unverified",
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
@@ -2045,27 +1654,6 @@
     "professionLevel": 1,
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/orichalcum-ingot-115016001",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "125016001",
-    "outputItemId": "610710001",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610620013",
-        "quantity": 2
-      },
-      {
-        "itemId": "630541001",
-        "quantity": 1
-      }
-    ],
-    "professionId": "blacksmithing",
-    "professionLevel": 1,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/orichalcum-ingot-125016001",
     "verification": "unverified",
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
@@ -2631,27 +2219,6 @@
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
   {
-    "id": "125016002",
-    "outputItemId": "610710001",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610620013",
-        "quantity": 20
-      },
-      {
-        "itemId": "630541001",
-        "quantity": 10
-      }
-    ],
-    "professionId": "blacksmithing",
-    "professionLevel": 25,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/orichalcum-ingot-125016002",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
     "id": "111014001",
     "outputItemId": "110240013",
     "outputQuantity": 1,
@@ -3001,27 +2568,6 @@
     "professionLevel": 51,
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/fine-thick-balaur-horn-115024001",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "125024001",
-    "outputItemId": "610710006",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "600590001",
-        "quantity": 2
-      },
-      {
-        "itemId": "630520001",
-        "quantity": 1
-      }
-    ],
-    "professionId": "blacksmithing",
-    "professionLevel": 51,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/fine-thick-balaur-horn-125024001",
     "verification": "unverified",
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
@@ -3417,27 +2963,6 @@
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
   {
-    "id": "125024002",
-    "outputItemId": "610710007",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "600590001",
-        "quantity": 2
-      },
-      {
-        "itemId": "630520002",
-        "quantity": 1
-      }
-    ],
-    "professionId": "blacksmithing",
-    "professionLevel": 65,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/fine-hard-balaur-horn-125024002",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
     "id": "115024003",
     "outputItemId": "610710008",
     "outputQuantity": 1,
@@ -3455,27 +2980,6 @@
     "professionLevel": 80,
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/fine-durable-balaur-horn-115024003",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "125024003",
-    "outputItemId": "610710008",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "600590001",
-        "quantity": 2
-      },
-      {
-        "itemId": "630520003",
-        "quantity": 1
-      }
-    ],
-    "professionId": "blacksmithing",
-    "professionLevel": 80,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/fine-durable-balaur-horn-125024003",
     "verification": "unverified",
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
@@ -4465,27 +3969,6 @@
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
   {
-    "id": "225016001",
-    "outputItemId": "610730016",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610660025",
-        "quantity": 2
-      },
-      {
-        "itemId": "630542001",
-        "quantity": 1
-      }
-    ],
-    "professionId": "jewelcrafting",
-    "professionLevel": 1,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/sapphire-decoration-225016001",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
     "id": "215016005",
     "outputItemId": "610730021",
     "outputQuantity": 1,
@@ -4507,27 +3990,6 @@
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
   {
-    "id": "225016005",
-    "outputItemId": "610730021",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610660027",
-        "quantity": 2
-      },
-      {
-        "itemId": "630542001",
-        "quantity": 1
-      }
-    ],
-    "professionId": "jewelcrafting",
-    "professionLevel": 1,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/ruby-decoration-225016005",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
     "id": "215016003",
     "outputItemId": "610730020",
     "outputQuantity": 1,
@@ -4545,27 +4007,6 @@
     "professionLevel": 1,
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/diamond-decoration-215016003",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "225016003",
-    "outputItemId": "610730020",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610660026",
-        "quantity": 2
-      },
-      {
-        "itemId": "630542001",
-        "quantity": 1
-      }
-    ],
-    "professionId": "jewelcrafting",
-    "professionLevel": 1,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/diamond-decoration-225016003",
     "verification": "unverified",
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
@@ -4608,48 +4049,6 @@
     "professionLevel": 1,
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/asvata-wood-225016007",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "215016009",
-    "outputItemId": "610740015",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610530014",
-        "quantity": 2
-      },
-      {
-        "itemId": "630543005",
-        "quantity": 1
-      }
-    ],
-    "professionId": "jewelcrafting",
-    "professionLevel": 1,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/magic-crystal-215016009",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "225016009",
-    "outputItemId": "610740015",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610530014",
-        "quantity": 2
-      },
-      {
-        "itemId": "630543005",
-        "quantity": 1
-      }
-    ],
-    "professionId": "jewelcrafting",
-    "professionLevel": 1,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/magic-crystal-225016009",
     "verification": "unverified",
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
@@ -5315,27 +4714,6 @@
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
   {
-    "id": "225016002",
-    "outputItemId": "610730016",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610660025",
-        "quantity": 20
-      },
-      {
-        "itemId": "630542001",
-        "quantity": 10
-      }
-    ],
-    "professionId": "jewelcrafting",
-    "professionLevel": 25,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/sapphire-decoration-225016002",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
     "id": "215016006",
     "outputItemId": "610730021",
     "outputQuantity": 1,
@@ -5357,27 +4735,6 @@
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
   {
-    "id": "225016006",
-    "outputItemId": "610730021",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610660027",
-        "quantity": 20
-      },
-      {
-        "itemId": "630542001",
-        "quantity": 10
-      }
-    ],
-    "professionId": "jewelcrafting",
-    "professionLevel": 25,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/ruby-decoration-225016006",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
     "id": "215016004",
     "outputItemId": "610730020",
     "outputQuantity": 1,
@@ -5395,27 +4752,6 @@
     "professionLevel": 25,
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/diamond-decoration-215016004",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "225016004",
-    "outputItemId": "610730020",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610660026",
-        "quantity": 20
-      },
-      {
-        "itemId": "630542001",
-        "quantity": 10
-      }
-    ],
-    "professionId": "jewelcrafting",
-    "professionLevel": 25,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/diamond-decoration-225016004",
     "verification": "unverified",
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
@@ -5458,48 +4794,6 @@
     "professionLevel": 25,
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/asvata-wood-225016008",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "215016010",
-    "outputItemId": "610740015",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610530014",
-        "quantity": 20
-      },
-      {
-        "itemId": "630543005",
-        "quantity": 10
-      }
-    ],
-    "professionId": "jewelcrafting",
-    "professionLevel": 25,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/magic-crystal-215016010",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "225016010",
-    "outputItemId": "610740015",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610530014",
-        "quantity": 20
-      },
-      {
-        "itemId": "630543005",
-        "quantity": 10
-      }
-    ],
-    "professionId": "jewelcrafting",
-    "professionLevel": 25,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/magic-crystal-225016010",
     "verification": "unverified",
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
@@ -5894,48 +5188,6 @@
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
   {
-    "id": "215024001",
-    "outputItemId": "610730022",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "600590001",
-        "quantity": 2
-      },
-      {
-        "itemId": "630520007",
-        "quantity": 1
-      }
-    ],
-    "professionId": "jewelcrafting",
-    "professionLevel": 51,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/enhanced-thick-balaur-scale-215024001",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "225024001",
-    "outputItemId": "610730022",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "600590001",
-        "quantity": 2
-      },
-      {
-        "itemId": "630520007",
-        "quantity": 1
-      }
-    ],
-    "professionId": "jewelcrafting",
-    "professionLevel": 51,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/enhanced-thick-balaur-scale-225024001",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
     "id": "211043001",
     "outputItemId": "110430015",
     "outputQuantity": 1,
@@ -6306,90 +5558,6 @@
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
   {
-    "id": "215024002",
-    "outputItemId": "610730023",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "600590001",
-        "quantity": 2
-      },
-      {
-        "itemId": "630520008",
-        "quantity": 1
-      }
-    ],
-    "professionId": "jewelcrafting",
-    "professionLevel": 65,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/enhanced-hard-balaur-scale-215024002",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "225024002",
-    "outputItemId": "610730023",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "600590001",
-        "quantity": 2
-      },
-      {
-        "itemId": "630520008",
-        "quantity": 1
-      }
-    ],
-    "professionId": "jewelcrafting",
-    "professionLevel": 65,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/enhanced-hard-balaur-scale-225024002",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "215024003",
-    "outputItemId": "610730024",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "600590001",
-        "quantity": 2
-      },
-      {
-        "itemId": "630520009",
-        "quantity": 1
-      }
-    ],
-    "professionId": "jewelcrafting",
-    "professionLevel": 80,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/enhanced-durable-balaur-scale-215024003",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "225024003",
-    "outputItemId": "610730024",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "600590001",
-        "quantity": 2
-      },
-      {
-        "itemId": "630520009",
-        "quantity": 1
-      }
-    ],
-    "professionId": "jewelcrafting",
-    "professionLevel": 80,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/enhanced-durable-balaur-scale-225024003",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
     "id": "319016002",
     "outputItemId": "631050002",
     "outputQuantity": 1,
@@ -6464,48 +5632,6 @@
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
   {
-    "id": "415016001",
-    "outputItemId": "610710001",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610620013",
-        "quantity": 2
-      },
-      {
-        "itemId": "630541001",
-        "quantity": 1
-      }
-    ],
-    "professionId": "tailoring",
-    "professionLevel": 1,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/orichalcum-ingot-415016001",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "425016001",
-    "outputItemId": "610710001",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610620013",
-        "quantity": 2
-      },
-      {
-        "itemId": "630541001",
-        "quantity": 1
-      }
-    ],
-    "professionId": "tailoring",
-    "professionLevel": 1,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/orichalcum-ingot-425016001",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
     "id": "415016003",
     "outputItemId": "610720011",
     "outputQuantity": 1,
@@ -6519,23 +5645,6 @@
     "professionLevel": 1,
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/strong-leather-415016003",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "425016003",
-    "outputItemId": "610720011",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610530011",
-        "quantity": 2
-      }
-    ],
-    "professionId": "tailoring",
-    "professionLevel": 1,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/strong-leather-425016003",
     "verification": "unverified",
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
@@ -7352,48 +6461,6 @@
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
   {
-    "id": "415016002",
-    "outputItemId": "610710001",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610620013",
-        "quantity": 20
-      },
-      {
-        "itemId": "630541001",
-        "quantity": 10
-      }
-    ],
-    "professionId": "tailoring",
-    "professionLevel": 25,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/orichalcum-ingot-415016002",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "425016002",
-    "outputItemId": "610710001",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610620013",
-        "quantity": 20
-      },
-      {
-        "itemId": "630541001",
-        "quantity": 10
-      }
-    ],
-    "professionId": "tailoring",
-    "professionLevel": 25,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/orichalcum-ingot-425016002",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
     "id": "415016004",
     "outputItemId": "610720011",
     "outputQuantity": 1,
@@ -7407,23 +6474,6 @@
     "professionLevel": 25,
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/strong-leather-415016004",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "425016004",
-    "outputItemId": "610720011",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "610530011",
-        "quantity": 20
-      }
-    ],
-    "professionId": "tailoring",
-    "professionLevel": 25,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/strong-leather-425016004",
     "verification": "unverified",
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
@@ -7893,27 +6943,6 @@
     "professionLevel": 51,
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/tanned-thick-balaur-leather-415024001",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "425024001",
-    "outputItemId": "610710009",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "600590001",
-        "quantity": 2
-      },
-      {
-        "itemId": "630520004",
-        "quantity": 1
-      }
-    ],
-    "professionId": "tailoring",
-    "professionLevel": 51,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/tanned-thick-balaur-leather-425024001",
     "verification": "unverified",
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
@@ -8457,27 +7486,6 @@
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },
   {
-    "id": "425024002",
-    "outputItemId": "610710010",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "600590001",
-        "quantity": 2
-      },
-      {
-        "itemId": "630520005",
-        "quantity": 1
-      }
-    ],
-    "professionId": "tailoring",
-    "professionLevel": 65,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/tanned-hard-balaur-leather-425024002",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
     "id": "415024003",
     "outputItemId": "610710011",
     "outputQuantity": 1,
@@ -8495,27 +7503,6 @@
     "professionLevel": 80,
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/tanned-durable-balaur-leather-415024003",
-    "verification": "unverified",
-    "notes": "Output quantity is assumed to be 1; not shown on the source page."
-  },
-  {
-    "id": "425024003",
-    "outputItemId": "610710011",
-    "outputQuantity": 1,
-    "ingredients": [
-      {
-        "itemId": "600590001",
-        "quantity": 2
-      },
-      {
-        "itemId": "630520006",
-        "quantity": 1
-      }
-    ],
-    "professionId": "tailoring",
-    "professionLevel": 80,
-    "source": "aion2.gg",
-    "sourceUrl": "https://aion2.gg/database/recipes/tanned-durable-balaur-leather-425024003",
     "verification": "unverified",
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
   },

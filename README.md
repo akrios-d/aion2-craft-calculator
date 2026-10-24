@@ -1,10 +1,10 @@
-# Aion 2 Craft Lab
+﻿# Aion 2 Craft Lab
 
 A fully client-side Angular app (standalone components, no backend, no database, no auth, no env vars) for planning Aion 2 crafting: recursive material expansion, inventory deduction, buy-or-craft choices, and profitability from **manually entered** Auction House prices.
 
 ## Important: recipe data coverage
 
-The bundled dataset has 512 recipe entries and 684 items from Aion2.gg (see [docs/DATA-COVERAGE.md](docs/DATA-COVERAGE.md), regenerate with `npm run coverage`). Output quantity is assumed to be 1 because the source pages do not show it; Elyos and Asmodian versions are separate entries.
+The bundled dataset has 463 recipes and 684 items from Aion2.gg (see [docs/DATA-COVERAGE.md](docs/DATA-COVERAGE.md), regenerate with `npm run coverage`). Output quantity is assumed to be 1 because the source pages do not show it; identical Elyos/Asmodian variants are merged into one.
 
 Refresh the data: `node scripts/fetch-aion2gg.mjs` (reads public recipe pages with a delay, writes `tmp/aion2gg-pack.json`), then `npm run import:recipes -- --in tmp/aion2gg-pack.json --source-url https://aion2.gg --permission "<who/when>"`.
 

@@ -52,13 +52,12 @@ import { ImportPanel } from './import-panel';
     <input [placeholder]="'Filter…' | tr" [ngModel]="filter()" (ngModelChange)="filter.set($event)" />
     @if (rows().length) {
       <table>
-        <thead><tr><th>{{ 'Output' | tr }}</th><th>{{ 'Ingredients' | tr }}</th><th>{{ 'Status' | tr }}</th><th>{{ 'Source' | tr }}</th><th></th></tr></thead>
+        <thead><tr><th>{{ 'Output' | tr }}</th><th>{{ 'Ingredients' | tr }}</th><th></th></tr></thead>
         <tbody>
           @for (r of rows().slice(0, 300); track r.id) {
             <tr>
               <td><app-ico [id]="r.outputItemId" />{{ r.outputQuantity }}× {{ store.nameOf(r.outputItemId) }}</td>
               <td>@for (g of r.ingredients; track $index) { <span class="chip"><app-ico [id]="g.itemId" />{{ g.quantity }}× {{ store.nameOf(g.itemId) }}</span> }</td>
-              <td>{{ r.verification | tr }}</td><td>{{ r.source }}</td>
               <td>@if (r.verification === 'user-entered') { <button (click)="store.deleteCustomRecipe(r.id)">{{ 'Delete' | tr }}</button> }</td>
             </tr>
           }
