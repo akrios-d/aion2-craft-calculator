@@ -15500,28 +15500,16 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "110530013",
+        "itemId": "110530015",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 4
-      },
-      {
         "itemId": "610730022",
-        "quantity": 22
+        "quantity": 11
       },
       {
         "itemId": "610511013",
-        "quantity": 10
-      },
-      {
-        "itemId": "610660036",
-        "quantity": 9
-      },
-      {
-        "itemId": "610610016",
-        "quantity": 5
+        "quantity": 4
       }
     ],
     "professionId": "alchemy",
@@ -15529,7 +15517,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/true-dragon-lord-spellbook-311053001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 311053001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 311053011 (bound twin of this item)."
   },
   {
     "id": "combo-321053001",
@@ -15537,28 +15525,16 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "110530014",
+        "itemId": "110530019",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 4
-      },
-      {
         "itemId": "610730022",
-        "quantity": 22
+        "quantity": 11
       },
       {
         "itemId": "610511013",
-        "quantity": 10
-      },
-      {
-        "itemId": "610660036",
-        "quantity": 9
-      },
-      {
-        "itemId": "610610016",
-        "quantity": 5
+        "quantity": 4
       }
     ],
     "professionId": "alchemy",
@@ -15566,7 +15542,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/star-dragon-lord-spellbook-321053001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 321053001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 321053011 (bound twin of this item)."
   },
   {
     "id": "combo-311093001",
@@ -15574,28 +15550,16 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "110630013",
+        "itemId": "110630015",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 4
-      },
-      {
         "itemId": "610730022",
-        "quantity": 22
+        "quantity": 11
       },
       {
         "itemId": "610511013",
-        "quantity": 10
-      },
-      {
-        "itemId": "610660034",
-        "quantity": 9
-      },
-      {
-        "itemId": "610610016",
-        "quantity": 5
+        "quantity": 4
       }
     ],
     "professionId": "alchemy",
@@ -15603,7 +15567,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/true-dragon-lord-orb-311093001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 311093001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 311093011 (bound twin of this item)."
   },
   {
     "id": "combo-321093001",
@@ -15611,28 +15575,16 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "110630014",
+        "itemId": "110630019",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 4
-      },
-      {
         "itemId": "610730022",
-        "quantity": 22
+        "quantity": 11
       },
       {
         "itemId": "610511013",
-        "quantity": 10
-      },
-      {
-        "itemId": "610660034",
-        "quantity": 9
-      },
-      {
-        "itemId": "610610016",
-        "quantity": 5
+        "quantity": 4
       }
     ],
     "professionId": "alchemy",
@@ -15640,7 +15592,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/star-dragon-lord-orb-321093001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 321093001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 321093011 (bound twin of this item)."
   },
   {
     "id": "combo-111016001",
@@ -16478,28 +16430,16 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "110230013",
+        "itemId": "110230015",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 4
-      },
-      {
         "itemId": "610710006",
-        "quantity": 22
+        "quantity": 11
       },
       {
         "itemId": "610511013",
-        "quantity": 10
-      },
-      {
-        "itemId": "610620016",
-        "quantity": 9
-      },
-      {
-        "itemId": "610610016",
-        "quantity": 5
+        "quantity": 4
       }
     ],
     "professionId": "blacksmithing",
@@ -16507,7 +16447,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/true-dragon-lord-longsword-111013001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 111013001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 111013011 (bound twin of this item)."
   },
   {
     "id": "combo-121013001",
@@ -16515,28 +16455,16 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "110230014",
+        "itemId": "110230019",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 4
-      },
-      {
         "itemId": "610710006",
-        "quantity": 22
+        "quantity": 11
       },
       {
         "itemId": "610511013",
-        "quantity": 10
-      },
-      {
-        "itemId": "610620016",
-        "quantity": 9
-      },
-      {
-        "itemId": "610610016",
-        "quantity": 5
+        "quantity": 4
       }
     ],
     "professionId": "blacksmithing",
@@ -16544,7 +16472,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/star-dragon-lord-longsword-121013001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 121013001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 121013011 (bound twin of this item)."
   },
   {
     "id": "combo-111023001",
@@ -16552,28 +16480,16 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "110130013",
+        "itemId": "110130015",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 4
-      },
-      {
         "itemId": "610710006",
-        "quantity": 22
+        "quantity": 11
       },
       {
         "itemId": "610511013",
-        "quantity": 10
-      },
-      {
-        "itemId": "610620016",
-        "quantity": 9
-      },
-      {
-        "itemId": "610610016",
-        "quantity": 5
+        "quantity": 4
       }
     ],
     "professionId": "blacksmithing",
@@ -16581,7 +16497,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/true-dragon-lord-greatsword-111023001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 111023001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 111023011 (bound twin of this item)."
   },
   {
     "id": "combo-121023001",
@@ -16589,28 +16505,16 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "110130014",
+        "itemId": "110130019",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 4
-      },
-      {
         "itemId": "610710006",
-        "quantity": 22
+        "quantity": 11
       },
       {
         "itemId": "610511013",
-        "quantity": 10
-      },
-      {
-        "itemId": "610620016",
-        "quantity": 9
-      },
-      {
-        "itemId": "610610016",
-        "quantity": 5
+        "quantity": 4
       }
     ],
     "professionId": "blacksmithing",
@@ -16618,7 +16522,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/star-dragon-lord-greatsword-121023001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 121023001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 121023011 (bound twin of this item)."
   },
   {
     "id": "combo-111033001",
@@ -16626,28 +16530,16 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "110330013",
+        "itemId": "110330015",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 4
-      },
-      {
         "itemId": "610710006",
-        "quantity": 22
+        "quantity": 11
       },
       {
         "itemId": "610511013",
-        "quantity": 10
-      },
-      {
-        "itemId": "610620016",
-        "quantity": 9
-      },
-      {
-        "itemId": "610610016",
-        "quantity": 5
+        "quantity": 4
       }
     ],
     "professionId": "blacksmithing",
@@ -16655,7 +16547,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/true-dragon-lord-dagger-111033001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 111033001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 111033011 (bound twin of this item)."
   },
   {
     "id": "combo-121033001",
@@ -16663,28 +16555,16 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "110330014",
+        "itemId": "110330019",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 4
-      },
-      {
         "itemId": "610710006",
-        "quantity": 22
+        "quantity": 11
       },
       {
         "itemId": "610511013",
-        "quantity": 10
-      },
-      {
-        "itemId": "610620016",
-        "quantity": 9
-      },
-      {
-        "itemId": "610610016",
-        "quantity": 5
+        "quantity": 4
       }
     ],
     "professionId": "blacksmithing",
@@ -16692,7 +16572,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/star-dragon-lord-dagger-121033001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 121033001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 121033011 (bound twin of this item)."
   },
   {
     "id": "combo-111063001",
@@ -16700,28 +16580,16 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "110730013",
+        "itemId": "110730015",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 4
-      },
-      {
         "itemId": "610710006",
-        "quantity": 22
+        "quantity": 11
       },
       {
         "itemId": "610511013",
-        "quantity": 10
-      },
-      {
-        "itemId": "610620016",
-        "quantity": 9
-      },
-      {
-        "itemId": "610610016",
-        "quantity": 5
+        "quantity": 4
       }
     ],
     "professionId": "blacksmithing",
@@ -16729,7 +16597,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/true-dragon-lord-mace-111063001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 111063001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 111063011 (bound twin of this item)."
   },
   {
     "id": "combo-121063001",
@@ -16737,28 +16605,16 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "110730014",
+        "itemId": "110730019",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 4
-      },
-      {
         "itemId": "610710006",
-        "quantity": 22
+        "quantity": 11
       },
       {
         "itemId": "610511013",
-        "quantity": 10
-      },
-      {
-        "itemId": "610620016",
-        "quantity": 9
-      },
-      {
-        "itemId": "610610016",
-        "quantity": 5
+        "quantity": 4
       }
     ],
     "professionId": "blacksmithing",
@@ -16766,7 +16622,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/star-dragon-lord-mace-121063001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 121063001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 121063011 (bound twin of this item)."
   },
   {
     "id": "combo-111083001",
@@ -16774,28 +16630,16 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "115030013",
+        "itemId": "115030015",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 4
-      },
-      {
         "itemId": "610710006",
-        "quantity": 22
+        "quantity": 11
       },
       {
         "itemId": "610511013",
-        "quantity": 10
-      },
-      {
-        "itemId": "610620016",
-        "quantity": 9
-      },
-      {
-        "itemId": "610610016",
-        "quantity": 5
+        "quantity": 4
       }
     ],
     "professionId": "blacksmithing",
@@ -16803,7 +16647,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/true-dragon-lord-guard-111083001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 111083001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 111083011 (bound twin of this item)."
   },
   {
     "id": "combo-121083001",
@@ -16811,28 +16655,16 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "115030014",
+        "itemId": "115030019",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 4
-      },
-      {
         "itemId": "610710006",
-        "quantity": 22
+        "quantity": 11
       },
       {
         "itemId": "610511013",
-        "quantity": 10
-      },
-      {
-        "itemId": "610620016",
-        "quantity": 9
-      },
-      {
-        "itemId": "610610016",
-        "quantity": 5
+        "quantity": 4
       }
     ],
     "professionId": "blacksmithing",
@@ -16840,7 +16672,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/star-dragon-lord-guard-121083001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 121083001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 121083011 (bound twin of this item)."
   },
   {
     "id": "combo-211046001",
@@ -17678,28 +17510,16 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "110430013",
+        "itemId": "110430015",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 4
-      },
-      {
         "itemId": "610730022",
-        "quantity": 22
+        "quantity": 11
       },
       {
         "itemId": "610511013",
-        "quantity": 10
-      },
-      {
-        "itemId": "610650017",
-        "quantity": 9
-      },
-      {
-        "itemId": "610610016",
-        "quantity": 5
+        "quantity": 4
       }
     ],
     "professionId": "jewelcrafting",
@@ -17707,7 +17527,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/true-dragon-lord-bow-211043001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 211043001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 211043011 (bound twin of this item)."
   },
   {
     "id": "combo-221043001",
@@ -17715,28 +17535,16 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "110430014",
+        "itemId": "110430019",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 4
-      },
-      {
         "itemId": "610730022",
-        "quantity": 22
+        "quantity": 11
       },
       {
         "itemId": "610511013",
-        "quantity": 10
-      },
-      {
-        "itemId": "610650018",
-        "quantity": 9
-      },
-      {
-        "itemId": "610610016",
-        "quantity": 5
+        "quantity": 4
       }
     ],
     "professionId": "jewelcrafting",
@@ -17744,7 +17552,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/star-dragon-lord-bow-221043001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 221043001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 221043011 (bound twin of this item)."
   },
   {
     "id": "combo-211103001",
@@ -17752,28 +17560,16 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "110830013",
+        "itemId": "110830015",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 4
-      },
-      {
         "itemId": "610730022",
-        "quantity": 22
+        "quantity": 11
       },
       {
         "itemId": "610511013",
-        "quantity": 10
-      },
-      {
-        "itemId": "610650017",
-        "quantity": 9
-      },
-      {
-        "itemId": "610610016",
-        "quantity": 5
+        "quantity": 4
       }
     ],
     "professionId": "jewelcrafting",
@@ -17781,7 +17577,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/true-dragon-lord-staff-211103001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 211103001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 211103011 (bound twin of this item)."
   },
   {
     "id": "combo-221103001",
@@ -17789,28 +17585,16 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "110830014",
+        "itemId": "110830019",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 4
-      },
-      {
         "itemId": "610730022",
-        "quantity": 22
+        "quantity": 11
       },
       {
         "itemId": "610511013",
-        "quantity": 10
-      },
-      {
-        "itemId": "610650018",
-        "quantity": 9
-      },
-      {
-        "itemId": "610610016",
-        "quantity": 5
+        "quantity": 4
       }
     ],
     "professionId": "jewelcrafting",
@@ -17818,7 +17602,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/star-dragon-lord-staff-221103001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 221103001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 221103011 (bound twin of this item)."
   },
   {
     "id": "combo-213033001",
@@ -17826,27 +17610,15 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "310330013",
+        "itemId": "310330015",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 2
-      },
-      {
         "itemId": "610730022",
-        "quantity": 8
-      },
-      {
-        "itemId": "610511013",
         "quantity": 4
       },
       {
-        "itemId": "610660034",
-        "quantity": 3
-      },
-      {
-        "itemId": "610610016",
+        "itemId": "610511013",
         "quantity": 2
       }
     ],
@@ -17855,7 +17627,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/true-dragon-lord-ring-213033001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 213033001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 213033011 (bound twin of this item)."
   },
   {
     "id": "combo-223033001",
@@ -17863,27 +17635,15 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "310330014",
+        "itemId": "310330019",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 2
-      },
-      {
         "itemId": "610730022",
-        "quantity": 8
-      },
-      {
-        "itemId": "610511013",
         "quantity": 4
       },
       {
-        "itemId": "610660034",
-        "quantity": 3
-      },
-      {
-        "itemId": "610610016",
+        "itemId": "610511013",
         "quantity": 2
       }
     ],
@@ -17892,7 +17652,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/star-dragon-lord-ring-223033001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 223033001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 223033011 (bound twin of this item)."
   },
   {
     "id": "combo-213023001",
@@ -17900,27 +17660,15 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "310230013",
+        "itemId": "310230015",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 2
-      },
-      {
         "itemId": "610730022",
-        "quantity": 11
+        "quantity": 6
       },
       {
         "itemId": "610511013",
-        "quantity": 5
-      },
-      {
-        "itemId": "610660035",
-        "quantity": 5
-      },
-      {
-        "itemId": "610610016",
         "quantity": 2
       }
     ],
@@ -17929,7 +17677,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/true-dragon-lord-earrings-213023001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 213023001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 213023011 (bound twin of this item)."
   },
   {
     "id": "combo-223023001",
@@ -17937,27 +17685,15 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "310230014",
+        "itemId": "310230019",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 2
-      },
-      {
         "itemId": "610730022",
-        "quantity": 11
+        "quantity": 6
       },
       {
         "itemId": "610511013",
-        "quantity": 5
-      },
-      {
-        "itemId": "610660035",
-        "quantity": 5
-      },
-      {
-        "itemId": "610610016",
         "quantity": 2
       }
     ],
@@ -17966,7 +17702,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/star-dragon-lord-earrings-223023001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 223023001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 223023011 (bound twin of this item)."
   },
   {
     "id": "combo-213013001",
@@ -17974,27 +17710,15 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "310130013",
+        "itemId": "310130015",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 3
-      },
-      {
         "itemId": "610730022",
-        "quantity": 14
+        "quantity": 7
       },
       {
         "itemId": "610511013",
-        "quantity": 6
-      },
-      {
-        "itemId": "610660036",
-        "quantity": 6
-      },
-      {
-        "itemId": "610610016",
         "quantity": 2
       }
     ],
@@ -18003,7 +17727,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/true-dragon-lord-necklace-213013001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 213013001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 213013011 (bound twin of this item)."
   },
   {
     "id": "combo-223013001",
@@ -18011,27 +17735,15 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "310130014",
+        "itemId": "310130019",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 3
-      },
-      {
         "itemId": "610730022",
-        "quantity": 14
+        "quantity": 7
       },
       {
         "itemId": "610511013",
-        "quantity": 6
-      },
-      {
-        "itemId": "610660036",
-        "quantity": 6
-      },
-      {
-        "itemId": "610610016",
         "quantity": 2
       }
     ],
@@ -18040,7 +17752,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/star-dragon-lord-necklace-223013001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 223013001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 223013011 (bound twin of this item)."
   },
   {
     "id": "combo-412016001",
@@ -19266,27 +18978,15 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "210130013",
+        "itemId": "210130015",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 3
-      },
-      {
         "itemId": "610710009",
-        "quantity": 15
+        "quantity": 8
       },
       {
         "itemId": "610511013",
-        "quantity": 7
-      },
-      {
-        "itemId": "610620016",
-        "quantity": 6
-      },
-      {
-        "itemId": "610610016",
         "quantity": 3
       }
     ],
@@ -19295,7 +18995,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/true-dragon-lord-breastplate-412013001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 412013001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 412013011 (bound twin of this item)."
   },
   {
     "id": "combo-422013001",
@@ -19303,27 +19003,15 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "210130014",
+        "itemId": "210130019",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 3
-      },
-      {
         "itemId": "610710009",
-        "quantity": 15
+        "quantity": 8
       },
       {
         "itemId": "610511013",
-        "quantity": 7
-      },
-      {
-        "itemId": "610620016",
-        "quantity": 6
-      },
-      {
-        "itemId": "610610016",
         "quantity": 3
       }
     ],
@@ -19332,7 +19020,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/star-dragon-lord-breastplate-422013001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 422013001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 422013011 (bound twin of this item)."
   },
   {
     "id": "combo-412023001",
@@ -19340,27 +19028,15 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "210230013",
+        "itemId": "210230015",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 2
-      },
-      {
         "itemId": "610710009",
-        "quantity": 11
+        "quantity": 6
       },
       {
         "itemId": "610511013",
-        "quantity": 5
-      },
-      {
-        "itemId": "610620016",
-        "quantity": 4
-      },
-      {
-        "itemId": "610610016",
         "quantity": 2
       }
     ],
@@ -19369,7 +19045,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/true-dragon-lord-greaves-412023001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 412023001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 412023011 (bound twin of this item)."
   },
   {
     "id": "combo-422023001",
@@ -19377,27 +19053,15 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "210230014",
+        "itemId": "210230019",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 2
-      },
-      {
         "itemId": "610710009",
-        "quantity": 11
+        "quantity": 6
       },
       {
         "itemId": "610511013",
-        "quantity": 5
-      },
-      {
-        "itemId": "610620016",
-        "quantity": 4
-      },
-      {
-        "itemId": "610610016",
         "quantity": 2
       }
     ],
@@ -19406,7 +19070,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/star-dragon-lord-greaves-422023001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 422023001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 422023011 (bound twin of this item)."
   },
   {
     "id": "combo-412033001",
@@ -19414,27 +19078,15 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "210330013",
+        "itemId": "210330015",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 2
-      },
-      {
         "itemId": "610710009",
-        "quantity": 9
+        "quantity": 5
       },
       {
         "itemId": "610511013",
-        "quantity": 4
-      },
-      {
-        "itemId": "610620016",
-        "quantity": 3
-      },
-      {
-        "itemId": "610610016",
         "quantity": 2
       }
     ],
@@ -19443,7 +19095,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/true-dragon-lord-helm-412033001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 412033001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 412033011 (bound twin of this item)."
   },
   {
     "id": "combo-422033001",
@@ -19451,27 +19103,15 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "210330014",
+        "itemId": "210330019",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 2
-      },
-      {
         "itemId": "610710009",
-        "quantity": 9
+        "quantity": 5
       },
       {
         "itemId": "610511013",
-        "quantity": 4
-      },
-      {
-        "itemId": "610620016",
-        "quantity": 3
-      },
-      {
-        "itemId": "610610016",
         "quantity": 2
       }
     ],
@@ -19480,7 +19120,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/star-dragon-lord-helm-422033001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 422033001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 422033011 (bound twin of this item)."
   },
   {
     "id": "combo-412043001",
@@ -19488,27 +19128,15 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "210430013",
+        "itemId": "210430015",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 2
-      },
-      {
         "itemId": "610710009",
-        "quantity": 9
+        "quantity": 5
       },
       {
         "itemId": "610511013",
-        "quantity": 4
-      },
-      {
-        "itemId": "610620016",
-        "quantity": 3
-      },
-      {
-        "itemId": "610610016",
         "quantity": 2
       }
     ],
@@ -19517,7 +19145,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/true-dragon-lord-pauldrons-412043001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 412043001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 412043011 (bound twin of this item)."
   },
   {
     "id": "combo-422043001",
@@ -19525,27 +19153,15 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "210430014",
+        "itemId": "210430019",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 2
-      },
-      {
         "itemId": "610710009",
-        "quantity": 9
+        "quantity": 5
       },
       {
         "itemId": "610511013",
-        "quantity": 4
-      },
-      {
-        "itemId": "610620016",
-        "quantity": 3
-      },
-      {
-        "itemId": "610610016",
         "quantity": 2
       }
     ],
@@ -19554,7 +19170,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/star-dragon-lord-pauldrons-422043001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 422043001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 422043011 (bound twin of this item)."
   },
   {
     "id": "combo-412053001",
@@ -19562,28 +19178,16 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "210530013",
+        "itemId": "210530015",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 2
-      },
-      {
         "itemId": "610710009",
-        "quantity": 7
+        "quantity": 4
       },
       {
         "itemId": "610511013",
-        "quantity": 3
-      },
-      {
-        "itemId": "610620016",
-        "quantity": 2
-      },
-      {
-        "itemId": "610610016",
-        "quantity": 2
+        "quantity": 1
       }
     ],
     "professionId": "tailoring",
@@ -19591,7 +19195,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/true-dragon-lord-gloves-412053001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 412053001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 412053011 (bound twin of this item)."
   },
   {
     "id": "combo-422053001",
@@ -19599,28 +19203,16 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "210530014",
+        "itemId": "210530019",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 2
-      },
-      {
         "itemId": "610710009",
-        "quantity": 7
+        "quantity": 4
       },
       {
         "itemId": "610511013",
-        "quantity": 3
-      },
-      {
-        "itemId": "610620016",
-        "quantity": 2
-      },
-      {
-        "itemId": "610610016",
-        "quantity": 2
+        "quantity": 1
       }
     ],
     "professionId": "tailoring",
@@ -19628,7 +19220,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/star-dragon-lord-gloves-422053001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 422053001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 422053011 (bound twin of this item)."
   },
   {
     "id": "combo-412063001",
@@ -19636,27 +19228,15 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "210630013",
+        "itemId": "210630015",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 2
-      },
-      {
         "itemId": "610710009",
-        "quantity": 9
-      },
-      {
-        "itemId": "610511013",
         "quantity": 5
       },
       {
-        "itemId": "610620016",
-        "quantity": 2
-      },
-      {
-        "itemId": "610610016",
+        "itemId": "610511013",
         "quantity": 2
       }
     ],
@@ -19665,7 +19245,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/true-dragon-lord-boots-412063001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 412063001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 412063011 (bound twin of this item)."
   },
   {
     "id": "combo-422063001",
@@ -19673,27 +19253,15 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "210630014",
+        "itemId": "210630019",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 2
-      },
-      {
         "itemId": "610710009",
-        "quantity": 9
-      },
-      {
-        "itemId": "610511013",
         "quantity": 5
       },
       {
-        "itemId": "610620016",
-        "quantity": 2
-      },
-      {
-        "itemId": "610610016",
+        "itemId": "610511013",
         "quantity": 2
       }
     ],
@@ -19702,7 +19270,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/star-dragon-lord-boots-422063001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 422063001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 422063011 (bound twin of this item)."
   },
   {
     "id": "combo-412073001",
@@ -19710,28 +19278,16 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "210730013",
+        "itemId": "210730015",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 2
-      },
-      {
         "itemId": "610710009",
-        "quantity": 7
+        "quantity": 4
       },
       {
         "itemId": "610511013",
-        "quantity": 3
-      },
-      {
-        "itemId": "610620016",
-        "quantity": 2
-      },
-      {
-        "itemId": "610610016",
-        "quantity": 2
+        "quantity": 1
       }
     ],
     "professionId": "tailoring",
@@ -19739,7 +19295,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/true-dragon-lord-cloak-412073001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 412073001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 412073011 (bound twin of this item)."
   },
   {
     "id": "combo-422073001",
@@ -19747,28 +19303,16 @@
     "outputQuantity": 1,
     "ingredients": [
       {
-        "itemId": "210730014",
+        "itemId": "210730019",
         "quantity": 1
       },
       {
-        "itemId": "610530010",
-        "quantity": 2
-      },
-      {
         "itemId": "610710009",
-        "quantity": 7
+        "quantity": 4
       },
       {
         "itemId": "610511013",
-        "quantity": 3
-      },
-      {
-        "itemId": "610620016",
-        "quantity": 2
-      },
-      {
-        "itemId": "610610016",
-        "quantity": 2
+        "quantity": 1
       }
     ],
     "professionId": "tailoring",
@@ -19776,7 +19320,7 @@
     "source": "aion2.gg",
     "sourceUrl": "https://aion2.gg/database/recipes/star-dragon-lord-cloak-422073001",
     "verification": "unverified",
-    "notes": "COMBO result of recipe 422073001: only 13.5% of crafts (lowest proficiency; up to more at higher proficiency) yield this item."
+    "notes": "Uses the upgrade recipe of 422073011 (bound twin of this item)."
   },
   {
     "id": "combo-311053012",
