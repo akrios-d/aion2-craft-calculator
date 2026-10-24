@@ -55,8 +55,11 @@ export class AppStore {
     const faction = this.settings().faction;
     return [...this.catalog().items, ...this.data().customItems.filter((i) => !known.has(i.id))].map((i) => {
       const name = (pt && i.names?.pt) || i.name;
-      if (!i.faction || faction !== 'all') return name === i.name ? i : { ...i, name };
-      return { ...i, name: `\ (\)` };
+      const tags = [
+        i.faction && faction === 'all' ? (i.faction === 'Elyos' ? 'Elyos' : pt ? 'Asmodianos' : 'Asmodians') : '',
+        i.bound ? (pt ? 'Vinculado ao obter' : 'Bind on pickup') : '',
+      ].filter(Boolean);
+      return tags.length ? { ...i, name: `${name} (${tags.join(', ')})` } : name === i.name ? i : { ...i, name };
     });
   });
   /** Items offered to the user: other-faction variants are hidden once a faction is chosen. */

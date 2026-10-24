@@ -13,7 +13,7 @@ You can also add recipes by:
 2. Importing a JSON recipe pack (`{ "items": [...], "recipes": [...] }`) on the **Data** page.
 3. Maintainers: `npm run import:recipes -- --in <local-file> --source-url <url> --permission "<who/where permission was granted>"` converts a local file into `public/data/*.json` and updates the manifest. It never downloads anything.
 4. **Substance Morph:** `npm run import:morph` adds 29 recipes that convert 1 Odyle (Odyle / Fine / Pure / Radiant, matching the material's grade) into a gatherable ore, gem, log, herb or cooking ingredient. Source is game8.co, so they are marked `unverified`. Run it again after every `import:recipes`. In the calculator, a material with a price and a morph recipe uses the "auto" buy/craft strategy, so Odyle is used when it is cheaper than buying; weekly limits and success chances are not modelled.
-The Auction House fee default (10%) is an unverified placeholder; change it in Settings.
+5. **COMBO results:** `node scripts/add-combo-recipes.mjs --delay 250` adds a `combo-<id>` recipe for each craft that can produce a COMBO item (e.g. Splendent gear), with `outputChance` set to the page's per-craft chance (lowest proficiency). Plans use the expected yield, so costs are averages. It also flags same-name Bind-on-pickup items. Run it after `import:morph`.The Auction House fee default (10%) is an unverified placeholder; change it in Settings.
 
 ## Local setup
 

@@ -115,11 +115,15 @@ export function auctionNetPrice(listingPrice: number, feePercent: number): numbe
   return listingPrice * (1 - feePercent / 100);
 }
 
+/** Expected items per batch; below the output quantity for recipes with a chance (e.g. COMBO) result. */
+const expectedYield = (r: Recipe): number => r.outputQuantity * (r.outputChance ?? 1);
+
 export function validateRecipe(recipe: Recipe): string | null {
   if (!recipe.outputItemId) return 'missing output item';
   if (!Number.isInteger(recipe.outputQuantity) || recipe.outputQuantity <= 0) {
     return 'output quantity must be a positive integer';
   }
+  if (recipe.outputChance !== undefined && !(recipe.outputChance > 0 && recipe.outputChance <= 1)) return 'output chance must be above 0 and at most 1';
   if (!recipe.ingredients?.length) return 'no ingredients';
   for (const ing of recipe.ingredients) {
     if (!ing.itemId) return 'ingredient without item id';
@@ -215,7 +219,7 @@ export function calculateCraft(input: CalcInput): CalcResult {
       if (c === undefined) return undefined;
       total += c * ing.quantity;
     }
-    return total / recipe.outputQuantity;
+    return total / expectedYield(recipe);
   };
 
   const inventoryLeft = new Map<string, number>();
@@ -295,8 +299,8 @@ export function calculateCraft(input: CalcInput): CalcResult {
     if (craft && recipe) {
       node.action = 'craft';
       node.recipeId = recipe.id;
-      node.batches = Math.ceil(remaining / recipe.outputQuantity);
-      node.produced = node.batches * recipe.outputQuantity;
+      node.batches = Math.ceil(remaining / expectedYield(recipe));
+      node.produced = recipe.outputChance === undefined ? node.batches * recipe.outputQuantity : remaining;
       const extra = node.produced - remaining;
       if (extra > 0) surplus.set(itemId, (surplus.get(itemId) ?? 0) + extra);
       const line = crafts.get(itemId) ?? {

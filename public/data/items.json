@@ -5235,7 +5235,8 @@
       "pt": "Grimório do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec38038d8b9e0c8a714bd4270ab1dec23b5559c9",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": true
   },
   {
     "id": "110530100",
@@ -5247,7 +5248,8 @@
       "pt": "Grimório do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec38038d8b9e0c8a714bd4270ab1dec23b5559c9",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": true
   },
   {
     "id": "110630096",
@@ -5259,7 +5261,8 @@
       "pt": "Orbe do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc41aa29a1eb993db49108d9978704eac396064f10",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": true
   },
   {
     "id": "110630100",
@@ -5271,7 +5274,8 @@
       "pt": "Orbe do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc41aa29a1eb993db49108d9978704eac396064f10",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": true
   },
   {
     "id": "110530017",
@@ -5283,7 +5287,8 @@
       "pt": "Grimório do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec38038d8b9e0c8a714bd4270ab1dec23b5559c9",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": false
   },
   {
     "id": "610511014",
@@ -5317,7 +5322,8 @@
       "pt": "Grimório do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec38038d8b9e0c8a714bd4270ab1dec23b5559c9",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": false
   },
   {
     "id": "110530099",
@@ -5340,7 +5346,8 @@
       "pt": "Orbe do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc41aa29a1eb993db49108d9978704eac396064f10",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": false
   },
   {
     "id": "110630095",
@@ -5363,7 +5370,8 @@
       "pt": "Orbe do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc41aa29a1eb993db49108d9978704eac396064f10",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": false
   },
   {
     "id": "110630099",
@@ -5529,7 +5537,8 @@
       "pt": "Espada Longa do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3dfb8c2a26aa4076345c8e97294b60d40f6e33dd",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": true
   },
   {
     "id": "110230100",
@@ -5541,7 +5550,8 @@
       "pt": "Espada Longa do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3dfb8c2a26aa4076345c8e97294b60d40f6e33dd",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": true
   },
   {
     "id": "110130096",
@@ -5553,7 +5563,8 @@
       "pt": "Montante do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6397bc4b16445cfbff0756c37ecdccc69c281f66",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": true
   },
   {
     "id": "110130100",
@@ -5565,7 +5576,8 @@
       "pt": "Montante do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6397bc4b16445cfbff0756c37ecdccc69c281f66",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": true
   },
   {
     "id": "110330096",
@@ -5577,7 +5589,8 @@
       "pt": "Adaga do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0a4e2188cdbadfec7d049418dce28b26c6a7d3fb",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": true
   },
   {
     "id": "110330100",
@@ -5589,7 +5602,8 @@
       "pt": "Adaga do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0a4e2188cdbadfec7d049418dce28b26c6a7d3fb",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": true
   },
   {
     "id": "110730096",
@@ -5601,7 +5615,8 @@
       "pt": "Maça do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3be0eb622417e87ae7e51a38aff8a0c8358a2df4",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": true
   },
   {
     "id": "110730100",
@@ -5613,7 +5628,8 @@
       "pt": "Maça do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3be0eb622417e87ae7e51a38aff8a0c8358a2df4",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": true
   },
   {
     "id": "115030094",
@@ -5625,7 +5641,8 @@
       "pt": "Guarda-braço do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8e542465f96ef562900ceaa35f2c822bddbb1657",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": true
   },
   {
     "id": "115030098",
@@ -5637,7 +5654,8 @@
       "pt": "Guarda-braço do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8e542465f96ef562900ceaa35f2c822bddbb1657",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": true
   },
   {
     "id": "110230017",
@@ -5649,7 +5667,8 @@
       "pt": "Espada Longa do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3dfb8c2a26aa4076345c8e97294b60d40f6e33dd",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": false
   },
   {
     "id": "110230095",
@@ -5672,7 +5691,8 @@
       "pt": "Espada Longa do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3dfb8c2a26aa4076345c8e97294b60d40f6e33dd",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": false
   },
   {
     "id": "110230099",
@@ -5695,7 +5715,8 @@
       "pt": "Montante do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6397bc4b16445cfbff0756c37ecdccc69c281f66",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": false
   },
   {
     "id": "110130095",
@@ -5718,7 +5739,8 @@
       "pt": "Montante do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc6397bc4b16445cfbff0756c37ecdccc69c281f66",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": false
   },
   {
     "id": "110130099",
@@ -5741,7 +5763,8 @@
       "pt": "Adaga do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0a4e2188cdbadfec7d049418dce28b26c6a7d3fb",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": false
   },
   {
     "id": "110330095",
@@ -5764,7 +5787,8 @@
       "pt": "Adaga do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc0a4e2188cdbadfec7d049418dce28b26c6a7d3fb",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": false
   },
   {
     "id": "110330099",
@@ -5787,7 +5811,8 @@
       "pt": "Maça do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3be0eb622417e87ae7e51a38aff8a0c8358a2df4",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": false
   },
   {
     "id": "110730095",
@@ -5810,7 +5835,8 @@
       "pt": "Maça do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc3be0eb622417e87ae7e51a38aff8a0c8358a2df4",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": false
   },
   {
     "id": "110730099",
@@ -5921,7 +5947,8 @@
       "pt": "Guarda-braço do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8e542465f96ef562900ceaa35f2c822bddbb1657",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": false
   },
   {
     "id": "115030093",
@@ -5944,7 +5971,8 @@
       "pt": "Guarda-braço do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc8e542465f96ef562900ceaa35f2c822bddbb1657",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": false
   },
   {
     "id": "115030097",
@@ -6209,7 +6237,8 @@
       "pt": "Arco do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbdc4c886445a22b804067a05c5ace9793a8d07e8",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": true
   },
   {
     "id": "110430100",
@@ -6221,7 +6250,8 @@
       "pt": "Arco do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbdc4c886445a22b804067a05c5ace9793a8d07e8",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": true
   },
   {
     "id": "110830096",
@@ -6233,7 +6263,8 @@
       "pt": "Cajado do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc315203b183184d7b2a4fb81a0a4b6b93f72479bd",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": true
   },
   {
     "id": "110830100",
@@ -6245,7 +6276,8 @@
       "pt": "Cajado do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc315203b183184d7b2a4fb81a0a4b6b93f72479bd",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": true
   },
   {
     "id": "310330113",
@@ -6257,7 +6289,8 @@
       "pt": "Anel do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcdc69102866f8f88728e49e1566ea10d6de2375f7",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": true
   },
   {
     "id": "310330117",
@@ -6269,7 +6302,8 @@
       "pt": "Anel do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcdc69102866f8f88728e49e1566ea10d6de2375f7",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": true
   },
   {
     "id": "310230113",
@@ -6281,7 +6315,8 @@
       "pt": "Brinco do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc576333ca754ec03d82a398712ba00fa1b2642017",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": true
   },
   {
     "id": "310230117",
@@ -6293,7 +6328,8 @@
       "pt": "Brinco do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc576333ca754ec03d82a398712ba00fa1b2642017",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": true
   },
   {
     "id": "310130111",
@@ -6305,7 +6341,8 @@
       "pt": "Colar do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcab6ff1cd0f9717b41373d8258af4b44a7520272e",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": true
   },
   {
     "id": "310130115",
@@ -6317,7 +6354,8 @@
       "pt": "Colar do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcab6ff1cd0f9717b41373d8258af4b44a7520272e",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": true
   },
   {
     "id": "110430017",
@@ -6329,7 +6367,8 @@
       "pt": "Arco do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbdc4c886445a22b804067a05c5ace9793a8d07e8",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": false
   },
   {
     "id": "110430095",
@@ -6352,7 +6391,8 @@
       "pt": "Arco do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcbdc4c886445a22b804067a05c5ace9793a8d07e8",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": false
   },
   {
     "id": "110430099",
@@ -6375,7 +6415,8 @@
       "pt": "Cajado do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc315203b183184d7b2a4fb81a0a4b6b93f72479bd",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": false
   },
   {
     "id": "110830095",
@@ -6398,7 +6439,8 @@
       "pt": "Cajado do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc315203b183184d7b2a4fb81a0a4b6b93f72479bd",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": false
   },
   {
     "id": "110830099",
@@ -6465,7 +6507,8 @@
       "pt": "Anel do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcdc69102866f8f88728e49e1566ea10d6de2375f7",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": false
   },
   {
     "id": "310330112",
@@ -6488,7 +6531,8 @@
       "pt": "Anel do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcdc69102866f8f88728e49e1566ea10d6de2375f7",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": false
   },
   {
     "id": "310330116",
@@ -6533,7 +6577,8 @@
       "pt": "Brinco do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc576333ca754ec03d82a398712ba00fa1b2642017",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": false
   },
   {
     "id": "310230112",
@@ -6556,7 +6601,8 @@
       "pt": "Brinco do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc576333ca754ec03d82a398712ba00fa1b2642017",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": false
   },
   {
     "id": "310230116",
@@ -6579,7 +6625,8 @@
       "pt": "Colar do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcab6ff1cd0f9717b41373d8258af4b44a7520272e",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": false
   },
   {
     "id": "310130110",
@@ -6602,7 +6649,8 @@
       "pt": "Colar do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcab6ff1cd0f9717b41373d8258af4b44a7520272e",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": false
   },
   {
     "id": "310130114",
@@ -6889,7 +6937,8 @@
       "pt": "Peitoral do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc877045236daa100e493b24430b8c2213f5e8cd3a",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": true
   },
   {
     "id": "210130114",
@@ -6901,7 +6950,8 @@
       "pt": "Peitoral do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc877045236daa100e493b24430b8c2213f5e8cd3a",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": true
   },
   {
     "id": "210230109",
@@ -6913,7 +6963,8 @@
       "pt": "Grevas do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca58a5bd47751829a1596f82c9a3b115bef134857",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": true
   },
   {
     "id": "210230113",
@@ -6925,7 +6976,8 @@
       "pt": "Grevas do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca58a5bd47751829a1596f82c9a3b115bef134857",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": true
   },
   {
     "id": "210330109",
@@ -6937,7 +6989,8 @@
       "pt": "Elmo do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec5ac002cb91750880cd2230e51c7678e7d08210",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": true
   },
   {
     "id": "210330113",
@@ -6949,7 +7002,8 @@
       "pt": "Elmo do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec5ac002cb91750880cd2230e51c7678e7d08210",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": true
   },
   {
     "id": "210430109",
@@ -6961,7 +7015,8 @@
       "pt": "Espaldeiras do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc40f92ee6fd9497643832deb82c96e38b4037e84c",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": true
   },
   {
     "id": "210430113",
@@ -6973,7 +7028,8 @@
       "pt": "Espaldeiras do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc40f92ee6fd9497643832deb82c96e38b4037e84c",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": true
   },
   {
     "id": "210530109",
@@ -6985,7 +7041,8 @@
       "pt": "Luvas do Lorde Dragão Verdadeiro Brilhantes"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc09da244eb263be143fdf9a664b43fe561656939f",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": true
   },
   {
     "id": "210530113",
@@ -6997,7 +7054,8 @@
       "pt": "Luvas do Lorde Dragão Estelar Brilhantes"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc09da244eb263be143fdf9a664b43fe561656939f",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": true
   },
   {
     "id": "210630109",
@@ -7009,7 +7067,8 @@
       "pt": "Botas do Lorde Dragão Verdadeiro Brilhantes"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcfb8184a325c754725f1d20354deaf31c0f221128",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": true
   },
   {
     "id": "210630113",
@@ -7021,7 +7080,8 @@
       "pt": "Botas do Lorde Dragão Estelar Brilhantes"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcfb8184a325c754725f1d20354deaf31c0f221128",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": true
   },
   {
     "id": "210730109",
@@ -7033,7 +7093,8 @@
       "pt": "Capa do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc8cd6636c0c99081459b93c981c8f51451e75d9e",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": true
   },
   {
     "id": "210730113",
@@ -7045,7 +7106,8 @@
       "pt": "Capa do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc8cd6636c0c99081459b93c981c8f51451e75d9e",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": true
   },
   {
     "id": "210130017",
@@ -7057,7 +7119,8 @@
       "pt": "Peitoral do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc877045236daa100e493b24430b8c2213f5e8cd3a",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": false
   },
   {
     "id": "210130109",
@@ -7080,7 +7143,8 @@
       "pt": "Peitoral do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc877045236daa100e493b24430b8c2213f5e8cd3a",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": false
   },
   {
     "id": "210130113",
@@ -7103,7 +7167,8 @@
       "pt": "Grevas do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca58a5bd47751829a1596f82c9a3b115bef134857",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": false
   },
   {
     "id": "210230108",
@@ -7126,7 +7191,8 @@
       "pt": "Grevas do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qca58a5bd47751829a1596f82c9a3b115bef134857",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": false
   },
   {
     "id": "210230112",
@@ -7149,7 +7215,8 @@
       "pt": "Elmo do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec5ac002cb91750880cd2230e51c7678e7d08210",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": false
   },
   {
     "id": "210330108",
@@ -7172,7 +7239,8 @@
       "pt": "Elmo do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcec5ac002cb91750880cd2230e51c7678e7d08210",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": false
   },
   {
     "id": "210330112",
@@ -7195,7 +7263,8 @@
       "pt": "Espaldeiras do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc40f92ee6fd9497643832deb82c96e38b4037e84c",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": false
   },
   {
     "id": "210430108",
@@ -7218,7 +7287,8 @@
       "pt": "Espaldeiras do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc40f92ee6fd9497643832deb82c96e38b4037e84c",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": false
   },
   {
     "id": "210430112",
@@ -7329,7 +7399,8 @@
       "pt": "Luvas do Lorde Dragão Verdadeiro Brilhantes"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc09da244eb263be143fdf9a664b43fe561656939f",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": false
   },
   {
     "id": "210530108",
@@ -7352,7 +7423,8 @@
       "pt": "Luvas do Lorde Dragão Estelar Brilhantes"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qc09da244eb263be143fdf9a664b43fe561656939f",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": false
   },
   {
     "id": "210530112",
@@ -7375,7 +7447,8 @@
       "pt": "Botas do Lorde Dragão Verdadeiro Brilhantes"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcfb8184a325c754725f1d20354deaf31c0f221128",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": false
   },
   {
     "id": "210630108",
@@ -7398,7 +7471,8 @@
       "pt": "Botas do Lorde Dragão Estelar Brilhantes"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcfb8184a325c754725f1d20354deaf31c0f221128",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": false
   },
   {
     "id": "210630112",
@@ -7421,7 +7495,8 @@
       "pt": "Capa do Lorde Dragão Verdadeiro Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc8cd6636c0c99081459b93c981c8f51451e75d9e",
-    "faction": "Elyos"
+    "faction": "Elyos",
+    "bound": false
   },
   {
     "id": "210730108",
@@ -7444,7 +7519,8 @@
       "pt": "Capa do Lorde Dragão Estelar Brilhante"
     },
     "icon": "https://26z9clbm06.ufs.sh/f/M3KtUJweBx2Qcc8cd6636c0c99081459b93c981c8f51451e75d9e",
-    "faction": "Asmodians"
+    "faction": "Asmodians",
+    "bound": false
   },
   {
     "id": "210730112",

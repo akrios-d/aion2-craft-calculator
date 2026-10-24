@@ -1,5 +1,5 @@
 import { PriceEntry, Recipe } from '../models';
-import { auctionNetPrice, calculateCraft, CalcInput } from './craft-engine';
+import { auctionNetPrice, calculateCraft, CalcInput, validateRecipe } from './craft-engine';
 
 const rec = (id: string, out: string, outQty: number, ings: [string, number][], verification: Recipe['verification'] = 'verified'): Recipe => ({
   id,
@@ -242,5 +242,21 @@ describe('calculateCraft: Substance Morph', () => {
 
   it('buys the material when it is cheaper than the Odyle', () => {
     expect(run(5, 'auto').purchases.map((p) => p.itemId)).toEqual(['ore']);
+  });
+});
+
+describe('calculateCraft: chance (COMBO) recipes', () => {
+  const combo: Recipe = { ...rec('combo', 'ring', 1, [['ore', 4]]), outputChance: 0.25 };
+  const run = (qty: number) => calculateCraft({ targetItemId: 'ring', quantity: qty, recipes: [combo], prices: { ore: price('ore', 10) }, inventory: {}, defaultFeePercent: 10 });
+
+  it('crafts enough batches to expect the requested quantity', () => {
+    const r = run(2);
+    expect(r.crafts[0]).toMatchObject({ batches: 8, produced: 2 });
+    expect(r.purchases[0].quantity).toBe(32);
+  });
+
+  it('rejects an invalid chance', () => {
+    expect(validateRecipe({ ...combo, outputChance: 0 })).not.toBeNull();
+    expect(validateRecipe(combo)).toBeNull();
   });
 });

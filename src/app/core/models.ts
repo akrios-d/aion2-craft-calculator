@@ -11,6 +11,8 @@ export interface Item {
   icon?: string;
   /** Set only on same-named items that exist once per faction. */
   faction?: 'Elyos' | 'Asmodians';
+  /** True for the Bind-on-pickup variant of two same-named items in one faction. */
+  bound?: boolean;
   /** Earlier identifiers of this item, used to preserve user data when ids change. */
   previousIds?: string[];
   source: string;
@@ -27,6 +29,8 @@ export interface Recipe {
   id: string;
   outputItemId: string;
   outputQuantity: number;
+  /** Chance (0-1] that a craft yields the output, e.g. a COMBO result; plans use the expected yield. */
+  outputChance?: number;
   ingredients: Ingredient[];
   professionId?: string;
   professionLevel?: number;
