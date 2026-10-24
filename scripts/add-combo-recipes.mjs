@@ -2,7 +2,7 @@
 /**
  * Adds COMBO recipes to public/data/recipes.json. A recipe page that shows a COMBO result item means
  * a craft yields that item only with the page's "COMBO per craft" chance, using the same materials.
- * Each becomes `combo-<recipeId>` with `outputChance` (the chance shown for the lowest proficiency).
+ * Each becomes `combo-<recipeId>` (the COMBO chance is only noted, not used in costs).
  * Also marks same-named item variants that are "Bind on pickup" (`bound: true`).
  * Same rules as fetch-aion2gg.mjs: operator permission, public HTML only, polite delay. Idempotent.
  *
@@ -48,7 +48,6 @@ for (const [n, r] of base.entries()) {
       ...r,
       id: `combo-${r.id}`,
       outputItemId: m[1],
-      outputChance: Number(chance[1]) / 100,
       notes: `COMBO result of recipe ${r.id}: only ${chance[1]}% of crafts (lowest proficiency; up to more at higher proficiency) yield this item.`,
     });
   }
