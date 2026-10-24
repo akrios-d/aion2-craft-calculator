@@ -22,9 +22,6 @@ import { TrPipe } from '../core/tr.pipe';
           <option value="pt">Português</option>
         </select>
       </label>
-      <label>{{ 'Target server' | tr }}
-        <input [ngModel]="s.server" (ngModelChange)="setServer($event)" />
-      </label>
       <label>{{ 'Default Auction House fee %' | tr }} <small class="muted">{{ '(placeholder default, verify in game)' | tr }}</small>
         <input type="number" min="0" max="100" step="any" [ngModel]="s.defaultFeePercent" (ngModelChange)="setFee($event)" />
       </label>
@@ -41,10 +38,6 @@ import { TrPipe } from '../core/tr.pipe';
 })
 export class SettingsPage {
   protected readonly store = inject(AppStore);
-
-  setServer(v: string): void {
-    if (v.trim()) this.store.setSettings({ server: v.trim() });
-  }
 
   setFee(v: number | null): void {
     const n = Number(v);

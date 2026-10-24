@@ -1,4 +1,3 @@
-import { DatePipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { AppStore } from '../core/app-store';
 import { TrPipe } from '../core/tr.pipe';
@@ -8,7 +7,7 @@ import { ImportPanel } from './import-panel';
 
 @Component({
   selector: 'app-data',
-  imports: [TrPipe, ImportPanel, DatePipe],
+  imports: [TrPipe, ImportPanel],
   template: `
     <h2>{{ 'Data, backup & coverage' | tr }}</h2>
 
@@ -17,8 +16,6 @@ import { ImportPanel } from './import-panel';
     @let m = store.catalog().manifest;
     <table class="kv">
       <tr><td>{{ 'Data version' | tr }}</td><td>{{ m.dataVersion }}</td></tr>
-      <tr><td>{{ 'Source' | tr }}</td><td>{{ m.sourceUrl }}</td></tr>
-      <tr><td>{{ 'Import date' | tr }}</td><td>{{ m.importDate ? (m.importDate | date: 'yyyy-MM-dd') : ('never imported' | tr) }}</td></tr>
       <tr><td>{{ 'Items / recipes / professions' | tr }}</td><td>{{ store.catalog().items.length }} / {{ store.catalog().recipes.length }} / {{ store.catalog().professions.length }}</td></tr>
       <tr><td>{{ 'Your own items / recipes' | tr }}</td><td>{{ store.data().customItems.length }} / {{ store.data().customRecipes.length }}</td></tr>
     </table>
