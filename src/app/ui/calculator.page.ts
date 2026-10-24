@@ -181,7 +181,7 @@ export class CalculatorPage {
 
   // Bundled recipes are assumed correct, so the per-recipe "unverified" notice is not shown.
   visibleIssues(r: { issues: { type: string }[] }): any[] {
-    return r.issues.filter((i) => i.type !== 'unverified-recipe');
+    return r.issues.filter((i) => !['unverified-recipe', 'missing-price', 'missing-sell-price'].includes(i.type));
   }
 
   strategyFor(id: string): Strategy {
