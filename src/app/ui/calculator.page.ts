@@ -199,8 +199,8 @@ export class CalculatorPage {
   });
 
   // Bundled recipes are assumed correct, so the per-recipe "unverified" notice is not shown.
-  visibleIssues(r: { issues: { type: string }[] }): any[] {
-    return r.issues.filter((i) => !['unverified-recipe', 'missing-price', 'missing-sell-price'].includes(i.type));
+  visibleIssues(r: { issues: { type: string; severity: string }[] }): any[] {
+    return r.issues.filter((i) => !['unverified-recipe', 'missing-price', 'missing-sell-price'].includes(i.type) && i.severity !== 'info');
   }
 
   strategyFor(id: string): Strategy {
