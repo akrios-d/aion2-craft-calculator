@@ -91,6 +91,10 @@ export interface Settings {
   faction: 'all' | 'Elyos' | 'Asmodians';
   /** Exchange offers that sell Kinah (Kina chests) for premium currency; the best rate converts costs. */
   kinahChests?: { kinah: number; price: number }[];
+  /** Quna shop packs bought with real money; the best rate converts Quna to real money. */
+  qunaPacks?: { quna: number; price: number }[];
+  /** Real-money currency symbol/label for the Quna packs, e.g. R$. */
+  realCurrency?: string;
   /** Name of the premium currency the chests are bought with. */
   currency?: string;
 }

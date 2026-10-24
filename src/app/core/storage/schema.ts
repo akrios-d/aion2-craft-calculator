@@ -23,6 +23,13 @@ export const DEFAULT_KINA_CHESTS: { kinah: number; price: number }[] = [
   { kinah: 400_000, price: 120 },
 ];
 
+export const DEFAULT_QUNA_PACKS: { quna: number; price: number }[] = [
+  { quna: 400, price: 32.75 },
+  { quna: 1000, price: 81.99 },
+  { quna: 2000, price: 164.99 },
+  { quna: 4000, price: 329.99 },
+];
+
 export function defaultSettings(): Settings {
   const lang = typeof navigator !== 'undefined' && /^pt/i.test(navigator.language ?? '') ? 'pt' : 'en';
   return {
@@ -34,6 +41,8 @@ export function defaultSettings(): Settings {
     faction: 'all',
     kinahChests: DEFAULT_KINA_CHESTS.map((c) => ({ ...c })),
     currency: 'Quna',
+    qunaPacks: DEFAULT_QUNA_PACKS.map((p) => ({ ...p })),
+    realCurrency: 'R$',
   };
 }
 
@@ -219,6 +228,12 @@ export function normalizeUserData(raw: Raw, warnings: string[] = []): UserData {
     itemNameLanguage: settingsRaw['itemNameLanguage'] === 'en' || settingsRaw['itemNameLanguage'] === 'pt' ? settingsRaw['itemNameLanguage'] : base.settings.itemNameLanguage,
     faction: settingsRaw['faction'] === 'Elyos' || settingsRaw['faction'] === 'Asmodians' ? settingsRaw['faction'] : 'all',
   };
+  if (Array.isArray(settingsRaw['qunaPacks'])) {
+    base.settings.qunaPacks = settingsRaw['qunaPacks']
+      .filter((c: any) => isObj(c) && Number.isFinite(c['quna']) && c['quna'] > 0 && Number.isFinite(c['price']) && c['price'] > 0)
+      .map((c: any) => ({ quna: c['quna'], price: c['price'] }));
+  }
+  if (typeof settingsRaw['realCurrency'] === 'string' && settingsRaw['realCurrency'].trim()) base.settings.realCurrency = settingsRaw['realCurrency'].trim().slice(0, 6);
   if (Array.isArray(settingsRaw['kinahChests'])) {
     base.settings.kinahChests = settingsRaw['kinahChests']
       .filter((c: any) => isObj(c) && Number.isFinite(c['kinah']) && c['kinah'] > 0 && Number.isFinite(c['price']) && c['price'] > 0)

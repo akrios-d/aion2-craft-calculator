@@ -279,7 +279,10 @@ export class CalculatorPage {
   money(kinah: number): string {
     const rate = Math.max(0, ...(this.store.settings().kinahChests ?? []).map((c) => c.kinah / c.price));
     if (!rate || !Number.isFinite(kinah)) return '';
-    return Math.ceil(kinah / rate).toLocaleString() + ' Quna';
+    const quna = Math.ceil(kinah / rate);
+    const real = Math.min(Infinity, ...(this.store.settings().qunaPacks ?? []).map((p) => p.price / p.quna));
+    const money = Number.isFinite(real) ? ' ≈ ' + (this.store.settings().realCurrency ?? 'R$') + ' ' + (quna * real).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '';
+    return quna.toLocaleString() + ' Quna' + money;
   }
 
   setTab(t: string): void {
