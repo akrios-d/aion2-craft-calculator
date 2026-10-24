@@ -32,6 +32,8 @@ const EMPTY_MANIFEST: DataManifest = {
   knownLimitations: [],
 };
 
+const HISTORY_LIMIT = 50;
+
 @Injectable({ providedIn: 'root' })
 export class AppStore {
   private readonly storage = new UserDataStorage(getBrowserStorage());
@@ -145,13 +147,43 @@ export class AppStore {
     this.saveError.set(this.storage.save(next));
   }
 
+  private readonly past = signal<UserData[]>([]);
+  private readonly future = signal<UserData[]>([]);
+  readonly canUndo = computed(() => this.past().length > 0);
+  readonly canRedo = computed(() => this.future().length > 0);
+
+  private record(): void {
+    this.past.update((p) => [...p.slice(-(HISTORY_LIMIT - 1)), this.data()]);
+    this.future.set([]);
+  }
+
   update(fn: (d: UserData) => UserData): void {
-    this.commit(fn(this.data()));
+    const next = fn(this.data());
+    if (next === this.data()) return;
+    this.record();
+    this.commit(next);
+  }
+
+  undo(): void {
+    const prev = this.past().at(-1);
+    if (!prev) return;
+    this.past.update((p) => p.slice(0, -1));
+    this.future.update((f) => [...f, this.data()]);
+    this.commit(prev);
+  }
+
+  redo(): void {
+    const next = this.future().at(-1);
+    if (!next) return;
+    this.future.update((f) => f.slice(0, -1));
+    this.past.update((p) => [...p, this.data()]);
+    this.commit(next);
   }
 
   replaceAll(next: UserData): void {
     this.persistBlocked.set(false);
     this.health.update((h) => ({ ...h, status: 'ok', message: undefined }));
+    this.record();
     this.commit(next);
     this.reconcileWithCatalog();
   }

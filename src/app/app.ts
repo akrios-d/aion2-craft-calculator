@@ -9,6 +9,7 @@ import { TrPipe } from './core/tr.pipe';
 
 @Component({
   selector: 'app-root',
+  host: { '(document:keydown)': 'onKey($event)' },
   imports: [RouterOutlet, RouterLink, RouterLinkActive, TrPipe, AutofocusDirective],
   template: `
     <header>
@@ -24,6 +25,10 @@ import { TrPipe } from './core/tr.pipe';
             <button type="button" class="icon" [title]="'New' | tr" [attr.aria-label]="'New' | tr" (click)="newCharacter()">+</button>
             <button type="button" class="icon" [title]="'Rename' | tr" [attr.aria-label]="'Rename' | tr" (click)="renameCharacter()">✎</button>
             <button type="button" class="icon" [title]="'Delete' | tr" [attr.aria-label]="'Delete' | tr" [disabled]="store.characters().length < 2" (click)="removeCharacter()">✕</button>
+          </div>
+          <div class="chars" role="group">
+            <button type="button" class="icon" [title]="'Undo' | tr" [attr.aria-label]="'Undo' | tr" [disabled]="!store.canUndo()" (click)="store.undo()">↶</button>
+            <button type="button" class="icon" [title]="'Redo' | tr" [attr.aria-label]="'Redo' | tr" [disabled]="!store.canRedo()" (click)="store.redo()">↷</button>
           </div>
           <label class="inline" [title]="'Language' | tr">🌐
             <select [attr.aria-label]="'Language' | tr" [value]="store.settings().uiLanguage" (change)="store.setSettings({ uiLanguage: $any($event.target).value })">
@@ -100,6 +105,16 @@ export class App {
 
   private t(text: string, params = {}): string {
     return translate(text, this.store.settings().uiLanguage, params);
+  }
+
+  onKey(ev: KeyboardEvent): void {
+    const el = ev.target as HTMLElement | null;
+    if (!(ev.ctrlKey || ev.metaKey) || el?.closest('input, textarea, select, [contenteditable]')) return;
+    const k = ev.key.toLowerCase();
+    if (k === 'z' && !ev.shiftKey) this.store.undo();
+    else if (k === 'y' || (k === 'z' && ev.shiftKey)) this.store.redo();
+    else return;
+    ev.preventDefault();
   }
 
   async newCharacter(): Promise<void> {
