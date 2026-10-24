@@ -241,8 +241,7 @@ const PT: Record<string, string> = {
   'Always buy': 'Sempre comprar',
   'Interface language': 'Idioma da interface',
   'Item name language': 'Idioma dos nomes dos itens',
-  "Settings are saved in your browser. Prices are stored per server, so switching servers shows that server's prices.":
-    'As configurações ficam salvas no seu navegador. Os preços são guardados por servidor, então trocar de servidor mostra os preços dele.',
+  'Settings are saved in your browser.': 'As configurações ficam salvas no seu navegador.',
 
   // Import panel
   '…or paste {what} here': '…ou cole {what} aqui',

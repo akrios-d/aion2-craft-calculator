@@ -25,15 +25,8 @@ import { TrPipe } from '../core/tr.pipe';
       <label>{{ 'Default Auction House fee %' | tr }} <small class="muted">{{ '(placeholder default, verify in game)' | tr }}</small>
         <input type="number" min="0" max="100" step="any" [ngModel]="s.defaultFeePercent" (ngModelChange)="setFee($event)" />
       </label>
-      <label>{{ 'Default buy-or-craft strategy' | tr }}
-        <select [ngModel]="s.defaultStrategy" (ngModelChange)="store.setSettings({ defaultStrategy: $any($event) })">
-          <option value="auto">{{ 'Auto (cheapest known)' | tr }}</option>
-          <option value="craft">{{ 'Always craft' | tr }}</option>
-          <option value="buy">{{ 'Always buy' | tr }}</option>
-        </select>
-      </label>
     </div>
-    <p class="muted">{{ "Settings are saved in your browser. Prices are stored per server, so switching servers shows that server's prices." | tr }}</p>
+    <p class="muted">{{ 'Settings are saved in your browser.' | tr }}</p>
   `,
 })
 export class SettingsPage {
