@@ -275,11 +275,11 @@ export class CalculatorPage {
     });
   }
 
-  /** Real-money equivalent of a Kinah amount, or '' when no rate is set. */
+  /** Exchange-currency equivalent of a Kinah amount at the best chest rate, or '' when no chests are set. */
   money(kinah: number): string {
-    const rate = this.store.settings().kinahPerMoney;
+    const rate = Math.max(0, ...(this.store.settings().kinahChests ?? []).map((c) => c.kinah / c.price));
     if (!rate || !Number.isFinite(kinah)) return '';
-    return (kinah / rate).toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 }) + ' ' + (this.store.settings().currency ?? 'EUR');
+    return Math.ceil(kinah / rate).toLocaleString() + ' ' + (this.store.settings().currency ?? 'Gems');
   }
 
   setTab(t: string): void {

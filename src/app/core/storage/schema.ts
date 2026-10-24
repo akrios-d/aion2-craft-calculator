@@ -26,6 +26,12 @@ export function defaultSettings(): Settings {
     uiLanguage: lang,
     itemNameLanguage: lang,
     faction: 'all',
+    kinahChests: [
+      { kinah: 10_000_000, price: 2990 },
+      { kinah: 2_000_000, price: 517 },
+      { kinah: 400_000, price: 120 },
+    ],
+    currency: 'Gems',
   };
 }
 
@@ -211,7 +217,11 @@ export function normalizeUserData(raw: Raw, warnings: string[] = []): UserData {
     itemNameLanguage: settingsRaw['itemNameLanguage'] === 'en' || settingsRaw['itemNameLanguage'] === 'pt' ? settingsRaw['itemNameLanguage'] : base.settings.itemNameLanguage,
     faction: settingsRaw['faction'] === 'Elyos' || settingsRaw['faction'] === 'Asmodians' ? settingsRaw['faction'] : 'all',
   };
-  if (typeof settingsRaw['kinahPerMoney'] === 'number' && settingsRaw['kinahPerMoney'] > 0 && Number.isFinite(settingsRaw['kinahPerMoney'])) base.settings.kinahPerMoney = settingsRaw['kinahPerMoney'];
+  if (Array.isArray(settingsRaw['kinahChests'])) {
+    base.settings.kinahChests = settingsRaw['kinahChests']
+      .filter((c: any) => isObj(c) && Number.isFinite(c['kinah']) && c['kinah'] > 0 && Number.isFinite(c['price']) && c['price'] > 0)
+      .map((c: any) => ({ kinah: c['kinah'], price: c['price'] }));
+  }
   if (typeof settingsRaw['currency'] === 'string' && settingsRaw['currency'].trim()) base.settings.currency = settingsRaw['currency'].trim().slice(0, 8);
 
   for (const [id, e] of Object.entries<any>(isObj(raw['inventory']) ? raw['inventory'] : {})) {
