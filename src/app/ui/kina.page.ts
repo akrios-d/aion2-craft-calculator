@@ -12,9 +12,9 @@ import { TrPipe } from '../core/tr.pipe';
   template: `
     <h2>{{ 'Kina chests' | tr }}</h2>
     @let s = store.settings();
-    <p class="muted">{{ 'Enter the current lowest price of each chest; costs are converted using the best rate.' | tr }}</p>
+    <p class="muted">{{ 'Enter the current lowest price of each chest in Quna; costs are converted using the best rate.' | tr }}</p>
     <table>
-      <thead><tr><th>{{ 'Kina in chest' | tr }}</th><th>{{ 'Price' | tr }}</th><th>{{ 'Kina per 1 currency' | tr }}</th><th>{{ 'Cost per 1M Kina' | tr }}</th><th>{{ 'Comparison' | tr }}</th><th></th></tr></thead>
+      <thead><tr><th>{{ 'Kina in chest' | tr }}</th><th>{{ 'Price' | tr }} (Quna)</th><th>{{ 'Kina per 1 Quna' | tr }}</th><th>{{ 'Cost per 1M Kina' | tr }} (Quna)</th><th>{{ 'Comparison' | tr }}</th><th></th></tr></thead>
       <tbody>
         @for (c of s.kinahChests ?? []; track $index) {
           <tr>
@@ -59,15 +59,14 @@ import { TrPipe } from '../core/tr.pipe';
       <button type="button" (click)="restorePacks()">{{ 'Restore default packs' | tr }}</button>
     </div>
 
-    <h3>{{ 'Converter' | tr }}</h3>
-    <div class="grid">
-      <label>Quna <input type="text" inputmode="numeric" [value]="fmt(convQuna())" (input)="group($event)" (change)="convQuna.set(num($event))" /></label>
-      <label>{{ 'Kina' | tr }} <input type="text" inputmode="numeric" [value]="fmt(convKina())" (input)="group($event)" (change)="convKina.set(num($event))" /></label>
-    </div>
-    <table class="kv">
-      <tr><td>Quna → {{ s.realCurrency ?? 'R$' }}</td><td>{{ convQuna() * packRate() | number: '1.2-2' }}</td></tr>
-      <tr><td>{{ 'Kina' | tr }} → Quna → {{ s.realCurrency ?? 'R$' }}</td><td>{{ kinaToQuna(convKina()) | number: '1.0-0' }} Quna → {{ kinaToQuna(convKina()) * packRate() | number: '1.2-2' }}</td></tr>
-    </table>
+    <h3>{{ 'Chests in real money' | tr }}</h3>
+    <table>
+      <thead><tr><th>{{ 'Kina in chest' | tr }}</th><th>{{ 'Price' | tr }} (Quna)</th><th>{{ 'Price' | tr }} ({{ s.realCurrency ?? 'R$' }})</th><th>{{ 'Cost per 1M Kina' | tr }} ({{ s.realCurrency ?? 'R$' }})</th></tr></thead>
+      <tbody>
+        @for (c of s.kinahChests ?? []; track $index) {
+          <tr><td>{{ c.kinah | number: '1.0-0' }}</td><td>{{ c.price | number: '1.0-0' }}</td><td>{{ c.price * packRate() | number: '1.2-2' }}</td><td>{{ c.price / c.kinah * 1000000 * packRate() | number: '1.2-2' }}</td></tr>
+        }
+      </tbody>    </table>
   `,
 })
 export class KinaPage {
@@ -111,9 +110,6 @@ export class KinaPage {
   removeChest(i: number): void {
     this.store.setSettings({ kinahChests: (this.store.settings().kinahChests ?? []).filter((_, j) => j !== i) });
   }
-
-  readonly convQuna = signal(1000);
-  readonly convKina = signal(10_000_000);
 
   num(ev: Event): number {
     const n = Number((ev.target as HTMLInputElement).value.replace(/,/g, ''));
