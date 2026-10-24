@@ -14,7 +14,7 @@ import {
   priceKey,
 } from '../models';
 
-export const CURRENT_SCHEMA_VERSION = 3;
+export const CURRENT_SCHEMA_VERSION = 4;
 export const MAX_PRICE_HISTORY = 5000;
 
 export const DEFAULT_KINA_CHESTS: { kinah: number; price: number }[] = [
@@ -132,6 +132,14 @@ MIGRATIONS[2] = (d) => ({
   activeCharacterId: DEFAULT_CHARACTER_ID,
   plans: (Array.isArray(d['plans']) ? d['plans'] : []).map((p: any) => ({ ...p, characterId: DEFAULT_CHARACTER_ID })),
 });
+
+// v4: the Kina chest and Quna pack defaults changed; drop stale saved lists so the new defaults apply.
+MIGRATIONS[3] = (d) => {
+  const settings = { ...(d['settings'] ?? {}) };
+  delete settings['kinahChests'];
+  delete settings['qunaPacks'];
+  return { ...d, schemaVersion: 4, settings };
+};
 
 export class SchemaError extends Error {}
 
