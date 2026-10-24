@@ -83,6 +83,8 @@ export interface Settings {
   uiLanguage: 'en' | 'pt';
   /** Language used for item names (independent of the interface language). */
   itemNameLanguage: 'en' | 'pt';
+  /** Faction whose same-named item variants are shown; 'all' shows both. */
+  faction: 'all' | 'Elyos' | 'Asmodians';
 }
 
 export interface SavedPlan {

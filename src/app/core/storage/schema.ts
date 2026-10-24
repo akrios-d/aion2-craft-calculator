@@ -25,6 +25,7 @@ export function defaultSettings(): Settings {
     defaultStrategy: 'auto',
     uiLanguage: lang,
     itemNameLanguage: lang,
+    faction: 'all',
   };
 }
 
@@ -208,6 +209,7 @@ export function normalizeUserData(raw: Raw, warnings: string[] = []): UserData {
     defaultStrategy: isStrategy(settingsRaw['defaultStrategy']) ? settingsRaw['defaultStrategy'] : 'auto',
     uiLanguage: settingsRaw['uiLanguage'] === 'en' || settingsRaw['uiLanguage'] === 'pt' ? settingsRaw['uiLanguage'] : base.settings.uiLanguage,
     itemNameLanguage: settingsRaw['itemNameLanguage'] === 'en' || settingsRaw['itemNameLanguage'] === 'pt' ? settingsRaw['itemNameLanguage'] : base.settings.itemNameLanguage,
+    faction: settingsRaw['faction'] === 'Elyos' || settingsRaw['faction'] === 'Asmodians' ? settingsRaw['faction'] : 'all',
   };
 
   for (const [id, e] of Object.entries<any>(isObj(raw['inventory']) ? raw['inventory'] : {})) {

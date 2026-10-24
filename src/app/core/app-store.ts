@@ -48,19 +48,26 @@ export class AppStore {
   readonly persistBlocked = signal(false);
   readonly reconcileReport = signal<ReconcileReport | null>(null);
 
-  readonly items = computed<Item[]>(() => {
+  /** Every known item, including both faction variants; used to name items already stored in user data. */
+  private readonly allItems = computed<Item[]>(() => {
     const known = new Set(this.catalog().items.map((i) => i.id));
     const pt = this.settings().itemNameLanguage === 'pt';
-    const all = [...this.catalog().items, ...this.data().customItems.filter((i) => !known.has(i.id))];
-    return all.map((i) => {
+    const faction = this.settings().faction;
+    return [...this.catalog().items, ...this.data().customItems.filter((i) => !known.has(i.id))].map((i) => {
       const name = (pt && i.names?.pt) || i.name;
-      return i.faction ? { ...i, name: `\ (\)` } : name === i.name ? i : { ...i, name };
+      if (!i.faction || faction !== 'all') return name === i.name ? i : { ...i, name };
+      return { ...i, name: `\ (\)` };
     });
+  });
+  /** Items offered to the user: other-faction variants are hidden once a faction is chosen. */
+  readonly items = computed<Item[]>(() => {
+    const faction = this.settings().faction;
+    return faction === 'all' ? this.allItems() : this.allItems().filter((i) => !i.faction || i.faction === faction);
   });
   readonly recipes = computed<Recipe[]>(() => [...this.catalog().recipes, ...this.data().customRecipes]);
   readonly professions = computed<Profession[]>(() => this.catalog().professions);
-  readonly itemIcons = computed(() => new Map(this.items().filter((i) => i.icon).map((i) => [i.id, i.icon as string])));
-  readonly itemNames = computed(() => new Map(this.items().map((i) => [i.id, i.name])));
+  readonly itemIcons = computed(() => new Map(this.allItems().filter((i) => i.icon).map((i) => [i.id, i.icon as string])));
+  readonly itemNames = computed(() => new Map(this.allItems().map((i) => [i.id, i.name])));
   readonly settings = computed(() => this.data().settings);
   readonly characters = computed(() => this.data().characters);
   readonly activeCharacter = computed(() => this.data().characters.find((c) => c.id === this.data().activeCharacterId) ?? this.data().characters[0]);

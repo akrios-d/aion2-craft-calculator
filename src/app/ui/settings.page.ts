@@ -22,6 +22,11 @@ import { TrPipe } from '../core/tr.pipe';
           <option value="pt">Português</option>
         </select>
       </label>
+      <label>{{ 'Faction' | tr }}
+        <select [ngModel]="s.faction" (ngModelChange)="store.setSettings({ faction: $any($event) })">
+          <option value="all">{{ 'All factions' | tr }}</option><option value="Elyos">Elyos</option><option value="Asmodians">{{ 'Asmodians' | tr }}</option>
+        </select>
+      </label>
       <label>{{ 'Default Auction House fee %' | tr }} <small class="muted">{{ '(placeholder default, verify in game)' | tr }}</small>
         <input type="number" min="0" max="100" step="any" [ngModel]="s.defaultFeePercent" (ngModelChange)="setFee($event)" />
       </label>

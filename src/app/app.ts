@@ -1,4 +1,4 @@
-﻿import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AppStore } from './core/app-store';
 import { AutofocusDirective, DialogService } from './core/dialog';
@@ -30,6 +30,11 @@ import { TrPipe } from './core/tr.pipe';
             <button type="button" class="icon" [title]="'Undo' | tr" [attr.aria-label]="'Undo' | tr" [disabled]="!store.canUndo()" (click)="store.undo()">↶</button>
             <button type="button" class="icon" [title]="'Redo' | tr" [attr.aria-label]="'Redo' | tr" [disabled]="!store.canRedo()" (click)="store.redo()">↷</button>
           </div>
+          <label class="inline" [title]="'Faction' | tr">⚔
+            <select [attr.aria-label]="'Faction' | tr" [value]="store.settings().faction" (change)="store.setSettings({ faction: $any($event.target).value })">
+              <option value="all">{{ 'All factions' | tr }}</option><option value="Elyos">Elyos</option><option value="Asmodians">{{ 'Asmodians' | tr }}</option>
+            </select>
+          </label>
           <label class="inline" [title]="'Language' | tr">🌐
             <select [attr.aria-label]="'Language' | tr" [value]="store.settings().uiLanguage" (change)="store.setSettings({ uiLanguage: $any($event.target).value })">
               <option value="en">EN</option>
