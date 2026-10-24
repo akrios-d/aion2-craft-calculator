@@ -11,45 +11,43 @@ import { TrPipe } from './core/tr.pipe';
   imports: [RouterOutlet, RouterLink, RouterLinkActive, TrPipe],
   template: `
     <header>
-     <div class="bar">
-      <h1>Aion 2 Craft Lab</h1>
-      <nav>
-        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{ 'Calculator' | tr }}</a>
-        <a routerLink="/prices" routerLinkActive="active">{{ 'Prices' | tr }}</a>
-        <a routerLink="/inventory" routerLinkActive="active">{{ 'Inventory' | tr }}</a>
-        <a routerLink="/recipes" routerLinkActive="active">{{ 'Recipes' | tr }}</a>
-        <a routerLink="/data" routerLinkActive="active">{{ 'Data' | tr }}</a>
-        <a routerLink="/settings" routerLinkActive="active">{{ 'Settings' | tr }}</a>
-      </nav>
-      <div class="tools">
-       <div class="group" role="group">
-        <label class="inline">{{ 'Character' | tr }}
-          <select (change)="store.selectCharacter($any($event.target).value)">
-            @for (c of store.characters(); track c.id) {
-              <option [value]="c.id" [selected]="c.id === store.activeCharacter().id">{{ c.name }}</option>
-            }
-          </select>
-        </label>
-        <button type="button" (click)="newCharacter()">{{ 'New' | tr }}</button>
-        <button type="button" (click)="renameCharacter()">{{ 'Rename' | tr }}</button>
-        <button type="button" [disabled]="store.characters().length < 2" (click)="removeCharacter()">{{ 'Delete' | tr }}</button>
-       </div>
-       <div class="group">
-        <label class="inline">{{ 'Language' | tr }}
-          <select [value]="store.settings().uiLanguage" (change)="store.setSettings({ uiLanguage: $any($event.target).value })">
-            <option value="en">English</option>
-            <option value="pt">Português</option>
-          </select>
-        </label>
-        <label class="inline">{{ 'Item names' | tr }}
-          <select [value]="store.settings().itemNameLanguage" (change)="store.setSettings({ itemNameLanguage: $any($event.target).value })">
-            <option value="en">English</option>
-            <option value="pt">Português</option>
-          </select>
-        </label>
-       </div>
+      <div class="bar">
+        <h1><span class="crest">◆</span> Aion 2 <em>Craft Lab</em></h1>
+        <div class="tools">
+          <div class="chars" role="group" [attr.aria-label]="'Character' | tr">
+            <select [attr.aria-label]="'Character' | tr" (change)="store.selectCharacter($any($event.target).value)">
+              @for (c of store.characters(); track c.id) {
+                <option [value]="c.id" [selected]="c.id === store.activeCharacter().id">{{ c.name }}</option>
+              }
+            </select>
+            <button type="button" class="icon" [title]="'New' | tr" [attr.aria-label]="'New' | tr" (click)="newCharacter()">+</button>
+            <button type="button" class="icon" [title]="'Rename' | tr" [attr.aria-label]="'Rename' | tr" (click)="renameCharacter()">✎</button>
+            <button type="button" class="icon" [title]="'Delete' | tr" [attr.aria-label]="'Delete' | tr" [disabled]="store.characters().length < 2" (click)="removeCharacter()">✕</button>
+          </div>
+          <label class="inline" [title]="'Language' | tr">🌐
+            <select [attr.aria-label]="'Language' | tr" [value]="store.settings().uiLanguage" (change)="store.setSettings({ uiLanguage: $any($event.target).value })">
+              <option value="en">EN</option>
+              <option value="pt">PT</option>
+            </select>
+          </label>
+          <label class="inline" [title]="'Item names' | tr">Aa
+            <select [attr.aria-label]="'Item names' | tr" [value]="store.settings().itemNameLanguage" (change)="store.setSettings({ itemNameLanguage: $any($event.target).value })">
+              <option value="en">EN</option>
+              <option value="pt">PT</option>
+            </select>
+          </label>
+        </div>
       </div>
-     </div>
+      <nav class="tabs" role="tablist">
+        <div class="tabs-in">
+          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{ 'Calculator' | tr }}</a>
+          <a routerLink="/prices" routerLinkActive="active">{{ 'Prices' | tr }}</a>
+          <a routerLink="/inventory" routerLinkActive="active">{{ 'Inventory' | tr }}</a>
+          <a routerLink="/recipes" routerLinkActive="active">{{ 'Recipes' | tr }}</a>
+          <a routerLink="/data" routerLinkActive="active">{{ 'Data' | tr }}</a>
+          <a routerLink="/settings" routerLinkActive="active">{{ 'Settings' | tr }}</a>
+        </div>
+      </nav>
     </header>
 
     <main>
