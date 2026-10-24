@@ -264,6 +264,8 @@ const PT: Record<string, string> = {
   'Your own entries below are stored in this browser only and marked': 'Suas próprias entradas abaixo ficam salvas só neste navegador e são marcadas como',
   'buy': 'comprar',
   'Search item…': 'Buscar item…',
+  'Choose an item from the list.': 'Escolha um item da lista.',
+  'Item id "{id}" is not a known game item; row skipped.': 'O id de item "{id}" não é um item do jogo; linha ignorada.',
   'No matches.': 'Nenhum resultado.',
   'added': 'adicionado',
   'updated': 'atualizado',

@@ -7,6 +7,7 @@ import { applyInventoryImport, applyPriceImport, parseInventoryCsv, parsePriceCs
 const items: Item[] = [
   { id: 'ore', name: 'Iron Ore', source: 't', verification: 'verified' },
   { id: 'wood', name: 'Oak Wood', source: 't', verification: 'verified' },
+  { id: 'sap', name: 'Sap', source: 't', verification: 'verified' },
   { id: 'dup1', name: 'Twin', source: 't', verification: 'verified' },
   { id: 'dup2', name: 'twin', source: 't', verification: 'verified' },
 ];
@@ -63,10 +64,10 @@ describe('price CSV import validation', () => {
     expect(p.records).toHaveLength(2);
   });
 
-  it('warns but accepts ids that are not in the catalogue', () => {
+  it('rejects ids that are not game items', () => {
     const p = parsePriceCsv('itemId,buyPrice\nunknown-1,5\n', ctx);
-    expect(p.records).toHaveLength(1);
-    expect(p.issues[0].severity).toBe('warning');
+    expect(p.records).toHaveLength(0);
+    expect(p.issues[0].severity).toBe('error');
   });
 
   it('fails fast on empty input and missing columns', () => {

@@ -108,7 +108,8 @@ function resolveItemId(
   const name = cells.itemName?.trim();
   if (id) {
     if (!ctx.items.some((i) => i.id === id)) {
-      issues.push({ line, severity: 'warning', message: `Item id "${id}" is not in the known catalogue; imported as-is.` });
+      issues.push({ line, severity: 'error', message: `Item id "${id}" is not a known game item; row skipped.` });
+      return null;
     }
     return id;
   }

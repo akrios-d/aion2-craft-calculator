@@ -20,8 +20,6 @@ import { ImportPanel } from './import-panel';
       <tr><td>{{ 'Source' | tr }}</td><td>{{ m.sourceUrl }}</td></tr>
       <tr><td>{{ 'Import date' | tr }}</td><td>{{ m.importDate ? (m.importDate | date: 'yyyy-MM-dd') : ('never imported' | tr) }}</td></tr>
       <tr><td>{{ 'Items / recipes / professions' | tr }}</td><td>{{ store.catalog().items.length }} / {{ store.catalog().recipes.length }} / {{ store.catalog().professions.length }}</td></tr>
-      <tr><td>{{ 'Verified recipes' | tr }}</td><td>{{ '{n} of {total}' | tr: { n: verified(), total: store.catalog().recipes.length } }}</td></tr>
-      <tr><td>{{ 'Verification status' | tr }}</td><td>{{ m.verificationStatus }}</td></tr>
       <tr><td>{{ 'Your own items / recipes' | tr }}</td><td>{{ store.data().customItems.length }} / {{ store.data().customRecipes.length }}</td></tr>
     </table>
 
@@ -52,7 +50,6 @@ import { ImportPanel } from './import-panel';
 export class DataPage {
   protected readonly store = inject(AppStore);
 
-  verified = () => this.store.catalog().recipes.filter((r) => r.verification === 'verified').length;
 
   exportBackup(): void {
     const stamp = new Date().toISOString().slice(0, 10);

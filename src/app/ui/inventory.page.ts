@@ -1,6 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ItemIcon } from '../core/item-icon';
+import { ItemPicker } from '../core/item-picker';
 import { AppStore } from '../core/app-store';
 import { TrPipe } from '../core/tr.pipe';
 import { downloadText } from '../core/download';
@@ -9,15 +10,14 @@ import { ImportPanel } from './import-panel';
 
 @Component({
   selector: 'app-inventory',
-  imports: [ItemIcon, TrPipe, FormsModule, ImportPanel],
+  imports: [ItemIcon, ItemPicker, TrPipe, FormsModule, ImportPanel],
   template: `
     <h2>{{ 'Inventory' | tr }}</h2>
     <p class="muted">{{ 'Your calculations deduct this inventory but never change it automatically.' | tr }}</p>
     <form class="row" (ngSubmit)="add()">
-      <input list="inv-items" [placeholder]="'Item name or id' | tr" [ngModel]="item()" (ngModelChange)="item.set($event)" name="item" required />
-      <datalist id="inv-items">@for (i of store.items(); track i.id) { <option [value]="i.name">{{ i.id }}</option> }</datalist>
+      <app-item-picker [items]="store.items()" [(selectedId)]="itemId" />
       <input type="number" min="0" step="1" [ngModel]="qty()" (ngModelChange)="qty.set($event)" name="qty" required />
-      <button class="primary" type="submit">{{ 'Set quantity' | tr }}</button>
+      <button class="primary" type="submit" [disabled]="!itemId()">{{ 'Set quantity' | tr }}</button>
     </form>
     @if (error()) { <p class="msg error">{{ error() | tr }}</p> }
 
@@ -44,7 +44,7 @@ import { ImportPanel } from './import-panel';
 })
 export class InventoryPage {
   protected readonly store = inject(AppStore);
-  readonly item = signal('');
+  readonly itemId = signal('');
   readonly qty = signal<number>(1);
   readonly error = signal('');
 
@@ -55,14 +55,12 @@ export class InventoryPage {
   );
 
   add(): void {
-    const raw = this.item().trim();
     const q = Number(this.qty());
-    if (!raw) return void this.error.set('Choose an item.');
+    if (!this.itemId()) return void this.error.set('Choose an item from the list.');
     if (!Number.isInteger(q) || q < 0) return void this.error.set('Quantity must be a whole number, 0 or more.');
-    const match = this.store.items().find((i) => i.name.toLowerCase() === raw.toLowerCase()) ?? this.store.items().find((i) => i.id === raw);
-    this.store.setInventory(match?.id ?? raw, q);
+    this.store.setInventory(this.itemId(), q);
     this.error.set('');
-    this.item.set('');
+    this.itemId.set('');
   }
 
   setQty(id: string, ev: Event): void {

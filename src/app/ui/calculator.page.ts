@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { NgTemplateOutlet } from '@angular/common';
 import { ItemIcon } from '../core/item-icon';
+import { ItemPicker } from '../core/item-picker';
 import { AppStore } from '../core/app-store';
 import { TrPipe } from '../core/tr.pipe';
 import { calculateCraft } from '../core/engine/craft-engine';
@@ -11,7 +12,7 @@ import { Strategy } from '../core/models';
 
 @Component({
   selector: 'app-calculator',
-  imports: [ItemIcon, TrPipe, FormsModule, DecimalPipe, NgTemplateOutlet, RouterLink],
+  imports: [ItemIcon, ItemPicker, TrPipe, FormsModule, DecimalPipe, NgTemplateOutlet, RouterLink],
   template: `
     <h2>{{ 'Crafting calculator' | tr }}</h2>
     <p class="muted">
@@ -25,19 +26,9 @@ import { Strategy } from '../core/models';
       </div>
     } @else {
       <div class="row">
-        <div class="combo">
-          <label>{{ 'Item to craft' | tr }}
-            <input type="search" autocomplete="off" [placeholder]="'Search item…' | tr" [ngModel]="query()"
-              (ngModelChange)="onQuery($event)" (focus)="open.set(true)" (blur)="closeSoon()" (keydown.enter)="pickFirst($event)" (keydown.escape)="open.set(false)" />
-          </label>
-          @if (open()) {
-            <ul class="combo-list">
-              @for (i of matches(); track i.id) {
-                <li (mousedown)="pick(i.id)"><app-ico [id]="i.id" />{{ i.name }}</li>
-              } @empty { <li class="muted">{{ 'No matches.' | tr }}</li> }
-            </ul>
-          }
-        </div>
+        <label>{{ 'Item to craft' | tr }}
+          <app-item-picker [items]="store.craftableItems()" [(selectedId)]="targetId" />
+        </label>
         <label>{{ 'Quantity' | tr }}
           <input type="number" min="1" step="1" [ngModel]="quantity()" (ngModelChange)="quantity.set($event)" />
         </label>
@@ -45,9 +36,9 @@ import { Strategy } from '../core/models';
     }
 
     @if (result(); as r) {
-      @if (r.issues.length) {
+      @if (visibleIssues(r).length) {
         <ul class="issues">
-          @for (i of r.issues; track $index) { <li [class]="i.severity"><strong>{{ i.severity | tr }}</strong> — {{ i.message | tr }}</li> }
+          @for (i of visibleIssues(r); track $index) { <li [class]="i.severity"><strong>{{ i.severity | tr }}</strong> — {{ i.message | tr }}</li> }
         </ul>
       }
 
@@ -167,38 +158,6 @@ export class CalculatorPage {
   readonly targetId = signal('');
   readonly quantity = signal<number>(1);
   readonly planName = signal('');
-  readonly query = signal('');
-  readonly open = signal(false);
-
-  readonly matches = computed(() => {
-    const q = this.query().trim().toLowerCase();
-    const all = this.store.craftableItems();
-    const hit = q ? all.filter((i) => i.name.toLowerCase().includes(q)) : all;
-    return hit.slice(0, 50);
-  });
-
-  onQuery(v: string): void {
-    this.query.set(v);
-    this.open.set(true);
-    const exact = this.store.craftableItems().find((i) => i.name.toLowerCase() === v.trim().toLowerCase());
-    this.targetId.set(exact?.id ?? '');
-  }
-
-  pick(id: string): void {
-    this.targetId.set(id);
-    this.query.set(this.store.nameOf(id));
-    this.open.set(false);
-  }
-
-  pickFirst(ev: Event): void {
-    ev.preventDefault();
-    const first = this.matches()[0];
-    if (first) this.pick(first.id);
-  }
-
-  closeSoon(): void {
-    setTimeout(() => this.open.set(false), 150);
-  }
 
   readonly craftable = computed(() => new Set(this.store.recipes().map((r) => r.outputItemId)));
 
@@ -219,6 +178,11 @@ export class CalculatorPage {
       defaultFeePercent: d.settings.defaultFeePercent,
     });
   });
+
+  // Bundled recipes are assumed correct, so the per-recipe "unverified" notice is not shown.
+  visibleIssues(r: { issues: { type: string }[] }): any[] {
+    return r.issues.filter((i) => i.type !== 'unverified-recipe');
+  }
 
   strategyFor(id: string): Strategy {
     return this.store.data().strategies[id] ?? this.store.settings().defaultStrategy;
@@ -247,7 +211,7 @@ export class CalculatorPage {
   loadPlan(id: string): void {
     const p = this.store.data().plans.find((x) => x.id === id);
     if (!p) return;
-    this.pick(p.targetItemId);
+    this.targetId.set(p.targetItemId);
     this.quantity.set(p.quantity);
     if (p.server !== this.store.settings().server) this.store.setSettings({ server: p.server });
   }
