@@ -21,8 +21,12 @@ import { Strategy } from '../core/models';
     </p>
 
     <div class="subtabs" role="tablist">
-      <button type="button" role="tab" [class.active]="tab() === 'plans'" (click)="tab.set('plans')">{{ 'My plans' | tr }} ({{ store.characterPlans().length }})</button>
-      <button type="button" role="tab" [class.active]="tab() === 'new'" (click)="tab.set('new')">{{ 'New plan' | tr }}</button>
+      <button type="button" role="tab" [class.active]="tab() === 'plans'" (click)="setTab('plans')">{{ 'My plans' | tr }} ({{ store.characterPlans().length }})</button>
+      <button type="button" role="tab" [class.active]="tab() === 'new'" (click)="setTab('new')">{{ 'New plan' | tr }}</button>
+      @for (p of openPlans(); track p.id) {
+        <button type="button" role="tab" [class.active]="tab() === 'plan:' + p.id" (click)="setTab('plan:' + p.id)">{{ p.name }} <span class="x" role="button" [attr.aria-label]="'Close' | tr" (click)="closePlan(p.id); $event.stopPropagation()">×</span></button>
+      }
+      <button type="button" role="tab" [class.active]="tab() === 'total'" (click)="setTab('total')">{{ 'Total' | tr }}</button>
     </div>
 
     @if (tab() === 'new') {
@@ -41,14 +45,31 @@ import { Strategy } from '../core/models';
       </div>
     }
 
-    @if (result(); as r) {
+      <ng-container *ngTemplateOutlet="resultTpl; context: { $implicit: result(), save: true }" />
+    }
+
+    @if (openPlan(); as op) {
+      <h3>{{ op.name }} <small class="muted">{{ op.quantity }}× {{ store.nameOf(op.targetItemId) }}</small></h3>
+      <ng-container *ngTemplateOutlet="resultTpl; context: { $implicit: openPlanResult(), save: false }" />
+    }
+
+    @if (tab() === 'total') {
+      @if (store.characterPlans().length) {
+        <p class="muted">{{ 'All saved plans combined; your inventory is deducted once across them.' | tr }}</p>
+        <ul class="chips">@for (p of store.characterPlans(); track p.id) { <li class="chip"><app-ico [id]="p.targetItemId" />{{ p.quantity }}× {{ store.nameOf(p.targetItemId) }}</li> }</ul>
+        <ng-container *ngTemplateOutlet="resultTpl; context: { $implicit: totalResult(), save: false }" />
+      } @else { <p class="muted">{{ 'No saved plans yet.' | tr }}</p> }
+    }
+
+    <ng-template #resultTpl let-r let-save="save">
+    @if (r) {
       @if (visibleIssues(r).length) {
         <ul class="issues">
           @for (i of visibleIssues(r); track $index) { <li [class]="i.severity"><strong>{{ i.severity | tr }}</strong> — {{ i.message | tr }}</li> }
         </ul>
       }
 
-      @if (r.tree) {
+      @if (r.tree || r.isTotal) {
         <div class="cards">
           <div class="card"><span>{{ 'Cash cost (to buy)' | tr }}</span><strong>{{ r.cashCost | number: '1.0-2' }}</strong></div>
           <div class="card"><span>{{ 'Inventory used (value)' | tr }}</span><strong>{{ r.inventoryValue | number: '1.0-2' }}</strong></div>
@@ -102,6 +123,7 @@ import { Strategy } from '../core/models';
           <p class="muted">{{ 'Leftover from whole batches:' | tr }} @for (s of r.surplus; track s.itemId) { <span class="chip"><app-ico [id]="s.itemId" />{{ s.quantity }}× {{ s.name }}</span> }</p>
         }
 
+        @if (r.tree) {
         <h3>{{ 'Dependency tree' | tr }}</h3>
         <div class="row">
           <button type="button" (click)="expandAll()">{{ 'Expand all' | tr }}</button>
@@ -110,15 +132,17 @@ import { Strategy } from '../core/models';
         </div>
         <ul class="tree"><ng-container *ngTemplateOutlet="nodeTpl; context: { $implicit: r.tree, depth: 0, path: '0' }" /></ul>
 
+        }
+        @if (save) {
         <h3>{{ 'Save this plan' | tr }}</h3>
         <div class="row">
           <input type="text" [placeholder]="'Plan name' | tr" [ngModel]="planName()" (ngModelChange)="planName.set($event)" />
           <button (click)="savePlan()" [disabled]="!planName().trim()">{{ 'Save plan' | tr }}</button>
         </div>
+        }
       }
     }
-
-    }
+    </ng-template>
 
     <ng-template #nodeTpl let-n let-depth="depth" let-path="path">
       <li>
@@ -177,7 +201,7 @@ import { Strategy } from '../core/models';
           </tbody>
         </table>
       } @else {
-        <p class="muted">{{ 'No saved plans yet.' | tr }} <a href="javascript:void(0)" (click)="tab.set('new')">{{ 'New plan' | tr }}</a></p>
+        <p class="muted">{{ 'No saved plans yet.' | tr }} <a href="javascript:void(0)" (click)="setTab('new')">{{ 'New plan' | tr }}</a></p>
       }
     }
   `,
@@ -187,7 +211,80 @@ export class CalculatorPage {
   readonly targetId = signal('');
   readonly quantity = signal<number>(1);
   readonly planName = signal('');
-  readonly tab = signal<'plans' | 'new'>(this.store.characterPlans().length ? 'plans' : 'new');
+  readonly tab = signal<string>(this.store.characterPlans().length ? 'plans' : 'new');
+
+  readonly openIds = signal<string[]>([]);
+  readonly openPlans = computed(() => this.openIds().map((id) => this.store.characterPlans().find((p) => p.id === id)).filter((p) => !!p));
+  readonly openPlan = computed(() => {
+    const m = /^plan:(.+)$/.exec(this.tab());
+    return m ? this.store.characterPlans().find((p) => p.id === m[1]) : undefined;
+  });
+  readonly openPlanResult = computed(() => {
+    const p = this.openPlan();
+    return p ? this.compute(p.targetItemId, p.quantity, this.store.inventoryQuantities()) : null;
+  });
+
+  readonly totalResult = computed(() => {
+    const inv = { ...this.store.inventoryQuantities() };
+    const crafts = new Map<string, any>();
+    const buys = new Map<string, any>();
+    const used = new Map<string, any>();
+    let cashCost = 0, inventoryValue = 0, fullCost = 0, costComplete = true;
+    const issues: any[] = [];
+    for (const p of this.store.characterPlans()) {
+      const r = this.compute(p.targetItemId, p.quantity, inv);
+      cashCost += r.cashCost; inventoryValue += r.inventoryValue; fullCost += r.fullCost;
+      costComplete = costComplete && r.costComplete;
+      issues.push(...r.issues);
+      for (const c of r.crafts) {
+        const e = crafts.get(c.itemId);
+        crafts.set(c.itemId, e ? { ...e, batches: e.batches + c.batches, produced: e.produced + c.produced } : { ...c });
+      }
+      for (const b of r.purchases) {
+        const e = buys.get(b.itemId);
+        buys.set(b.itemId, e ? { ...e, quantity: e.quantity + b.quantity, cost: e.cost + b.cost } : { ...b });
+      }
+      for (const u of r.inventoryUsed) {
+        const e = used.get(u.itemId);
+        used.set(u.itemId, e ? { ...e, used: e.used + u.used } : { ...u });
+        inv[u.itemId] = Math.max(0, (inv[u.itemId] ?? 0) - u.used);
+      }
+    }
+    const seen = new Set<string>();
+    return {
+      isTotal: true, tree: null, profitability: undefined, directBuyCost: undefined, surplus: [],
+      issues: issues.filter((i) => !seen.has(i.message) && !!seen.add(i.message)),
+      cashCost, inventoryValue, fullCost, costComplete,
+      crafts: [...crafts.values()], purchases: [...buys.values()], inventoryUsed: [...used.values()],
+    } as any;
+  });
+
+  private compute(itemId: string, quantity: number, inventory: Record<string, number>) {
+    const d = this.store.data();
+    return calculateCraft({
+      targetItemId: itemId,
+      quantity: Number(quantity),
+      recipes: this.store.recipes(),
+      items: this.store.items(),
+      prices: this.store.serverPrices(),
+      inventory,
+      strategies: d.strategies,
+      recipeChoices: d.recipeChoices,
+      defaultStrategy: d.settings.defaultStrategy,
+      defaultFeePercent: d.settings.defaultFeePercent,
+    });
+  }
+
+  setTab(t: string): void {
+    this.tab.set(t);
+    this.collapsed.set(new Set());
+    this.checked.set(new Set());
+  }
+
+  closePlan(id: string): void {
+    this.openIds.update((l) => l.filter((x) => x !== id));
+    if (this.tab() === 'plan:' + id) this.setTab('plans');
+  }
 
   readonly collapsed = signal<ReadonlySet<string>>(new Set());
   readonly checked = signal<ReadonlySet<string>>(new Set());
@@ -237,23 +334,7 @@ export class CalculatorPage {
 
   readonly craftable = computed(() => new Set(this.store.recipes().map((r) => r.outputItemId)));
 
-  readonly result = computed(() => {
-    const id = this.targetId();
-    if (!id) return null;
-    const d = this.store.data();
-    return calculateCraft({
-      targetItemId: id,
-      quantity: Number(this.quantity()),
-      recipes: this.store.recipes(),
-      items: this.store.items(),
-      prices: this.store.serverPrices(),
-      inventory: this.store.inventoryQuantities(),
-      strategies: d.strategies,
-      recipeChoices: d.recipeChoices,
-      defaultStrategy: d.settings.defaultStrategy,
-      defaultFeePercent: d.settings.defaultFeePercent,
-    });
-  });
+  readonly result = computed(() => (this.targetId() ? this.compute(this.targetId(), this.quantity(), this.store.inventoryQuantities()) : null));
 
   // Bundled recipes are assumed correct, so the per-recipe "unverified" notice is not shown.
   visibleIssues(r: { issues: { type: string; severity: string }[] }): any[] {
@@ -296,11 +377,8 @@ export class CalculatorPage {
   loadPlan(id: string): void {
     const p = this.store.characterPlans().find((x) => x.id === id);
     if (!p) return;
-    this.targetId.set(p.targetItemId);
-    this.collapsed.set(new Set());
-    this.checked.set(new Set());
-    this.quantity.set(p.quantity);
-    this.tab.set('new');
+    this.openIds.update((l) => (l.includes(id) ? l : [...l, id]));
+    this.setTab('plan:' + id);
     if (p.server !== this.store.settings().server) this.store.setSettings({ server: p.server });
   }
 }

@@ -91,3 +91,5 @@ details > summary { cursor: pointer; }
 .price-editor .add-row { display: flex; gap: .5rem; }
 .price-editor .add-row input { flex: 1; }
 .price-editor label.check { flex-direction: row; align-items: center; gap: .4rem; }
+
+.subtabs .x { margin-left: 0.4rem; opacity: 0.6; cursor: pointer; } .subtabs .x:hover { opacity: 1; color: #ff8a8a; }
