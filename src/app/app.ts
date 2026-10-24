@@ -1,6 +1,7 @@
 ﻿import { Component, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AppStore } from './core/app-store';
+import { AutofocusDirective, DialogService } from './core/dialog';
 import { downloadText } from './core/download';
 import { parseBackup } from './core/io/backup';
 import { translate } from './core/i18n';
@@ -8,7 +9,7 @@ import { TrPipe } from './core/tr.pipe';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, TrPipe],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, TrPipe, AutofocusDirective],
   template: `
     <header>
       <div class="bar">
@@ -72,6 +73,20 @@ import { TrPipe } from './core/tr.pipe';
 
       <router-outlet />
     </main>
+    @if (dialog.state(); as d) {
+      <div class="modal-backdrop" (click)="dialog.cancel()" (keydown.escape)="dialog.cancel()">
+        <div class="modal" role="dialog" aria-modal="true" (click)="$event.stopPropagation()">
+          <p>{{ d.message }}</p>
+          @if (d.kind === 'prompt') {
+            <input appAutofocus [value]="d.value" (input)="dialog.setValue($any($event.target).value)" (keydown.enter)="dialog.accept()" (keydown.escape)="dialog.cancel()" />
+          }
+          <div class="row end">
+            <button type="button" (click)="dialog.cancel()">{{ 'Cancel' | tr }}</button>
+            <button type="button" [class]="d.danger ? 'danger' : 'primary'" (click)="dialog.accept()">{{ (d.kind === 'prompt' ? 'OK' : d.danger ? 'Delete' : 'OK') | tr }}</button>
+          </div>
+        </div>
+      </div>
+    }
     <footer>
       {{ 'Fully client-side. Your data stays in this browser (LocalStorage). Prices are entered by you; listing prices are not completed sales.' | tr }}
       {{ 'Not affiliated with NCSOFT or Aion2.gg.' | tr }}
@@ -80,27 +95,27 @@ import { TrPipe } from './core/tr.pipe';
 })
 export class App {
   protected readonly store = inject(AppStore);
+  protected readonly dialog = inject(DialogService);
   readonly restoreError = signal('');
 
   private t(text: string, params = {}): string {
     return translate(text, this.store.settings().uiLanguage, params);
   }
 
-  newCharacter(): void {
-    const name = prompt(this.t('Character name'));
+  async newCharacter(): Promise<void> {
+    const name = await this.dialog.prompt(this.t('Character name'));
     if (name?.trim()) this.store.createCharacter(name);
   }
 
-  renameCharacter(): void {
-    const name = prompt(this.t('Character name'), this.store.activeCharacter().name);
+  async renameCharacter(): Promise<void> {
+    const name = await this.dialog.prompt(this.t('Character name'), this.store.activeCharacter().name);
     if (name?.trim()) this.store.renameActiveCharacter(name);
   }
 
-  removeCharacter(): void {
+  async removeCharacter(): Promise<void> {
     const c = this.store.activeCharacter();
-    if (confirm(this.t('Delete character {name} and its plans?', { name: c.name }))) this.store.deleteActiveCharacter();
+    if (await this.dialog.confirm(this.t('Delete character {name} and its plans?', { name: c.name }), true)) this.store.deleteActiveCharacter();
   }
-
   async restore(ev: Event): Promise<void> {
     const file = (ev.target as HTMLInputElement).files?.[0];
     if (!file) return;

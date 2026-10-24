@@ -101,6 +101,8 @@ const PT: Record<string, string> = {
   'Saved plans': 'Planos salvos',
   'Load': 'Carregar',
   'Delete': 'Excluir',
+  'Cancel': 'Cancelar',
+  'OK': 'OK',
   'error': 'erro',
   'warning': 'aviso',
   'info': 'info',

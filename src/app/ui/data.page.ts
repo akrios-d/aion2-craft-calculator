@@ -1,6 +1,8 @@
-import { Component, inject } from '@angular/core';
+﻿import { Component, inject } from '@angular/core';
 import { AppStore } from '../core/app-store';
+import { DialogService } from '../core/dialog';
 import { TrPipe } from '../core/tr.pipe';
+import { translate } from '../core/i18n';
 import { APP_VERSION, downloadText } from '../core/download';
 import { buildBackup } from '../core/io/backup';
 import { ImportPanel } from './import-panel';
@@ -46,6 +48,7 @@ import { ImportPanel } from './import-panel';
 })
 export class DataPage {
   protected readonly store = inject(AppStore);
+  private readonly dialog = inject(DialogService);
 
 
   exportBackup(): void {
@@ -53,7 +56,8 @@ export class DataPage {
     downloadText(`aion2-craft-lab-backup-${stamp}.json`, JSON.stringify(buildBackup(this.store.data(), APP_VERSION), null, 2), 'application/json');
   }
 
-  reset(): void {
-    if (confirm('Delete ALL inventory, prices, plans and settings stored in this browser? Download a backup first.')) this.store.startFresh();
+  async reset(): Promise<void> {
+    const msg = translate('Delete ALL inventory, prices, plans and settings stored in this browser? Download a backup first.', this.store.settings().uiLanguage);
+    if (await this.dialog.confirm(msg, true)) this.store.startFresh();
   }
 }
