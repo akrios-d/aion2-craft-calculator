@@ -55,7 +55,13 @@ small.warn, em.warn, label.warn { color: var(--warn); }
 .pos { color: var(--ok); }
 .chip { display: inline-block; padding: 0 .5rem; margin: .1rem .2rem; border-radius: 999px; background: var(--line); font-size: .78rem; }
 .chip.added { background: #1d4a31; } .chip.updated { background: #1f3d63; } .chip.removed { background: #5a1f24; } .chip.kept { background: #5a4a1f; }
-ul.tree, ul.tree ul { list-style: none; padding-left: 1.25rem; border-left: 1px dashed var(--line); } ul.tree { border: 0; padding: 0; }
+ul.tree, ul.tree ul { list-style: none; margin: 0; padding-left: 1.75rem; border-left: 1px solid rgba(255, 200, 90, 0.35); margin-left: 0.65rem; } ul.tree { border: 0; padding: 0; margin: 0; }
+ul.tree li { position: relative; margin: 0; }
+ul.tree ul li::before { content: ''; position: absolute; left: -1.75rem; top: 1.05rem; width: 1.4rem; border-top: 1px solid rgba(255, 200, 90, 0.35); }
+ul.tree .node { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 0.35rem; padding: 0.2rem 0.4rem; border-radius: 4px; }
+ul.tree .node:hover { background: rgba(255, 255, 255, 0.06); }
+ul.tree .node .slot { display: inline-block; width: 1.5rem; text-align: center; }
+ul.tree > li > .node { font-size: 1.05em; border-bottom: 1px solid var(--line); }
 .node.buy { color: var(--warn); } .node.inventory { color: var(--ok); } .node.circular { color: var(--err); }
 ul.plain { padding-left: 1rem; }
 .import-panel { background: var(--win); border: 1px solid #ffffff24; border-radius: var(--radius); padding: .75rem; }

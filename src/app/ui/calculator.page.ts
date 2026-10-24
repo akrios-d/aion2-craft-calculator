@@ -123,12 +123,12 @@ import { Strategy } from '../core/models';
     <ng-template #nodeTpl let-n let-depth="depth" let-path="path">
       <li>
         <span class="node {{ n.action }}">
-          @if (n.children.length) {
+          <span class="slot">@if (n.children.length) {
             <button type="button" class="mini" (click)="toggle(path)" [attr.aria-expanded]="!collapsed().has(path)">{{ collapsed().has(path) ? '+' : '−' }}</button>
-          }
-          @if (acquired(n) > 0) {
+          }</span>
+          <span class="slot">@if (acquired(n) > 0) {
             <input type="checkbox" [checked]="checked().has(path)" (change)="check(path)" [title]="'Add to inventory' | tr" />
-          }
+          }</span>
           <app-ico [id]="n.itemId" /><strong>{{ n.required }}× {{ n.name }}</strong>
           @if (n.fromSurplus) { · {{ '{n} from earlier batch surplus' | tr: { n: n.fromSurplus } }} }
           @if (n.fromInventory) { · {{ '{n} from inventory' | tr: { n: n.fromInventory } }} }
