@@ -140,7 +140,7 @@ const PT: Record<string, string> = {
   'Notes': 'Notas',
   'Save price': 'Salvar preço',
   'Add price': 'Adicionar preço',
-  'Type a price and press Enter (several: 100, 120, 95)': 'Digite um preço e tecle Enter (vários: 100, 120, 95)',
+  'Type a price and press Enter (several: 100 120 95)': 'Digite um preço e tecle Enter (vários: 100 120 95)',
   'current price': 'preço atual',
   'optional': 'opcional',
   'Repeat an item on several rows to add several prices; the average is used.': 'Repita um item em várias linhas para adicionar vários preços; a média é usada.',

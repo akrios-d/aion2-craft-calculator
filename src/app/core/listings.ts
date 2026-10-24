@@ -24,13 +24,22 @@ export function withListings(entry: PriceEntry, listings: readonly number[]): Pr
   return next;
 }
 
-/** Parses prices separated by commas, semicolons or whitespace. */
+/** Parses prices separated by spaces or semicolons; commas are thousands separators. */
 export function parsePriceList(text: string): { values: number[]; invalid: string[] } {
   const values: number[] = [];
   const invalid: string[] = [];
-  for (const tok of text.split(/[\s,;]+/).filter(Boolean)) {
+  for (const tok of text.split(/[\s;]+/).filter(Boolean).map((s) => s.replace(/,/g, ''))) {
     if (/^\d+(\.\d+)?$/.test(tok)) values.push(Number(tok));
     else invalid.push(tok);
   }
   return { values, invalid };
+}
+
+/** Inserts thousands separators into every number of the text while typing. */
+export function groupThousands(text: string): string {
+  return text.replace(/\d[\d,]*(\.\d*)?/g, (m) => {
+    const [int, dec] = m.replace(/,/g, '').split('.');
+    const g = int.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return dec === undefined ? g : g + '.' + dec;
+  });
 }

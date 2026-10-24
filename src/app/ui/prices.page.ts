@@ -7,7 +7,7 @@ import { AppStore } from '../core/app-store';
 import { TrPipe } from '../core/tr.pipe';
 import { downloadText } from '../core/download';
 import { exportPricesCsv } from '../core/io/backup';
-import { listingsOf, parsePriceList } from '../core/listings';
+import { groupThousands, listingsOf, parsePriceList } from '../core/listings';
 import { ImportPanel } from './import-panel';
 
 @Component({
@@ -43,13 +43,13 @@ import { ImportPanel } from './import-panel';
         </div>
 
         <form class="add-row" (ngSubmit)="add()">
-          <input type="text" inputmode="decimal" name="draft" [placeholder]="'Type a price and press Enter (several: 100, 120, 95)' | tr" [ngModel]="draft()" (ngModelChange)="draft.set($event)" />
+          <input type="text" inputmode="decimal" name="draft" [placeholder]="'Type a price and press Enter (several: 100 120 95)' | tr" [ngModel]="draft()" (ngModelChange)="draft.set(group($event))" />
           <button class="primary" type="submit" [disabled]="!draft().trim()">{{ 'Add price' | tr }}</button>
         </form>
 
         <label class="check"><input type="checkbox" name="wantBuy" [ngModel]="buyShown()" (ngModelChange)="toggleBuy($event)" /> {{ 'Price I want to pay' | tr }}</label>
         @if (buyShown()) {
-          <input type="number" class="narrow" min="0" step="any" name="buy" [ngModel]="current()?.buyPrice ?? null" (change)="setBuy($any($event.target).value)" />
+          <input type="text" inputmode="decimal" class="narrow" name="buy" [ngModel]="buyText()" (ngModelChange)="buyDraft.set(group($event))" (change)="setBuy(buyDraft() ?? buyText())" />
         }
       </section>
     }
@@ -99,10 +99,14 @@ export class PricesPage {
   readonly currentListings = computed(() => { const c = this.current(); return c ? listingsOf(c) : []; });
   readonly buyShown = computed(() => this.buyOpen() || this.current()?.buyPrice !== undefined);
   readonly listings = listingsOf;
+  readonly group = groupThousands;
+  readonly buyDraft = signal<string | undefined>(undefined);
+  readonly buyText = computed(() => this.buyDraft() ?? groupThousands(String(this.current()?.buyPrice ?? '')));
 
   select(id: string): void {
     this.itemId.set(id);
     this.buyOpen.set(false);
+    this.buyDraft.set(undefined);
     this.draft.set('');
     this.error.set('');
     if (id) window.scrollTo({ top: 0 });
@@ -126,7 +130,7 @@ export class PricesPage {
   }
 
   setBuy(raw: string): void {
-    const n = raw.trim() === '' ? undefined : Number(raw);
+    const n = raw.trim() === '' ? undefined : Number(raw.replace(/,/g, ''));
     if (n !== undefined && (!Number.isFinite(n) || n < 0)) return void this.error.set('Price I want to pay must be a number of 0 or more.');
     this.error.set('');
     this.store.setBuyPrice(this.itemId(), n);

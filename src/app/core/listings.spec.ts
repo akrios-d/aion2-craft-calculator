@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { averagePrice, listingsOf, parsePriceList, withListings } from './listings';
+import { averagePrice, listingsOf, groupThousands, parsePriceList, withListings } from './listings';
 import { normalizePrice } from './storage/schema';
 import { PriceEntry } from './models';
 
@@ -32,7 +32,14 @@ describe('listings', () => {
 
 describe('parsePriceList', () => {
   it('splits several prices and reports invalid tokens', () => {
-    expect(parsePriceList('100, 120;95 7.5')).toEqual({ values: [100, 120, 95, 7.5], invalid: [] });
+    expect(parsePriceList('1,000 120;95 7.5')).toEqual({ values: [1000, 120, 95, 7.5], invalid: [] });
     expect(parsePriceList('10 abc -3').invalid).toEqual(['abc', '-3']);
+  });
+});
+
+describe('groupThousands', () => {
+  it('groups digits per number', () => {
+    expect(groupThousands('2500000 1200,5')).toBe('2,500,000 12,005');
+    expect(groupThousands('1234.5')).toBe('1,234.5');
   });
 });
