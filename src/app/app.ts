@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+﻿import { Component, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AppStore } from './core/app-store';
 import { downloadText } from './core/download';
@@ -11,6 +11,7 @@ import { TrPipe } from './core/tr.pipe';
   imports: [RouterOutlet, RouterLink, RouterLinkActive, TrPipe],
   template: `
     <header>
+     <div class="bar">
       <h1>Aion 2 Craft Lab</h1>
       <nav>
         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{ 'Calculator' | tr }}</a>
@@ -20,9 +21,9 @@ import { TrPipe } from './core/tr.pipe';
         <a routerLink="/data" routerLinkActive="active">{{ 'Data' | tr }}</a>
         <a routerLink="/settings" routerLinkActive="active">{{ 'Settings' | tr }}</a>
       </nav>
-      <span class="server">{{ 'Server: {server}' | tr: { server: store.settings().server } }}</span>
-      <span class="langs">
-        <label>{{ 'Character' | tr }}
+      <div class="tools">
+       <div class="group" role="group">
+        <label class="inline">{{ 'Character' | tr }}
           <select (change)="store.selectCharacter($any($event.target).value)">
             @for (c of store.characters(); track c.id) {
               <option [value]="c.id" [selected]="c.id === store.activeCharacter().id">{{ c.name }}</option>
@@ -32,19 +33,23 @@ import { TrPipe } from './core/tr.pipe';
         <button type="button" (click)="newCharacter()">{{ 'New' | tr }}</button>
         <button type="button" (click)="renameCharacter()">{{ 'Rename' | tr }}</button>
         <button type="button" [disabled]="store.characters().length < 2" (click)="removeCharacter()">{{ 'Delete' | tr }}</button>
-        <label>{{ 'Language' | tr }}
+       </div>
+       <div class="group">
+        <label class="inline">{{ 'Language' | tr }}
           <select [value]="store.settings().uiLanguage" (change)="store.setSettings({ uiLanguage: $any($event.target).value })">
             <option value="en">English</option>
             <option value="pt">Português</option>
           </select>
         </label>
-        <label>{{ 'Item names' | tr }}
+        <label class="inline">{{ 'Item names' | tr }}
           <select [value]="store.settings().itemNameLanguage" (change)="store.setSettings({ itemNameLanguage: $any($event.target).value })">
             <option value="en">English</option>
             <option value="pt">Português</option>
           </select>
         </label>
-      </span>
+       </div>
+      </div>
+     </div>
     </header>
 
     <main>
