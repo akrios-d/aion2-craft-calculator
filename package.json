@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "coverage": "node scripts/coverage-report.mjs",
-    "import:recipes": "node scripts/import-recipes.mjs"
+    "import:recipes": "node scripts/import-recipes.mjs",
+    "import:morph": "node scripts/add-morph-recipes.mjs"
   },
   "private": true,
   "packageManager": "npm@11.17.0",

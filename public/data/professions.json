@@ -18,5 +18,9 @@
   {
     "id": "tailoring",
     "name": "Tailoring"
+  },
+  {
+    "id": "substance-morph",
+    "name": "Substance Morph"
   }
 ]

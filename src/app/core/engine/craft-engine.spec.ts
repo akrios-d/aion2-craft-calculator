@@ -228,3 +228,19 @@ describe('calculateCraft: circular dependencies', () => {
     expect(r.issues.some((i) => i.type === 'circular-dependency')).toBe(true);
   });
 });
+
+describe('calculateCraft: Substance Morph', () => {
+  const morph = [rec('morph-ore', 'ore', 1, [['odyle', 1]], 'unverified')];
+  const run = (orePrice: number, strategy: 'auto' | 'buy') =>
+    calculateCraft({ targetItemId: 'ingot', quantity: 2, recipes: [...recipes.filter((r) => r.id === 'ingot'), ...morph], prices: { ore: price('ore', orePrice), odyle: price('odyle', 20) }, inventory: {}, defaultFeePercent: 10, defaultStrategy: strategy });
+
+  it('uses Odyle when converting is cheaper than buying the material', () => {
+    const r = run(50, 'auto');
+    expect(r.purchases.map((p) => p.itemId)).toEqual(['odyle']);
+    expect(r.purchases[0].quantity).toBe(3);
+  });
+
+  it('buys the material when it is cheaper than the Odyle', () => {
+    expect(run(5, 'auto').purchases.map((p) => p.itemId)).toEqual(['ore']);
+  });
+});

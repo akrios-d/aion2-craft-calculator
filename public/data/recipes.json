@@ -14647,5 +14647,469 @@
     "sourceUrl": "https://aion2.gg/database/recipes/splendent-ebony-dragon-lord-cloak-422073015",
     "verification": "unverified",
     "notes": "Output quantity is assumed to be 1; not shown on the source page."
+  },
+  {
+    "id": "morph-610620013",
+    "outputItemId": "610620013",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610013",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610620014",
+    "outputItemId": "610620014",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610014",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610620015",
+    "outputItemId": "610620015",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610015",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610620016",
+    "outputItemId": "610620016",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610016",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610660025",
+    "outputItemId": "610660025",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610013",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610660028",
+    "outputItemId": "610660028",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610014",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610660031",
+    "outputItemId": "610660031",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610015",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610660034",
+    "outputItemId": "610660034",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610016",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610660026",
+    "outputItemId": "610660026",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610013",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610660029",
+    "outputItemId": "610660029",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610014",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610660032",
+    "outputItemId": "610660032",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610015",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610660035",
+    "outputItemId": "610660035",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610016",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610660027",
+    "outputItemId": "610660027",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610013",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610660030",
+    "outputItemId": "610660030",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610014",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610660033",
+    "outputItemId": "610660033",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610015",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610660036",
+    "outputItemId": "610660036",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610016",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610650012",
+    "outputItemId": "610650012",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610013",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610650014",
+    "outputItemId": "610650014",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610014",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610650016",
+    "outputItemId": "610650016",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610015",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610650018",
+    "outputItemId": "610650018",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610016",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610670043",
+    "outputItemId": "610670043",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610013",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610670047",
+    "outputItemId": "610670047",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610014",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610670044",
+    "outputItemId": "610670044",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610013",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610670048",
+    "outputItemId": "610670048",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610014",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610680049",
+    "outputItemId": "610680049",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610013",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610680050",
+    "outputItemId": "610680050",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610013",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610680051",
+    "outputItemId": "610680051",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610013",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610680053",
+    "outputItemId": "610680053",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610013",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
+  },
+  {
+    "id": "morph-610680054",
+    "outputItemId": "610680054",
+    "outputQuantity": 1,
+    "ingredients": [
+      {
+        "itemId": "610610013",
+        "quantity": 1
+      }
+    ],
+    "professionId": "substance-morph",
+    "source": "game8.co",
+    "sourceUrl": "https://game8.co/games/Aion-2/archives/631951",
+    "verification": "unverified",
+    "notes": "Substance Morph conversion (1 Odyle of the matching grade). Weekly limits and success chances are not modelled."
   }
 ]
