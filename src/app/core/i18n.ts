@@ -210,6 +210,8 @@ const PT: Record<string, string> = {
   'Search character by name': 'Buscar personagem pelo nome',
   'Reads the official NCSOFT site through a small serverless proxy. It only exposes profile and base attributes (no total attack, crit or amp), so stats still need to be pasted.': 'Lê o site oficial da NCSOFT por um pequeno proxy serverless. Só expõe perfil e atributos base (sem ataque, crítico ou amp totais), então os stats ainda precisam ser colados.',
   'Search': 'Buscar',
+  'Diminishing returns per stat': 'Retorno decrescente por atributo',
+  'Damage gain (%) as you keep adding the amount from the table above, up to this many times. A flattening line means diminishing returns.': 'Ganho de dano (%) conforme você soma repetidamente o valor da tabela acima, até esse número de vezes. Uma linha que achata indica retorno decrescente.',
   'Blue: value of +1% amp by net amp (diminishing returns). Orange: your current net amp.': 'Azul: valor de +1% de amp por amp líquido (retorno decrescente). Laranja: seu amp líquido atual.',
   'No characters found.': 'Nenhum personagem encontrado.',
   'Lookup unavailable (the proxy only works on the deployed site, not ng serve).': 'Busca indisponível (o proxy só funciona no site publicado, não no ng serve).',

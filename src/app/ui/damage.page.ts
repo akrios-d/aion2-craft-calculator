@@ -127,6 +127,21 @@ import { TrPipe } from '../core/tr.pipe';
       </tbody>
     </table>
 
+    @let gc = gainChart();
+    <svg class="chart" style="max-width:520px;width:100%" viewBox="0 0 320 180" role="img" [attr.aria-label]="'Diminishing returns per stat' | tr">
+      <line x1="40" y1="150" x2="310" y2="150" stroke="currentColor" opacity=".4" />
+      <line x1="40" y1="10" x2="40" y2="150" stroke="currentColor" opacity=".4" />
+      @for (l of gc.lines; track l.stat) { <path [attr.d]="l.path" fill="none" [attr.stroke]="l.color" stroke-width="2" /> }
+      <text x="40" y="168" font-size="10" fill="currentColor">0</text>
+      <text x="270" y="168" font-size="10" fill="currentColor">×{{ gc.steps }}</text>
+      <text x="2" y="14" font-size="10" fill="currentColor">{{ gc.yMax | number: '1.0-1' }}%</text>
+      <text x="2" y="150" font-size="10" fill="currentColor">0%</text>
+    </svg>
+    <p>
+      @for (l of gc.lines; track l.stat) { <span style="margin-right:12px"><span [style.color]="l.color">●</span> {{ labelOf(l.stat) | tr }}</span> }
+    </p>
+    <p class="muted">{{ 'Damage gain (%) as you keep adding the amount from the table above, up to this many times. A flattening line means diminishing returns.' | tr }}</p>
+
     <h3>{{ 'Amp efficiency' | tr }}</h3>
     <p class="muted">{{ 'How much +1% Damage/PVE/Boss Amp is worth, by net amp (total amp minus target resistance). They all share one group, so any of them gives the same result.' | tr }}</p>
     <table>
@@ -327,6 +342,28 @@ export class DamagePage {
 
   readonly result = computed(() => calculateDamage(this.stats(), this.model()));
   readonly gains = computed(() => compareStatGains(this.stats(), this.model(), this.amounts()));
+  readonly gainChart = computed(() => {
+    const steps = 6;
+    const colors = ['#4ea1ff', '#ff9f43', '#2ecc71', '#e74c3c', '#c39bd3', '#f4d03f', '#1abc9c'];
+    const base = calculateDamage(this.stats(), this.model()).expectedHit;
+    const amounts = this.amounts();
+    const keys = Object.keys(amounts) as StatKey[];
+    const raw = keys.map((stat, i) => {
+      const pts: number[] = [];
+      for (let k = 0; k <= steps * 4; k++) {
+        const hit = calculateDamage({ ...this.stats(), [stat]: this.stats()[stat] + (amounts[stat] * k) / 4 }, this.model()).expectedHit;
+        pts.push(base > 0 ? (hit / base - 1) * 100 : 0);
+      }
+      return { stat, pts, color: colors[i % colors.length] };
+    });
+    const yMax = Math.max(1, ...raw.flatMap((r) => r.pts));
+    const lines = raw.map((r) => ({
+      stat: r.stat,
+      color: r.color,
+      path: r.pts.map((v, k) => `${k ? 'L' : 'M'}${(40 + (k / (steps * 4)) * 270).toFixed(1)},${(150 - (v / yMax) * 140).toFixed(1)}`).join(''),
+    }));
+    return { lines, steps, yMax };
+  });
   readonly bestGain = computed(() => this.gains().reduce((a, b) => (b.gainPercent > a.gainPercent ? b : a)));
   readonly efficiency = computed(() => ampEfficiency(this.stats().damageAmp - this.stats().targetResistance));
   readonly rateFromStat = computed(() => critRateFromStat(this.critStat()));
