@@ -138,6 +138,19 @@ import { TrPipe } from '../core/tr.pipe';
       </tbody>
     </table>
 
+    @let ac = ampChart();
+    <svg class="chart" style="max-width:420px;width:100%" viewBox="0 0 320 180" role="img" [attr.aria-label]="'Amp efficiency' | tr">
+      <line x1="40" y1="150" x2="310" y2="150" stroke="currentColor" opacity=".4" />
+      <line x1="40" y1="10" x2="40" y2="150" stroke="currentColor" opacity=".4" />
+      <path [attr.d]="ac.path" fill="none" stroke="#4ea1ff" stroke-width="2" />
+      <circle [attr.cx]="ac.x" [attr.cy]="ac.y" r="5" fill="#ff9f43" />
+      <text x="40" y="168" font-size="10" fill="currentColor">{{ ac.xMin }}%</text>
+      <text x="280" y="168" font-size="10" fill="currentColor">{{ ac.xMax }}%</text>
+      <text x="2" y="14" font-size="10" fill="currentColor">×{{ ac.yMax | number: '1.1-1' }}</text>
+      <text x="2" y="150" font-size="10" fill="currentColor">×0</text>
+    </svg>
+    <p class="muted">{{ 'Blue: value of +1% amp by net amp (diminishing returns). Orange: your current net amp.' | tr }} ({{ ac.net | number: '1.0-1' }}% → ×{{ ac.eff | number: '1.2-2' }})</p>
+
     <h3>{{ 'Crit stat and crit rate' | tr }}</h3>
     <p class="muted">{{ 'Measured on a training dummy; boss crit resistance may change it. Values outside the measured range are not estimated.' | tr }}</p>
     <div class="grid">
@@ -148,6 +161,18 @@ import { TrPipe } from '../core/tr.pipe';
         <input type="number" step="any" [ngModel]="critTarget()" (ngModelChange)="critTarget.set($event ?? 0)" />
       </label>
     </div>
+    @let cc = critChart();
+    <svg class="chart" style="max-width:420px;width:100%" viewBox="0 0 320 180" role="img" [attr.aria-label]="'Crit stat and crit rate' | tr">
+      <line x1="40" y1="150" x2="310" y2="150" stroke="currentColor" opacity=".4" />
+      <line x1="40" y1="10" x2="40" y2="150" stroke="currentColor" opacity=".4" />
+      <path [attr.d]="cc.path" fill="none" stroke="#4ea1ff" stroke-width="2" />
+      @for (p of cc.dots; track p.x) { <circle [attr.cx]="p.x" [attr.cy]="p.y" r="3" fill="#4ea1ff" /> }
+      @if (cc.mark; as m) { <circle [attr.cx]="m.x" [attr.cy]="m.y" r="5" fill="#ff9f43" /> }
+      <text x="40" y="168" font-size="10" fill="currentColor">{{ cc.xMin }}</text>
+      <text x="280" y="168" font-size="10" fill="currentColor">{{ cc.xMax }}</text>
+      <text x="2" y="14" font-size="10" fill="currentColor">{{ cc.yMax }}%</text>
+      <text x="2" y="150" font-size="10" fill="currentColor">{{ cc.yMin }}%</text>
+    </svg>
     <table class="kv">
       <tr><td>{{ 'Crit stat' | tr }} → {{ 'Crit rate (%)' | tr }}</td><td>@if (rateFromStat() !== null) { {{ rateFromStat() | number: '1.0-1' }}% <button type="button" (click)="setStat('critRate', rateFromStat())">{{ 'Use as crit rate' | tr }}</button> } @else { {{ 'Out of measured range' | tr }} }</td></tr>
       <tr><td>{{ 'Target crit rate (%)' | tr }} → {{ 'Crit stat' | tr }}</td><td>@if (statForRate() !== null) { {{ statForRate() | number: '1.0-0' }} } @else { {{ 'Out of measured range' | tr }} }</td></tr>
@@ -197,6 +222,26 @@ export class DamagePage {
   readonly stats = signal<DamageStats>({ ...DEFAULT_DAMAGE_STATS });
   readonly model = signal<DamageModel>({ ...DEFAULT_DAMAGE_MODEL });
   readonly regions = LOOKUP_REGIONS;
+  readonly ampChart = computed(() => {
+    const xMin = -70, xMax = 100, yMax = 3.4;
+    const sx = (v: number) => 40 + ((v - xMin) / (xMax - xMin)) * 270;
+    const sy = (v: number) => 150 - (Math.min(v, yMax) / yMax) * 140;
+    let path = '';
+    for (let n = xMin; n <= xMax; n += 2) path += `${path ? 'L' : 'M'}${sx(n).toFixed(1)},${sy(ampEfficiency(n)).toFixed(1)}`;
+    const s = this.stats();
+    const net = Math.min(xMax, Math.max(xMin, s.damageAmp - s.targetResistance));
+    return { path, xMin, xMax, yMax, net, eff: ampEfficiency(net), x: sx(net), y: sy(ampEfficiency(net)) };
+  });
+  readonly critChart = computed(() => {
+    const pts = CRIT_CURVE;
+    const xMin = pts[0].stat, xMax = pts[pts.length - 1].stat, yMin = 40, yMax = 100;
+    const sx = (v: number) => 40 + ((v - xMin) / (xMax - xMin)) * 270;
+    const sy = (v: number) => 150 - ((v - yMin) / (yMax - yMin)) * 140;
+    const dots = pts.map((p) => ({ x: sx(p.stat), y: sy(p.rate) }));
+    const path = dots.map((p, i) => `${i ? 'L' : 'M'}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join('');
+    const r = critRateFromStat(this.critStat());
+    return { path, dots, xMin, xMax, yMin, yMax, mark: r === null ? null : { x: sx(this.critStat()), y: sy(r) } };
+  });
   readonly lookupRegion = signal('la');
   readonly lookupName = signal('');
   readonly lookupHits = signal<CharacterHit[]>([]);

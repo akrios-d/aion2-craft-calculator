@@ -208,6 +208,7 @@ const PT: Record<string, string> = {
   'Which upgrade is worth more?': 'Qual melhoria vale mais?',
   'Damage research': 'Pesquisa de dano',
   'Search': 'Buscar',
+  'Blue: value of +1% amp by net amp (diminishing returns). Orange: your current net amp.': 'Azul: valor de +1% de amp por amp líquido (retorno decrescente). Laranja: seu amp líquido atual.',
   'No characters found.': 'Nenhum personagem encontrado.',
   'Combat power': 'Poder de combate',
   'Item level': 'Nível de item',
