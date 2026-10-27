@@ -197,7 +197,7 @@ const PT: Record<string, string> = {
   'Bonus per extra multi-hit (%)': 'Bônus por multi-hit extra (%)',
   'Smite multiplier': 'Multiplicador de Smite',
   'Which upgrade is worth more?': 'Qual melhoria vale mais?',
-  'Damage': 'Dano',
+  'Damage research': 'Pesquisa de dano',
   'Result': 'Resultado',
   'Model constants': 'Constantes do modelo',
   'Normal hit': 'Golpe normal',

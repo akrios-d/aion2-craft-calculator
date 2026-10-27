@@ -21,7 +21,7 @@ import { TrPipe } from '../core/tr.pipe';
   selector: 'app-damage',
   imports: [FormsModule, TrPipe, DecimalPipe],
   template: `
-    <h2>{{ 'Damage' | tr }}</h2>
+    <h2>{{ 'Damage research' | tr }}</h2>
     <p class="muted">
       {{ 'Community-reported mechanics from training-dummy tests, not verified by us and possibly outdated. Every constant is editable.' | tr }}
       <a href="https://github.com/sunkwolf/aion2-damage-research" target="_blank" rel="noopener">{{ 'Source summary' | tr }}</a>

@@ -15,7 +15,7 @@ export const routes: Routes = [
   { path: 'recipes', component: RecipesPage, title: 'Recipes · Aion 2 Craft Lab' },
   { path: 'data', component: DataPage, title: 'Data · Aion 2 Craft Lab' },
   { path: 'kina', component: KinaPage, title: 'Kina chests · Aion 2 Craft Lab' },
-  { path: 'damage', component: DamagePage, title: 'Damage - Aion 2 Craft Lab' },
+  { path: 'damage', component: DamagePage, title: 'Damage research - Aion 2 Craft Lab' },
   { path: 'settings', component: SettingsPage, title: 'Settings · Aion 2 Craft Lab' },
   { path: '**', redirectTo: '' },
 ];
