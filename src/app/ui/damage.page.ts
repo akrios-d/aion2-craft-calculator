@@ -1,5 +1,6 @@
 import { DecimalPipe } from '@angular/common';
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
+import { AppStore } from '../core/app-store';
 import { FormsModule } from '@angular/forms';
 import {
   CRIT_CURVE,
@@ -8,12 +9,14 @@ import {
   DamageModel,
   DamageStats,
   StatKey,
+  StatImport,
   ampEfficiency,
   calculateDamage,
   compareStatGains,
   critRateFromStat,
   critStatForRate,
   efficiencyTable,
+  parseCharacterStats,
 } from '../core/engine/damage-engine';
 import { TrPipe } from '../core/tr.pipe';
 
@@ -35,6 +38,28 @@ import { TrPipe } from '../core/tr.pipe';
         </label>
       }
     </div>
+
+    <details>
+      <summary>{{ 'Import character stats' | tr }}</summary>
+      <p class="muted">{{ 'Paste your stats as lines like Attack: 5200 or as JSON. Nothing is applied until you confirm; unknown names are reported.' | tr }}</p>
+      <textarea rows="6" [ngModel]="importText()" (ngModelChange)="importText.set($event)" placeholder="Attack: 5200&#10;Crit rate: 42.5&#10;Back attack: 3"></textarea>
+      @let imp = importPreview();
+      @if (imp.rows.length || imp.errors.length) {
+        <table>
+          <thead><tr><th>{{ 'Name' | tr }}</th><th>{{ 'Stat' | tr }}</th><th>{{ 'Value' | tr }}</th><th></th></tr></thead>
+          <tbody>
+            @for (r of imp.rows; track r.line) {
+              <tr><td>{{ r.label }}</td><td>{{ r.stat ? (labelOf(r.stat) | tr) : '—' }}</td><td>{{ r.value ?? '—' }}</td><td [class]="r.error ? 'neg' : 'pos'">{{ r.error ? (r.error | tr) : 'OK' }}</td></tr>
+            }
+          </tbody>
+        </table>
+        @for (e of imp.errors; track e) { <p class="neg">{{ e }}</p> }
+      }
+      <div class="row">
+        <button type="button" [disabled]="!hasImportValues()" (click)="applyImport()">{{ 'Apply imported stats' | tr }}</button>
+        <button type="button" (click)="exportStats()">{{ 'Export current stats as JSON' | tr }}</button>
+      </div>
+    </details>
 
     <details>
       <summary>{{ 'Model constants' | tr }}</summary>
@@ -141,8 +166,55 @@ export class DamagePage {
   readonly curve = CRIT_CURVE;
   readonly effTable = efficiencyTable();
 
+  protected readonly store = inject(AppStore);
   readonly stats = signal<DamageStats>({ ...DEFAULT_DAMAGE_STATS });
   readonly model = signal<DamageModel>({ ...DEFAULT_DAMAGE_MODEL });
+  readonly importText = signal('');
+  readonly importPreview = computed<StatImport>(() => (this.importText().trim() ? parseCharacterStats(this.importText()) : { rows: [], values: {}, errors: [] }));
+  readonly hasImportValues = computed(() => Object.keys(this.importPreview().values).length > 0);
+  private loadedFor = '';
+
+  constructor() {
+    effect(() => {
+      const id = this.store.activeCharacter()?.id ?? 'default';
+      if (id === this.loadedFor) return;
+      this.loadedFor = id;
+      const saved = this.read(id);
+      this.stats.set({ ...DEFAULT_DAMAGE_STATS, ...saved?.stats });
+      this.model.set({ ...DEFAULT_DAMAGE_MODEL, ...saved?.model });
+    });
+    effect(() => {
+      const snapshot = { stats: this.stats(), model: this.model() };
+      if (!this.loadedFor) return;
+      try {
+        localStorage.setItem(this.key(this.loadedFor), JSON.stringify(snapshot));
+      } catch {
+        // storage unavailable: the page still works for this session
+      }
+    });
+  }
+
+  private key(id: string): string {
+    return 'aion2-craft-lab.damage.' + id;
+  }
+
+  private read(id: string): { stats?: Partial<DamageStats>; model?: Partial<DamageModel> } | null {
+    try {
+      const raw = localStorage.getItem(this.key(id));
+      return raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
+  }
+
+  applyImport(): void {
+    this.stats.update((s) => ({ ...s, ...this.importPreview().values }));
+    this.importText.set('');
+  }
+
+  exportStats(): void {
+    this.importText.set(JSON.stringify(this.stats(), null, 2));
+  }
   readonly amounts = signal<Record<StatKey, number>>({ attack: 500, damageAmp: 5, backAttack: 5, elementalReduction: 5, critRate: 5, critDamageBonus: 10, penetration: 500 });
   readonly critStat = signal(1100);
   readonly critTarget = signal(70);
@@ -154,7 +226,7 @@ export class DamagePage {
   readonly rateFromStat = computed(() => critRateFromStat(this.critStat()));
   readonly statForRate = computed(() => critStatForRate(this.critTarget()));
 
-  labelOf(stat: StatKey): string {
+  labelOf(stat: keyof DamageStats): string {
     return this.fields.find((f) => f.key === stat)?.label ?? stat;
   }
 

@@ -64,3 +64,24 @@ describe('damage engine', () => {
     expect(critStatForRate(99)).toBeNull();
   });
 });
+
+import { parseCharacterStats } from './damage-engine';
+
+describe('character stats import', () => {
+  it('parses name: value lines, percentages and aliases', () => {
+    const r = parseCharacterStats('Attack: 5200\nCrit rate = 42.5%\nAtaque pelas costas; 3\nBoss resistance, 65.5');
+    expect(r.values).toEqual({ attack: 5200, critRate: 42.5, backAttack: 3, targetResistance: 65.5 });
+    expect(r.errors).toEqual([]);
+  });
+
+  it('parses JSON and reports unknown stats, bad numbers and duplicates', () => {
+    const r = parseCharacterStats('{"attack": 100, "luck": 5, "critRate": "x", "atk": 200}');
+    expect(r.values).toEqual({ attack: 200 });
+    expect(r.rows.filter((x) => x.error).map((x) => x.error)).toEqual(['Unknown stat', 'Invalid number', 'Duplicate, last value used']);
+    expect(parseCharacterStats('{bad').errors).toHaveLength(1);
+  });
+
+  it('reports lines that are not name: value', () => {
+    expect(parseCharacterStats('nonsense').errors).toHaveLength(1);
+  });
+});

@@ -158,3 +158,85 @@ export function critStatForRate(rate: number): number | null {
 export function efficiencyTable(netLevels: number[] = [-70, -40, -30, -20, -10, 0, 10, 20, 35, 50]): { net: number; efficiency: number }[] {
   return netLevels.map((net) => ({ net, efficiency: ampEfficiency(net) }));
 }
+
+const STAT_ALIASES: Record<keyof DamageStats, string[]> = {
+  attack: ['attack', 'attack power', 'atk', 'ataque', 'poder de ataque'],
+  skillLevelBonus: ['skill level bonus', 'bonus de nivel da skill', 'bônus de nível da skill'],
+  damageAmp: ['damage amp', 'damage amplification', 'pve damage amp', 'boss damage amp', 'damage / pve / boss amp', 'damage / pve / boss amp (%)', 'amp', 'amplificacao de dano', 'amplificação de dano'],
+  targetResistance: ['target damage resistance', 'target damage resistance (%)', 'boss resistance', 'resistencia do alvo', 'resistência do alvo'],
+  backAttack: ['back attack', 'back attack damage', 'back attack (%)', 'ataque pelas costas', 'ataque pelas costas (%)'],
+  elementalReduction: ['elemental resist reduction', 'elemental resist reduction (%)', 'elemental resistance reduction', 'reducao de resistencia elemental', 'redução de resistência elemental'],
+  critRate: ['crit rate', 'critical rate', 'crit rate (%)', 'chance de critico', 'chance de crítico', 'chance de crítico (%)'],
+  critDamageBonus: ['crit damage', 'critical damage', 'extra crit damage', 'extra crit damage (%)', 'dano critico', 'dano crítico', 'dano crítico extra (%)'],
+  smiteChance: ['smite chance', 'smite', 'smite chance (%)', 'chance de smite', 'chance de smite (%)'],
+  multiHits: ['multi-hit', 'multi hit', 'multihit', 'extra multi-hits (0-4)', 'multi-hits extras (0-4)'],
+  penetration: ['penetration', 'penetracao', 'penetração'],
+  targetDefense: ['target defense', 'defense', 'defesa do alvo', 'defesa'],
+};
+
+const normalizeKey = (s: string): string => s.trim().toLowerCase().replace(/\s+/g, ' ');
+
+export interface StatImportRow {
+  line: number;
+  label: string;
+  stat: keyof DamageStats | null;
+  value: number | null;
+  error?: string;
+}
+
+export interface StatImport {
+  rows: StatImportRow[];
+  /** Recognised stats; later duplicates win and are reported on their row. */
+  values: Partial<DamageStats>;
+  errors: string[];
+}
+
+/**
+ * Parses pasted character stats. Accepts JSON ({"attack": 5000, ...}) or lines like "Attack: 5000",
+ * "Crit rate = 42.5%" or CSV "attack,5000". Unknown labels and bad numbers are reported, never guessed.
+ */
+export function parseCharacterStats(text: string): StatImport {
+  const rows: StatImportRow[] = [];
+  const values: Partial<DamageStats> = {};
+  const errors: string[] = [];
+  const lookup = new Map<string, keyof DamageStats>();
+  for (const [stat, names] of Object.entries(STAT_ALIASES) as [keyof DamageStats, string[]][]) {
+    lookup.set(normalizeKey(stat), stat);
+    names.forEach((n) => lookup.set(normalizeKey(n), stat));
+  }
+
+  const pairs: { line: number; label: string; raw: unknown }[] = [];
+  const trimmed = text.trim();
+  if (trimmed.startsWith('{')) {
+    try {
+      const obj = JSON.parse(trimmed);
+      if (!obj || typeof obj !== 'object' || Array.isArray(obj)) throw new Error('not an object');
+      Object.entries(obj).forEach(([label, raw], i) => pairs.push({ line: i + 1, label, raw }));
+    } catch {
+      return { rows, values, errors: ['Invalid JSON.'] };
+    }
+  } else {
+    text.split(/\r?\n/).forEach((line, i) => {
+      const t = line.trim();
+      if (!t) return;
+      const m = t.match(/^(.*?)\s*[:=;\t,]\s*([^:=;\t,]*)$/) ?? t.match(/^(.*\D)\s+(-?[\d.]+%?)$/);
+      if (!m) {
+        errors.push(`Line ${i + 1}: "${t}" is not "name: value".`);
+        return;
+      }
+      pairs.push({ line: i + 1, label: m[1], raw: m[2] });
+    });
+  }
+
+  for (const p of pairs) {
+    const stat = lookup.get(normalizeKey(p.label)) ?? null;
+    const num = typeof p.raw === 'number' ? p.raw : Number(String(p.raw).trim().replace(/%$/, ''));
+    const row: StatImportRow = { line: p.line, label: p.label, stat, value: Number.isFinite(num) ? num : null };
+    if (!stat) row.error = 'Unknown stat';
+    else if (row.value === null || row.value < 0) row.error = 'Invalid number';
+    else if (stat in values) row.error = 'Duplicate, last value used';
+    if (stat && row.value !== null && row.value >= 0) values[stat] = row.value;
+    rows.push(row);
+  }
+  return { rows, values, errors };
+}
