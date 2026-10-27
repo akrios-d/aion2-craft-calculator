@@ -1,0 +1,4 @@
+(node:40032) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/ghfel/.copilot/repos/copilot-worktrees/aion2-craft-calculator/fsampaol-ntt-animated-invention/api/character.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\C:\Users\ghfel\.copilot\repos\copilot-worktrees\aion2-craft-calculator\fsampaol-ntt-animated-invention\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)

@@ -33,7 +33,6 @@ import { TrPipe } from '../core/tr.pipe';
 
     <details>
       <summary>{{ 'Search character by name' | tr }}</summary>
-      <p class="muted">{{ 'Reads the official NCSOFT site through a small serverless proxy. It only exposes profile and base attributes (no total attack, crit or amp), so stats still need to be pasted.' | tr }}</p>
       <div class="row">
         <select [ngModel]="lookupRegion()" (ngModelChange)="lookupRegion.set($event)">
           @for (r of regions; track r.id) { <option [value]="r.id">{{ r.label }}</option> }
@@ -308,10 +307,11 @@ export class DamagePage {
     try {
       const hits = await lookupCharacters(this.lookupRegion(), this.lookupName().trim());
       this.lookupHits.set(hits);
+      if (hits.length === 1) void this.pick(hits[0]);
       if (!hits.length) this.lookupError.set('No characters found.');
     } catch {
       this.lookupHits.set([]);
-      this.lookupError.set('Lookup unavailable (the proxy only works on the deployed site, not ng serve).');
+      this.lookupError.set('Could not reach the character lookup. Try again later.');
     } finally {
       this.lookupBusy.set(false);
     }
@@ -322,7 +322,7 @@ export class DamagePage {
     try {
       this.card.set(await lookupCharacterInfo(this.lookupRegion(), hit));
     } catch {
-      this.lookupError.set('Lookup unavailable (the proxy only works on the deployed site, not ng serve).');
+      this.lookupError.set('Could not reach the character lookup. Try again later.');
     } finally {
       this.lookupBusy.set(false);
     }
