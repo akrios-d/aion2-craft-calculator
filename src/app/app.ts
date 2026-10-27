@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+﻿import { Component, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AppStore } from './core/app-store';
 import { AutofocusDirective, DialogService } from './core/dialog';
@@ -57,6 +57,7 @@ import { TrPipe } from './core/tr.pipe';
           <a routerLink="/recipes" routerLinkActive="active">{{ 'Recipes' | tr }}</a>
           <a routerLink="/data" routerLinkActive="active">{{ 'Data' | tr }}</a>
           <a routerLink="/kina" routerLinkActive="active">{{ 'Kina chests' | tr }}</a>
+          <a routerLink="/damage" routerLinkActive="active">{{ 'Damage' | tr }}</a>
           <a routerLink="/settings" routerLinkActive="active">{{ 'Settings' | tr }}</a>
         </div>
       </nav>
