@@ -49,3 +49,7 @@ Deployment itself has not been performed from this repository; only configuratio
 
 The inventory is account-wide. Each character has its own buy/craft strategies, recipe choices and saved craft plans. Inventory, prices, price history and settings are shared. Use the character selector in the header to create, rename, switch or delete characters; JSON backups include all characters.
 
+
+## Character lookup (the only serverless exception)
+
+The optional **Search character by name** box on the Damage research page calls pi/character.ts, a tiny Vercel function that proxies two read-only endpoints of the official NCSOFT site (search and character info). It needs no env vars or credentials, validates all input and only contacts those two hosts. It uses undocumented endpoints that may change or be restricted by NCSOFT, and it returns only profile and base attributes, not total attack, crit or amp. It does not work under `ng serve`; the rest of the app stays fully client-side.
