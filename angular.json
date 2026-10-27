@@ -57,7 +57,6 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
-          "options": { "proxyConfig": "proxy.conf.mjs" },
           "configurations": {
             "production": {
               "buildTarget": "aion2-craft-lab:build:production"

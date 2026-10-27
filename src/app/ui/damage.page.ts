@@ -1,7 +1,6 @@
 import { DecimalPipe } from '@angular/common';
 import { Component, computed, effect, inject, signal } from '@angular/core';
 import { AppStore } from '../core/app-store';
-import { CharacterCard, CharacterHit, LOOKUP_REGIONS, lookupCharacterInfo, lookupCharacters } from '../core/character-lookup';
 import { FormsModule } from '@angular/forms';
 import {
   CRIT_CURVE,
@@ -30,31 +29,6 @@ import { TrPipe } from '../core/tr.pipe';
       {{ 'Community-reported mechanics from training-dummy tests, not verified by us and possibly outdated. Every constant is editable.' | tr }}
       <a href="https://github.com/sunkwolf/aion2-damage-research" target="_blank" rel="noopener">{{ 'Source summary' | tr }}</a>
     </p>
-
-    <details>
-      <summary>{{ 'Search character by name' | tr }}</summary>
-      <div class="row">
-        <select [ngModel]="lookupRegion()" (ngModelChange)="lookupRegion.set($event)">
-          @for (r of regions; track r.id) { <option [value]="r.id">{{ r.label }}</option> }
-        </select>
-        <input type="text" [ngModel]="lookupName()" (ngModelChange)="lookupName.set($event)" (keyup.enter)="search()" [placeholder]="'Character name' | tr" />
-        <button type="button" [disabled]="lookupBusy() || !lookupName().trim()" (click)="search()">{{ 'Search' | tr }}</button>
-      </div>
-      @if (lookupError()) { <p class="error">{{ lookupError() | tr }}</p> }
-      @for (h of lookupHits(); track h.characterId) {
-        <button type="button" class="link" (click)="pick(h)">{{ h.name }} · Lv {{ h.level }} · {{ h.serverName }}</button>
-      }
-      @if (card(); as c) {
-        <div class="card">
-          <strong>{{ c.name }}</strong> — {{ c.className }}, Lv {{ c.level }}, {{ c.serverName }} ({{ c.raceName }})<br />
-          {{ 'Combat power' | tr }}: {{ c.combatPower | number }}
-          @if (c.itemLevel !== null) { · {{ 'Item level' | tr }}: {{ c.itemLevel }} }
-          <ul>
-            @for (a of c.attributes; track a.name) { <li>{{ a.name }}: {{ a.value }} <span class="muted">{{ a.effects.join(', ') }}</span></li> }
-          </ul>
-        </div>
-      }
-    </details>
 
     <h3>{{ 'Your stats' | tr }}</h3>
     <div class="grid">
@@ -235,7 +209,6 @@ export class DamagePage {
   protected readonly store = inject(AppStore);
   readonly stats = signal<DamageStats>({ ...DEFAULT_DAMAGE_STATS });
   readonly model = signal<DamageModel>({ ...DEFAULT_DAMAGE_MODEL });
-  readonly regions = LOOKUP_REGIONS;
   readonly ampChart = computed(() => {
     const xMin = -70, xMax = 100, yMax = 3.4;
     const sx = (v: number) => 40 + ((v - xMin) / (xMax - xMin)) * 270;
@@ -256,12 +229,6 @@ export class DamagePage {
     const r = critRateFromStat(this.critStat());
     return { path, dots, xMin, xMax, yMin, yMax, mark: r === null ? null : { x: sx(this.critStat()), y: sy(r) } };
   });
-  readonly lookupRegion = signal('la');
-  readonly lookupName = signal('');
-  readonly lookupHits = signal<CharacterHit[]>([]);
-  readonly card = signal<CharacterCard | null>(null);
-  readonly lookupBusy = signal(false);
-  readonly lookupError = signal('');
   readonly importText = signal('');
   readonly importPreview = computed<StatImport>(() => (this.importText().trim() ? parseCharacterStats(this.importText()) : { rows: [], values: {}, errors: [] }));
   readonly hasImportValues = computed(() => Object.keys(this.importPreview().values).length > 0);
@@ -297,34 +264,6 @@ export class DamagePage {
       return raw ? JSON.parse(raw) : null;
     } catch {
       return null;
-    }
-  }
-
-  async search(): Promise<void> {
-    this.lookupBusy.set(true);
-    this.lookupError.set('');
-    this.card.set(null);
-    try {
-      const hits = await lookupCharacters(this.lookupRegion(), this.lookupName().trim());
-      this.lookupHits.set(hits);
-      if (hits.length === 1) void this.pick(hits[0]);
-      if (!hits.length) this.lookupError.set('No characters found.');
-    } catch {
-      this.lookupHits.set([]);
-      this.lookupError.set('Could not reach the character lookup. Try again later.');
-    } finally {
-      this.lookupBusy.set(false);
-    }
-  }
-
-  async pick(hit: CharacterHit): Promise<void> {
-    this.lookupBusy.set(true);
-    try {
-      this.card.set(await lookupCharacterInfo(this.lookupRegion(), hit));
-    } catch {
-      this.lookupError.set('Could not reach the character lookup. Try again later.');
-    } finally {
-      this.lookupBusy.set(false);
     }
   }
 
