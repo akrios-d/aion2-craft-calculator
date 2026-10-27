@@ -2,14 +2,18 @@ import { DecimalPipe } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
+  CRIT_CURVE,
   DEFAULT_DAMAGE_MODEL,
   DEFAULT_DAMAGE_STATS,
   DamageModel,
   DamageStats,
   StatKey,
+  ampEfficiency,
   calculateDamage,
-  calibrateDefenseConstant,
   compareStatGains,
+  critRateFromStat,
+  critStatForRate,
+  efficiencyTable,
 } from '../core/engine/damage-engine';
 import { TrPipe } from '../core/tr.pipe';
 
@@ -19,8 +23,8 @@ import { TrPipe } from '../core/tr.pipe';
   template: `
     <h2>{{ 'Damage' | tr }}</h2>
     <p class="muted">
-      {{ 'Unverified model: the formulas below are generic placeholders, not confirmed game mechanics. Adjust the constants and calibrate with hits you observe in game.' | tr }}
-      <a href="https://github.com/sunkwolf/aion2-damage-research" target="_blank" rel="noopener">{{ 'Community research (reference only)' | tr }}</a>
+      {{ 'Community-reported mechanics from training-dummy tests, not verified by us and possibly outdated. Every constant is editable.' | tr }}
+      <a href="https://github.com/sunkwolf/aion2-damage-research" target="_blank" rel="noopener">{{ 'Source summary' | tr }}</a>
     </p>
 
     <h3>{{ 'Your stats' | tr }}</h3>
@@ -32,24 +36,27 @@ import { TrPipe } from '../core/tr.pipe';
       }
     </div>
 
-    <h3>{{ 'Model constants' | tr }}</h3>
-    <div class="grid">
-      <label>{{ 'Defense constant (K)' | tr }}
-        <input type="number" min="0" step="any" [ngModel]="model().defenseConstant" (ngModelChange)="setModel('defenseConstant', $event)" />
-      </label>
-      <label>{{ 'Crit rate cap (%)' | tr }}
-        <input type="number" min="0" max="100" step="any" [ngModel]="model().critRateCap" (ngModelChange)="setModel('critRateCap', $event)" />
-      </label>
-    </div>
+    <details>
+      <summary>{{ 'Model constants' | tr }}</summary>
+      <div class="grid">
+        @for (f of modelFields; track f.key) {
+          <label>{{ f.label | tr }}
+            <input type="number" min="0" step="any" [ngModel]="model()[f.key]" (ngModelChange)="setModel(f.key, $event)" />
+          </label>
+        }
+      </div>
+    </details>
     <div class="row"><button type="button" (click)="reset()">{{ 'Reset to defaults' | tr }}</button></div>
 
     <h3>{{ 'Result' | tr }}</h3>
     @let r = result();
     <div class="cards">
-      <div class="card"><span>{{ 'Defense mitigation' | tr }}</span><strong>{{ r.mitigation * 100 | number: '1.0-1' }}%</strong></div>
+      <div class="card"><span>{{ 'Skill base damage' | tr }}</span><strong>{{ r.base | number: '1.0-0' }}</strong></div>
+      <div class="card"><span>{{ 'Total multiplier' | tr }}</span><strong>×{{ r.allMultipliers | number: '1.2-3' }}</strong></div>
       <div class="card"><span>{{ 'Normal hit' | tr }}</span><strong>{{ r.normalHit | number: '1.0-0' }}</strong></div>
       <div class="card"><span>{{ 'Critical hit' | tr }}</span><strong>{{ r.critHit | number: '1.0-0' }}</strong></div>
       <div class="card"><span>{{ 'Expected hit' | tr }}</span><strong>{{ r.expectedHit | number: '1.0-0' }}</strong></div>
+      <div class="card"><span>{{ 'Value of +1% amp' | tr }}</span><strong>×{{ efficiency() | number: '1.2-2' }}</strong></div>
     </div>
 
     <h3>{{ 'Which upgrade is worth more?' | tr }}</h3>
@@ -58,7 +65,7 @@ import { TrPipe } from '../core/tr.pipe';
       <thead><tr><th>{{ 'Stat' | tr }}</th><th>{{ 'Add' | tr }}</th><th>{{ 'Expected hit' | tr }}</th><th>{{ 'Gain' | tr }}</th></tr></thead>
       <tbody>
         @for (g of gains(); track g.stat) {
-          <tr [class.best]="g === bestGain()">
+          <tr>
             <td>{{ labelOf(g.stat) | tr }}</td>
             <td><input type="number" step="any" [ngModel]="amounts()[g.stat]" (ngModelChange)="setAmount(g.stat, $event)" /></td>
             <td>{{ g.expectedHit | number: '1.0-0' }}</td>
@@ -68,40 +75,84 @@ import { TrPipe } from '../core/tr.pipe';
       </tbody>
     </table>
 
-    <h3>{{ 'Calibrate from an observed hit' | tr }}</h3>
-    <p class="muted">{{ 'Enter the damage of one non-critical hit with the stats above; the model solves the defense constant that matches it.' | tr }}</p>
+    <h3>{{ 'Amp efficiency' | tr }}</h3>
+    <p class="muted">{{ 'How much +1% Damage/PVE/Boss Amp is worth, by net amp (total amp minus target resistance). They all share one group, so any of them gives the same result.' | tr }}</p>
+    <table>
+      <thead><tr><th>{{ 'Net amp' | tr }}</th><th>{{ 'Value of +1% amp' | tr }}</th></tr></thead>
+      <tbody>
+        @for (e of effTable; track e.net) {
+          <tr><td>{{ e.net > 0 ? '+' : '' }}{{ e.net }}%</td><td>×{{ e.efficiency | number: '1.2-2' }}</td></tr>
+        }
+      </tbody>
+    </table>
+
+    <h3>{{ 'Crit stat and crit rate' | tr }}</h3>
+    <p class="muted">{{ 'Measured on a training dummy; boss crit resistance may change it. Values outside the measured range are not estimated.' | tr }}</p>
     <div class="grid">
-      <label>{{ 'Observed damage' | tr }}
-        <input type="number" min="0" step="any" [ngModel]="observed()" (ngModelChange)="observed.set($event ?? 0)" />
+      <label>{{ 'Crit stat' | tr }}
+        <input type="number" step="any" [ngModel]="critStat()" (ngModelChange)="critStat.set($event ?? 0)" />
+      </label>
+      <label>{{ 'Target crit rate (%)' | tr }}
+        <input type="number" step="any" [ngModel]="critTarget()" (ngModelChange)="critTarget.set($event ?? 0)" />
       </label>
     </div>
-    <div class="row">
-      <button type="button" (click)="calibrate()">{{ 'Calibrate defense constant' | tr }}</button>
-      @if (calibrationFailed()) { <span class="neg">{{ 'This hit cannot be explained by the current stats.' | tr }}</span> }
-    </div>
+    <table class="kv">
+      <tr><td>{{ 'Crit stat' | tr }} → {{ 'Crit rate (%)' | tr }}</td><td>@if (rateFromStat() !== null) { {{ rateFromStat() | number: '1.0-1' }}% <button type="button" (click)="setStat('critRate', rateFromStat())">{{ 'Use as crit rate' | tr }}</button> } @else { {{ 'Out of measured range' | tr }} }</td></tr>
+      <tr><td>{{ 'Target crit rate (%)' | tr }} → {{ 'Crit stat' | tr }}</td><td>@if (statForRate() !== null) { {{ statForRate() | number: '1.0-0' }} } @else { {{ 'Out of measured range' | tr }} }</td></tr>
+    </table>
+    <table>
+      <thead><tr><th>{{ 'Crit stat' | tr }}</th><th>{{ 'Crit rate (%)' | tr }}</th></tr></thead>
+      <tbody>
+        @for (p of curve; track p.stat) { <tr><td>{{ p.stat }}</td><td>{{ p.rate }}%</td></tr> }
+      </tbody>
+    </table>
+
+    <h3>{{ 'Community notes' | tr }}</h3>
+    <ul class="muted">
+      <li>{{ 'Damage over time ignores defense and penetration and cannot crit, smite or multi-hit.' | tr }}</li>
+      <li>{{ 'Penetration and defense are flat per hit (value ÷ 10): better for many small hits, weak on one big hit.' | tr }}</li>
+      <li>{{ 'Back attack is a separate multiplier, so it is not diluted by the amp group.' | tr }}</li>
+      <li>{{ 'Perfect Hit adds only about 2-3% and is mainly useful for damage tests.' | tr }}</li>
+    </ul>
   `,
 })
 export class DamagePage {
   readonly fields: { key: keyof DamageStats; label: string }[] = [
     { key: 'attack', label: 'Attack' },
-    { key: 'skillMultiplier', label: 'Skill multiplier' },
-    { key: 'flatDamage', label: 'Flat damage' },
-    { key: 'damageBonus', label: 'Damage bonus (%)' },
+    { key: 'skillLevelBonus', label: 'Skill level bonus' },
+    { key: 'damageAmp', label: 'Damage / PVE / Boss Amp (%)' },
+    { key: 'targetResistance', label: 'Target damage resistance (%)' },
+    { key: 'backAttack', label: 'Back attack (%)' },
+    { key: 'elementalReduction', label: 'Elemental resist reduction (%)' },
     { key: 'critRate', label: 'Crit rate (%)' },
-    { key: 'critDamage', label: 'Crit damage (%)' },
+    { key: 'critDamageBonus', label: 'Extra crit damage (%)' },
+    { key: 'smiteChance', label: 'Smite chance (%)' },
+    { key: 'multiHits', label: 'Extra multi-hits (0-4)' },
+    { key: 'penetration', label: 'Penetration' },
     { key: 'targetDefense', label: 'Target defense' },
-    { key: 'penetration', label: 'Defense penetration (%)' },
   ];
+  readonly modelFields: { key: keyof DamageModel; label: string }[] = [
+    { key: 'skillCoefficient', label: 'Skill coefficient (%)' },
+    { key: 'flatDivisor', label: 'Penetration/defense divisor' },
+    { key: 'baseCritDamage', label: 'Base crit damage (%)' },
+    { key: 'multiHitBonusPerHit', label: 'Bonus per extra multi-hit (%)' },
+    { key: 'smiteMultiplier', label: 'Smite multiplier' },
+  ];
+  readonly curve = CRIT_CURVE;
+  readonly effTable = efficiencyTable();
 
   readonly stats = signal<DamageStats>({ ...DEFAULT_DAMAGE_STATS });
   readonly model = signal<DamageModel>({ ...DEFAULT_DAMAGE_MODEL });
-  readonly amounts = signal<Record<StatKey, number>>({ attack: 100, damageBonus: 5, critRate: 5, critDamage: 10, penetration: 5 });
-  readonly observed = signal(0);
-  readonly calibrationFailed = signal(false);
+  readonly amounts = signal<Record<StatKey, number>>({ attack: 500, damageAmp: 5, backAttack: 5, elementalReduction: 5, critRate: 5, critDamageBonus: 10, penetration: 500 });
+  readonly critStat = signal(1100);
+  readonly critTarget = signal(70);
 
   readonly result = computed(() => calculateDamage(this.stats(), this.model()));
   readonly gains = computed(() => compareStatGains(this.stats(), this.model(), this.amounts()));
   readonly bestGain = computed(() => this.gains().reduce((a, b) => (b.gainPercent > a.gainPercent ? b : a)));
+  readonly efficiency = computed(() => ampEfficiency(this.stats().damageAmp - this.stats().targetResistance));
+  readonly rateFromStat = computed(() => critRateFromStat(this.critStat()));
+  readonly statForRate = computed(() => critStatForRate(this.critTarget()));
 
   labelOf(stat: StatKey): string {
     return this.fields.find((f) => f.key === stat)?.label ?? stat;
@@ -122,12 +173,5 @@ export class DamagePage {
   reset(): void {
     this.stats.set({ ...DEFAULT_DAMAGE_STATS });
     this.model.set({ ...DEFAULT_DAMAGE_MODEL });
-    this.calibrationFailed.set(false);
-  }
-
-  calibrate(): void {
-    const k = calibrateDefenseConstant(this.stats(), this.observed());
-    this.calibrationFailed.set(k === null);
-    if (k !== null) this.setModel('defenseConstant', Math.round(k * 100) / 100);
   }
 }
