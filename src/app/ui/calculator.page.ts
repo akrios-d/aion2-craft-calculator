@@ -1,4 +1,4 @@
-import { DecimalPipe } from '@angular/common';
+﻿import { DecimalPipe } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -79,8 +79,17 @@ import { Strategy } from '../core/models';
         </ul>
       }
 
+      @if (save && r.tree) {
+        <h3>{{ 'Save this plan' | tr }}</h3>
+        <div class="row">
+          <input type="text" [placeholder]="'Plan name' | tr" [ngModel]="planName()" (ngModelChange)="planName.set($event)" />
+          <button (click)="savePlan()" [disabled]="!planName().trim()">{{ 'Save plan' | tr }}</button>
+        </div>
+      }
+
       @if (r.tree || r.isTotal) {
         <div class="cards">
+          <div class="card"><span>{{ 'Kina you have' | tr }}</span><strong>{{ store.data().kinah | number: '1.0-0' }}</strong>@if (r.cashCost > 0) { <small class="muted">{{ 'Missing' | tr }}: {{ missingKinah(r.cashCost) | number: '1.0-0' }} ({{ missingPercent(r.cashCost) | number: '1.0-1' }}%)</small> }</div>
           <div class="card"><span>{{ 'Cash cost (to buy)' | tr }}</span><strong>{{ r.cashCost | number: '1.0-2' }}</strong>@if (money(r.cashCost); as m) { <small class="muted">≈ {{ m }}</small> }</div>
           <div class="card"><span>{{ 'Inventory used (value)' | tr }}</span><strong>{{ r.inventoryValue | number: '1.0-2' }}</strong>@if (money(r.inventoryValue); as m) { <small class="muted">≈ {{ m }}</small> }</div>
           <div class="card"><span>{{ 'Full cost' | tr }}</span><strong>{{ r.fullCost | number: '1.0-2' }}</strong>@if (money(r.fullCost); as m) { <small class="muted">≈ {{ m }}</small> }@if (!r.costComplete) { <small class="warn">{{ 'incomplete' | tr }}</small> }</div>
@@ -142,13 +151,6 @@ import { Strategy } from '../core/models';
         </div>
         <ul class="tree"><ng-container *ngTemplateOutlet="nodeTpl; context: { $implicit: r.tree, depth: 0, path: '0' }" /></ul>
 
-        }
-        @if (save) {
-        <h3>{{ 'Save this plan' | tr }}</h3>
-        <div class="row">
-          <input type="text" [placeholder]="'Plan name' | tr" [ngModel]="planName()" (ngModelChange)="planName.set($event)" />
-          <button (click)="savePlan()" [disabled]="!planName().trim()">{{ 'Save plan' | tr }}</button>
-        </div>
         }
       }
     }
@@ -394,9 +396,18 @@ export class CalculatorPage {
     return this.store.data().recipeChoices[itemId] ?? this.recipeOptions(itemId)[0];
   }
 
+  missingKinah(cost: number): number {
+    return Math.max(0, cost - this.store.data().kinah);
+  }
+
+  missingPercent(cost: number): number {
+    return cost > 0 ? (this.missingKinah(cost) / cost) * 100 : 0;
+  }
+
   savePlan(): void {
+    const id = crypto.randomUUID();
     this.store.savePlan({
-      id: crypto.randomUUID(),
+      id,
       name: this.planName().trim(),
       targetItemId: this.targetId(),
       quantity: Number(this.quantity()),
@@ -404,6 +415,10 @@ export class CalculatorPage {
       createdAt: new Date().toISOString(),
     });
     this.planName.set('');
+    this.targetId.set('');
+    this.quantity.set(1);
+    this.openIds.update((l) => [...l, id]);
+    this.setTab('plan:' + id);
   }
 
   loadPlan(id: string): void {

@@ -211,6 +211,8 @@ const PT: Record<string, string> = {
   'Loads the current Aion2Market listing prices through a small serverless proxy. They are listing prices, not completed sales.': 'Carrega os preços anunciados atuais do Aion2Market por um pequeno proxy serverless. São preços anunciados, não vendas concluídas.',
   'Fetch market prices': 'Buscar preços do mercado',
   'Use the prices I want to pay (otherwise market prices only)': 'Usar os preços que quero pagar (senão, só preços de mercado)',
+  'Kina you have': 'Kina que você tem',
+  'Missing': 'Falta',
   'Sell for Kinah': 'Vender por Kinah',
   'Tradable inventory items not needed by your plans, excluding unique and skin items, valued at the market price minus the Auction House fee.': 'Itens negociáveis do inventário que não são necessários nos planos, exceto itens únicos e skins, avaliados pelo preço de mercado menos a taxa da Casa de Leilões.',
   'Net Kinah': 'Kinah líquido',
