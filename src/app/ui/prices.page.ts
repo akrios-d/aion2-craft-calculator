@@ -25,6 +25,9 @@ import { MarketImportPanel } from './market-import';
       {{ 'Market prices are loaded automatically from Aion2Market and are listing prices, not completed sales. Create alerts for the prices you want to pay.' | tr }} ({{ store.marketStatus() }})
     </p>
 
+    <h3>{{ 'Refresh market prices' | tr }}</h3>
+    <app-market-import />
+
     <h3>{{ 'Create alert' | tr }}</h3>
     <label class="check"><input type="checkbox" [checked]="store.settings().priceAlerts === true" (change)="store.setAlerts($any($event.target).checked)" /> {{ 'Notify me when a market price reaches an alert price (checks every 5 minutes; works only while this tab is open)' | tr }}</label>
     @if (store.settings().priceAlerts) {
@@ -84,9 +87,6 @@ import { MarketImportPanel } from './market-import';
         </tbody>
       </table>
     } @else { <p class="muted">{{ 'No prices yet.' | tr }}</p> }
-
-    <h3>{{ 'Refresh market prices' | tr }}</h3>
-    <app-market-import />
   `,
 })
 export class PricesPage {
