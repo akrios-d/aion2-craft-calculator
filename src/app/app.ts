@@ -104,7 +104,7 @@ import { TrPipe } from './core/tr.pipe';
       </div>
     }
     <footer>
-      {{ 'Fully client-side. Your data stays in this browser (LocalStorage). Prices are entered by you; listing prices are not completed sales.' | tr }}
+      {{ 'Fully client-side. Your data stays in this browser (LocalStorage).' | tr }}
       {{ 'Not affiliated with NCSOFT or Aion2.gg.' | tr }}
     </footer>
   `,

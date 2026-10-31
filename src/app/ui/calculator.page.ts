@@ -16,11 +16,6 @@ import { Strategy } from '../core/models';
   imports: [ItemIcon, ItemPicker, TrPipe, FormsModule, DecimalPipe, NgTemplateOutlet, RouterLink],
   template: `
     <h2>{{ 'Crafting calculator' | tr }}</h2>
-    <p class="muted">
-      {{ 'Prices are the ones you entered or imported' | tr }}
-      (<a routerLink="/prices">{{ 'edit' | tr }}</a>). {{ 'Listing prices are not completed sales.' | tr }}
-    </p>
-
     <div class="subtabs" role="tablist">
       <button type="button" role="tab" [class.active]="tab() === 'plans'" (click)="setTab('plans')">{{ 'My plans' | tr }} ({{ store.characterPlans().length }})</button>
       <button type="button" role="tab" [class.active]="tab() === 'new'" (click)="setTab('new')">{{ 'New plan' | tr }}</button>
@@ -33,7 +28,7 @@ import { Strategy } from '../core/models';
     @if (tab() === 'new') {
     @if (store.craftableItems().length === 0) {
       <div class="msg warn">
-        {{ 'No recipes are available yet.' | tr }} <a routerLink="/data">{{ 'Data' | tr }}</a> ? <a routerLink="/recipes">{{ 'Recipes' | tr }}</a>
+        {{ 'No recipes are available yet.' | tr }} <a routerLink="/settings">{{ 'Settings' | tr }}</a> · <a routerLink="/recipes">{{ 'Recipes' | tr }}</a>
       </div>
     } @else {
       <div class="row">

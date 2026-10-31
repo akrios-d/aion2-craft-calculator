@@ -28,8 +28,8 @@ const PT: Record<string, string> = {
   'Backup could not be read.': 'Não foi possível ler o backup.',
   '{error} Export a JSON backup from the Settings page.': '{error} Exporte um backup JSON na página Configurações.',
   'Your saved data was upgraded to the latest format.': 'Seus dados salvos foram atualizados para o formato mais recente.',
-  'Fully client-side. Your data stays in this browser (LocalStorage). Prices are entered by you; listing prices are not completed sales.':
-    'Totalmente no navegador. Seus dados ficam neste navegador (LocalStorage). Os preços são digitados por você; preços anunciados não são vendas concluídas.',
+  'Fully client-side. Your data stays in this browser (LocalStorage).':
+    'Totalmente no navegador. Seus dados ficam neste navegador (LocalStorage).',
   'Not affiliated with NCSOFT or Aion2.gg.': 'Sem afiliação com a NCSOFT ou o Aion2.gg.',
   'Could not load the recipe dataset: {error}': 'Não foi possível carregar o conjunto de receitas: {error}',
   'Browser storage is unavailable (private mode or blocked). Changes will be lost when you close the tab. Export a JSON backup to keep your data.':
