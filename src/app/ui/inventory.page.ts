@@ -5,13 +5,10 @@ import { ItemPicker } from '../core/item-picker';
 import { AppStore } from '../core/app-store';
 import { TrPipe } from '../core/tr.pipe';
 import { groupThousands } from '../core/listings';
-import { downloadText } from '../core/download';
-import { exportInventoryCsv } from '../core/io/backup';
-import { ImportPanel } from './import-panel';
 
 @Component({
   selector: 'app-inventory',
-  imports: [ItemIcon, ItemPicker, TrPipe, FormsModule, ImportPanel],
+  imports: [ItemIcon, ItemPicker, TrPipe, FormsModule],
   template: `
     <h2>{{ 'Inventory' | tr }}</h2>
     <p class="muted">{{ 'Your calculations deduct this inventory but never change it automatically.' | tr }}</p>
@@ -25,7 +22,6 @@ import { ImportPanel } from './import-panel';
     </form>
     @if (error()) { <p class="msg error">{{ error() | tr }}</p> }
 
-    <div class="row"><button (click)="exportCsv()" [disabled]="!rows().length">{{ 'Export CSV' | tr }}</button></div>
     @if (rows().length) {
       <table>
         <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Id' | tr }}</th><th>{{ 'Quantity' | tr }}</th><th></th></tr></thead>
@@ -41,9 +37,6 @@ import { ImportPanel } from './import-panel';
       </table>
     } @else { <p class="muted">{{ 'Inventory is empty.' | tr }}</p> }
 
-    <h3>{{ 'Import inventory from CSV' | tr }}</h3>
-    <p class="muted">{{ 'Columns:' | tr }} <code>itemId</code> (or <code>itemName</code>) {{ 'and' | tr }} <code>quantity</code>.</p>
-    <app-import-panel kind="inventory" />
   `,
 })
 export class InventoryPage {
@@ -88,7 +81,4 @@ export class InventoryPage {
     if (Number.isInteger(q) && q >= 0) this.store.setInventory(id, q);
   }
 
-  exportCsv(): void {
-    downloadText('aion2-inventory.csv', exportInventoryCsv(this.store.data().inventory, this.store.nameOf), 'text/csv');
-  }
 }

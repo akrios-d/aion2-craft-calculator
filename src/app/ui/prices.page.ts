@@ -5,8 +5,6 @@ import { ItemIcon } from '../core/item-icon';
 import { ItemPicker } from '../core/item-picker';
 import { AppStore } from '../core/app-store';
 import { TrPipe } from '../core/tr.pipe';
-import { downloadText } from '../core/download';
-import { exportPricesCsv } from '../core/io/backup';
 import { groupThousands, listingsOf, parsePriceList } from '../core/listings';
 import { MarketImportPanel } from './market-import';
 
@@ -42,9 +40,6 @@ import { MarketImportPanel } from './market-import';
     }
     @if (error()) { <p class="msg error">{{ error() | tr }}</p> }
     <h3>{{ 'Current prices' | tr }} <small class="muted">({{ rows().length }})</small></h3>
-    <div class="row">
-      <button (click)="exportCsv()" [disabled]="!rows().length">{{ 'Export CSV' | tr }}</button>
-    </div>
     @if (rows().length) {
       <table>
         <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Average price' | tr }}</th><th>{{ 'Price I want to pay' | tr }}</th><th></th></tr></thead>
@@ -120,9 +115,5 @@ export class PricesPage {
     if (n !== undefined && (!Number.isFinite(n) || n < 0)) return void this.error.set('Price I want to pay must be a number of 0 or more.');
     this.error.set('');
     this.store.setBuyPrice(this.itemId(), n);
-  }
-  exportCsv(): void {
-    const subset = Object.fromEntries(this.rows().map((p) => [p.server + '|' + p.itemId, p]));
-    downloadText('aion2-prices.csv', exportPricesCsv(subset, this.store.nameOf), 'text/csv');
   }
 }
