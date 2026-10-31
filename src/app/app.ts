@@ -60,7 +60,6 @@ import { TrPipe } from './core/tr.pipe';
           <a routerLink="/prices" routerLinkActive="active">{{ 'Prices' | tr }}</a>
           <a routerLink="/inventory" routerLinkActive="active">{{ 'Inventory' | tr }}</a>
           <a routerLink="/recipes" routerLinkActive="active">{{ 'Recipes' | tr }}</a>
-          <a routerLink="/data" routerLinkActive="active">{{ 'Data' | tr }}</a>
           <a routerLink="/kina" routerLinkActive="active">{{ 'Kina chests' | tr }}</a>
           <a routerLink="/damage" routerLinkActive="active">{{ 'Damage research' | tr }}</a>
           <a routerLink="/settings" routerLinkActive="active">{{ 'Settings' | tr }}</a>
@@ -84,7 +83,7 @@ import { TrPipe } from './core/tr.pipe';
       } @else if (store.health().status === 'unavailable') {
         <section class="msg warn">{{ store.health().message | tr }}</section>
       }
-      @if (store.saveError(); as e) { <section class="msg error">{{ '{error} Export a JSON backup from the Data page.' | tr: { error: (e | tr) } }}</section> }
+      @if (store.saveError(); as e) { <section class="msg error">{{ '{error} Export a JSON backup from the Settings page.' | tr: { error: (e | tr) } }}</section> }
       @if (store.health().status === 'migrated') { <section class="msg info">{{ 'Your saved data was upgraded to the latest format.' | tr }}</section> }
       @if (store.catalogError(); as e) { <section class="msg error">{{ e | tr }}</section> }
 

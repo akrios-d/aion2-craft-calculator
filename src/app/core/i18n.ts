@@ -26,7 +26,7 @@ const PT: Record<string, string> = {
   'Download the unreadable data': 'Baixar os dados ilegíveis',
   'Start fresh': 'Começar do zero',
   'Backup could not be read.': 'Não foi possível ler o backup.',
-  '{error} Export a JSON backup from the Data page.': '{error} Exporte um backup JSON na página Dados.',
+  '{error} Export a JSON backup from the Settings page.': '{error} Exporte um backup JSON na página Configurações.',
   'Your saved data was upgraded to the latest format.': 'Seus dados salvos foram atualizados para o formato mais recente.',
   'Fully client-side. Your data stays in this browser (LocalStorage). Prices are entered by you; listing prices are not completed sales.':
     'Totalmente no navegador. Seus dados ficam neste navegador (LocalStorage). Os preços são digitados por você; preços anunciados não são vendas concluídas.',
