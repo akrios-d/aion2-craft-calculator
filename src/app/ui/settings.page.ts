@@ -47,7 +47,7 @@ import { ImportPanel } from './import-panel';
     <p class="muted">{{ 'Settings are saved in your browser.' | tr }}</p>
 
     <h3>{{ 'Backup (all user data)' | tr }}</h3>
-    <p class="muted">{{ 'Includes inventory, prices, price history, settings, plans, buy/craft preferences and your custom items/recipes. Stored only in this browser unless you export it.' | tr }}</p>
+    <p class="muted">{{ 'Includes inventory, prices, price history, settings, plans, buy/craft preferences. Stored only in this browser unless you export it.' | tr }}</p>
     <div class="row"><button class="primary" (click)="exportBackup()">{{ 'Download JSON backup' | tr }}</button></div>
     <h4>{{ 'Restore from JSON backup' | tr }}</h4>
     <app-import-panel kind="backup" />
@@ -67,7 +67,6 @@ import { ImportPanel } from './import-panel';
     <table class="kv">
       <tr><td>{{ 'Data version' | tr }}</td><td>{{ m.dataVersion }}</td></tr>
       <tr><td>{{ 'Items / recipes / professions' | tr }}</td><td>{{ store.catalog().items.length }} / {{ store.catalog().recipes.length }} / {{ store.catalog().professions.length }}</td></tr>
-      <tr><td>{{ 'Your own items / recipes' | tr }}</td><td>{{ store.data().customItems.length }} / {{ store.data().customRecipes.length }}</td></tr>
     </table>
 
     @if (store.reconcileReport(); as rep) {

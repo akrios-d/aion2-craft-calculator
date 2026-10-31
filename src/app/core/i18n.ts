@@ -371,7 +371,7 @@ const PT: Record<string, string> = {
   '{n} record(s) moved to new item ids:': '{n} registro(s) movido(s) para novos ids de item:',
   '{n} record(s) could not be matched to a known item. They were kept untouched:': '{n} registro(s) não puderam ser associados a um item conhecido. Foram mantidos intactos:',
   'Backup (all user data)': 'Backup (todos os dados do usuário)',
-  'Includes inventory, prices, price history, settings, plans, buy/craft preferences and your custom items/recipes. Stored only in this browser unless you export it.':
+  'Includes inventory, prices, price history, settings, plans, buy/craft preferences. Stored only in this browser unless you export it.':
     'Inclui inventário, preços, histórico de preços, configurações, planos, preferências de comprar/criar e seus itens/receitas. Fica só neste navegador, a menos que você exporte.',
   'Download JSON backup': 'Baixar backup JSON',
   'Restore from JSON backup': 'Restaurar de backup JSON',
