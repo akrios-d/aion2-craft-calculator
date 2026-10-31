@@ -12,6 +12,7 @@ import { ImportPanel } from './import-panel';
 @Component({
   selector: 'app-settings',
   imports: [FormsModule, TrPipe, ImportPanel],
+  styles: [`.sound { display: flex; flex-direction: column; gap: 0.35rem; align-items: flex-start; margin: 1rem 0; } .sound .row { margin: 0; }`],
   template: `
     <h2>{{ 'Settings' | tr }}</h2>
     @let s = store.settings();
@@ -33,15 +34,6 @@ import { ImportPanel } from './import-panel';
           @for (m of store.marketServers(); track m.serverId) { <option [value]="m.serverId">{{ m.name }} ({{ m.region }})</option> }
         </select>
       </label>
-      <label>{{ 'Alert sound' | tr }}
-        <span class="row">
-          <select [ngModel]="s.alertSound ?? 'chime'" (ngModelChange)="store.setSettings({ alertSound: $any($event) })">
-            <option value="chime">{{ 'Chime' | tr }}</option><option value="bell">{{ 'Bell' | tr }}</option><option value="beep">{{ 'Beep' | tr }}</option><option value="off">{{ 'Off' | tr }}</option>
-          </select>
-          <button type="button" (click)="preview()">{{ 'Test' | tr }}</button>
-        </span>
-        <small class="muted">{{ 'The sound plays together with the notification, only while this tab is open. Browsers may keep it silent until you have clicked on the page once; use Test to check.' | tr }}</small>
-      </label>
       <label>{{ 'Faction' | tr }}
         <select [ngModel]="s.faction" (ngModelChange)="store.setSettings({ faction: $any($event) })">
           <option value="all">{{ 'All factions' | tr }}</option><option value="Elyos">Elyos</option><option value="Asmodians">{{ 'Asmodians' | tr }}</option>
@@ -53,6 +45,16 @@ import { ImportPanel } from './import-panel';
       <label>{{ 'Real-money currency' | tr }}
         <input type="text" maxlength="6" [ngModel]="s.realCurrency ?? 'R$'" (ngModelChange)="store.setSettings({ realCurrency: ($event || 'R$').trim() })" />
       </label>
+    </div>
+    <div class="sound">
+      <label for="alert-sound">{{ 'Alert sound' | tr }}</label>
+      <div class="row">
+        <select id="alert-sound" [ngModel]="s.alertSound ?? 'chime'" (ngModelChange)="store.setSettings({ alertSound: $any($event) })">
+          <option value="chime">{{ 'Chime' | tr }}</option><option value="bell">{{ 'Bell' | tr }}</option><option value="beep">{{ 'Beep' | tr }}</option><option value="off">{{ 'Off' | tr }}</option>
+        </select>
+        <button type="button" (click)="preview()">{{ 'Test' | tr }}</button>
+      </div>
+      <small class="muted">{{ 'The sound plays together with the notification, only while this tab is open. Browsers may keep it silent until you have clicked on the page once; use Test to check.' | tr }}</small>
     </div>
     <p class="muted">{{ 'Settings are saved in your browser.' | tr }}</p>
 
