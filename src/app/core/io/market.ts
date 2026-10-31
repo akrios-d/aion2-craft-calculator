@@ -34,10 +34,18 @@ export function parseMarketItems(raw: unknown, catalog: readonly Item[], server:
   let total = 0;
   for (const e of list) {
     const price = e['price'];
-    if (e['listed'] !== true || typeof price !== 'number' || !(price > 0)) continue;
-    total++;
     const name = String(e['name'] ?? '');
     const key = String(e['item_key'] ?? '');
+    const listed = e['listed'] === true && typeof price === 'number' && price > 0;
+    if (!listed) {
+      // Unlisted items keep their name so previously stored prices/alerts do not show a raw id.
+      if (key && name && !byId.has(key) && !byName.has(name.toLowerCase())) {
+        const c = (e['category'] as { name?: unknown } | null)?.name;
+        extra.set(key, { id: key, name, category: typeof c === 'string' ? c : undefined, source: 'aion2.exchange', verification: 'unverified' });
+      }
+      continue;
+    }
+    total++;
     let id = byId.has(key) ? key : byName.get(name.toLowerCase());
     if (!id) {
       if (!key || !name) {
@@ -52,7 +60,7 @@ export function parseMarketItems(raw: unknown, catalog: readonly Item[], server:
     records.set(id, {
       itemId: id,
       server,
-      sellListingPrice: price,
+      sellListingPrice: price as number,
       quantityObserved: typeof e['listings'] === 'number' ? e['listings'] : undefined,
       observedAt: at,
       notes: 'Aion2Market listing price (not a completed sale)',
