@@ -142,16 +142,27 @@ export class AppStore {
     await this.syncMarket();
   }
 
-  async syncMarket(): Promise<void> {
+  /** When the market was last fetched successfully (ISO), and the newest listing time reported by the source. */
+  readonly lastSync = signal<string | null>(null);
+  readonly dataTime = computed(() => {
+    const server = this.settings().server;
+    let max = '';
+    for (const p of Object.values(this.data().prices)) if (p.server === server && p.observedAt > max) max = p.observedAt;
+    return max || null;
+  });
+
+  /** orce bypasses the proxy's 5-minute edge cache; the source itself refreshes about every 15 minutes. */
+  async syncMarket(force = false): Promise<void> {
     const serverId = this.settings().marketServerId ?? 12402;
     if (this.persistBlocked() || !this.items().length) return;
     this.marketStatus.set('loading');
     try {
-      const res = await fetch(`/api/market?server=${serverId}`);
+      const res = await fetch(`/api/market?server=${serverId}${force ? `&_=${Date.now()}` : ''}`, force ? { cache: 'no-store' } : undefined);
       if (!res.ok) throw new Error(String(res.status));
       const r = parseMarketItems(await res.json(), this.items(), this.settings().server);
       if (!r.records.length) throw new Error('empty');
       this.update((d) => applyPriceImport(d, r.records, 'merge', (id) => this.nameOf(id)).data);
+      this.lastSync.set(new Date().toISOString());
       this.marketStatus.set('ok');
       this.checkAlerts();
     } catch {
