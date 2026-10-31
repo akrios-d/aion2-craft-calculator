@@ -287,15 +287,16 @@ export class AppStore {
   private notified = new Set<string>();
   private alertTimer: ReturnType<typeof setInterval> | undefined;
   /** Items currently at or below the price the user wants to pay (for the in-app list). */
-  readonly alerts = computed<PriceAlert[]>(() => this.settings().priceAlerts === true ? findAlerts(this.serverPrices()) : []);
+  readonly alerts = computed<PriceAlert[]>(() => findAlerts(this.serverPrices()));
 
-  /** Turns alerts on/off: asks for notification permission and re-checks the market every 5 minutes while the app is open. */
-  async setAlerts(on: boolean): Promise<void> {
-    if (on && typeof Notification !== 'undefined' && Notification.permission === 'default') {
-      try { await Notification.requestPermission(); } catch { /* ignore */ }
-    }
-    this.setSettings({ priceAlerts: on });
-    this.startAlertTimer();
+  /** Browser notification permission; alerts can only be created when it is 'granted'. */
+  readonly notifPermission = signal<'granted' | 'denied' | 'default' | 'unsupported'>(
+    typeof Notification === 'undefined' ? 'unsupported' : Notification.permission,
+  );
+
+  async enableNotifications(): Promise<void> {
+    if (typeof Notification === 'undefined') return;
+    try { this.notifPermission.set(await Notification.requestPermission()); } catch { /* ignore */ }
   }
 
   startAlertTimer(): void {
@@ -305,11 +306,10 @@ export class AppStore {
   }
 
   private checkAlerts(): void {
-    if (this.settings().priceAlerts !== true) return;
     const { fresh, keys } = newAlerts(findAlerts(this.serverPrices()), this.notified);
     this.notified = keys;
     if (!fresh.length || typeof Notification === 'undefined' || Notification.permission !== 'granted') return;
-    const lines = fresh.slice(0, 5).map((a) => `: ${a.market.toLocaleString()} (<= ${a.desired.toLocaleString()})`);
+    const lines = fresh.slice(0, 5).map((a) => `${this.nameOf(a.itemId)}: ${a.market.toLocaleString()} (<= ${a.desired.toLocaleString()})`);
     try { new Notification(translate('Price alert', this.settings().uiLanguage), { body: lines.join('\n'), tag: 'aion2-price-alert' }); } catch { /* ignore */ }
   }
 
