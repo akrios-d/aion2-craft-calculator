@@ -1,4 +1,4 @@
-﻿import { Component, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppStore } from '../core/app-store';
 import { TrPipe } from '../core/tr.pipe';
@@ -25,6 +25,11 @@ import { ImportPanel } from './import-panel';
         <select [ngModel]="s.itemNameLanguage" (ngModelChange)="store.setSettings({ itemNameLanguage: $any($event) })">
           <option value="en">English</option>
           <option value="pt">Português</option>
+        </select>
+      </label>
+      <label>{{ 'Server' | tr }}
+        <select [ngModel]="s.marketServerId ?? 12402" (ngModelChange)="store.selectMarketServer(+$event)">
+          @for (m of store.marketServers(); track m.serverId) { <option [value]="m.serverId">{{ m.name }} ({{ m.region }})</option> }
         </select>
       </label>
       <label>{{ 'Faction' | tr }}
