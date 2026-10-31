@@ -243,6 +243,8 @@ const PT: Record<string, string> = {
   'Below': 'Abaixo',
   'Above': 'Acima',
   'Alert when the price is': 'Avisar quando o preço estiver',
+  'Not listed': 'Sem anúncio',
+  'last price': 'último preço',
   'Sell for Kinah': 'Vender por Kinah',
   'Tradable inventory items not needed by your plans, excluding unique and skin items, valued at the market price minus the Auction House fee.': 'Itens negociáveis do inventário que não são necessários nos planos, exceto itens únicos e skins, avaliados pelo preço de mercado menos a taxa da Casa de Leilões.',
   'Net Kinah': 'Kinah líquido',

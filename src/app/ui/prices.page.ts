@@ -60,8 +60,8 @@ import { MarketImportPanel } from './market-import';
         <tbody>
           @for (p of filteredRows(); track p.server + p.itemId) {
             <tr>
-              <td><app-ico [id]="p.itemId" />{{ store.nameOf(p.itemId) }}</td>
-              <td><strong>{{ p.sellListingPrice === undefined ? '–' : (p.sellListingPrice | number: '1.0-0') }}</strong></td>
+              <td><app-ico [id]="p.itemId" />{{ store.nameOf(p.itemId) }} @if (notListed(p.itemId)) { <small class="muted">· {{ 'Not listed' | tr }}</small> }</td>
+              <td [class.muted]="notListed(p.itemId)"><strong>{{ p.sellListingPrice === undefined ? '–' : (p.sellListingPrice | number: '1.0-0') }}</strong>@if (notListed(p.itemId)) { <small> ({{ 'last price' | tr }})</small> }</td>
               <td>
                 @if (p.buyPrice !== undefined) {
                   {{ p.alertDirection === 'above' ? '≥' : '≤' }} {{ p.buyPrice | number: '1.0-0' }}@if (reached(p)) { <small class="warn"> ✓</small> }
@@ -89,6 +89,11 @@ export class PricesPage {
       .filter((p) => p.server === this.store.settings().server)
       .sort((a, b) => this.store.nameOf(a.itemId).localeCompare(this.store.nameOf(b.itemId))),
   );
+  notListed(id: string): boolean {
+    const l = this.store.listedIds();
+    return l !== null && !l.has(id);
+  }
+
   readonly rows = computed(() => this.serverRows().filter((p) => p.sellListingPrice !== undefined));
   readonly query = signal('');
   readonly rowDraft = signal<Record<string, string>>({});

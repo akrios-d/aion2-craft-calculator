@@ -37,6 +37,17 @@ const EMPTY_MANIFEST: DataManifest = {
 
 const HISTORY_LIMIT = 50;
 
+const LISTED_KEY = 'aion2-craft-lab.listedIds';
+
+function loadCachedListed(): Set<string> | null {
+  try {
+    const v = JSON.parse(localStorage.getItem(LISTED_KEY) ?? 'null');
+    return Array.isArray(v) ? new Set(v.map(String)) : null;
+  } catch {
+    return null;
+  }
+}
+
 const MARKET_ITEMS_KEY = 'aion2-craft-lab.marketItems';
 
 /** Names of market-only items are cached so they are shown right after a reload (not part of the user data). */
@@ -65,6 +76,8 @@ export class AppStore {
 
   /** Items seen only in the market feed (absent from the static catalogue). */
   readonly marketItems = signal<Item[]>(loadCachedMarketItems());
+  /** Ids with an active listing in the last sync (null until a sync has happened). */
+  readonly listedIds = signal<Set<string> | null>(loadCachedListed());
   private readonly marketIcons = signal<Record<string, string>>({});
 
   /** Every known item, including both faction variants; used to name items already stored in user data. */
@@ -180,6 +193,9 @@ export class AppStore {
       const r = parseMarketItems(await res.json(), this.items().filter((i) => !this.marketItems().some((m) => m.id === i.id)), this.settings().server);
       if (!r.records.length) throw new Error('empty');
       this.marketItems.set(r.extraItems);
+      const listed = new Set(r.records.map((x) => x.itemId));
+      this.listedIds.set(listed);
+      try { localStorage.setItem(LISTED_KEY, JSON.stringify([...listed])); } catch { /* cache only */ }
       try { localStorage.setItem(MARKET_ITEMS_KEY, JSON.stringify(r.extraItems)); } catch { /* cache only */ }
       this.update((d) => applyPriceImport(d, r.records, 'merge', (id) => this.nameOf(id)).data);
       this.lastSync.set(new Date().toISOString());
