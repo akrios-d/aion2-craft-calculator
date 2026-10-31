@@ -15,7 +15,8 @@ import {
 import { ReconcileReport, reconcileUserData } from './reconcile';
 import { Params, translate } from './i18n';
 import { addCharacter, deleteCharacter, renameCharacter, switchCharacter, syncActiveCharacter } from './characters';
-import { appendHistory } from './io/imports';
+import { appendHistory, applyPriceImport } from './io/imports';
+import { parseMarketItems } from './io/market';
 import { listingsOf, withListings } from './listings';
 import { LoadResult, UserDataStorage, getBrowserStorage } from './storage/user-data-storage';
 import { emptyUserData } from './storage/schema';
@@ -83,9 +84,12 @@ export class AppStore {
   readonly serverPrices = computed(() => {
     const server = this.settings().server;
     const out: Record<string, PriceEntry> = {};
-    // Without a price the user wants to pay, the listing price is what buying costs.
+    // Market (listing) price by default; the price the user wants to pay only applies when the switch is on.
+    const desired = this.settings().useDesiredPrices === true;
     for (const p of Object.values(this.data().prices)) {
-      if (p.server === server) out[p.itemId] = p.buyPrice === undefined && p.sellListingPrice !== undefined ? { ...p, buyPrice: p.sellListingPrice } : p;
+      if (p.server !== server) continue;
+      const buy = desired && p.buyPrice !== undefined ? p.buyPrice : p.sellListingPrice;
+      out[p.itemId] = { ...p, buyPrice: buy };
     }
     return out;
   });
@@ -103,12 +107,30 @@ export class AppStore {
       this.persistBlocked.set(true);
       if (result.rawText) this.storage.quarantine(result.rawText);
     }
-    void this.loadCatalog();
+    void this.loadCatalog().then(() => this.syncMarket());
   }
 
   iconOf = (id: string): string | undefined => this.itemIcons().get(id);
   nameOf = (id: string): string => this.itemNames().get(id) ?? id;
   tr = (text: string, params?: Params): string => translate(text, this.settings().uiLanguage, params);
+
+  readonly marketStatus = signal<'idle' | 'loading' | 'ok' | 'error'>('idle');
+
+  /** Fetches market listing prices through the serverless proxy and merges them; failures are non-fatal. */
+  async syncMarket(serverId = 12402): Promise<void> {
+    if (this.persistBlocked() || !this.items().length) return;
+    this.marketStatus.set('loading');
+    try {
+      const res = await fetch(`/api/market?server=${serverId}`);
+      if (!res.ok) throw new Error(String(res.status));
+      const r = parseMarketItems(await res.json(), this.items(), this.settings().server);
+      if (!r.records.length) throw new Error('empty');
+      this.update((d) => applyPriceImport(d, r.records, 'merge', (id) => this.nameOf(id)).data);
+      this.marketStatus.set('ok');
+    } catch {
+      this.marketStatus.set('error');
+    }
+  }
 
   async loadCatalog(): Promise<void> {
     try {

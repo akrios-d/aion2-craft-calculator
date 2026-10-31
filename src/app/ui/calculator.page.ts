@@ -3,6 +3,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { NgTemplateOutlet } from '@angular/common';
+import { suggestSales } from '../core/engine/sell-suggestions';
 import { ItemIcon } from '../core/item-icon';
 import { ItemPicker } from '../core/item-picker';
 import { AppStore } from '../core/app-store';
@@ -57,7 +58,16 @@ import { Strategy } from '../core/models';
       @if (store.characterPlans().length) {
         <p class="muted">{{ 'All saved plans combined; your inventory is deducted once across them.' | tr }}</p>
         <ul class="chips">@for (p of store.characterPlans(); track p.id) { <li class="chip"><app-ico [id]="p.targetItemId" />{{ p.quantity }}× {{ store.nameOf(p.targetItemId) }}</li> }</ul>
+        <label class="check"><input type="checkbox" [checked]="store.settings().useDesiredPrices === true" (change)="store.setSettings({ useDesiredPrices: $any($event.target).checked })" /> {{ 'Use the prices I want to pay (otherwise market prices only)' | tr }}</label>
         <ng-container *ngTemplateOutlet="resultTpl; context: { $implicit: totalResult(), save: false }" />
+        <h3>{{ 'Sell for Kinah' | tr }}</h3>
+        <p class="muted">{{ 'Tradable inventory items not needed by your plans, excluding unique and skin items, valued at the market price minus the Auction House fee.' | tr }}</p>
+        @if (sellSuggestions().length) {
+          <table>
+            <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Have' | tr }}</th><th>{{ 'Price' | tr }}</th><th>{{ 'Net Kinah' | tr }}</th></tr></thead>
+            <tbody>@for (s of sellSuggestions(); track s.itemId) { <tr><td><app-ico [id]="s.itemId" />{{ s.name }}</td><td>{{ s.quantity }}</td><td>{{ s.unitPrice | number: '1.0-0' }}</td><td><strong>{{ s.netKinah | number: '1.0-0' }}</strong></td></tr> }</tbody>
+          </table>
+        } @else { <p class="muted">{{ 'Nothing to suggest.' | tr }}</p> }
       } @else { <p class="muted">{{ 'No saved plans yet.' | tr }}</p> }
     }
 
@@ -222,6 +232,18 @@ export class CalculatorPage {
   readonly openPlanResult = computed(() => {
     const p = this.openPlan();
     return p ? this.compute(p.targetItemId, p.quantity, this.store.inventoryQuantities()) : null;
+  });
+
+  readonly sellSuggestions = computed(() => {
+    const r = this.totalResult();
+    const needed = new Set<string>(this.store.characterPlans().map((p) => p.targetItemId));
+    for (const x of [...r.crafts, ...r.purchases, ...r.inventoryUsed]) needed.add(x.itemId);
+    const prices = this.store.serverPrices();
+    const bound = new Set(this.store.items().filter((i) => i.bound).map((i) => i.id));
+    const cands = Object.entries(this.store.inventoryQuantities()).map(([itemId, quantity]) => ({
+      itemId, quantity, name: this.store.nameOf(itemId), unitPrice: prices[itemId]?.sellListingPrice ?? 0, bound: bound.has(itemId),
+    }));
+    return suggestSales(cands, needed, this.store.settings().defaultFeePercent);
   });
 
   readonly totalResult = computed(() => {

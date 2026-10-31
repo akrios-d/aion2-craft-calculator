@@ -95,6 +95,8 @@ export interface Settings {
   qunaPacks?: { quna: number; price: number }[];
   /** Real-money currency symbol/label for the Quna packs, e.g. R$. */
   realCurrency?: string;
+  /** When on, the prices the user wants to pay override market prices in calculations. */
+  useDesiredPrices?: boolean;
   /** Name of the premium currency the chests are bought with. */
   currency?: string;
 }

@@ -56,4 +56,7 @@ The optional **Search character by name** box on the Damage research page calls 
 
 ## Market import (the only serverless exception)
 
+Market prices are fetched automatically on load (Zikel LA by default) and merged as listing prices. Calculations use them by default; the **Total** tab has a switch to use the user's own "price I want to pay" instead, and suggests tradable surplus items to sell for Kinah (the catalogue has no rarity field, so unique/skin and bound items are excluded as a heuristic).
+
+
 The **Import market prices** box on the Prices page calls `api/market.ts`, a tiny Vercel function that reads public listing data from aion2.exchange (a third-party site, unofficial use, may change or block). It uses no env vars or credentials and contacts only that host. Prices are merged only after you confirm and are listing prices, not completed sales. Under `ng serve` it runs through `proxy.conf.mjs` (Node 22.6+). The rest of the app stays client-side.

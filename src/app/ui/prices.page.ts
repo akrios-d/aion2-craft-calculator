@@ -8,19 +8,18 @@ import { TrPipe } from '../core/tr.pipe';
 import { downloadText } from '../core/download';
 import { exportPricesCsv } from '../core/io/backup';
 import { groupThousands, listingsOf, parsePriceList } from '../core/listings';
-import { ImportPanel } from './import-panel';
 import { MarketImportPanel } from './market-import';
 
 @Component({
   selector: 'app-prices',
-  imports: [ItemIcon, ItemPicker, TrPipe, FormsModule, DecimalPipe, ImportPanel, MarketImportPanel],
+  imports: [ItemIcon, ItemPicker, TrPipe, FormsModule, DecimalPipe, MarketImportPanel],
   template: `
     <h2>{{ 'Auction House prices' | tr }}</h2>
     <p class="msg info">
-      {{ 'All prices are entered by you (or imported from CSV). They are observed listing prices, not completed sales, and are never fetched automatically.' | tr }}
+      {{ 'Market prices are loaded automatically from Aion2Market and are listing prices, not completed sales. You can only set a price you want to pay, used when the switch on the Total tab is on.' | tr }} ({{ store.marketStatus() }})
     </p>
 
-    <h3>{{ 'Add or update a price' | tr }}</h3>
+    <h3>{{ 'Set a price I want to pay' | tr }}</h3>
     <label class="picker">{{ 'Item' | tr }}
       <app-item-picker [items]="store.items()" [selectedId]="itemId()" (selectedIdChange)="select($event)" />
     </label>
@@ -34,19 +33,6 @@ import { MarketImportPanel } from './market-import';
             @if (currentListings().length > 1) { <small class="muted">({{ currentListings().length }})</small> }
           </span>
         </div>
-
-        <div class="chips">
-          @for (v of currentListings(); track $index) {
-            <span class="chip">{{ v | number: '1.0-2' }}
-              <button type="button" class="mini" [attr.aria-label]="'Delete' | tr" (click)="store.removeListing(itemId(), $index)">✕</button>
-            </span>
-          } @empty { <span class="muted">{{ 'No prices yet.' | tr }}</span> }
-        </div>
-
-        <form class="add-row" (ngSubmit)="add()">
-          <input type="text" inputmode="decimal" name="draft" [placeholder]="'Type a price and press Enter (several: 100 120 95)' | tr" [ngModel]="draft()" (ngModelChange)="draft.set(group($event))" />
-          <button class="primary" type="submit" [disabled]="!draft().trim()">{{ 'Add price' | tr }}</button>
-        </form>
 
         <label class="check"><input type="checkbox" name="wantBuy" [ngModel]="buyShown()" (ngModelChange)="toggleBuy($event)" /> {{ 'Price I want to pay' | tr }}</label>
         @if (buyShown()) {
@@ -79,12 +65,9 @@ import { MarketImportPanel } from './market-import';
       </table>
     } @else { <p class="muted">{{ 'No prices yet.' | tr }}</p> }
 
-    <h3>{{ 'Import market prices' | tr }}</h3>
+    <h3>{{ 'Refresh market prices' | tr }}</h3>
     <app-market-import />
 
-    <h3>{{ 'Import prices from CSV' | tr }}</h3>
-    <p class="muted">{{ 'Columns:' | tr }} <code>itemId</code> (or <code>itemName</code>), <code>price</code> ({{ 'current price' | tr }}), <code>buyPrice</code> ({{ 'optional' | tr }}). {{ 'Repeat an item on several rows to add several prices; the average is used.' | tr }}</p>
-    <app-import-panel kind="prices" />
   `,
 })
 export class PricesPage {

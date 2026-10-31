@@ -241,6 +241,7 @@ export function normalizeUserData(raw: Raw, warnings: string[] = []): UserData {
       .filter((c: any) => isObj(c) && Number.isFinite(c['quna']) && c['quna'] > 0 && Number.isFinite(c['price']) && c['price'] > 0)
       .map((c: any) => ({ quna: c['quna'], price: c['price'] }));
   }
+  if (settingsRaw['useDesiredPrices'] === true) base.settings.useDesiredPrices = true;
   if (typeof settingsRaw['realCurrency'] === 'string' && settingsRaw['realCurrency'].trim()) base.settings.realCurrency = settingsRaw['realCurrency'].trim().slice(0, 6);
   if (Array.isArray(settingsRaw['kinahChests']) && settingsRaw['kinahChests'].length) {
     base.settings.kinahChests = settingsRaw['kinahChests']
