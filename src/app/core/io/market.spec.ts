@@ -8,7 +8,7 @@ const catalog = [
 ] as Item[];
 
 describe('market import', () => {
-  it('matches by id then name, skips unlisted, reports unmatched', () => {
+  it('matches by id then name, skips unlisted, keeps unknown as extra items', () => {
     const r = parseMarketItems(
       {
         items: [
@@ -22,9 +22,9 @@ describe('market import', () => {
       'Zikel SA',
     );
     expect(r.total).toBe(3);
-    expect(r.records.map((x) => x.itemId).sort()).toEqual(['100', '200']);
+    expect(r.records.map((x) => x.itemId).sort()).toEqual(['100', '200', '5'].sort());
     expect(r.records.find((x) => x.itemId === '100')?.quantityObserved).toBe(3);
-    expect(r.unmatched).toEqual(['Unknown']);
+    expect(r.extraItems.map((x) => x.name)).toEqual(['Unknown']);
   });
 
   it('tolerates malformed input', () => {

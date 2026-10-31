@@ -52,6 +52,8 @@ export function reconcileUserData(data: UserData, catalogItems: Item[]): { data:
   }
 
   const remapPrice = (p: PriceEntry, kind: string): PriceEntry => {
+    // Market-only items are not in the static catalogue; they are re-created from the market feed.
+    if (!known.has(p.itemId) && p.notes?.startsWith('Aion2Market')) return p;
     const to = resolve(p.itemId, kind);
     if (to === p.itemId) return p;
     report.remapped.push({ kind, fromId: p.itemId, toId: to });

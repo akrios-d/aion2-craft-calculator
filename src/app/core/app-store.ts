@@ -51,12 +51,16 @@ export class AppStore {
   readonly persistBlocked = signal(false);
   readonly reconcileReport = signal<ReconcileReport | null>(null);
 
+  /** Items seen only in the market feed (absent from the static catalogue). */
+  readonly marketItems = signal<Item[]>([]);
+
   /** Every known item, including both faction variants; used to name items already stored in user data. */
   private readonly allItems = computed<Item[]>(() => {
     const known = new Set(this.catalog().items.map((i) => i.id));
     const pt = this.settings().itemNameLanguage === 'pt';
     const faction = this.settings().faction;
-    return [...this.catalog().items, ...this.data().customItems.filter((i) => !known.has(i.id))].map((i) => {
+    const extra = this.marketItems().filter((i) => !known.has(i.id));
+    return [...this.catalog().items, ...extra, ...this.data().customItems.filter((i) => !known.has(i.id) && !extra.some((x) => x.id === i.id))].map((i) => {
       const name = (pt && i.names?.pt) || i.name;
       const tags = [
         i.faction && faction === 'all' ? (i.faction === 'Elyos' ? 'Elyos' : pt ? 'Asmodianos' : 'Asmodians') : '',
@@ -159,8 +163,9 @@ export class AppStore {
     try {
       const res = await fetch(`/api/market?server=${serverId}`);
       if (!res.ok) throw new Error(String(res.status));
-      const r = parseMarketItems(await res.json(), this.items(), this.settings().server);
+      const r = parseMarketItems(await res.json(), this.items().filter((i) => !this.marketItems().some((m) => m.id === i.id)), this.settings().server);
       if (!r.records.length) throw new Error('empty');
+      this.marketItems.set(r.extraItems);
       this.update((d) => applyPriceImport(d, r.records, 'merge', (id) => this.nameOf(id)).data);
       this.lastSync.set(new Date().toISOString());
       this.marketStatus.set('ok');
