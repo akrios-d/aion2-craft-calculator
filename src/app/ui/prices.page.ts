@@ -47,12 +47,11 @@ import { MarketImportPanel } from './market-import';
     </div>
     @if (rows().length) {
       <table>
-        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Prices' | tr }}</th><th>{{ 'Average price' | tr }}</th><th>{{ 'Price I want to pay' | tr }}</th><th></th></tr></thead>
+        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Average price' | tr }}</th><th>{{ 'Price I want to pay' | tr }}</th><th></th></tr></thead>
         <tbody>
           @for (p of rows(); track p.server + p.itemId) {
             <tr>
               <td><app-ico [id]="p.itemId" />{{ store.nameOf(p.itemId) }}</td>
-              <td>@for (v of listings(p); track $index) { <span class="chip">{{ v | number: '1.0-2' }} <button type="button" class="mini" [attr.aria-label]="'Delete' | tr" (click)="store.removeListing(p.itemId, $index)">✕</button></span> } @empty { – }</td>
               <td><strong>{{ p.sellListingPrice === undefined ? '–' : (p.sellListingPrice | number: '1.0-2') }}</strong></td>
               <td>{{ p.buyPrice === undefined ? '–' : (p.buyPrice | number: '1.0-2') }}</td>
               <td>
