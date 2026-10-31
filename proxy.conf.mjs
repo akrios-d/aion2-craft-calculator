@@ -1,6 +1,6 @@
-// Dev only: serves api/market.ts locally so the market import works under `ng serve`.
+// Dev only: serves api/market.mjs locally so the market import works under `ng serve`.
 import http from 'node:http';
-import { GET } from './api/market.ts';
+import { GET } from './api/market.mjs';
 
 http
   .createServer(async (req, res) => {

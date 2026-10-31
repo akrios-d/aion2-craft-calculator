@@ -2,20 +2,20 @@
 // It contacts a single fixed host, reads public data and uses no secrets or env vars.
 const UPSTREAM = 'https://aion2.exchange/api';
 
-function json(body: unknown, status = 200): Response {
+function json(body, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
     headers: { 'content-type': 'application/json', 'cache-control': 's-maxage=300, stale-while-revalidate=600' },
   });
 }
 
-async function get(path: string): Promise<unknown> {
+async function get(path) {
   const res = await fetch(`${UPSTREAM}${path}`, { headers: { Accept: 'application/json', 'User-Agent': 'Aion2CraftLab/1.0' } });
   if (!res.ok) throw new Error(String(res.status));
   return res.json();
 }
 
-export async function GET(request: Request): Promise<Response> {
+export async function GET(request) {
   const q = new URL(request.url).searchParams;
   try {
     if (q.get('servers') !== null) return json(await get('/servers'));
