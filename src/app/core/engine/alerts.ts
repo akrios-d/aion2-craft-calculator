@@ -4,15 +4,21 @@ export interface PriceAlert {
   itemId: string;
   desired: number;
   market: number;
+  direction: 'below' | 'above';
 }
 
-/** Items whose market price is at or below the price the user wants to pay. Pure; does not mutate inputs. */
-export function findAlerts(prices: Readonly<Record<string, PriceEntry>>): PriceAlert[] {
+/** True when the market price crossed the alert price in the chosen direction (default: at or below). */
+export function isReached(p: Pick<PriceEntry, 'sellListingPrice' | 'buyPrice' | 'alertDirection'>): boolean {
+  const market = p.sellListingPrice;
+  if (p.buyPrice === undefined || market === undefined || !(market > 0)) return false;
+  return p.alertDirection === 'above' ? market >= p.buyPrice : market <= p.buyPrice;
+}
+
+/** Alerts whose market price crossed the user's alert price. Pure; does not mutate inputs. */
+export function findAlerts(prices: readonly PriceEntry[]): PriceAlert[] {
   const out: PriceAlert[] = [];
-  for (const p of Object.values(prices)) {
-    const market = p.sellListingPrice;
-    if (p.buyPrice === undefined || market === undefined || !(market > 0)) continue;
-    if (market <= p.buyPrice) out.push({ itemId: p.itemId, desired: p.buyPrice, market });
+  for (const p of prices) {
+    if (isReached(p)) out.push({ itemId: p.itemId, desired: p.buyPrice!, market: p.sellListingPrice!, direction: p.alertDirection ?? 'below' });
   }
   return out;
 }

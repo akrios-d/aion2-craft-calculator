@@ -5,6 +5,7 @@ import { ItemIcon } from '../core/item-icon';
 import { AppStore } from '../core/app-store';
 import { TrPipe } from '../core/tr.pipe';
 import { groupThousands } from '../core/listings';
+import { isReached } from '../core/engine/alerts';
 import { MarketImportPanel } from './market-import';
 
 @Component({
@@ -12,6 +13,7 @@ import { MarketImportPanel } from './market-import';
   imports: [ItemIcon, TrPipe, FormsModule, DecimalPipe, MarketImportPanel],
   styles: [`
     .wide { width: min(100%, 28rem); margin: 0.5rem 0; }
+    .dir { margin-right: 0.4rem; }
     .alert-input { width: 12rem; margin-right: 0.4rem; }
   `],
   template: `
@@ -30,7 +32,8 @@ import { MarketImportPanel } from './market-import';
         <p class="msg info">{{ 'Alerts need browser notifications. Allow them to create alerts.' | tr }}</p>
         <div class="row"><button type="button" class="primary" (click)="store.enableNotifications()">{{ 'Allow notifications' | tr }}</button></div>
       }
-    }    @if (error()) { <p class="msg error">{{ error() | tr }}</p> }
+    }
+    @if (error()) { <p class="msg error">{{ error() | tr }}</p> }
 
     <h3>{{ 'My alerts' | tr }} <small class="muted">({{ alertRows().length }})</small></h3>
     @if (alertRows().length) {
@@ -41,7 +44,7 @@ import { MarketImportPanel } from './market-import';
             <tr>
               <td><app-ico [id]="p.itemId" />{{ store.nameOf(p.itemId) }}</td>
               <td>{{ p.sellListingPrice === undefined ? '–' : (p.sellListingPrice | number: '1.0-0') }}</td>
-              <td><strong>{{ p.buyPrice | number: '1.0-0' }}</strong>@if (reached(p)) { <small class="warn"> ✓ {{ 'reached' | tr }}</small> }</td>
+              <td>{{ p.alertDirection === 'above' ? '≥' : '≤' }} <strong>{{ p.buyPrice | number: '1.0-0' }}</strong>@if (reached(p)) { <small class="warn"> ✓ {{ 'reached' | tr }}</small> }</td>
               <td><button type="button" class="mini" [attr.aria-label]="'Delete' | tr" (click)="store.setBuyPrice(p.itemId, undefined)">✕</button></td>
             </tr>
           }
@@ -61,8 +64,11 @@ import { MarketImportPanel } from './market-import';
               <td><strong>{{ p.sellListingPrice === undefined ? '–' : (p.sellListingPrice | number: '1.0-0') }}</strong></td>
               <td>
                 @if (p.buyPrice !== undefined) {
-                  {{ p.buyPrice | number: '1.0-0' }}@if (reached(p)) { <small class="warn"> ✓</small> }
+                  {{ p.alertDirection === 'above' ? '≥' : '≤' }} {{ p.buyPrice | number: '1.0-0' }}@if (reached(p)) { <small class="warn"> ✓</small> }
                 } @else {
+                  <select class="dir" [attr.aria-label]="'Alert when the price is' | tr" [ngModel]="rowDir()[p.itemId] ?? 'below'" (ngModelChange)="setRowDir(p.itemId, $event)" [name]="'d' + p.itemId">
+                    <option value="below">{{ 'Below' | tr }} ≤</option><option value="above">{{ 'Above' | tr }} ≥</option>
+                  </select>
                   <input type="text" inputmode="decimal" class="alert-input" [placeholder]="'Alert price' | tr" [ngModel]="rowDraft()[p.itemId] ?? ''" (ngModelChange)="setRowDraft(p.itemId, $event)" [name]="'r' + p.itemId" />
                   <button type="button" (click)="addRow(p.itemId)" [disabled]="store.notifPermission() !== 'granted' || !(rowDraft()[p.itemId] ?? '').trim()">{{ 'Add alert' | tr }}</button>
                 }
@@ -86,14 +92,17 @@ export class PricesPage {
   readonly rows = computed(() => this.serverRows().filter((p) => p.sellListingPrice !== undefined));
   readonly query = signal('');
   readonly rowDraft = signal<Record<string, string>>({});
+  readonly rowDir = signal<Record<string, 'below' | 'above'>>({});
   readonly filteredRows = computed(() => {
     const q = this.query().trim().toLowerCase();
     return q ? this.rows().filter((p) => this.store.nameOf(p.itemId).toLowerCase().includes(q)) : this.rows();
   });
   readonly alertRows = computed(() => this.serverRows().filter((p) => p.buyPrice !== undefined));
 
-  reached(p: { sellListingPrice?: number; buyPrice?: number }): boolean {
-    return p.sellListingPrice !== undefined && p.buyPrice !== undefined && p.sellListingPrice <= p.buyPrice;
+  reached = isReached;
+
+  setRowDir(id: string, v: 'below' | 'above'): void {
+    this.rowDir.update((d) => ({ ...d, [id]: v }));
   }
 
   setRowDraft(id: string, v: string): void {
@@ -104,7 +113,7 @@ export class PricesPage {
     if (this.store.notifPermission() !== 'granted') return;
     const n = Number((this.rowDraft()[id] ?? '').replace(/,/g, ''));
     if (!Number.isFinite(n) || n <= 0) return void this.error.set('Alert price must be a number greater than 0.');
-    this.store.setBuyPrice(id, n);
+    this.store.setBuyPrice(id, n, this.rowDir()[id] ?? 'below');
     this.error.set('');
     this.rowDraft.update((d) => ({ ...d, [id]: '' }));
   }

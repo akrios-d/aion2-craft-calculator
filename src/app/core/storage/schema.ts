@@ -186,6 +186,7 @@ export function normalizePrice(p: unknown, fallbackServer = DEFAULT_SERVER): Pri
     observedAt: observed,
   };
   if (buy !== undefined) entry.buyPrice = buy;
+  if (p['alertDirection'] === 'above') entry.alertDirection = 'above';
   const listings = Array.isArray(p['listings']) ? p['listings'].map(optNum).filter((v): v is number => v !== undefined) : [];
   if (listings.length) {
     entry.listings = listings;

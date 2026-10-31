@@ -296,7 +296,9 @@ export class AppStore {
   private notified = new Set<string>();
   private alertTimer: ReturnType<typeof setInterval> | undefined;
   /** Items currently at or below the price the user wants to pay (for the in-app list). */
-  readonly alerts = computed<PriceAlert[]>(() => findAlerts(this.serverPrices()));
+  /** The stored prices for the selected server (raw, so alert prices are never replaced by market prices). */
+  private readonly ownPrices = computed(() => Object.values(this.data().prices).filter((p) => p.server === this.settings().server));
+  readonly alerts = computed<PriceAlert[]>(() => findAlerts(this.ownPrices()));
 
   /** Browser notification permission; alerts can only be created when it is 'granted'. */
   readonly notifPermission = signal<'granted' | 'denied' | 'default' | 'unsupported'>(
@@ -315,10 +317,10 @@ export class AppStore {
   }
 
   private checkAlerts(): void {
-    const { fresh, keys } = newAlerts(findAlerts(this.serverPrices()), this.notified);
+    const { fresh, keys } = newAlerts(findAlerts(this.ownPrices()), this.notified);
     this.notified = keys;
     if (!fresh.length || typeof Notification === 'undefined' || Notification.permission !== 'granted') return;
-    const lines = fresh.slice(0, 5).map((a) => `${this.nameOf(a.itemId)}: ${a.market.toLocaleString()} (<= ${a.desired.toLocaleString()})`);
+    const lines = fresh.slice(0, 5).map((a) => `${this.nameOf(a.itemId)}: ${a.market.toLocaleString()} (${a.direction === 'above' ? '>=' : '<='} ${a.desired.toLocaleString()})`);
     playAlertSound(this.settings().alertSound ?? 'chime');
     try { new Notification(translate('Price alert', this.settings().uiLanguage), { body: lines.join('\n'), tag: 'aion2-price-alert' }); } catch { /* ignore */ }
   }
@@ -342,13 +344,19 @@ export class AppStore {
     this.setPrice(withListings(base, [...(current ? listingsOf(current) : []), ...prices]));
   }
 
-  setBuyPrice(itemId: string, buyPrice: number | undefined): void {
+  setBuyPrice(itemId: string, buyPrice: number | undefined, direction?: 'below' | 'above'): void {
     const server = this.settings().server;
     const current = this.data().prices[priceKey(server, itemId)];
     if (!current && buyPrice === undefined) return;
     const entry: PriceEntry = { ...(current ?? { itemId, server }), observedAt: new Date().toISOString() };
-    if (buyPrice === undefined) delete entry.buyPrice;
-    else entry.buyPrice = buyPrice;
+    if (buyPrice === undefined) {
+      delete entry.buyPrice;
+      delete entry.alertDirection;
+    } else {
+      entry.buyPrice = buyPrice;
+      if ((direction ?? entry.alertDirection) === 'above') entry.alertDirection = 'above';
+      else delete entry.alertDirection;
+    }
     if (entry.buyPrice === undefined && entry.sellListingPrice === undefined) this.removePrice(server, itemId);
     else this.setPrice(entry);
   }

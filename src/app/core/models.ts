@@ -68,7 +68,10 @@ export interface Catalog {
 export interface PriceEntry {
   itemId: string;
   server: string;
+  /** The alert price (or, when enabled, the price you want to pay). */
   buyPrice?: number;
+  /** Alert triggers when the market price is below (default) or above uyPrice. */
+  alertDirection?: 'below' | 'above';
   /** Average of listings; this is the value calculations use. */
   sellListingPrice?: number;
   /** Individual listing prices observed for this item. */
