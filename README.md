@@ -53,3 +53,7 @@ The inventory is account-wide. Each character has its own buy/craft strategies, 
 ## Character lookup (the only serverless exception)
 
 The optional **Search character by name** box on the Damage research page calls pi/character.ts, a tiny Vercel function that proxies two read-only endpoints of the official NCSOFT site (search and character info). It needs no env vars or credentials, validates all input and only contacts those two hosts. It uses undocumented endpoints that may change or be restricted by NCSOFT, and it returns only profile and base attributes, not total attack, crit or amp. It does not work under `ng serve`; the rest of the app stays fully client-side.
+
+## Market import (the only serverless exception)
+
+The **Import market prices** box on the Prices page calls `api/market.ts`, a tiny Vercel function that reads public listing data from aion2.exchange (a third-party site, unofficial use, may change or block). It uses no env vars or credentials and contacts only that host. Prices are merged only after you confirm and are listing prices, not completed sales. Under `ng serve` it runs through `proxy.conf.mjs` (Node 22.6+). The rest of the app stays client-side.

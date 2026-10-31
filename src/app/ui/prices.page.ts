@@ -9,10 +9,11 @@ import { downloadText } from '../core/download';
 import { exportPricesCsv } from '../core/io/backup';
 import { groupThousands, listingsOf, parsePriceList } from '../core/listings';
 import { ImportPanel } from './import-panel';
+import { MarketImportPanel } from './market-import';
 
 @Component({
   selector: 'app-prices',
-  imports: [ItemIcon, ItemPicker, TrPipe, FormsModule, DecimalPipe, ImportPanel],
+  imports: [ItemIcon, ItemPicker, TrPipe, FormsModule, DecimalPipe, ImportPanel, MarketImportPanel],
   template: `
     <h2>{{ 'Auction House prices' | tr }}</h2>
     <p class="msg info">
@@ -77,6 +78,9 @@ import { ImportPanel } from './import-panel';
         </tbody>
       </table>
     } @else { <p class="muted">{{ 'No prices yet.' | tr }}</p> }
+
+    <h3>{{ 'Import market prices' | tr }}</h3>
+    <app-market-import />
 
     <h3>{{ 'Import prices from CSV' | tr }}</h3>
     <p class="muted">{{ 'Columns:' | tr }} <code>itemId</code> (or <code>itemName</code>), <code>price</code> ({{ 'current price' | tr }}), <code>buyPrice</code> ({{ 'optional' | tr }}). {{ 'Repeat an item on several rows to add several prices; the average is used.' | tr }}</p>
