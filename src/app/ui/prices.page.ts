@@ -11,6 +11,14 @@ import { MarketImportPanel } from './market-import';
 @Component({
   selector: 'app-prices',
   imports: [ItemIcon, ItemPicker, TrPipe, FormsModule, DecimalPipe, MarketImportPanel],
+  styles: [`
+    .wide { width: min(100%, 28rem); margin: 0.5rem 0; }
+    .alert-input { width: 12rem; margin-right: 0.4rem; }
+    .add-row { display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-end; }
+    .add-row .picker { min-width: 22rem; }
+    .add-row .picker ::ng-deep input { width: 100%; min-width: 22rem; }
+    .add-row .narrow { width: 14rem; }
+  `],
   template: `
     <h2>{{ 'Auction House prices' | tr }}</h2>
     <p class="msg info">
@@ -53,15 +61,24 @@ import { MarketImportPanel } from './market-import';
       </table>
     } @else { <p class="muted">{{ 'No alerts yet.' | tr }}</p> }
 
-    <h3>{{ 'Current prices' | tr }} <small class="muted">({{ rows().length }})</small></h3>
-    @if (rows().length) {
+    <h3>{{ 'Current prices' | tr }} <small class="muted">({{ filteredRows().length }})</small></h3>
+    <input type="search" class="wide" name="q" [placeholder]="'Search item...' | tr" [ngModel]="query()" (ngModelChange)="query.set($event)" />
+    @if (filteredRows().length) {
       <table>
-        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Current price' | tr }}</th></tr></thead>
+        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Current price' | tr }}</th><th>{{ 'Alert price' | tr }}</th></tr></thead>
         <tbody>
-          @for (p of rows(); track p.server + p.itemId) {
+          @for (p of filteredRows(); track p.server + p.itemId) {
             <tr>
               <td><app-ico [id]="p.itemId" />{{ store.nameOf(p.itemId) }}</td>
               <td><strong>{{ p.sellListingPrice === undefined ? '–' : (p.sellListingPrice | number: '1.0-0') }}</strong></td>
+              <td>
+                @if (p.buyPrice !== undefined) {
+                  {{ p.buyPrice | number: '1.0-0' }}@if (reached(p)) { <small class="warn"> ✓</small> }
+                } @else {
+                  <input type="text" inputmode="decimal" class="alert-input" [placeholder]="'Alert price' | tr" [ngModel]="rowDraft()[p.itemId] ?? ''" (ngModelChange)="setRowDraft(p.itemId, $event)" [name]="'r' + p.itemId" />
+                  <button type="button" (click)="addRow(p.itemId)" [disabled]="!(rowDraft()[p.itemId] ?? '').trim()">{{ 'Add alert' | tr }}</button>
+                }
+              </td>
             </tr>
           }
         </tbody>
@@ -85,6 +102,12 @@ export class PricesPage {
       .sort((a, b) => this.store.nameOf(a.itemId).localeCompare(this.store.nameOf(b.itemId))),
   );
   readonly rows = computed(() => this.serverRows().filter((p) => p.sellListingPrice !== undefined));
+  readonly query = signal('');
+  readonly rowDraft = signal<Record<string, string>>({});
+  readonly filteredRows = computed(() => {
+    const q = this.query().trim().toLowerCase();
+    return q ? this.rows().filter((p) => this.store.nameOf(p.itemId).toLowerCase().includes(q)) : this.rows();
+  });
   readonly alertRows = computed(() => this.serverRows().filter((p) => p.buyPrice !== undefined));
 
   marketOf(id: string): number | undefined {
@@ -93,6 +116,18 @@ export class PricesPage {
 
   reached(p: { sellListingPrice?: number; buyPrice?: number }): boolean {
     return p.sellListingPrice !== undefined && p.buyPrice !== undefined && p.sellListingPrice <= p.buyPrice;
+  }
+
+  setRowDraft(id: string, v: string): void {
+    this.rowDraft.update((d) => ({ ...d, [id]: groupThousands(v) }));
+  }
+
+  addRow(id: string): void {
+    const n = Number((this.rowDraft()[id] ?? '').replace(/,/g, ''));
+    if (!Number.isFinite(n) || n <= 0) return void this.error.set('Alert price must be a number greater than 0.');
+    this.store.setBuyPrice(id, n);
+    this.error.set('');
+    this.rowDraft.update((d) => ({ ...d, [id]: '' }));
   }
 
   create(): void {

@@ -217,6 +217,8 @@ const PT: Record<string, string> = {
   'Keep this tab open: alerts are only checked while the app is open in your browser.': 'Mantenha esta aba aberta: os alertas só são verificados enquanto o app estiver aberto no navegador.',
   'Price alert': 'Alerta de preço',
   'Market prices are loaded automatically from Aion2Market and are listing prices, not completed sales. Create alerts for the prices you want to pay.': 'Os preços de mercado são carregados automaticamente do Aion2Market e são preços anunciados, não vendas concluídas. Crie avisos para os preços que quer pagar.',
+  'Search item...': 'Buscar item...',
+  'Add alert': 'Adicionar aviso',
   'Create alert': 'Criar aviso',
   'Notify me when a market price reaches an alert price (checks every 5 minutes; works only while this tab is open)': 'Notificar quando um preço de mercado chegar ao preço do aviso (verifica a cada 5 minutos; só funciona com esta aba aberta)',
   'Alert price': 'Preço do aviso',
