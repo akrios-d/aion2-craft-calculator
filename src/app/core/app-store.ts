@@ -301,7 +301,6 @@ export class AppStore {
   startAlertTimer(): void {
     if (this.alertTimer) clearInterval(this.alertTimer);
     this.alertTimer = undefined;
-    if (this.settings().priceAlerts !== true) return;
     this.alertTimer = setInterval(() => void this.syncMarket(), 5 * 60 * 1000);
   }
 
