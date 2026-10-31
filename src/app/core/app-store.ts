@@ -53,13 +53,15 @@ export class AppStore {
 
   /** Items seen only in the market feed (absent from the static catalogue). */
   readonly marketItems = signal<Item[]>([]);
+  private readonly marketIcons = signal<Record<string, string>>({});
 
   /** Every known item, including both faction variants; used to name items already stored in user data. */
   private readonly allItems = computed<Item[]>(() => {
     const known = new Set(this.catalog().items.map((i) => i.id));
     const pt = this.settings().itemNameLanguage === 'pt';
     const faction = this.settings().faction;
-    const extra = this.marketItems().filter((i) => !known.has(i.id));
+    const icons = this.marketIcons();
+    const extra = this.marketItems().filter((i) => !known.has(i.id)).map((i) => (icons[i.id] ? { ...i, icon: icons[i.id] } : i));
     return [...this.catalog().items, ...extra, ...this.data().customItems.filter((i) => !known.has(i.id) && !extra.some((x) => x.id === i.id))].map((i) => {
       const name = (pt && i.names?.pt) || i.name;
       const tags = [
@@ -189,6 +191,7 @@ export class AppStore {
         get<DataManifest>('data-manifest.json'),
       ]);
       this.catalog.set({ items, recipes, professions, manifest });
+      void get<Record<string, string>>('market-icons.json').then((m) => this.marketIcons.set(m), () => undefined);
       this.catalogError.set(null);
       this.reconcileWithCatalog();
     } catch (e) {
