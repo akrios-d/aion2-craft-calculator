@@ -208,6 +208,7 @@ const PT: Record<string, string> = {
   'Damage research': 'Pesquisa de dano',
   'Import market prices': 'Importar preços do mercado',
   'Loads the current Aion2Market listing prices through a small serverless proxy. They are listing prices, not completed sales, and are only applied after you confirm.': 'Carrega os preços anunciados atuais do Aion2Market por um pequeno proxy serverless. São preços anunciados, não vendas concluídas, e só são aplicados depois que você confirmar.',
+  'Loads the current Aion2Market listing prices through a small serverless proxy. They are listing prices, not completed sales.': 'Carrega os preços anunciados atuais do Aion2Market por um pequeno proxy serverless. São preços anunciados, não vendas concluídas.',
   'Fetch market prices': 'Buscar preços do mercado',
   'Use the prices I want to pay (otherwise market prices only)': 'Usar os preços que quero pagar (senão, só preços de mercado)',
   'Sell for Kinah': 'Vender por Kinah',

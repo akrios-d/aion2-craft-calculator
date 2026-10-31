@@ -16,7 +16,7 @@ import { ReconcileReport, reconcileUserData } from './reconcile';
 import { Params, translate } from './i18n';
 import { addCharacter, deleteCharacter, renameCharacter, switchCharacter, syncActiveCharacter } from './characters';
 import { appendHistory, applyPriceImport } from './io/imports';
-import { parseMarketItems } from './io/market';
+import { MarketServer, parseMarketItems, parseServers } from './io/market';
 import { listingsOf, withListings } from './listings';
 import { LoadResult, UserDataStorage, getBrowserStorage } from './storage/user-data-storage';
 import { emptyUserData } from './storage/schema';
@@ -107,6 +107,7 @@ export class AppStore {
       this.persistBlocked.set(true);
       if (result.rawText) this.storage.quarantine(result.rawText);
     }
+    void this.loadMarketServers();
     void this.loadCatalog().then(() => this.syncMarket());
   }
 
@@ -117,7 +118,30 @@ export class AppStore {
   readonly marketStatus = signal<'idle' | 'loading' | 'ok' | 'error'>('idle');
 
   /** Fetches market listing prices through the serverless proxy and merges them; failures are non-fatal. */
-  async syncMarket(serverId = 12402): Promise<void> {
+  readonly marketServers = signal<MarketServer[]>([{ serverId: 12402, name: 'Zikel', region: 'LA' }]);
+
+  async loadMarketServers(): Promise<void> {
+    try {
+      const res = await fetch('/api/market?servers');
+      if (res.ok) {
+        const list = parseServers(await res.json());
+        if (list.length) this.marketServers.set(list);
+      }
+    } catch {
+      /* keep the default list */
+    }
+  }
+
+  /** Switches the market server (prices are stored per server) and fetches its prices. */
+  async selectMarketServer(serverId: number): Promise<void> {
+    const s = this.marketServers().find((m) => m.serverId === serverId);
+    if (!s) return;
+    this.setSettings({ marketServerId: serverId, server: ` ` });
+    await this.syncMarket();
+  }
+
+  async syncMarket(): Promise<void> {
+    const serverId = this.settings().marketServerId ?? 12402;
     if (this.persistBlocked() || !this.items().length) return;
     this.marketStatus.set('loading');
     try {

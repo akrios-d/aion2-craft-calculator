@@ -97,6 +97,8 @@ export interface Settings {
   realCurrency?: string;
   /** When on, the prices the user wants to pay override market prices in calculations. */
   useDesiredPrices?: boolean;
+  /** Aion2Market server id the prices are fetched for (matches server). */
+  marketServerId?: number;
   /** Name of the premium currency the chests are bought with. */
   currency?: string;
 }
