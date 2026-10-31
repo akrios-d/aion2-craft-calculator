@@ -35,6 +35,11 @@ import { TrPipe } from './core/tr.pipe';
               <option value="all">{{ 'All factions' | tr }}</option><option value="Elyos">Elyos</option><option value="Asmodians">{{ 'Asmodians' | tr }}</option>
             </select>
           </label>
+          <label class="inline" [title]="'Server' | tr">🖧
+            <select [attr.aria-label]="'Server' | tr" [value]="store.settings().marketServerId ?? 12402" (change)="store.selectMarketServer(+$any($event.target).value)">
+              @for (s of store.marketServers(); track s.serverId) { <option [value]="s.serverId">{{ s.name }} ({{ s.region }})</option> }
+            </select>
+          </label>
           <label class="inline" [title]="'Language' | tr">🌐
             <select [attr.aria-label]="'Language' | tr" [value]="store.settings().uiLanguage" (change)="store.setSettings({ uiLanguage: $any($event.target).value })">
               <option value="en">EN</option>
