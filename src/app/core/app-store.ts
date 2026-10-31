@@ -151,8 +151,7 @@ export class AppStore {
     return max || null;
   });
 
-  /** orce bypasses the proxy's 5-minute edge cache; the source itself refreshes about every 15 minutes. */
-  async syncMarket(force = false): Promise<void> {
+  async syncMarket(): Promise<void> {
     const serverId = this.settings().marketServerId ?? 12402;
     if (this.persistBlocked() || !this.items().length) return;
     this.marketStatus.set('loading');
