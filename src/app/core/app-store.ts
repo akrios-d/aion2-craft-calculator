@@ -1,4 +1,5 @@
 import { Injectable, computed, signal } from '@angular/core';
+import { playAlertSound } from './alert-sound';
 import {
   Catalog,
   DataManifest,
@@ -310,6 +311,7 @@ export class AppStore {
     this.notified = keys;
     if (!fresh.length || typeof Notification === 'undefined' || Notification.permission !== 'granted') return;
     const lines = fresh.slice(0, 5).map((a) => `${this.nameOf(a.itemId)}: ${a.market.toLocaleString()} (<= ${a.desired.toLocaleString()})`);
+    playAlertSound(this.settings().alertSound ?? 'chime');
     try { new Notification(translate('Price alert', this.settings().uiLanguage), { body: lines.join('\n'), tag: 'aion2-price-alert' }); } catch { /* ignore */ }
   }
 

@@ -99,6 +99,7 @@ export interface Settings {
   useDesiredPrices?: boolean;
   /** Notify (while the app is open) when a market price reaches the price the user wants to pay. */
   priceAlerts?: boolean;
+  alertSound?: 'chime' | 'bell' | 'beep' | 'off';
   /** Aion2Market server id the prices are fetched for (matches server). */
   marketServerId?: number;
   /** Name of the premium currency the chests are bought with. */

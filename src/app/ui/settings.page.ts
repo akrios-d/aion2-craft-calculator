@@ -6,6 +6,7 @@ import { DialogService } from '../core/dialog';
 import { translate } from '../core/i18n';
 import { APP_VERSION, downloadText } from '../core/download';
 import { buildBackup, exportInventoryCsv, exportPricesCsv } from '../core/io/backup';
+import { playAlertSound } from '../core/alert-sound';
 import { ImportPanel } from './import-panel';
 
 @Component({
@@ -31,6 +32,15 @@ import { ImportPanel } from './import-panel';
         <select [ngModel]="s.marketServerId ?? 12402" (ngModelChange)="store.selectMarketServer(+$event)">
           @for (m of store.marketServers(); track m.serverId) { <option [value]="m.serverId">{{ m.name }} ({{ m.region }})</option> }
         </select>
+      </label>
+      <label>{{ 'Alert sound' | tr }}
+        <span class="row">
+          <select [ngModel]="s.alertSound ?? 'chime'" (ngModelChange)="store.setSettings({ alertSound: $any($event) })">
+            <option value="chime">{{ 'Chime' | tr }}</option><option value="bell">{{ 'Bell' | tr }}</option><option value="beep">{{ 'Beep' | tr }}</option><option value="off">{{ 'Off' | tr }}</option>
+          </select>
+          <button type="button" (click)="preview()">{{ 'Test' | tr }}</button>
+        </span>
+        <small class="muted">{{ 'The sound plays together with the notification, only while this tab is open. Browsers may keep it silent until you have clicked on the page once; use Test to check.' | tr }}</small>
       </label>
       <label>{{ 'Faction' | tr }}
         <select [ngModel]="s.faction" (ngModelChange)="store.setSettings({ faction: $any($event) })">
@@ -88,6 +98,7 @@ import { ImportPanel } from './import-panel';
   `,
 })
 export class SettingsPage {
+  protected preview(): void { playAlertSound(this.store.settings().alertSound ?? 'chime'); }
   protected readonly store = inject(AppStore);
   private readonly dialog = inject(DialogService);
 
