@@ -17,6 +17,14 @@ import { MarketImportPanel } from './market-import';
       {{ 'Market prices are loaded automatically from Aion2Market and are listing prices, not completed sales. You can only set a price you want to pay, used when the switch on the Total tab is on.' | tr }} ({{ store.marketStatus() }})
     </p>
 
+    <label class="check"><input type="checkbox" [checked]="store.settings().priceAlerts === true" (change)="store.setAlerts($any($event.target).checked)" /> {{ 'Alert me when a market price reaches the price I want to pay (checks every 5 minutes; works only while this tab is open)' | tr }}</label>
+    @if (store.settings().priceAlerts) {
+      <p class="msg warn">{{ 'Keep this tab open: alerts are only checked while the app is open in your browser.' | tr }}</p>
+    }
+    @if (store.alerts().length) {
+      <ul class="chips">@for (a of store.alerts(); track a.itemId) { <li class="chip"><app-ico [id]="a.itemId" />{{ store.nameOf(a.itemId) }}: {{ a.market | number: '1.0-0' }} ≤ {{ a.desired | number: '1.0-0' }}</li> }</ul>
+    }
+
     <h3>{{ 'Set a price I want to pay' | tr }}</h3>
     <label class="picker">{{ 'Item' | tr }}
       <app-item-picker [items]="store.items()" [selectedId]="itemId()" (selectedIdChange)="select($event)" />

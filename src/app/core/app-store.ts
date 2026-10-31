@@ -16,6 +16,7 @@ import { ReconcileReport, reconcileUserData } from './reconcile';
 import { Params, translate } from './i18n';
 import { addCharacter, deleteCharacter, renameCharacter, switchCharacter, syncActiveCharacter } from './characters';
 import { appendHistory, applyPriceImport } from './io/imports';
+import { findAlerts, newAlerts, PriceAlert } from './engine/alerts';
 import { MarketServer, parseMarketItems, parseServers } from './io/market';
 import { listingsOf, withListings } from './listings';
 import { LoadResult, UserDataStorage, getBrowserStorage } from './storage/user-data-storage';
@@ -108,6 +109,7 @@ export class AppStore {
       if (result.rawText) this.storage.quarantine(result.rawText);
     }
     void this.loadMarketServers();
+    this.startAlertTimer();
     void this.loadCatalog().then(() => this.syncMarket());
   }
 
@@ -151,6 +153,7 @@ export class AppStore {
       if (!r.records.length) throw new Error('empty');
       this.update((d) => applyPriceImport(d, r.records, 'merge', (id) => this.nameOf(id)).data);
       this.marketStatus.set('ok');
+      this.checkAlerts();
     } catch {
       this.marketStatus.set('error');
     }
@@ -269,6 +272,36 @@ export class AppStore {
 
   deleteActiveCharacter(): void {
     this.update((d) => deleteCharacter(d, d.activeCharacterId));
+  }
+
+  private notified = new Set<string>();
+  private alertTimer: ReturnType<typeof setInterval> | undefined;
+  /** Items currently at or below the price the user wants to pay (for the in-app list). */
+  readonly alerts = computed<PriceAlert[]>(() => this.settings().priceAlerts === true ? findAlerts(this.serverPrices()) : []);
+
+  /** Turns alerts on/off: asks for notification permission and re-checks the market every 5 minutes while the app is open. */
+  async setAlerts(on: boolean): Promise<void> {
+    if (on && typeof Notification !== 'undefined' && Notification.permission === 'default') {
+      try { await Notification.requestPermission(); } catch { /* ignore */ }
+    }
+    this.setSettings({ priceAlerts: on });
+    this.startAlertTimer();
+  }
+
+  startAlertTimer(): void {
+    if (this.alertTimer) clearInterval(this.alertTimer);
+    this.alertTimer = undefined;
+    if (this.settings().priceAlerts !== true) return;
+    this.alertTimer = setInterval(() => void this.syncMarket(), 5 * 60 * 1000);
+  }
+
+  private checkAlerts(): void {
+    if (this.settings().priceAlerts !== true) return;
+    const { fresh, keys } = newAlerts(findAlerts(this.serverPrices()), this.notified);
+    this.notified = keys;
+    if (!fresh.length || typeof Notification === 'undefined' || Notification.permission !== 'granted') return;
+    const lines = fresh.slice(0, 5).map((a) => `: ${a.market.toLocaleString()} (<= ${a.desired.toLocaleString()})`);
+    try { new Notification(translate('Price alert', this.settings().uiLanguage), { body: lines.join('\n'), tag: 'aion2-price-alert' }); } catch { /* ignore */ }
   }
 
   setSettings(patch: Partial<Settings>): void {

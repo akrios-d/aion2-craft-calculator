@@ -242,6 +242,7 @@ export function normalizeUserData(raw: Raw, warnings: string[] = []): UserData {
       .map((c: any) => ({ quna: c['quna'], price: c['price'] }));
   }
   if (Number.isInteger(settingsRaw['marketServerId']) && settingsRaw['marketServerId'] > 0) base.settings.marketServerId = settingsRaw['marketServerId'];
+  if (settingsRaw['priceAlerts'] === true) base.settings.priceAlerts = true;
   if (settingsRaw['useDesiredPrices'] === true) base.settings.useDesiredPrices = true;
   if (typeof settingsRaw['realCurrency'] === 'string' && settingsRaw['realCurrency'].trim()) base.settings.realCurrency = settingsRaw['realCurrency'].trim().slice(0, 6);
   if (Array.isArray(settingsRaw['kinahChests']) && settingsRaw['kinahChests'].length) {
