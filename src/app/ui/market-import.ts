@@ -9,7 +9,7 @@ import { TrPipe } from '../core/tr.pipe';
   template: `
     <p class="muted">{{ 'Loads the current Aion2Market listing prices through a small serverless proxy. They are listing prices, not completed sales.' | tr }}</p>
     <div class="row">
-      <button type="button" [disabled]="store.marketStatus() === 'loading'" (click)="store.syncMarket(true)">{{ 'Force refresh' | tr }}</button>
+      <button type="button" [disabled]="store.marketStatus() === 'loading'" (click)="store.syncMarket()">{{ 'Fetch market prices' | tr }}</button>
     </div>
     <p class="muted">
       {{ 'Last refresh' | tr }}: <strong>{{ store.lastSync() ? (store.lastSync()! | date: 'medium') : '–' }}</strong>

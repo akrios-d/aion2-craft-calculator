@@ -157,7 +157,7 @@ export class AppStore {
     if (this.persistBlocked() || !this.items().length) return;
     this.marketStatus.set('loading');
     try {
-      const res = await fetch(`/api/market?server=${serverId}${force ? `&_=${Date.now()}` : ''}`, force ? { cache: 'no-store' } : undefined);
+      const res = await fetch(`/api/market?server=${serverId}`);
       if (!res.ok) throw new Error(String(res.status));
       const r = parseMarketItems(await res.json(), this.items(), this.settings().server);
       if (!r.records.length) throw new Error('empty');
