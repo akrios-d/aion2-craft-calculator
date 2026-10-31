@@ -1,4 +1,4 @@
-﻿import { DecimalPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -58,7 +58,7 @@ import { Strategy } from '../core/models';
       @if (store.characterPlans().length) {
         <p class="muted">{{ 'All saved plans combined; your inventory is deducted once across them.' | tr }}</p>
         <ul class="chips">@for (p of store.characterPlans(); track p.id) { <li class="chip"><app-ico [id]="p.targetItemId" />{{ p.quantity }}× {{ store.nameOf(p.targetItemId) }}</li> }</ul>
-        <label class="check"><input type="checkbox" [checked]="store.settings().useDesiredPrices === true" (change)="store.setSettings({ useDesiredPrices: $any($event.target).checked })" /> {{ 'Use the prices I want to pay (otherwise market prices only)' | tr }}</label>
+        <label class="check"><input type="checkbox" [checked]="store.settings().useDesiredPrices === true" (change)="store.setSettings({ useDesiredPrices: $any($event.target).checked })" /> {{ 'Use my alert prices instead of market prices in the calculation' | tr }}</label>
         <ng-container *ngTemplateOutlet="resultTpl; context: { $implicit: totalResult(), save: false }" />
         <h3>{{ 'Sell for Kinah' | tr }}</h3>
         <p class="muted">{{ 'Tradable inventory items not needed by your plans, excluding unique and skin items, valued at the market price minus the Auction House fee.' | tr }}</p>

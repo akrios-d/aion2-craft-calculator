@@ -5,7 +5,7 @@ import { ItemIcon } from '../core/item-icon';
 import { ItemPicker } from '../core/item-picker';
 import { AppStore } from '../core/app-store';
 import { TrPipe } from '../core/tr.pipe';
-import { groupThousands, listingsOf, parsePriceList } from '../core/listings';
+import { groupThousands } from '../core/listings';
 import { MarketImportPanel } from './market-import';
 
 @Component({
@@ -14,53 +14,54 @@ import { MarketImportPanel } from './market-import';
   template: `
     <h2>{{ 'Auction House prices' | tr }}</h2>
     <p class="msg info">
-      {{ 'Market prices are loaded automatically from Aion2Market and are listing prices, not completed sales. You can only set a price you want to pay, used when the switch on the Total tab is on.' | tr }} ({{ store.marketStatus() }})
+      {{ 'Market prices are loaded automatically from Aion2Market and are listing prices, not completed sales. Create alerts for the prices you want to pay.' | tr }} ({{ store.marketStatus() }})
     </p>
 
-    <label class="check"><input type="checkbox" [checked]="store.settings().priceAlerts === true" (change)="store.setAlerts($any($event.target).checked)" /> {{ 'Alert me when a market price reaches the price I want to pay (checks every 5 minutes; works only while this tab is open)' | tr }}</label>
+    <h3>{{ 'Create alert' | tr }}</h3>
+    <label class="check"><input type="checkbox" [checked]="store.settings().priceAlerts === true" (change)="store.setAlerts($any($event.target).checked)" /> {{ 'Notify me when a market price reaches an alert price (checks every 5 minutes; works only while this tab is open)' | tr }}</label>
     @if (store.settings().priceAlerts) {
       <p class="msg warn">{{ 'Keep this tab open: alerts are only checked while the app is open in your browser.' | tr }}</p>
     }
-    @if (store.alerts().length) {
-      <ul class="chips">@for (a of store.alerts(); track a.itemId) { <li class="chip"><app-ico [id]="a.itemId" />{{ store.nameOf(a.itemId) }}: {{ a.market | number: '1.0-0' }} ≤ {{ a.desired | number: '1.0-0' }}</li> }</ul>
-    }
-
-    <h3>{{ 'Set a price I want to pay' | tr }}</h3>
-    <label class="picker">{{ 'Item' | tr }}
-      <app-item-picker [items]="store.items()" [selectedId]="itemId()" (selectedIdChange)="select($event)" />
-    </label>
-
-    @if (itemId()) {
-      <section class="price-editor">
-        <div class="head">
-          <strong><app-ico [id]="itemId()" />{{ store.nameOf(itemId()) }}</strong>
-          <span class="avg">{{ 'Average price' | tr }}:
-            <strong>{{ current()?.sellListingPrice === undefined ? '–' : (current()!.sellListingPrice | number: '1.0-2') }}</strong>
-            @if (currentListings().length > 1) { <small class="muted">({{ currentListings().length }})</small> }
-          </span>
-        </div>
-
-        <label class="check"><input type="checkbox" name="wantBuy" [ngModel]="buyShown()" (ngModelChange)="toggleBuy($event)" /> {{ 'Price I want to pay' | tr }}</label>
-        @if (buyShown()) {
-          <input type="text" inputmode="decimal" class="narrow" name="buy" [ngModel]="buyText()" (ngModelChange)="buyDraft.set(group($event))" (change)="setBuy(buyDraft() ?? buyText())" />
-        }
-      </section>
+    <form class="add-row" (ngSubmit)="create()">
+      <label class="picker">{{ 'Item' | tr }}
+        <app-item-picker [items]="store.items()" [selectedId]="itemId()" (selectedIdChange)="itemId.set($event)" />
+      </label>
+      <label>{{ 'Alert price' | tr }}
+        <input type="text" inputmode="decimal" class="narrow" name="alert" [ngModel]="draft()" (ngModelChange)="draft.set(group($event))" />
+      </label>
+      <button class="primary" type="submit" [disabled]="!itemId() || !draft().trim()">{{ 'Create alert' | tr }}</button>
+    </form>
+    @if (itemId() && marketOf(itemId()) !== undefined) {
+      <p class="muted">{{ 'Current price' | tr }}: <strong>{{ marketOf(itemId()) | number: '1.0-0' }}</strong></p>
     }
     @if (error()) { <p class="msg error">{{ error() | tr }}</p> }
+
+    <h3>{{ 'My alerts' | tr }} <small class="muted">({{ alertRows().length }})</small></h3>
+    @if (alertRows().length) {
+      <table>
+        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Current price' | tr }}</th><th>{{ 'Alert price' | tr }}</th><th></th></tr></thead>
+        <tbody>
+          @for (p of alertRows(); track p.itemId) {
+            <tr>
+              <td><app-ico [id]="p.itemId" />{{ store.nameOf(p.itemId) }}</td>
+              <td>{{ p.sellListingPrice === undefined ? '–' : (p.sellListingPrice | number: '1.0-0') }}</td>
+              <td><strong>{{ p.buyPrice | number: '1.0-0' }}</strong>@if (reached(p)) { <small class="warn"> ✓ {{ 'reached' | tr }}</small> }</td>
+              <td><button type="button" class="mini" [attr.aria-label]="'Delete' | tr" (click)="store.setBuyPrice(p.itemId, undefined)">✕</button></td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    } @else { <p class="muted">{{ 'No alerts yet.' | tr }}</p> }
+
     <h3>{{ 'Current prices' | tr }} <small class="muted">({{ rows().length }})</small></h3>
     @if (rows().length) {
       <table>
-        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Average price' | tr }}</th><th>{{ 'Price I want to pay' | tr }}</th><th></th></tr></thead>
+        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Current price' | tr }}</th></tr></thead>
         <tbody>
           @for (p of rows(); track p.server + p.itemId) {
             <tr>
               <td><app-ico [id]="p.itemId" />{{ store.nameOf(p.itemId) }}</td>
-              <td><strong>{{ p.sellListingPrice === undefined ? '–' : (p.sellListingPrice | number: '1.0-2') }}</strong></td>
-              <td>{{ p.buyPrice === undefined ? '–' : (p.buyPrice | number: '1.0-2') }}</td>
-              <td>
-                <button type="button" (click)="select(p.itemId)">{{ 'Edit' | tr }}</button>
-                <button (click)="store.removePrice(p.server, p.itemId)">{{ 'Delete' | tr }}</button>
-              </td>
+              <td><strong>{{ p.sellListingPrice === undefined ? '–' : (p.sellListingPrice | number: '1.0-0') }}</strong></td>
             </tr>
           }
         </tbody>
@@ -69,7 +70,6 @@ import { MarketImportPanel } from './market-import';
 
     <h3>{{ 'Refresh market prices' | tr }}</h3>
     <app-market-import />
-
   `,
 })
 export class PricesPage {
@@ -77,51 +77,30 @@ export class PricesPage {
   readonly error = signal('');
   readonly itemId = signal('');
   readonly draft = signal('');
-  readonly buyOpen = signal(false);
+  readonly group = groupThousands;
 
-  readonly rows = computed(() =>
+  private readonly serverRows = computed(() =>
     Object.values(this.store.data().prices)
       .filter((p) => p.server === this.store.settings().server)
       .sort((a, b) => this.store.nameOf(a.itemId).localeCompare(this.store.nameOf(b.itemId))),
   );
-  readonly current = computed(() => this.rows().find((p) => p.itemId === this.itemId()));
-  readonly currentListings = computed(() => { const c = this.current(); return c ? listingsOf(c) : []; });
-  readonly buyShown = computed(() => this.buyOpen() || this.current()?.buyPrice !== undefined);
-  readonly listings = listingsOf;
-  readonly group = groupThousands;
-  readonly buyDraft = signal<string | undefined>(undefined);
-  readonly buyText = computed(() => this.buyDraft() ?? groupThousands(String(this.current()?.buyPrice ?? '')));
+  readonly rows = computed(() => this.serverRows().filter((p) => p.sellListingPrice !== undefined));
+  readonly alertRows = computed(() => this.serverRows().filter((p) => p.buyPrice !== undefined));
 
-  select(id: string): void {
-    this.itemId.set(id);
-    this.buyOpen.set(false);
-    this.buyDraft.set(undefined);
-    this.draft.set('');
-    this.error.set('');
-    if (id) window.scrollTo({ top: 0 });
+  marketOf(id: string): number | undefined {
+    return this.serverRows().find((p) => p.itemId === id)?.sellListingPrice;
   }
 
-  add(): void {
-    const parsed = parsePriceList(this.draft());
-    if (!parsed.values.length || parsed.invalid.length) {
-      return void this.error.set(parsed.invalid.length ? `Invalid price: ${parsed.invalid.join(', ')}` : 'Enter a current price.');
-    }
-    this.store.addListings(this.itemId(), parsed.values);
+  reached(p: { sellListingPrice?: number; buyPrice?: number }): boolean {
+    return p.sellListingPrice !== undefined && p.buyPrice !== undefined && p.sellListingPrice <= p.buyPrice;
+  }
+
+  create(): void {
+    const n = Number(this.draft().replace(/,/g, ''));
+    if (!this.itemId() || !Number.isFinite(n) || n <= 0) return void this.error.set('Alert price must be a number greater than 0.');
+    this.store.setBuyPrice(this.itemId(), n);
     this.error.set('');
     this.draft.set('');
     this.itemId.set('');
-    this.buyOpen.set(false);
-  }
-
-  toggleBuy(on: boolean): void {
-    this.buyOpen.set(on);
-    if (!on) this.store.setBuyPrice(this.itemId(), undefined);
-  }
-
-  setBuy(raw: string): void {
-    const n = raw.trim() === '' ? undefined : Number(raw.replace(/,/g, ''));
-    if (n !== undefined && (!Number.isFinite(n) || n < 0)) return void this.error.set('Price I want to pay must be a number of 0 or more.');
-    this.error.set('');
-    this.store.setBuyPrice(this.itemId(), n);
   }
 }
