@@ -60,3 +60,10 @@ Market prices are fetched automatically on load (Zikel LA by default) and merged
 
 
 The **Import market prices** box on the Prices page calls `api/market.mjs`, a tiny Vercel function that reads public listing data from aion2.exchange (a third-party site, unofficial use, may change or block). It uses no env vars or credentials and contacts only that host. Prices are merged only after you confirm and are listing prices, not completed sales. Under `ng serve` it runs through `proxy.conf.mjs` (Node 22.6+). The rest of the app stays client-side.
+
+## TODO
+
+- **Price history** (not implemented): hourly snapshots of the aion2.exchange prices stored in MongoDB Atlas (M0, free).
+  Vercel Hobby crons run at most once a day, so the plan is a GitHub Actions workflow (`cron: "15 * * * *"`) that calls a
+  token-protected `api/snapshot` function, which writes to MongoDB (`MONGODB_URI` + token as env vars).
+  The source only refreshes hourly (~:10), so more frequent runs add nothing.
