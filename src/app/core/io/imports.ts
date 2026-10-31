@@ -270,7 +270,10 @@ export function applyPriceImport(data: UserData, records: PriceEntry[], mode: Im
       changes.push({ kind: 'kept', label, before: fmtPrice(existing), after: fmtPrice(rec), note: 'Existing price is newer; imported observation added to history only.' });
       continue;
     }
-    prices[key] = rec;
+    // A merge keeps the user's alert (alert price + direction) when the incoming record has none.
+    prices[key] = mode === 'merge' && existing?.buyPrice !== undefined && rec.buyPrice === undefined
+      ? { ...rec, buyPrice: existing.buyPrice, ...(existing.alertDirection ? { alertDirection: existing.alertDirection } : {}) }
+      : rec;
     history = appendHistory(history, rec);
     if (!existing) changes.push({ kind: 'added', label, after: fmtPrice(rec) });
     else if (fmtPrice(existing) === fmtPrice(rec) && existing.notes === rec.notes) changes.push({ kind: 'unchanged', label, before: fmtPrice(existing) });
