@@ -25,6 +25,8 @@ import { TrPipe } from '../core/tr.pipe';
     .src { display: block; font-size: .78rem; color: var(--muted); }
     .price { font-weight: 700; white-space: nowrap; }
     td { vertical-align: middle; }
+    .th { background: none; border: 0; padding: 0; color: inherit; font: inherit; text-transform: inherit; letter-spacing: inherit; cursor: pointer; }
+    .th:hover { color: #fff; }
     .slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: .5rem; }
     .slot { border: 1px dashed var(--line); border-radius: var(--radius); padding: .4rem .5rem; min-height: 3rem; display: flex; align-items: center; gap: .4rem; font-size: .85rem; }
     .slot.full { border-style: solid; background: #ffffff0a; }
@@ -105,7 +107,7 @@ import { TrPipe } from '../core/tr.pipe';
     <h3>{{ 'Decor' | tr }} <small class="muted">({{ rows().length }})</small></h3>
     @if (rows().length) {
       <table>
-        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Rarity' | tr }}</th><th>{{ 'Effects' | tr }}</th><th>{{ 'Source' | tr }}</th><th>{{ 'Faction' | tr }}</th><th>{{ 'Current price' | tr }}</th><th></th></tr></thead>
+        <thead><tr><th><button type="button" class="th" (click)="setSort('name')">{{ 'Item' | tr }}{{ arrow('name') }}</button></th><th><button type="button" class="th" (click)="setSort('rarity')">{{ 'Rarity' | tr }}{{ arrow('rarity') }}</button></th><th><button type="button" class="th" (click)="setSort('effects')">{{ 'Effects' | tr }}{{ arrow('effects') }}</button></th><th>{{ 'Source' | tr }}</th><th>{{ 'Faction' | tr }}</th><th><button type="button" class="th" (click)="setSort('price')">{{ 'Current price' | tr }}{{ arrow('price') }}</button></th><th></th></tr></thead>
         <tbody>
           @for (r of rows(); track r.type + r.name) {
             <tr>
@@ -201,7 +203,7 @@ export class PantheonPage {
         return (pa - pb) * dir || a.name.localeCompare(b.name);
       }
       const d = sort === 'rarity' ? rank(a.rarity) - rank(b.rarity) : sort === 'effects' ? total(a) - total(b) : a.name.localeCompare(b.name);
-      return d * (sort === 'effects' ? -dir : dir) || a.name.localeCompare(b.name);
+      return d * dir || a.name.localeCompare(b.name);
     });
   });
 
@@ -224,6 +226,17 @@ export class PantheonPage {
   }
   remove(r: ArtworkRow): void {
     this.build.update((b) => b.filter((k) => k !== buildKey(r)));
+  }
+
+  setSort(k: 'price' | 'name' | 'rarity' | 'effects'): void {
+    if (this.sort() === k) this.desc.update((d) => !d);
+    else {
+      this.sort.set(k);
+      this.desc.set(false);
+    }
+  }
+  arrow(k: string): string {
+    return this.sort() === k ? (this.desc() ? ' ↓' : ' ↑') : '';
   }
 
   toggle(a: string): void {
