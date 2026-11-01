@@ -60,7 +60,7 @@ import { TrPipe } from './core/tr.pipe';
           <a routerLink="/prices" routerLinkActive="active">{{ 'Prices' | tr }}</a>
           <a routerLink="/inventory" routerLinkActive="active">{{ 'Inventory' | tr }}</a>
           <a routerLink="/recipes" routerLinkActive="active">{{ 'Recipes' | tr }}</a>
-          <a routerLink="/artwork" routerLinkActive="active">{{ 'Artwork' | tr }}</a>
+          <a routerLink="/pantheon" routerLinkActive="active">{{ 'Pantheon' | tr }}</a>
           <a routerLink="/kina" routerLinkActive="active">{{ 'Kina chests' | tr }}</a>
           <a routerLink="/damage" routerLinkActive="active">{{ 'Damage research' | tr }}</a>
           <a routerLink="/settings" routerLinkActive="active">{{ 'Settings' | tr }}</a>

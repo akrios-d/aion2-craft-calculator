@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { artworkAttributes, filterArtwork, linkArtwork } from './artwork';
+import { artworkAttributes, filterArtwork, linkArtwork } from './pantheon';
 
 const entries = [
-  { name: 'Argo, the Spirit King', rarity: 'Unique', effects: [{ attribute: 'Illusion', deity: 'Kaisinel', value: 4 }, { attribute: 'Life', deity: 'Yustiel', value: 4 }] },
-  { name: 'Artisan Chef', rarity: 'Rare', effects: [{ attribute: 'Life', deity: 'Yustiel', value: 2 }] },
+  { type: 'artwork' as const, name: 'Argo, the Spirit King', rarity: 'Unique', effects: [{ attribute: 'Illusion', deity: 'Kaisinel', value: 4 }, { attribute: 'Life', deity: 'Yustiel', value: 4 }] },
+  { type: 'artwork' as const, name: 'Artisan Chef', rarity: 'Rare', effects: [{ attribute: 'Life', deity: 'Yustiel', value: 2 }] },
 ];
 
 describe('artwork', () => {
@@ -20,6 +20,11 @@ describe('artwork', () => {
     expect(filterArtwork(rows, ['Life', 'Illusion']).length).toBe(1);
     expect(filterArtwork(rows, [], 'Rare').map((r) => r.name)).toEqual(['Artisan Chef']);
     expect(filterArtwork(rows, [], '', 'chef').length).toBe(1);
+  });
+
+  it('filters by type', () => {
+    expect(filterArtwork(rows, [], '', '', 'statue').length).toBe(0);
+    expect(filterArtwork(rows, [], '', '', 'artwork').length).toBe(2);
   });
 
   it('lists distinct attributes', () => {

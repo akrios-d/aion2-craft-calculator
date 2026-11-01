@@ -1,9 +1,14 @@
 {
- "source": "https://game8.co/games/Aion-2/archives/614593",
- "importedAt": "2026-11-01T10:50:45.110Z",
- "count": 87,
+ "sources": {
+  "artwork": "https://game8.co/games/Aion-2/archives/614593",
+  "statue": "https://game8.co/games/Aion-2/archives/614581",
+  "colossus": "https://game8.co/games/Aion-2/archives/613814"
+ },
+ "importedAt": "2026-11-01T10:53:49.914Z",
+ "count": 110,
  "items": [
   {
+   "type": "artwork",
    "name": "Abyssal Ludra",
    "rarity": "Heroic",
    "effects": [
@@ -25,6 +30,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Addicted Hardirun",
    "rarity": "Epic",
    "effects": [
@@ -41,6 +47,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Advisor Resana",
    "rarity": "Epic",
    "effects": [
@@ -57,6 +64,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Archon Underground Fortress Door",
    "rarity": "Epic",
    "effects": [
@@ -73,6 +81,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Ardus Shrine",
    "rarity": "Heroic",
    "effects": [
@@ -94,6 +103,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Argo, the Spirit King",
    "rarity": "Unique",
    "effects": [
@@ -115,6 +125,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Artisan Alchemist",
    "rarity": "Rare",
    "effects": [
@@ -131,6 +142,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Artisan Armorsmith",
    "rarity": "Rare",
    "effects": [
@@ -147,6 +159,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Artisan Blacksmith",
    "rarity": "Rare",
    "effects": [
@@ -163,6 +176,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Artisan Chef",
    "rarity": "Rare",
    "effects": [
@@ -179,6 +193,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Artisan Essence Extractor",
    "rarity": "Rare",
    "effects": [
@@ -195,6 +210,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Artisan Handicrafter",
    "rarity": "Rare",
    "effects": [
@@ -211,6 +227,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Berserker Vargor",
    "rarity": "Rare",
    "effects": [
@@ -227,6 +244,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Black Tentacle Lawa",
    "rarity": "Unique",
    "effects": [
@@ -248,6 +266,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Black Warrior Aed",
    "rarity": "Rare",
    "effects": [
@@ -264,6 +283,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Blood Warrior Lannar",
    "rarity": "Rare",
    "effects": [
@@ -280,6 +300,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Bloodfang Pnyn",
    "rarity": "Epic",
    "effects": [
@@ -296,6 +317,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Blooming Korin",
    "rarity": "Rare",
    "effects": [
@@ -312,6 +334,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Blue Wave Kelpina",
    "rarity": "Epic",
    "effects": [
@@ -328,6 +351,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Bodyguard Teegant",
    "rarity": "Rare",
    "effects": [
@@ -344,6 +368,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Calderon Canyon",
    "rarity": "Epic",
    "effects": [
@@ -360,6 +385,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Cantas Valley",
    "rarity": "Epic",
    "effects": [
@@ -376,6 +402,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Centurion Demiros",
    "rarity": "Unique",
    "effects": [
@@ -397,6 +424,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Chaser Taulo",
    "rarity": "Epic",
    "effects": [
@@ -413,6 +441,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Dark Shadow Vishwada",
    "rarity": "Unique",
    "effects": [
@@ -434,6 +463,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Dawn Legion Base",
    "rarity": "Epic",
    "effects": [
@@ -450,6 +480,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Deceiver Trid",
    "rarity": "Epic",
    "effects": [
@@ -466,6 +497,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Desecrator Newbold",
    "rarity": "Unique",
    "effects": [
@@ -487,6 +519,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Destruction Archons High Priest Hystan",
    "rarity": "Epic",
    "effects": [
@@ -503,6 +536,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Divine Ansas",
    "rarity": "Unique",
    "effects": [
@@ -524,6 +558,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Drakan Battalion Weapon Guruta",
    "rarity": "Unique",
    "effects": [
@@ -545,6 +580,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Draupnir",
    "rarity": "Unique",
    "effects": [
@@ -566,6 +602,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Dredgion Crash Site",
    "rarity": "Epic",
    "effects": [
@@ -582,6 +619,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Ellun River Marsh",
    "rarity": "Epic",
    "effects": [
@@ -598,6 +636,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Ellun River Midstream",
    "rarity": "Epic",
    "effects": [
@@ -614,6 +653,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Eternal Gartua",
    "rarity": "Heroic",
    "effects": [
@@ -640,6 +680,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Executioner Barthien",
    "rarity": "Unique",
    "effects": [
@@ -661,6 +702,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Executor Tamasa",
    "rarity": "Unique",
    "effects": [
@@ -682,6 +724,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Faithful Rajit",
    "rarity": "Rare",
    "effects": [
@@ -698,6 +741,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Ferocious Horn Den",
    "rarity": "Unique",
    "effects": [
@@ -719,6 +763,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Fire Temple",
    "rarity": "Unique",
    "effects": [
@@ -740,6 +785,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Forest Warrior Aullamu",
    "rarity": "Unique",
    "effects": [
@@ -761,11 +807,13 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Fortress Guardian Notun",
    "rarity": "Heroic",
    "effects": []
   },
   {
+   "type": "artwork",
    "name": "Furious Saursus",
    "rarity": "Epic",
    "effects": [
@@ -782,6 +830,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Guardian Lord Nahma",
    "rarity": "Heroic",
    "effects": [
@@ -803,6 +852,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Harvest Manager Moshav",
    "rarity": "Epic",
    "effects": [
@@ -819,6 +869,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Heretic Layla",
    "rarity": "Epic",
    "effects": [
@@ -835,6 +886,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "High Commander Lagta",
    "rarity": "Unique",
    "effects": [
@@ -856,6 +908,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "High Overseer Nutah",
    "rarity": "Epic",
    "effects": [
@@ -872,6 +925,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Immortal Gartua",
    "rarity": "Heroic",
    "effects": [
@@ -898,6 +952,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Impetusium",
    "rarity": "Unique",
    "effects": [
@@ -919,6 +974,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Kernon of the West",
    "rarity": "Rare",
    "effects": [
@@ -935,6 +991,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Krao",
    "rarity": "Unique",
    "effects": [
@@ -956,6 +1013,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Kusan the Mad Gladiator",
    "rarity": "Epic",
    "effects": [
@@ -972,6 +1030,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Melted Danar",
    "rarity": "Rare",
    "effects": [
@@ -988,6 +1047,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Moslan Forest",
    "rarity": "Epic",
    "effects": [
@@ -1004,6 +1064,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Nameless Cemetery",
    "rarity": "Epic",
    "effects": [
@@ -1020,6 +1081,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Neikel of the East",
    "rarity": "Rare",
    "effects": [
@@ -1036,6 +1098,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Phantasm Kasia",
    "rarity": "Unique",
    "effects": [
@@ -1057,6 +1120,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Pilgrim",
    "rarity": "Epic",
    "effects": [
@@ -1073,6 +1137,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Predator Garsan",
    "rarity": "Epic",
    "effects": [
@@ -1089,6 +1154,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Quai Campsite",
    "rarity": "Epic",
    "effects": [
@@ -1105,6 +1171,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Quai Merchants",
    "rarity": "Rare",
    "effects": [
@@ -1121,6 +1188,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Researcher Setram",
    "rarity": "Unique",
    "effects": [
@@ -1142,6 +1210,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Ritualist Garshim",
    "rarity": "Epic",
    "effects": [
@@ -1158,6 +1227,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Rotten Kutar",
    "rarity": "Rare",
    "effects": [
@@ -1174,6 +1244,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Safe Haven",
    "rarity": "Epic",
    "effects": [
@@ -1190,6 +1261,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Sanctum Outpost",
    "rarity": "Epic",
    "effects": [
@@ -1206,6 +1278,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Scholar Aulla",
    "rarity": "Epic",
    "effects": [
@@ -1222,6 +1295,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Sentinel K",
    "rarity": "Unique",
    "effects": [
@@ -1243,6 +1317,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Sharp Shylak",
    "rarity": "Unique",
    "effects": [
@@ -1264,6 +1339,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Shugo Alchemist",
    "rarity": "Epic",
    "effects": [
@@ -1280,6 +1356,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Shulak",
    "rarity": "Epic",
    "effects": [
@@ -1296,6 +1373,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Silent Dartan",
    "rarity": "Unique",
    "effects": [
@@ -1317,6 +1395,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Soul Ruler Kashapa",
    "rarity": "Unique",
    "effects": [
@@ -1338,6 +1417,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Special Operations Leader Linx",
    "rarity": "Epic",
    "effects": [
@@ -1354,6 +1434,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Specter Archon Axios",
    "rarity": "Unique",
    "effects": [
@@ -1375,6 +1456,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Teina",
    "rarity": "Epic",
    "effects": [
@@ -1391,6 +1473,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Tolbas Forest",
    "rarity": "Epic",
    "effects": [
@@ -1407,6 +1490,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Urugugu",
    "rarity": "Unique",
    "effects": [
@@ -1428,6 +1512,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Vakron Sky Island",
    "rarity": "Unique",
    "effects": [
@@ -1449,6 +1534,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Verteron Fortress Ruins",
    "rarity": "Epic",
    "effects": [
@@ -1465,6 +1551,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Veteran Shujakan",
    "rarity": "Epic",
    "effects": [
@@ -1481,6 +1568,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Visionary Karuka",
    "rarity": "Unique",
    "effects": [
@@ -1502,6 +1590,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Watcher Kaira",
    "rarity": "Unique",
    "effects": [
@@ -1523,6 +1612,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Wind Breeze Merchant",
    "rarity": "Rare",
    "effects": [
@@ -1539,6 +1629,7 @@
    ]
   },
   {
+   "type": "artwork",
    "name": "Zumion Stone Gate",
    "rarity": "Epic",
    "effects": [
@@ -1551,6 +1642,397 @@
      "attribute": "Destiny",
      "deity": "Marchutan",
      "value": 3
+    }
+   ]
+  },
+  {
+   "type": "statue",
+   "name": "Artifact of Eternity",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Freedom",
+     "deity": "Vaizel",
+     "value": 10
+    },
+    {
+     "attribute": "Death",
+     "deity": "Triniel",
+     "value": 10
+    }
+   ]
+  },
+  {
+   "type": "statue",
+   "name": "Asahr",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Death",
+     "deity": "Triniel",
+     "value": 10
+    },
+    {
+     "attribute": "Space",
+     "deity": "Israphel",
+     "value": 10
+    }
+   ]
+  },
+  {
+   "type": "statue",
+   "name": "Dream Fragment",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Freedom",
+     "deity": "Vaizel",
+     "value": 8
+    },
+    {
+     "attribute": "Death",
+     "deity": "Triniel",
+     "value": 8
+    }
+   ]
+  },
+  {
+   "type": "statue",
+   "name": "Fafnir",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Freedom",
+     "deity": "Vaizel",
+     "value": 8
+    },
+    {
+     "attribute": "Death",
+     "deity": "Triniel",
+     "value": 8
+    }
+   ]
+  },
+  {
+   "type": "statue",
+   "name": "Fortress Guardian Notun",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Death",
+     "deity": "Triniel",
+     "value": 10
+    },
+    {
+     "attribute": "Space",
+     "deity": "Israphel",
+     "value": 10
+    }
+   ]
+  },
+  {
+   "type": "statue",
+   "name": "Furious Feruk",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Death",
+     "deity": "Triniel",
+     "value": 8
+    },
+    {
+     "attribute": "Space",
+     "deity": "Israphel",
+     "value": 8
+    }
+   ]
+  },
+  {
+   "type": "statue",
+   "name": "Gatekeeper Pinopi",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Death",
+     "deity": "Triniel",
+     "value": 8
+    },
+    {
+     "attribute": "Space",
+     "deity": "Israphel",
+     "value": 8
+    }
+   ]
+  },
+  {
+   "type": "statue",
+   "name": "Gerod",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Freedom",
+     "deity": "Vaizel",
+     "value": 10
+    },
+    {
+     "attribute": "Space",
+     "deity": "Israphel",
+     "value": 10
+    }
+   ]
+  },
+  {
+   "type": "statue",
+   "name": "Glorious Wings",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Freedom",
+     "deity": "Vaizel",
+     "value": 8
+    },
+    {
+     "attribute": "Space",
+     "deity": "Israphel",
+     "value": 8
+    }
+   ]
+  },
+  {
+   "type": "statue",
+   "name": "Grisilla",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Death",
+     "deity": "Triniel",
+     "value": 8
+    },
+    {
+     "attribute": "Space",
+     "deity": "Israphel",
+     "value": 8
+    }
+   ]
+  },
+  {
+   "type": "statue",
+   "name": "Kibelisk",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Freedom",
+     "deity": "Vaizel",
+     "value": 10
+    },
+    {
+     "attribute": "Space",
+     "deity": "Israphel",
+     "value": 10
+    }
+   ]
+  },
+  {
+   "type": "statue",
+   "name": "Mirror of Desire",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Freedom",
+     "deity": "Vaizel",
+     "value": 8
+    },
+    {
+     "attribute": "Space",
+     "deity": "Israphel",
+     "value": 8
+    }
+   ]
+  },
+  {
+   "type": "statue",
+   "name": "Sealing Wings",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Freedom",
+     "deity": "Vaizel",
+     "value": 8
+    },
+    {
+     "attribute": "Space",
+     "deity": "Israphel",
+     "value": 8
+    }
+   ]
+  },
+  {
+   "type": "statue",
+   "name": "Selvis",
+   "rarity": "Common",
+   "effects": [
+    {
+     "attribute": "Freedom",
+     "deity": "Vaizel",
+     "value": 6
+    }
+   ]
+  },
+  {
+   "type": "statue",
+   "name": "Teina",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Death",
+     "deity": "Triniel",
+     "value": 8
+    },
+    {
+     "attribute": "Space",
+     "deity": "Israphel",
+     "value": 8
+    }
+   ]
+  },
+  {
+   "type": "statue",
+   "name": "Torn Forbidden Bookcase",
+   "rarity": "Common",
+   "effects": [
+    {
+     "attribute": "Death",
+     "deity": "Triniel",
+     "value": 6
+    }
+   ]
+  },
+  {
+   "type": "statue",
+   "name": "Transcendent Bakarma",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Freedom",
+     "deity": "Vaizel",
+     "value": 12
+    },
+    {
+     "attribute": "Death",
+     "deity": "Triniel",
+     "value": 12
+    },
+    {
+     "attribute": "Space",
+     "deity": "Israphel",
+     "value": 12
+    }
+   ]
+  },
+  {
+   "type": "statue",
+   "name": "Urd",
+   "rarity": "Common",
+   "effects": [
+    {
+     "attribute": "Death",
+     "deity": "Triniel",
+     "value": 6
+    }
+   ]
+  },
+  {
+   "type": "statue",
+   "name": "Wraith Giselle",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Freedom",
+     "deity": "Vaizel",
+     "value": 8
+    },
+    {
+     "attribute": "Space",
+     "deity": "Israphel",
+     "value": 8
+    }
+   ]
+  },
+  {
+   "type": "colossus",
+   "name": "Guardian Lord Nahma",
+   "rarity": "Heroic",
+   "effects": [
+    {
+     "attribute": "Justice",
+     "deity": "Nezekan",
+     "value": 55
+    },
+    {
+     "attribute": "Time",
+     "deity": "Siel",
+     "value": 55
+    },
+    {
+     "attribute": "Destruction",
+     "deity": "Zikel",
+     "value": 55
+    }
+   ]
+  },
+  {
+   "type": "colossus",
+   "name": "Incarnated Warding Feather",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Justice",
+     "deity": "Nezekan",
+     "value": 35
+    },
+    {
+     "attribute": "Time",
+     "deity": "Siel",
+     "value": 35
+    }
+   ]
+  },
+  {
+   "type": "colossus",
+   "name": "Warden Santras",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Justice",
+     "deity": "Nezekan",
+     "value": 35
+    },
+    {
+     "attribute": "Time",
+     "deity": "Siel",
+     "value": 35
+    }
+   ]
+  },
+  {
+   "type": "colossus",
+   "name": "Zikel",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Justice",
+     "deity": "Nezekan",
+     "value": 45
+    },
+    {
+     "attribute": "Time",
+     "deity": "Siel",
+     "value": 45
+    },
+    {
+     "attribute": "Destruction",
+     "deity": "Zikel",
+     "value": 45
     }
    ]
   }

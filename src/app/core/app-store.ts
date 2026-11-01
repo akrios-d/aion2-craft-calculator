@@ -18,7 +18,7 @@ import { Params, translate } from './i18n';
 import { addCharacter, deleteCharacter, renameCharacter, switchCharacter, syncActiveCharacter } from './characters';
 import { appendHistory, applyPriceImport } from './io/imports';
 import { findAlerts, newAlerts, PriceAlert } from './engine/alerts';
-import { ArtworkEntry } from './artwork';
+import { ArtworkEntry } from './pantheon';
 import { MarketServer, parseMarketItems, parseServers } from './io/market';
 import { listingsOf, withListings } from './listings';
 import { LoadResult, UserDataStorage, getBrowserStorage } from './storage/user-data-storage';
@@ -223,7 +223,7 @@ export class AppStore {
       ]);
       this.catalog.set({ items, recipes, professions, manifest });
       void get<Record<string, string>>('market-icons.json').then((m) => this.marketIcons.set(m), () => undefined);
-      void get<{ items: ArtworkEntry[] }>('artwork.json').then((m) => this.artwork.set(m.items), () => undefined);
+      void get<{ items: ArtworkEntry[] }>('pantheon.json').then((m) => this.artwork.set(m.items), () => undefined);
       this.catalogError.set(null);
       this.reconcileWithCatalog();
     } catch (e) {
