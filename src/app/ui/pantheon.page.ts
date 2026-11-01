@@ -3,6 +3,7 @@ import { Component, computed, effect, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppStore } from '../core/app-store';
 import { addToBuild, artworkAttributes, artworkOrigins, ArtworkRow, buildKey, buildTotals, filterArtwork, linkArtwork, PANTHEON_SLOTS, PantheonType } from '../core/pantheon';
+import { formatMinutes, minRespawn, spawnsOf } from '../core/pantheon-bosses';
 import { Faction, factionsOf } from '../core/pantheon-factions';
 import { TrPipe } from '../core/tr.pipe';
 
@@ -80,6 +81,7 @@ import { TrPipe } from '../core/tr.pipe';
           <option value="name">{{ 'Sort: name' | tr }}</option>
           <option value="rarity">{{ 'Sort: rarity' | tr }}</option>
           <option value="effects">{{ 'Sort: total effect' | tr }}</option>
+          <option value="respawn">{{ 'Sort: respawn' | tr }}</option>
         </select>
         <button type="button" class="mini" (click)="desc.set(!desc())">{{ desc() ? '↓' : '↑' }}</button>
         <input type="search" name="q" [placeholder]="'Search item...' | tr" [ngModel]="query()" (ngModelChange)="query.set($event)" />
@@ -107,7 +109,7 @@ import { TrPipe } from '../core/tr.pipe';
     <h3>{{ 'Decor' | tr }} <small class="muted">({{ rows().length }})</small></h3>
     @if (rows().length) {
       <table>
-        <thead><tr><th><button type="button" class="th" (click)="setSort('name')">{{ 'Item' | tr }}{{ arrow('name') }}</button></th><th><button type="button" class="th" (click)="setSort('rarity')">{{ 'Rarity' | tr }}{{ arrow('rarity') }}</button></th><th><button type="button" class="th" (click)="setSort('effects')">{{ 'Effects' | tr }}{{ arrow('effects') }}</button></th><th>{{ 'Source' | tr }}</th><th>{{ 'Faction' | tr }}</th><th><button type="button" class="th" (click)="setSort('price')">{{ 'Current price' | tr }}{{ arrow('price') }}</button></th><th></th></tr></thead>
+        <thead><tr><th><button type="button" class="th" (click)="setSort('name')">{{ 'Item' | tr }}{{ arrow('name') }}</button></th><th><button type="button" class="th" (click)="setSort('rarity')">{{ 'Rarity' | tr }}{{ arrow('rarity') }}</button></th><th><button type="button" class="th" (click)="setSort('effects')">{{ 'Effects' | tr }}{{ arrow('effects') }}</button></th><th>{{ 'Source' | tr }}</th><th>{{ 'Faction' | tr }}</th><th><button type="button" class="th" (click)="setSort('respawn')">{{ 'Respawn' | tr }}{{ arrow('respawn') }}</button></th><th><button type="button" class="th" (click)="setSort('price')">{{ 'Current price' | tr }}{{ arrow('price') }}</button></th><th></th></tr></thead>
         <tbody>
           @for (r of rows(); track r.type + r.name) {
             <tr>
@@ -118,6 +120,11 @@ import { TrPipe } from '../core/tr.pipe';
               <td>
                 @for (f of factionsOf(r.name); track f) { <span class="fx">{{ f | tr }}</span> }
                 @empty { <small class="muted">{{ 'Any' | tr }}</small> }
+              </td>
+              <td>
+                @for (s of spawnsOf(r.name); track s.map) {
+                  <span class="src">{{ s.schedule ?? fmt(s.minutes ?? 0) }} · {{ s.map }}</span>
+                } @empty { <small class="muted">–</small> }
               </td>
               <td>
                 @if (price(r.itemId); as p) { <span class="price">{{ p | number: '1.0-0' }}</span> }
@@ -153,7 +160,9 @@ export class PantheonPage {
     { id: 'Elyos', label: 'Elyos' },
   ];
   readonly factionsOf = factionsOf;
-  readonly sort = signal<'price' | 'name' | 'rarity' | 'effects'>('price');
+  readonly spawnsOf = spawnsOf;
+  readonly fmt = formatMinutes;
+  readonly sort = signal<'price' | 'name' | 'rarity' | 'effects' | 'respawn'>('price');
   readonly desc = signal(false);
   readonly slots = PANTHEON_SLOTS;
   readonly groups = [
@@ -196,9 +205,9 @@ export class PantheonPage {
         return !f || !fs.length || fs.includes(f);
       })
       .sort((a, b) => {
-      if (sort === 'price') {
-        const pa = price(a.itemId);
-        const pb = price(b.itemId);
+      if (sort === 'price' || sort === 'respawn') {
+        const pa = sort === 'price' ? price(a.itemId) : minRespawn(a.name);
+        const pb = sort === 'price' ? price(b.itemId) : minRespawn(b.name);
         if (pa === undefined || pb === undefined) return (pa === undefined ? 1 : 0) - (pb === undefined ? 1 : 0) || a.name.localeCompare(b.name);
         return (pa - pb) * dir || a.name.localeCompare(b.name);
       }
@@ -228,7 +237,7 @@ export class PantheonPage {
     this.build.update((b) => b.filter((k) => k !== buildKey(r)));
   }
 
-  setSort(k: 'price' | 'name' | 'rarity' | 'effects'): void {
+  setSort(k: 'price' | 'name' | 'rarity' | 'effects' | 'respawn'): void {
     if (this.sort() === k) this.desc.update((d) => !d);
     else {
       this.sort.set(k);

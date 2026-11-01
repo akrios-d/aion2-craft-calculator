@@ -69,3 +69,14 @@ describe('factionsOf', () => {
     expect(factionsOf('Safe Haven')).toEqual([]);
   });
 });
+
+import { formatMinutes, minRespawn, spawnsOf } from './pantheon-bosses';
+describe('boss respawn', () => {
+  it('finds spawns by artwork name', () => {
+    expect(spawnsOf('Artwork: Melted Danar')).toEqual([{ map: 'Altgard', minutes: 30 }]);
+    expect(spawnsOf('Silent Dartan').length).toBe(2);
+    expect(minRespawn('Blood Warrior Lannar')).toBe(90);
+    expect(minRespawn('Safe Haven')).toBeUndefined();
+    expect(formatMinutes(90)).toBe('1h 30min');
+  });
+});

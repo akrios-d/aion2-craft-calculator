@@ -264,6 +264,8 @@ const PT: Record<string, string> = {
   'Asmodian': 'Asmodiano',
   'Elyos': 'Elyos',
   'Any': 'Qualquer',
+  'Respawn': 'Respawn',
+  'Sort: respawn': 'Ordenar: respawn',
   'My Pantheon': 'Meu Panteão',
   'Empty': 'Vazio',
   'Sort by': 'Ordenar por',
