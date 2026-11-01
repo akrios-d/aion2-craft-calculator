@@ -1,0 +1,1558 @@
+{
+ "source": "https://game8.co/games/Aion-2/archives/614593",
+ "importedAt": "2026-11-01T10:50:45.110Z",
+ "count": 87,
+ "items": [
+  {
+   "name": "Abyssal Ludra",
+   "rarity": "Heroic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 5
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 5
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 5
+    }
+   ]
+  },
+  {
+   "name": "Addicted Hardirun",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 3
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Advisor Resana",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 3
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Archon Underground Fortress Door",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 3
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Ardus Shrine",
+   "rarity": "Heroic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Argo, the Spirit King",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Artisan Alchemist",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 2
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Artisan Armorsmith",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 2
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Artisan Blacksmith",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 2
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Artisan Chef",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 2
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Artisan Essence Extractor",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 2
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Artisan Handicrafter",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 2
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Berserker Vargor",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 2
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Black Tentacle Lawa",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Black Warrior Aed",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 2
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Blood Warrior Lannar",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 2
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Bloodfang Pnyn",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 3
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Blooming Korin",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 2
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Blue Wave Kelpina",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 3
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Bodyguard Teegant",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 2
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Calderon Canyon",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 3
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Cantas Valley",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 3
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Centurion Demiros",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Chaser Taulo",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 3
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Dark Shadow Vishwada",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Dawn Legion Base",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 3
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Deceiver Trid",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 3
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Desecrator Newbold",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Destruction Archons High Priest Hystan",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 3
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Divine Ansas",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 4
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Drakan Battalion Weapon Guruta",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Draupnir",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 4
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Dredgion Crash Site",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 3
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Ellun River Marsh",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 3
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Ellun River Midstream",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 3
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Eternal Gartua",
+   "rarity": "Heroic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 5
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 5
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 5
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 5
+    }
+   ]
+  },
+  {
+   "name": "Executioner Barthien",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Executor Tamasa",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 4
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Faithful Rajit",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 2
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Ferocious Horn Den",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Fire Temple",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 4
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Forest Warrior Aullamu",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Fortress Guardian Notun",
+   "rarity": "Heroic",
+   "effects": []
+  },
+  {
+   "name": "Furious Saursus",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 3
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Guardian Lord Nahma",
+   "rarity": "Heroic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 5
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 5
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 5
+    }
+   ]
+  },
+  {
+   "name": "Harvest Manager Moshav",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 3
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Heretic Layla",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 3
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "High Commander Lagta",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 4
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "High Overseer Nutah",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 3
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Immortal Gartua",
+   "rarity": "Heroic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 5
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 5
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 5
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 5
+    }
+   ]
+  },
+  {
+   "name": "Impetusium",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Kernon of the West",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 2
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Krao",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Kusan the Mad Gladiator",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 3
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Melted Danar",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 2
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Moslan Forest",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 3
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Nameless Cemetery",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 3
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Neikel of the East",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 2
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Phantasm Kasia",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Pilgrim",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 3
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Predator Garsan",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 3
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Quai Campsite",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 3
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Quai Merchants",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 2
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Researcher Setram",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Ritualist Garshim",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 3
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Rotten Kutar",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 2
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Safe Haven",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 3
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Sanctum Outpost",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 3
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Scholar Aulla",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 3
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Sentinel K",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Sharp Shylak",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Shugo Alchemist",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 3
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Shulak",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 3
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Silent Dartan",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 4
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Soul Ruler Kashapa",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Special Operations Leader Linx",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 3
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Specter Archon Axios",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Teina",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 3
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Tolbas Forest",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 3
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Urugugu",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 4
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Vakron Sky Island",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 4
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Verteron Fortress Ruins",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 3
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Veteran Shujakan",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 3
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Visionary Karuka",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Watcher Kaira",
+   "rarity": "Unique",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 4
+    },
+    {
+     "attribute": "Wisdom",
+     "deity": "Lumiel",
+     "value": 4
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Wind Breeze Merchant",
+   "rarity": "Rare",
+   "effects": [
+    {
+     "attribute": "Illusion",
+     "deity": "Kaisinel",
+     "value": 2
+    },
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Zumion Stone Gate",
+   "rarity": "Epic",
+   "effects": [
+    {
+     "attribute": "Life",
+     "deity": "Yustiel",
+     "value": 3
+    },
+    {
+     "attribute": "Destiny",
+     "deity": "Marchutan",
+     "value": 3
+    }
+   ]
+  }
+ ]
+}

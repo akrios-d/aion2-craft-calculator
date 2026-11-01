@@ -1,0 +1,72 @@
+import { DecimalPipe } from '@angular/common';
+import { Component, computed, inject, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { AppStore } from '../core/app-store';
+import { artworkAttributes, filterArtwork, linkArtwork } from '../core/artwork';
+import { ItemIcon } from '../core/item-icon';
+import { TrPipe } from '../core/tr.pipe';
+
+@Component({
+  selector: 'app-artwork',
+  imports: [ItemIcon, TrPipe, FormsModule, DecimalPipe],
+  template: `
+    <h2>{{ 'Artwork' | tr }}</h2>
+    <p class="muted">{{ 'Pantheon artwork and the attributes they grant. Source: Game8; prices from the market.' | tr }}</p>
+
+    <div class="row">
+      @for (a of attributes(); track a) {
+        <button type="button" class="chip" [class.primary]="selected().includes(a)" (click)="toggle(a)">{{ a }}</button>
+      }
+      <select name="rarity" [ngModel]="rarity()" (ngModelChange)="rarity.set($event)" [attr.aria-label]="'Rarity' | tr">
+        <option value="">{{ 'All rarities' | tr }}</option>
+        @for (r of rarities; track r) { <option [value]="r">{{ r }}</option> }
+      </select>
+      <input type="search" name="q" [placeholder]="'Search item...' | tr" [ngModel]="query()" (ngModelChange)="query.set($event)" />
+    </div>
+
+    <h3>{{ 'Artwork' | tr }} <small class="muted">({{ rows().length }})</small></h3>
+    @if (rows().length) {
+      <table>
+        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Rarity' | tr }}</th><th>{{ 'Effects' | tr }}</th><th>{{ 'Current price' | tr }}</th></tr></thead>
+        <tbody>
+          @for (r of rows(); track r.name) {
+            <tr>
+              <td>@if (r.itemId) { <app-ico [id]="r.itemId" /> }{{ r.name }}</td>
+              <td>{{ r.rarity }}</td>
+              <td>@for (e of r.effects; track e.attribute) { <span class="chip">{{ e.attribute }} +{{ e.value }}</span> }</td>
+              <td>
+                @if (price(r.itemId); as p) { <strong>{{ p | number: '1.0-0' }}</strong> }
+                @else if (r.itemId) { <small class="muted">{{ 'Not listed' | tr }}</small> }
+                @else { <small class="muted">–</small> }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    } @else { <p class="muted">{{ 'No artwork matches.' | tr }}</p> }
+  `,
+})
+export class ArtworkPage {
+  protected readonly store = inject(AppStore);
+  readonly selected = signal<string[]>([]);
+  readonly rarity = signal('');
+  readonly query = signal('');
+  readonly rarities = ['Heroic', 'Unique', 'Epic', 'Rare', 'Common'];
+
+  private readonly linked = computed(() => linkArtwork(this.store.artwork(), this.store.items()));
+  readonly attributes = computed(() => artworkAttributes(this.linked()));
+  readonly rows = computed(() => {
+    const price = (id?: string) => (id ? (this.store.serverPrices()[id]?.sellListingPrice ?? Infinity) : Infinity);
+    return filterArtwork(this.linked(), this.selected(), this.rarity(), this.query()).sort(
+      (a, b) => price(a.itemId) - price(b.itemId) || a.name.localeCompare(b.name),
+    );
+  });
+
+  toggle(a: string): void {
+    this.selected.update((s) => (s.includes(a) ? s.filter((x) => x !== a) : [...s, a]));
+  }
+
+  price(id?: string): number | undefined {
+    return id ? this.store.serverPrices()[id]?.sellListingPrice : undefined;
+  }
+}

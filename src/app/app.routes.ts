@@ -1,6 +1,7 @@
-﻿import { Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { CalculatorPage } from './ui/calculator.page';
 import { InventoryPage } from './ui/inventory.page';
+import { ArtworkPage } from './ui/artwork.page';
 import { PricesPage } from './ui/prices.page';
 import { RecipesPage } from './ui/recipes.page';
 import { DamagePage } from './ui/damage.page';
@@ -12,6 +13,7 @@ export const routes: Routes = [
   { path: 'prices', component: PricesPage, title: 'Prices · Aion 2 Craft Lab' },
   { path: 'inventory', component: InventoryPage, title: 'Inventory · Aion 2 Craft Lab' },
   { path: 'recipes', component: RecipesPage, title: 'Recipes · Aion 2 Craft Lab' },
+  { path: 'artwork', component: ArtworkPage, title: 'Artwork · Aion 2 Craft Lab' },
   { path: 'kina', component: KinaPage, title: 'Kina chests · Aion 2 Craft Lab' },
   { path: 'damage', component: DamagePage, title: 'Damage research - Aion 2 Craft Lab' },
   { path: 'settings', component: SettingsPage, title: 'Settings · Aion 2 Craft Lab' },
