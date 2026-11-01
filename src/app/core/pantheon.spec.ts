@@ -59,3 +59,13 @@ describe('pantheon build', () => {
     expect(buildTotals([e(2), e(3)])).toEqual([{ attribute: 'Life', value: 5 }]);
   });
 });
+
+import { factionsOf } from './pantheon-factions';
+describe('factionsOf', () => {
+  it('maps recipes to factions', () => {
+    expect(factionsOf('Artwork: Melted Danar')).toEqual(['Asmodian']);
+    expect(factionsOf('Kernon of the West')).toEqual(['Elyos']);
+    expect(factionsOf('Silent Dartan')).toEqual(['Asmodian', 'Elyos']);
+    expect(factionsOf('Safe Haven')).toEqual([]);
+  });
+});

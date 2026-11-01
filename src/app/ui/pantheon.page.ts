@@ -3,6 +3,7 @@ import { Component, computed, effect, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppStore } from '../core/app-store';
 import { addToBuild, artworkAttributes, artworkOrigins, ArtworkRow, buildKey, buildTotals, filterArtwork, linkArtwork, PANTHEON_SLOTS, PantheonType } from '../core/pantheon';
+import { Faction, factionsOf } from '../core/pantheon-factions';
 import { TrPipe } from '../core/tr.pipe';
 
 @Component({
@@ -60,6 +61,12 @@ import { TrPipe } from '../core/tr.pipe';
           <button type="button" class="tog" [class.on]="origin() === o" (click)="origin.set(o)">{{ o | tr }}</button>
         }
       </div>
+      <div class="group">
+        <span class="label">{{ 'Faction' | tr }}</span>
+        @for (f of factionOpts; track f.id) {
+          <button type="button" class="tog" [class.on]="faction() === f.id" (click)="faction.set(f.id)">{{ f.label | tr }}</button>
+        }
+      </div>
       <div class="group tools">
         <span class="label">{{ 'Rarity' | tr }}</span>
         <select name="rarity" [ngModel]="rarity()" (ngModelChange)="rarity.set($event)" [attr.aria-label]="'Rarity' | tr">
@@ -98,7 +105,7 @@ import { TrPipe } from '../core/tr.pipe';
     <h3>{{ 'Decor' | tr }} <small class="muted">({{ rows().length }})</small></h3>
     @if (rows().length) {
       <table>
-        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Rarity' | tr }}</th><th>{{ 'Effects' | tr }}</th><th>{{ 'Source' | tr }}</th><th>{{ 'Current price' | tr }}</th><th></th></tr></thead>
+        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Rarity' | tr }}</th><th>{{ 'Effects' | tr }}</th><th>{{ 'Source' | tr }}</th><th>{{ 'Faction' | tr }}</th><th>{{ 'Current price' | tr }}</th><th></th></tr></thead>
         <tbody>
           @for (r of rows(); track r.type + r.name) {
             <tr>
@@ -106,6 +113,10 @@ import { TrPipe } from '../core/tr.pipe';
               <td><span class="rar" [class]="'rar r-' + r.rarity">{{ r.rarity }}</span></td>
               <td>@for (e of r.effects; track e.attribute) { <span class="fx">{{ e.attribute }} +{{ e.value }}</span> }</td>
               <td>@for (o of r.origins ?? ['Unknown']; track o) { <span class="src">{{ o | tr }}</span> }</td>
+              <td>
+                @for (f of factionsOf(r.name); track f) { <span class="fx">{{ f | tr }}</span> }
+                @empty { <small class="muted">{{ 'Any' | tr }}</small> }
+              </td>
               <td>
                 @if (price(r.itemId); as p) { <span class="price">{{ p | number: '1.0-0' }}</span> }
                 @else if (r.itemId) { <small class="muted">{{ 'Not listed' | tr }}</small> }
@@ -133,6 +144,13 @@ export class PantheonPage {
     { id: 'colossus', label: 'Colossi' },
   ];
   readonly query = signal('');
+  readonly faction = signal<'' | Faction>('');
+  readonly factionOpts: { id: '' | Faction; label: string }[] = [
+    { id: '', label: 'All' },
+    { id: 'Asmodian', label: 'Asmodian' },
+    { id: 'Elyos', label: 'Elyos' },
+  ];
+  readonly factionsOf = factionsOf;
   readonly sort = signal<'price' | 'name' | 'rarity' | 'effects'>('price');
   readonly desc = signal(false);
   readonly slots = PANTHEON_SLOTS;
@@ -169,7 +187,13 @@ export class PantheonPage {
     const total = (r: ArtworkRow) => r.effects.reduce((s, e) => s + e.value, 0);
     const dir = this.desc() ? -1 : 1;
     const sort = this.sort();
-    return filterArtwork(this.linked(), this.selected(), this.rarity(), this.query(), this.type(), this.mode(), this.origin()).sort((a, b) => {
+    return filterArtwork(this.linked(), this.selected(), this.rarity(), this.query(), this.type(), this.mode(), this.origin())
+      .filter((r) => {
+        const f = this.faction();
+        const fs = factionsOf(r.name);
+        return !f || !fs.length || fs.includes(f);
+      })
+      .sort((a, b) => {
       if (sort === 'price') {
         const pa = price(a.itemId);
         const pb = price(b.itemId);
