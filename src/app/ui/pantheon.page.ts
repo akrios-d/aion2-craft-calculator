@@ -1,8 +1,8 @@
 import { DecimalPipe } from '@angular/common';
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppStore } from '../core/app-store';
-import { artworkAttributes, artworkOrigins, ArtworkRow, filterArtwork, linkArtwork, PantheonType } from '../core/pantheon';
+import { addToBuild, artworkAttributes, artworkOrigins, ArtworkRow, buildKey, buildTotals, filterArtwork, linkArtwork, PANTHEON_SLOTS, PantheonType } from '../core/pantheon';
 import { TrPipe } from '../core/tr.pipe';
 
 @Component({
@@ -24,6 +24,12 @@ import { TrPipe } from '../core/tr.pipe';
     .src { display: block; font-size: .78rem; color: var(--muted); }
     .price { font-weight: 700; white-space: nowrap; }
     td { vertical-align: middle; }
+    .slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: .5rem; }
+    .slot { border: 1px dashed var(--line); border-radius: var(--radius); padding: .4rem .5rem; min-height: 3rem; display: flex; align-items: center; gap: .4rem; font-size: .85rem; }
+    .slot.full { border-style: solid; background: #ffffff0a; }
+    .slot .ico { width: 28px; height: 28px; margin: 0; }
+    .slot .x { margin-left: auto; }
+    .tot { display: flex; gap: .4rem; flex-wrap: wrap; margin: .5rem 0; }
   `,
   template: `
     <h2>{{ 'Pantheon' | tr }}</h2>
@@ -60,14 +66,39 @@ import { TrPipe } from '../core/tr.pipe';
           <option value="">{{ 'All rarities' | tr }}</option>
           @for (r of rarities; track r) { <option [value]="r">{{ r }}</option> }
         </select>
+        <select name="sort" [ngModel]="sort()" (ngModelChange)="sort.set($event)" [attr.aria-label]="'Sort by' | tr">
+          <option value="price">{{ 'Sort: price' | tr }}</option>
+          <option value="name">{{ 'Sort: name' | tr }}</option>
+          <option value="rarity">{{ 'Sort: rarity' | tr }}</option>
+          <option value="effects">{{ 'Sort: total effect' | tr }}</option>
+        </select>
+        <button type="button" class="mini" (click)="desc.set(!desc())">{{ desc() ? '↓' : '↑' }}</button>
         <input type="search" name="q" [placeholder]="'Search item...' | tr" [ngModel]="query()" (ngModelChange)="query.set($event)" />
       </div>
     </div>
 
+    <h3>{{ 'My Pantheon' | tr }} <button type="button" class="mini" (click)="build.set([])">{{ 'Clear' | tr }}</button></h3>
+    @for (g of groups; track g.type) {
+      <p class="muted">{{ g.label | tr }} ({{ buildOf(g.type).length }}/{{ slots[g.type] }})</p>
+      <div class="slots">
+        @for (n of g.range; track n) {
+          @let e = buildOf(g.type)[n];
+          <div class="slot" [class.full]="e">
+            @if (e) {
+              @if (iconOf(e); as s) { <img class="ico" [src]="s" alt="" referrerpolicy="no-referrer" /> }
+              <span>{{ e.name }}</span>
+              <button type="button" class="mini x" (click)="remove(e)">✕</button>
+            } @else { <span class="muted">{{ 'Empty' | tr }}</span> }
+          </div>
+        }
+      </div>
+    }
+    <div class="tot">@for (t of totals(); track t.attribute) { <span class="fx">{{ t.attribute }} +{{ t.value }}</span> }</div>
+
     <h3>{{ 'Decor' | tr }} <small class="muted">({{ rows().length }})</small></h3>
     @if (rows().length) {
       <table>
-        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Rarity' | tr }}</th><th>{{ 'Effects' | tr }}</th><th>{{ 'Source' | tr }}</th><th>{{ 'Current price' | tr }}</th></tr></thead>
+        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Rarity' | tr }}</th><th>{{ 'Effects' | tr }}</th><th>{{ 'Source' | tr }}</th><th>{{ 'Current price' | tr }}</th><th></th></tr></thead>
         <tbody>
           @for (r of rows(); track r.type + r.name) {
             <tr>
@@ -80,6 +111,7 @@ import { TrPipe } from '../core/tr.pipe';
                 @else if (r.itemId) { <small class="muted">{{ 'Not listed' | tr }}</small> }
                 @else { <small class="muted">–</small> }
               </td>
+              <td><button type="button" class="mini" [disabled]="inBuild(r) || full(r)" (click)="add(r)">{{ inBuild(r) ? ('In build' | tr) : ('Add to build' | tr) }}</button></td>
             </tr>
           }
         </tbody>
@@ -101,17 +133,74 @@ export class PantheonPage {
     { id: 'colossus', label: 'Colossi' },
   ];
   readonly query = signal('');
+  readonly sort = signal<'price' | 'name' | 'rarity' | 'effects'>('price');
+  readonly desc = signal(false);
+  readonly slots = PANTHEON_SLOTS;
+  readonly groups = [
+    { type: 'colossus' as PantheonType, label: 'Colossi', range: [0] },
+    { type: 'statue' as PantheonType, label: 'Statues', range: [0, 1, 2, 3] },
+    { type: 'artwork' as PantheonType, label: 'Artwork', range: Array.from({ length: 12 }, (_, i) => i) },
+  ];
+  private static readonly KEY = 'aion2-craft-lab.pantheonBuild';
+  readonly build = signal<string[]>(PantheonPage.load());
+  private static load(): string[] {
+    try {
+      const v = JSON.parse(localStorage.getItem(PantheonPage.KEY) ?? '[]');
+      return Array.isArray(v) ? v.filter((x) => typeof x === 'string') : [];
+    } catch {
+      return [];
+    }
+  }
+  private readonly persist = effect(() => {
+    try {
+      localStorage.setItem(PantheonPage.KEY, JSON.stringify(this.build()));
+    } catch {
+      /* storage unavailable */
+    }
+  });
   readonly rarities = ['Heroic', 'Unique', 'Epic', 'Rare', 'Common'];
 
   private readonly linked = computed(() => linkArtwork(this.store.artwork(), this.store.items()));
   readonly origins = computed(() => artworkOrigins(this.linked()));
   readonly attributes = computed(() => artworkAttributes(this.linked()));
   readonly rows = computed(() => {
-    const price = (id?: string) => (id ? (this.store.serverPrices()[id]?.sellListingPrice ?? Infinity) : Infinity);
-    return filterArtwork(this.linked(), this.selected(), this.rarity(), this.query(), this.type(), this.mode(), this.origin()).sort(
-      (a, b) => price(a.itemId) - price(b.itemId) || a.name.localeCompare(b.name),
-    );
+    const price = (id?: string) => (id ? this.store.serverPrices()[id]?.sellListingPrice : undefined);
+    const rank = (r: string) => this.rarities.indexOf(r);
+    const total = (r: ArtworkRow) => r.effects.reduce((s, e) => s + e.value, 0);
+    const dir = this.desc() ? -1 : 1;
+    const sort = this.sort();
+    return filterArtwork(this.linked(), this.selected(), this.rarity(), this.query(), this.type(), this.mode(), this.origin()).sort((a, b) => {
+      if (sort === 'price') {
+        const pa = price(a.itemId);
+        const pb = price(b.itemId);
+        if (pa === undefined || pb === undefined) return (pa === undefined ? 1 : 0) - (pb === undefined ? 1 : 0) || a.name.localeCompare(b.name);
+        return (pa - pb) * dir || a.name.localeCompare(b.name);
+      }
+      const d = sort === 'rarity' ? rank(a.rarity) - rank(b.rarity) : sort === 'effects' ? total(a) - total(b) : a.name.localeCompare(b.name);
+      return d * (sort === 'effects' ? -dir : dir) || a.name.localeCompare(b.name);
+    });
   });
+
+  private readonly buildEntries = computed(() => {
+    const keys = new Set(this.build());
+    return this.linked().filter((r) => keys.has(buildKey(r)));
+  });
+  readonly totals = computed(() => buildTotals(this.buildEntries()));
+  buildOf(t: PantheonType): ArtworkRow[] {
+    return this.buildEntries().filter((r) => r.type === t);
+  }
+  inBuild(r: ArtworkRow): boolean {
+    return this.build().includes(buildKey(r));
+  }
+  full(r: ArtworkRow): boolean {
+    return this.buildOf(r.type).length >= PANTHEON_SLOTS[r.type];
+  }
+  add(r: ArtworkRow): void {
+    this.build.update((b) => addToBuild(b, r));
+  }
+  remove(r: ArtworkRow): void {
+    this.build.update((b) => b.filter((k) => k !== buildKey(r)));
+  }
 
   toggle(a: string): void {
     this.selected.update((s) => (s.includes(a) ? s.filter((x) => x !== a) : [...s, a]));

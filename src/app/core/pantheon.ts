@@ -58,3 +58,22 @@ export function filterArtwork(rows: readonly ArtworkRow[], attributes: readonly 
       (!q || r.name.toLowerCase().includes(q)),
   );
 }
+
+export const PANTHEON_SLOTS: Record<PantheonType, number> = { colossus: 1, statue: 4, artwork: 12 };
+
+export const buildKey = (r: Pick<ArtworkEntry, 'type' | 'name'>): string => `${r.type}|${r.name}`;
+
+/** Adds an entry to a build; returns the same list when full or duplicated. */
+export function addToBuild(keys: string[], r: Pick<ArtworkEntry, 'type' | 'name'>): string[] {
+  const k = buildKey(r);
+  if (keys.includes(k)) return keys;
+  if (keys.filter((x) => x.startsWith(r.type + '|')).length >= PANTHEON_SLOTS[r.type]) return keys;
+  return [...keys, k];
+}
+
+/** Sums effect values per attribute for the build entries. */
+export function buildTotals(entries: ArtworkEntry[]): { attribute: string; value: number }[] {
+  const m = new Map<string, number>();
+  for (const e of entries) for (const f of e.effects) m.set(f.attribute, (m.get(f.attribute) ?? 0) + f.value);
+  return [...m].map(([attribute, value]) => ({ attribute, value })).sort((a, b) => b.value - a.value);
+}

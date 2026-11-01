@@ -42,3 +42,20 @@ describe('artwork', () => {
     expect(artworkAttributes(rows)).toEqual(['Illusion', 'Life']);
   });
 });
+
+import { addToBuild, buildTotals } from './pantheon';
+describe('pantheon build', () => {
+  it('respects slot limits and duplicates', () => {
+    let b: string[] = [];
+    b = addToBuild(b, { type: 'colossus', name: 'A' });
+    b = addToBuild(b, { type: 'colossus', name: 'B' });
+    b = addToBuild(b, { type: 'colossus', name: 'A' });
+    expect(b).toEqual(['colossus|A']);
+    for (let i = 0; i < 6; i++) b = addToBuild(b, { type: 'statue', name: 'S' + i });
+    expect(b.filter((x) => x.startsWith('statue')).length).toBe(4);
+  });
+  it('sums attributes', () => {
+    const e = (v: number) => ({ type: 'artwork' as const, name: 'x', rarity: '', effects: [{ attribute: 'Life', deity: '', value: v }] });
+    expect(buildTotals([e(2), e(3)])).toEqual([{ attribute: 'Life', value: 5 }]);
+  });
+});
