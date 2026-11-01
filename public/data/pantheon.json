@@ -4,13 +4,14 @@
   "statue": "https://game8.co/games/Aion-2/archives/614581",
   "colossus": "https://game8.co/games/Aion-2/archives/613814"
  },
- "importedAt": "2026-11-01T11:01:58.680Z",
+ "importedAt": "2026-11-01T11:05:06.792Z",
  "count": 110,
  "items": [
   {
    "type": "artwork",
    "name": "Abyssal Ludra",
    "rarity": "Heroic",
+   "icon": "https://img.game8.co/4577039/9ab771b41327f005ee66e19f50e321d9.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -39,6 +40,7 @@
    "type": "artwork",
    "name": "Addicted Hardirun",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577276/95ffcb8808c6725b629f627659313f89.png/show",
    "effects": [
     {
      "attribute": "Life",
@@ -64,6 +66,7 @@
    "type": "artwork",
    "name": "Advisor Resana",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577289/ba2eb12b8c334d9e3657f65eeceda79d.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -89,6 +92,7 @@
    "type": "artwork",
    "name": "Archon Underground Fortress Door",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4635041/f93aca45a85922c8a712827d15f99c9a.png/show",
    "effects": [
     {
      "attribute": "Life",
@@ -112,6 +116,7 @@
    "type": "artwork",
    "name": "Ardus Shrine",
    "rarity": "Heroic",
+   "icon": "https://img.game8.co/4577186/5c006bbb716a6c6f35c457d1f505cc08.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -140,6 +145,7 @@
    "type": "artwork",
    "name": "Argo, the Spirit King",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577209/3d58d14370aa4a9758432d05cff04ae5.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -169,6 +175,7 @@
    "type": "artwork",
    "name": "Artisan Alchemist",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4577496/c15b27aefcfde348bc16671afadf8b29.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -192,6 +199,7 @@
    "type": "artwork",
    "name": "Artisan Armorsmith",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4577504/c384b6f1b1cda85169980abfe0582322.png/show",
    "effects": [
     {
      "attribute": "Wisdom",
@@ -215,6 +223,7 @@
    "type": "artwork",
    "name": "Artisan Blacksmith",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4577517/ab8fcb88c9ff59b42d4ddd83325e9258.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -238,6 +247,7 @@
    "type": "artwork",
    "name": "Artisan Chef",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4577506/235236cff463f3132cc61795316ba8df.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -261,6 +271,7 @@
    "type": "artwork",
    "name": "Artisan Essence Extractor",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4577509/d35215d80169ef8165d3e980d617488d.png/show",
    "effects": [
     {
      "attribute": "Wisdom",
@@ -284,6 +295,7 @@
    "type": "artwork",
    "name": "Artisan Handicrafter",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4577518/32a4474f7a3dd00ca2193f2cef7020ff.png/show",
    "effects": [
     {
      "attribute": "Life",
@@ -307,6 +319,7 @@
    "type": "artwork",
    "name": "Berserker Vargor",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4577505/6674ce3ea872107ab6750698262e22e1.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -332,6 +345,7 @@
    "type": "artwork",
    "name": "Black Tentacle Lawa",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577204/345366cf3be1f0a66c44ce834cb3e4fb.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -360,6 +374,7 @@
    "type": "artwork",
    "name": "Black Warrior Aed",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4577502/824b56c3ae13284730fcf7fdde7b2d7f.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -385,6 +400,7 @@
    "type": "artwork",
    "name": "Blood Warrior Lannar",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4577501/5bb11b1239de59c047e118d9ec96fdcf.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -410,6 +426,7 @@
    "type": "artwork",
    "name": "Bloodfang Pnyn",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577285/8d0379ed085576e14fd278fdba7415f3.png/show",
    "effects": [
     {
      "attribute": "Life",
@@ -433,6 +450,7 @@
    "type": "artwork",
    "name": "Blooming Korin",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4577508/01b195f9477906d5ddef8312e86fd6cf.png/show",
    "effects": [
     {
      "attribute": "Life",
@@ -456,6 +474,7 @@
    "type": "artwork",
    "name": "Blue Wave Kelpina",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577292/af07263a4e6b27e254ceca8045dae5de.png/show",
    "effects": [
     {
      "attribute": "Wisdom",
@@ -481,6 +500,7 @@
    "type": "artwork",
    "name": "Bodyguard Teegant",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4577503/67c264b6afafa36a8d9a26211880eea2.png/show",
    "effects": [
     {
      "attribute": "Life",
@@ -504,6 +524,7 @@
    "type": "artwork",
    "name": "Calderon Canyon",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4624557/9b0604755b164991d6dabd29dbdf3869.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -527,6 +548,7 @@
    "type": "artwork",
    "name": "Cantas Valley",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577425/5ca173e6a4a6553ba2bf2e48ae5f1b89.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -550,6 +572,7 @@
    "type": "artwork",
    "name": "Centurion Demiros",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577198/5cb3f9da4a5d1cc4ce750836f0b13bea.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -578,6 +601,7 @@
    "type": "artwork",
    "name": "Chaser Taulo",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577275/5b826288a28cbb14bd82e1349d4e7b87.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -601,6 +625,7 @@
    "type": "artwork",
    "name": "Dark Shadow Vishwada",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577180/e1090b45d779326ba9f6a894431ceed3.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -631,6 +656,7 @@
    "type": "artwork",
    "name": "Dawn Legion Base",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577426/4fdd4e8999f9cfb52853805eade428ee.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -654,6 +680,7 @@
    "type": "artwork",
    "name": "Deceiver Trid",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577291/a8b2e000e9a6b82ccb61c3371cf6a33f.png/show",
    "effects": [
     {
      "attribute": "Wisdom",
@@ -679,6 +706,7 @@
    "type": "artwork",
    "name": "Desecrator Newbold",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577194/bcf1b76fe754ff5d75041fc80eda807d.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -709,6 +737,7 @@
    "type": "artwork",
    "name": "Destruction Archons High Priest Hystan",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4624558/2ea1599d5c34074a5a58fbdc06ea1f7e.png/show",
    "effects": [
     {
      "attribute": "Life",
@@ -732,6 +761,7 @@
    "type": "artwork",
    "name": "Divine Ansas",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577201/37614918feed893aeb359fa3dcdbb101.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -760,6 +790,7 @@
    "type": "artwork",
    "name": "Drakan Battalion Weapon Guruta",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577211/89c6f02fa75f53361b75c266df960e27.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -790,6 +821,7 @@
    "type": "artwork",
    "name": "Draupnir",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577189/8213ad1f3aadded027ffc0e70e268c4d.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -818,6 +850,7 @@
    "type": "artwork",
    "name": "Dredgion Crash Site",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4624560/ade5ddc8269ccfcab49bb84edd5994b8.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -841,6 +874,7 @@
    "type": "artwork",
    "name": "Ellun River Marsh",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577436/be6c2b649959abeff522e8a8354d8250.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -864,6 +898,7 @@
    "type": "artwork",
    "name": "Ellun River Midstream",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577440/00fc498c0b46d73cf78fc8ab41a19cac.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -887,6 +922,7 @@
    "type": "artwork",
    "name": "Eternal Gartua",
    "rarity": "Heroic",
+   "icon": "https://img.game8.co/4577041/41f1ce5d260a7d0f3ac2ff9fe661f9ae.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -920,6 +956,7 @@
    "type": "artwork",
    "name": "Executioner Barthien",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577193/2234180ff002a444562a2bb2b189a4b6.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -950,6 +987,7 @@
    "type": "artwork",
    "name": "Executor Tamasa",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577202/483cec757c95e7885090a2115882658c.png/show",
    "effects": [
     {
      "attribute": "Life",
@@ -972,6 +1010,7 @@
    "type": "artwork",
    "name": "Faithful Rajit",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4577497/d72fa1a245a021c2e8f1bb9cc635ab42.png/show",
    "effects": [
     {
      "attribute": "Life",
@@ -997,6 +1036,7 @@
    "type": "artwork",
    "name": "Ferocious Horn Den",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577183/aa1b7d723b59d5b2718fbe7147718f48.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1025,6 +1065,7 @@
    "type": "artwork",
    "name": "Fire Temple",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577177/45f4520e6772f3fdb5dea883d9d68ce7.png/show",
    "effects": [
     {
      "attribute": "Life",
@@ -1053,6 +1094,7 @@
    "type": "artwork",
    "name": "Forest Warrior Aullamu",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577214/5ce2a0170eb058417b7176597ab9ae8f.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1081,6 +1123,7 @@
    "type": "artwork",
    "name": "Fortress Guardian Notun",
    "rarity": "Heroic",
+   "icon": "https://img.game8.co/4577207/508bdbafb16a253de9e5df79e90ceccb.png/show",
    "effects": [],
    "sources": [
     "TBD"
@@ -1093,6 +1136,7 @@
    "type": "artwork",
    "name": "Furious Saursus",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577287/fd54ecfd7dbb993cb325deb4ca687618.png/show",
    "effects": [
     {
      "attribute": "Life",
@@ -1116,6 +1160,7 @@
    "type": "artwork",
    "name": "Guardian Lord Nahma",
    "rarity": "Heroic",
+   "icon": "https://img.game8.co/4577040/d6ce2bf307aa32a6738420952ab5780e.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1144,6 +1189,7 @@
    "type": "artwork",
    "name": "Harvest Manager Moshav",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577282/77974a3f3fa1b94205798f06bded4328.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1167,6 +1213,7 @@
    "type": "artwork",
    "name": "Heretic Layla",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577288/aea3e6270c22fcfc9367196179c6cbce.png/show",
    "effects": [
     {
      "attribute": "Life",
@@ -1190,6 +1237,7 @@
    "type": "artwork",
    "name": "High Commander Lagta",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577179/c392dbec0c266fd503f0f31481cdc05e.png/show",
    "effects": [
     {
      "attribute": "Life",
@@ -1220,6 +1268,7 @@
    "type": "artwork",
    "name": "High Overseer Nutah",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577283/b7cc1008e4d518dca15189477e123f2e.png/show",
    "effects": [
     {
      "attribute": "Life",
@@ -1245,6 +1294,7 @@
    "type": "artwork",
    "name": "Immortal Gartua",
    "rarity": "Heroic",
+   "icon": "https://img.game8.co/4577038/a3ca293a92fc749ae1f0c054adca5432.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1280,6 +1330,7 @@
    "type": "artwork",
    "name": "Impetusium",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4624561/75261d3c582d3669b01662d2343c5ee9.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1308,6 +1359,7 @@
    "type": "artwork",
    "name": "Kernon of the West",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4577507/6ac8da73e5f3ad03bf59291b37542266.png/show",
    "effects": [
     {
      "attribute": "Wisdom",
@@ -1331,6 +1383,7 @@
    "type": "artwork",
    "name": "Krao",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577188/36eef98681a9a3543bbd5156193b37f2.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1359,6 +1412,7 @@
    "type": "artwork",
    "name": "Kusan the Mad Gladiator",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577272/c1a4d5e7691d2793dc8483d39bde7dc9.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1382,6 +1436,7 @@
    "type": "artwork",
    "name": "Melted Danar",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4577498/a3f66186d8a777c357cd5fc8e19f14f5.png/show",
    "effects": [
     {
      "attribute": "Life",
@@ -1407,6 +1462,7 @@
    "type": "artwork",
    "name": "Moslan Forest",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4635040/f757e500f1d9ee1234ca6c10c23dd77e.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1430,6 +1486,7 @@
    "type": "artwork",
    "name": "Nameless Cemetery",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4624563/d3f9821d3b8a1160a092ea26eca1928c.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1453,6 +1510,7 @@
    "type": "artwork",
    "name": "Neikel of the East",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4577500/ac5e2af3d8b383da212a5640625c4968.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1476,6 +1534,7 @@
    "type": "artwork",
    "name": "Phantasm Kasia",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577200/1e3df4109ac67e43028ca6f06113e2ae.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1504,6 +1563,7 @@
    "type": "artwork",
    "name": "Pilgrim",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577432/b21d318056cbad43ae46e646358ed148.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1527,6 +1587,7 @@
    "type": "artwork",
    "name": "Predator Garsan",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577279/ad7377499ab9e90521b476505f5da6b4.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1552,6 +1613,7 @@
    "type": "artwork",
    "name": "Quai Campsite",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4624555/637d9069edc1829c2b37cb07601e713b.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1575,6 +1637,7 @@
    "type": "artwork",
    "name": "Quai Merchants",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4624559/801df8905f9392318acee55be5d69a59.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1598,6 +1661,7 @@
    "type": "artwork",
    "name": "Researcher Setram",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577199/9bd10d5eceb3cbbdc803d824456cd534.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1626,6 +1690,7 @@
    "type": "artwork",
    "name": "Ritualist Garshim",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577278/9cfa5d13c66a8d7e46ea1815131fd076.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1649,6 +1714,7 @@
    "type": "artwork",
    "name": "Rotten Kutar",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4577494/129b7c8b108503aab6c2e2a2576de463.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1672,6 +1738,7 @@
    "type": "artwork",
    "name": "Safe Haven",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4635045/3fb89fb6e53c4ab7663d4b5ca96053cf.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1695,6 +1762,7 @@
    "type": "artwork",
    "name": "Sanctum Outpost",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4624554/18ffd7d8b918365627da220bc21076ac.png/show",
    "effects": [
     {
      "attribute": "Wisdom",
@@ -1718,6 +1786,7 @@
    "type": "artwork",
    "name": "Scholar Aulla",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577290/60d13ed143c5dc4e0e714e8bf6242925.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1741,6 +1810,7 @@
    "type": "artwork",
    "name": "Sentinel K",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577196/8e826d7f32c21551f5295bbc7ba77833.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1769,6 +1839,7 @@
    "type": "artwork",
    "name": "Sharp Shylak",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577208/45ba4a7eecabc029629085a72593621f.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1799,6 +1870,7 @@
    "type": "artwork",
    "name": "Shugo Alchemist",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577438/ad6a567fbaebc46bfca94bf88bbdc236.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1822,6 +1894,7 @@
    "type": "artwork",
    "name": "Shulak",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577430/793d7561b12bda97fec72c071b89ce59.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1845,6 +1918,7 @@
    "type": "artwork",
    "name": "Silent Dartan",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577176/92cbb49cc1d2ae7e0c18fecc3060a861.png/show",
    "effects": [
     {
      "attribute": "Life",
@@ -1875,6 +1949,7 @@
    "type": "artwork",
    "name": "Soul Ruler Kashapa",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577191/22d372fbb0a267888efd5fed2c12f4cd.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1905,6 +1980,7 @@
    "type": "artwork",
    "name": "Special Operations Leader Linx",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577286/a423877722c95d9e7e44c7d935881f41.png/show",
    "effects": [
     {
      "attribute": "Life",
@@ -1930,6 +2006,7 @@
    "type": "artwork",
    "name": "Specter Archon Axios",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577212/4d882cc248ff8ca52cab5e63ef93c044.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -1960,6 +2037,7 @@
    "type": "artwork",
    "name": "Teina",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577429/803d4281a7064d948d080af41c5b1afd.png/show",
    "effects": [
     {
      "attribute": "Life",
@@ -1983,6 +2061,7 @@
    "type": "artwork",
    "name": "Tolbas Forest",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577446/a966a96af738bd259687d7a021949cb6.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -2006,6 +2085,7 @@
    "type": "artwork",
    "name": "Urugugu",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577190/12edd68166f541b1d8bbf6d7818e87b0.png/show",
    "effects": [
     {
      "attribute": "Life",
@@ -2034,6 +2114,7 @@
    "type": "artwork",
    "name": "Vakron Sky Island",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577187/30aeada6a3c5132a2e4a7544e75a4d43.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -2062,6 +2143,7 @@
    "type": "artwork",
    "name": "Verteron Fortress Ruins",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577434/957ebec372de8d4a3fedfbe0601f7ae6.png/show",
    "effects": [
     {
      "attribute": "Wisdom",
@@ -2085,6 +2167,7 @@
    "type": "artwork",
    "name": "Veteran Shujakan",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577277/5024b31f133d0d5cfd3b74ae952b8c10.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -2108,6 +2191,7 @@
    "type": "artwork",
    "name": "Visionary Karuka",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577195/0d50973f5612543197735d0ef154dd04.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -2138,6 +2222,7 @@
    "type": "artwork",
    "name": "Watcher Kaira",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4577206/4466e3f32c6f028a4f64cf923c462528.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -2167,6 +2252,7 @@
    "type": "artwork",
    "name": "Wind Breeze Merchant",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4577516/4f5b34f6b742d1da8f41eb71d1b8b18b.png/show",
    "effects": [
     {
      "attribute": "Illusion",
@@ -2190,6 +2276,7 @@
    "type": "artwork",
    "name": "Zumion Stone Gate",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577428/77503bfb33beb2db0b0f11092b76b308.png/show",
    "effects": [
     {
      "attribute": "Life",
@@ -2213,6 +2300,7 @@
    "type": "statue",
    "name": "Artifact of Eternity",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4576906/769028f5a8a146a4864056ca26eb7aa9.png/show",
    "effects": [
     {
      "attribute": "Freedom",
@@ -2236,6 +2324,7 @@
    "type": "statue",
    "name": "Asahr",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4576897/e13802d066ad0042c1bfb0a431c443e2.png/show",
    "effects": [
     {
      "attribute": "Death",
@@ -2259,6 +2348,7 @@
    "type": "statue",
    "name": "Dream Fragment",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4576910/42896dfa72d1d0d9935faa118f3bc1ae.png/show",
    "effects": [
     {
      "attribute": "Freedom",
@@ -2282,6 +2372,7 @@
    "type": "statue",
    "name": "Fafnir",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4576994/e58320b3ccc6b6c572f79dd69922765f.png/show",
    "effects": [
     {
      "attribute": "Freedom",
@@ -2305,6 +2396,7 @@
    "type": "statue",
    "name": "Fortress Guardian Notun",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4633457/7c6aa08c4a702807269f8fa1e5a1f33b.png/show",
    "effects": [
     {
      "attribute": "Death",
@@ -2328,6 +2420,7 @@
    "type": "statue",
    "name": "Furious Feruk",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4577001/bfe0b42890e688d53da1b34097538f09.png/show",
    "effects": [
     {
      "attribute": "Death",
@@ -2351,6 +2444,7 @@
    "type": "statue",
    "name": "Gatekeeper Pinopi",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4576992/3c3e25e836f0d329eff8ed5d507619ca.png/show",
    "effects": [
     {
      "attribute": "Death",
@@ -2374,6 +2468,7 @@
    "type": "statue",
    "name": "Gerod",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4577213/0165c7553f343ae6d4a9cd7d621a27c8.png/show",
    "effects": [
     {
      "attribute": "Freedom",
@@ -2397,6 +2492,7 @@
    "type": "statue",
    "name": "Glorious Wings",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4635008/60fcb0300efc3a38540011024b8723d7.png/show",
    "effects": [
     {
      "attribute": "Freedom",
@@ -2420,6 +2516,7 @@
    "type": "statue",
    "name": "Grisilla",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4624556/54e62832576c3a508835d1281f49da44.png/show",
    "effects": [
     {
      "attribute": "Death",
@@ -2443,6 +2540,7 @@
    "type": "statue",
    "name": "Kibelisk",
    "rarity": "Epic",
+   "icon": "https://img.game8.co/4576898/876e288c64e6254892674abef4b1980f.png/show",
    "effects": [
     {
      "attribute": "Freedom",
@@ -2466,6 +2564,7 @@
    "type": "statue",
    "name": "Mirror of Desire",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4576999/3647a010aefe5f6e19736339074c2a59.png/show",
    "effects": [
     {
      "attribute": "Freedom",
@@ -2489,6 +2588,7 @@
    "type": "statue",
    "name": "Sealing Wings",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4577003/74ea2978bc48534690e6e6349b99cbe3.png/show",
    "effects": [
     {
      "attribute": "Freedom",
@@ -2512,6 +2612,7 @@
    "type": "statue",
    "name": "Selvis",
    "rarity": "Common",
+   "icon": "https://img.game8.co/4576993/b5fd15ced782e3b7d0b3e393d3441c81.png/show",
    "effects": [
     {
      "attribute": "Freedom",
@@ -2530,6 +2631,7 @@
    "type": "statue",
    "name": "Teina",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4576904/3a7957d3a76529b604dcda519a5b1b3b.png/show",
    "effects": [
     {
      "attribute": "Death",
@@ -2553,6 +2655,7 @@
    "type": "statue",
    "name": "Torn Forbidden Bookcase",
    "rarity": "Common",
+   "icon": "https://img.game8.co/4576989/3be225ed4da73b6421e1745321611c78.png/show",
    "effects": [
     {
      "attribute": "Death",
@@ -2571,6 +2674,7 @@
    "type": "statue",
    "name": "Transcendent Bakarma",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4624562/d05141f729dd44b9d3384c8533721de9.png/show",
    "effects": [
     {
      "attribute": "Freedom",
@@ -2599,6 +2703,7 @@
    "type": "statue",
    "name": "Urd",
    "rarity": "Common",
+   "icon": "https://img.game8.co/4635016/c354f568a16791d988bba419684af005.png/show",
    "effects": [
     {
      "attribute": "Death",
@@ -2617,6 +2722,7 @@
    "type": "statue",
    "name": "Wraith Giselle",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4576995/dd2a38534a21a4a7e603a574d9923956.png/show",
    "effects": [
     {
      "attribute": "Freedom",
@@ -2640,6 +2746,7 @@
    "type": "colossus",
    "name": "Guardian Lord Nahma",
    "rarity": "Heroic",
+   "icon": "https://img.game8.co/4576773/2e0e9be24a1708bcefd04fd71d3dc2dd.png/show",
    "effects": [
     {
      "attribute": "Justice",
@@ -2668,6 +2775,7 @@
    "type": "colossus",
    "name": "Incarnated Warding Feather",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4576778/394d0c85eb0e7ea5db4004588cdf63a2.png/show",
    "effects": [
     {
      "attribute": "Justice",
@@ -2691,6 +2799,7 @@
    "type": "colossus",
    "name": "Warden Santras",
    "rarity": "Rare",
+   "icon": "https://img.game8.co/4576915/e7128f39db60c222c63017151dc5728a.png/show",
    "effects": [
     {
      "attribute": "Justice",
@@ -2714,6 +2823,7 @@
    "type": "colossus",
    "name": "Zikel",
    "rarity": "Unique",
+   "icon": "https://img.game8.co/4576777/105de85e4e57daebbd94cae1a66b35c8.png/show",
    "effects": [
     {
      "attribute": "Justice",

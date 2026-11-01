@@ -44,6 +44,7 @@ for (const [type, source] of Object.entries(SOURCES)) {
     const name = /alt='([^']+)'/.exec(r)?.[1]?.trim();
     const tds = [...r.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/g)].map((m) => m[1]);
     if (!name || name === 'Artwork' || tds.length < 3) continue;
+    const icon = /data-src='([^']+)'/.exec(r)?.[1];
     const id = /archives\/(\d+)/.exec(r)?.[1];
     const rarity = tds[1].replace(/<[^>]+>/g, '').trim();
     const effects = [...tds[2].matchAll(/([A-Za-z' ]+?)\s*\(([A-Za-z' ]+)\)\s*\+(\d+)/g)].map((m) => ({
@@ -52,7 +53,7 @@ for (const [type, source] of Object.entries(SOURCES)) {
       value: Number(m[3]),
     }));
     const d = id ? await detail(id) : {};
-    items.push({ type, name, rarity, effects, ...d });
+    items.push({ type, name, rarity, icon, effects, ...d });
   }
 }
 const out = { sources: SOURCES, importedAt: new Date().toISOString(), count: items.length, items };

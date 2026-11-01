@@ -259,6 +259,8 @@ const PT: Record<string, string> = {
   'Expedition': 'Expedição',
   'Achievement': 'Conquista',
   'Unknown': 'Desconhecida',
+  'Type': 'Tipo',
+  'Attributes': 'Atributos',
   'Decor': 'Decorações',
   'Statues': 'Estátuas',
   'Colossi': 'Colossos',

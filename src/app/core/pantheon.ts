@@ -15,6 +15,8 @@ export interface ArtworkEntry {
   effects: ArtworkEffect[];
   /** Source categories (Monster Loot, Substance Morph, Trade Shop, Quest, Expedition, Achievement, Unknown). */
   origins?: string[];
+  /** Icon URL from the imported data. */
+  icon?: string;
   /** Source lines as listed by Game8. */
   sources?: string[];
 }
