@@ -27,7 +27,10 @@ import { TrPipe } from '../core/tr.pipe';
     .price { font-weight: 700; white-space: nowrap; }
     td { vertical-align: middle; }
     .th { background: none; border: 0; padding: 0; color: inherit; font: inherit; text-transform: inherit; letter-spacing: inherit; cursor: pointer; }
-    .th:hover { color: #fff; }
+    .th:hover { color: #fff; text-decoration: underline; }
+    .th.act { color: var(--acc); }
+    .th .arr { opacity: .45; font-size: .8em; }
+    .th.act .arr { opacity: 1; }
     .slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: .5rem; }
     .slot { border: 1px dashed var(--line); border-radius: var(--radius); padding: .4rem .5rem; min-height: 3rem; display: flex; align-items: center; gap: .4rem; font-size: .85rem; }
     .slot.full { border-style: solid; background: #ffffff0a; }
@@ -109,7 +112,7 @@ import { TrPipe } from '../core/tr.pipe';
     <h3>{{ 'Decor' | tr }} <small class="muted">({{ rows().length }})</small></h3>
     @if (rows().length) {
       <table>
-        <thead><tr><th><button type="button" class="th" (click)="setSort('name')">{{ 'Item' | tr }}{{ arrow('name') }}</button></th><th><button type="button" class="th" (click)="setSort('rarity')">{{ 'Rarity' | tr }}{{ arrow('rarity') }}</button></th><th><button type="button" class="th" (click)="setSort('effects')">{{ 'Effects' | tr }}{{ arrow('effects') }}</button></th><th>{{ 'Source' | tr }}</th><th>{{ 'Faction' | tr }}</th><th><button type="button" class="th" (click)="setSort('respawn')">{{ 'Respawn' | tr }}{{ arrow('respawn') }}</button></th><th><button type="button" class="th" (click)="setSort('price')">{{ 'Current price' | tr }}{{ arrow('price') }}</button></th><th></th></tr></thead>
+        <thead><tr><th><button type="button" class="th" [class.act]="sort() === 'name'" [title]="'Sort by' | tr" (click)="setSort('name')">{{ 'Item' | tr }}<span class="arr">{{ arrow('name') }}</span></button></th><th><button type="button" class="th" [class.act]="sort() === 'rarity'" [title]="'Sort by' | tr" (click)="setSort('rarity')">{{ 'Rarity' | tr }}<span class="arr">{{ arrow('rarity') }}</span></button></th><th><button type="button" class="th" [class.act]="sort() === 'effects'" [title]="'Sort by' | tr" (click)="setSort('effects')">{{ 'Effects' | tr }}<span class="arr">{{ arrow('effects') }}</span></button></th><th>{{ 'Source' | tr }}</th><th>{{ 'Faction' | tr }}</th><th><button type="button" class="th" [class.act]="sort() === 'respawn'" [title]="'Sort by' | tr" (click)="setSort('respawn')">{{ 'Respawn' | tr }}<span class="arr">{{ arrow('respawn') }}</span></button></th><th><button type="button" class="th" [class.act]="sort() === 'price'" [title]="'Sort by' | tr" (click)="setSort('price')">{{ 'Current price' | tr }}<span class="arr">{{ arrow('price') }}</span></button></th><th></th></tr></thead>
         <tbody>
           @for (r of rows(); track r.type + r.name) {
             <tr>
@@ -245,7 +248,7 @@ export class PantheonPage {
     }
   }
   arrow(k: string): string {
-    return this.sort() === k ? (this.desc() ? ' ↓' : ' ↑') : '';
+    return this.sort() === k ? (this.desc() ? ' ▼' : ' ▲') : ' ⇅';
   }
 
   toggle(a: string): void {
