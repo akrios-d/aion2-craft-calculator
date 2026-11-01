@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { artworkAttributes, filterArtwork, linkArtwork } from './pantheon';
+import { artworkAttributes, artworkOrigins, filterArtwork, linkArtwork } from './pantheon';
 
 const entries = [
   { type: 'artwork' as const, name: 'Argo, the Spirit King', rarity: 'Unique', effects: [{ attribute: 'Illusion', deity: 'Kaisinel', value: 4 }, { attribute: 'Life', deity: 'Yustiel', value: 4 }] },
@@ -30,6 +30,12 @@ describe('artwork', () => {
   it('filters by type', () => {
     expect(filterArtwork(rows, [], '', '', 'statue').length).toBe(0);
     expect(filterArtwork(rows, [], '', '', 'artwork').length).toBe(2);
+  });
+
+  it('filters by source category', () => {
+    const r = linkArtwork([{ ...entries[0], origins: ['Monster Loot'] }, { ...entries[1], origins: ['Trade Shop'] }], []);
+    expect(filterArtwork(r, [], '', '', '', 'and', 'Trade Shop').map((x) => x.name)).toEqual(['Artisan Chef']);
+    expect(artworkOrigins(r)).toEqual(['Monster Loot', 'Trade Shop']);
   });
 
   it('lists distinct attributes', () => {

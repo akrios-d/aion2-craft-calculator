@@ -13,6 +13,10 @@ export interface ArtworkEntry {
   name: string;
   rarity: string;
   effects: ArtworkEffect[];
+  /** Source categories (Monster Loot, Substance Morph, Trade Shop, Quest, Expedition, Achievement, Unknown). */
+  origins?: string[];
+  /** Source lines as listed by Game8. */
+  sources?: string[];
 }
 
 export interface ArtworkRow extends ArtworkEntry {
@@ -32,17 +36,22 @@ export function linkArtwork(entries: readonly ArtworkEntry[], items: readonly It
   return entries.map((e) => ({ ...e, itemId: byName.get(`|${norm(e.name)}`) }));
 }
 
+export function artworkOrigins(rows: readonly ArtworkEntry[]): string[] {
+  return [...new Set(rows.flatMap((r) => r.origins ?? ['Unknown']))].sort();
+}
+
 export function artworkAttributes(rows: readonly ArtworkEntry[]): string[] {
   return [...new Set(rows.flatMap((r) => r.effects.map((e) => e.attribute)))].sort();
 }
 
 /** Keeps artwork granting every ('and') or any ('or') selected attribute (empty selection keeps all), optionally by rarity and name. */
-export function filterArtwork(rows: readonly ArtworkRow[], attributes: readonly string[], rarity = '', query = '', type: PantheonType | '' = '', mode: 'and' | 'or' = 'and'): ArtworkRow[] {
+export function filterArtwork(rows: readonly ArtworkRow[], attributes: readonly string[], rarity = '', query = '', type: PantheonType | '' = '', mode: 'and' | 'or' = 'and', origin = ''): ArtworkRow[] {
   const q = query.trim().toLowerCase();
   return rows.filter(
     (r) =>
       (mode === 'or' ? !attributes.length || attributes.some((a) => r.effects.some((e) => e.attribute === a)) : attributes.every((a) => r.effects.some((e) => e.attribute === a))) &&
       (!type || r.type === type) &&
+      (!origin || (r.origins ?? ['Unknown']).includes(origin)) &&
       (!rarity || r.rarity === rarity) &&
       (!q || r.name.toLowerCase().includes(q)),
   );

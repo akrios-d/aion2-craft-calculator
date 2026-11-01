@@ -4,7 +4,7 @@
   "statue": "https://game8.co/games/Aion-2/archives/614581",
   "colossus": "https://game8.co/games/Aion-2/archives/613814"
  },
- "importedAt": "2026-11-01T10:53:49.914Z",
+ "importedAt": "2026-11-01T11:01:58.680Z",
  "count": 110,
  "items": [
   {
@@ -27,6 +27,12 @@
      "deity": "Marchutan",
      "value": 5
     }
+   ],
+   "sources": [
+    "Achievement: Abyssal Forge: Ludra Clear III"
+   ],
+   "origins": [
+    "Achievement"
    ]
   },
   {
@@ -44,6 +50,14 @@
      "deity": "Marchutan",
      "value": 3
     }
+   ],
+   "sources": [
+    "Addicted Hardirun (Heroic)",
+    "Substance Morph: Addicted Hardirun (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -61,6 +75,14 @@
      "deity": "Yustiel",
      "value": 3
     }
+   ],
+   "sources": [
+    "Advisor Resana (Heroic)",
+    "Substance Morph: Advisor Resana (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -78,6 +100,12 @@
      "deity": "Marchutan",
      "value": 3
     }
+   ],
+   "sources": [
+    "Trade Shop: Shugo Festival (Artwork)"
+   ],
+   "origins": [
+    "Trade Shop"
    ]
   },
   {
@@ -100,6 +128,12 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "Substance Morph: Ardus Shrine (Artwork)"
+   ],
+   "origins": [
+    "Substance Morph"
    ]
   },
   {
@@ -122,6 +156,13 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "Argo, the Spirit King (Heroic)",
+    "Executor Argo (Heroic)"
+   ],
+   "origins": [
+    "Monster Loot"
    ]
   },
   {
@@ -139,6 +180,12 @@
      "deity": "Lumiel",
      "value": 2
     }
+   ],
+   "sources": [
+    "Quest: Alchemy Specialty Skill"
+   ],
+   "origins": [
+    "Quest"
    ]
   },
   {
@@ -156,6 +203,12 @@
      "deity": "Marchutan",
      "value": 2
     }
+   ],
+   "sources": [
+    "Quest: Armorsmithing Specialty Skill"
+   ],
+   "origins": [
+    "Quest"
    ]
   },
   {
@@ -173,6 +226,12 @@
      "deity": "Marchutan",
      "value": 2
     }
+   ],
+   "sources": [
+    "Quest: Blacksmithing Specialty Skill"
+   ],
+   "origins": [
+    "Quest"
    ]
   },
   {
@@ -190,6 +249,12 @@
      "deity": "Yustiel",
      "value": 2
     }
+   ],
+   "sources": [
+    "Quest: Cooking Specialty Skill"
+   ],
+   "origins": [
+    "Quest"
    ]
   },
   {
@@ -207,6 +272,12 @@
      "deity": "Marchutan",
      "value": 2
     }
+   ],
+   "sources": [
+    "Quest: Essence Extraction Specialty Skill"
+   ],
+   "origins": [
+    "Quest"
    ]
   },
   {
@@ -224,6 +295,12 @@
      "deity": "Marchutan",
      "value": 2
     }
+   ],
+   "sources": [
+    "Quest: Handicrafting Specialty Skill"
+   ],
+   "origins": [
+    "Quest"
    ]
   },
   {
@@ -241,6 +318,14 @@
      "deity": "Lumiel",
      "value": 2
     }
+   ],
+   "sources": [
+    "Berserker Vargor (Heroic)",
+    "Substance Morph: Berserker Vargor (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -263,6 +348,12 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
    ]
   },
   {
@@ -280,6 +371,14 @@
      "deity": "Lumiel",
      "value": 2
     }
+   ],
+   "sources": [
+    "Black Warrior Aed (Heroic)",
+    "Substance Morph: Black Warrior Aed (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -297,6 +396,14 @@
      "deity": "Yustiel",
      "value": 2
     }
+   ],
+   "sources": [
+    "Blood Warrior Lannar (Heroic)",
+    "Substance Morph: Blood Warrior Lannar (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -314,6 +421,12 @@
      "deity": "Marchutan",
      "value": 3
     }
+   ],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
    ]
   },
   {
@@ -331,6 +444,12 @@
      "deity": "Lumiel",
      "value": 2
     }
+   ],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
    ]
   },
   {
@@ -348,6 +467,14 @@
      "deity": "Marchutan",
      "value": 3
     }
+   ],
+   "sources": [
+    "Blue Wave Kelpina (Heroic)",
+    "Substance Morph: Blue Wave Kelpina (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -365,6 +492,12 @@
      "deity": "Lumiel",
      "value": 2
     }
+   ],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
    ]
   },
   {
@@ -382,6 +515,12 @@
      "deity": "Marchutan",
      "value": 3
     }
+   ],
+   "sources": [
+    "Trade Shop: Shugo Festival (Artwork)"
+   ],
+   "origins": [
+    "Trade Shop"
    ]
   },
   {
@@ -399,6 +538,12 @@
      "deity": "Lumiel",
      "value": 3
     }
+   ],
+   "sources": [
+    "Substance Morph: Cantas Valley (Artwork)"
+   ],
+   "origins": [
+    "Substance Morph"
    ]
   },
   {
@@ -421,6 +566,12 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
    ]
   },
   {
@@ -438,6 +589,12 @@
      "deity": "Lumiel",
      "value": 3
     }
+   ],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
    ]
   },
   {
@@ -460,6 +617,14 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "Dark Shadow Vishwada (Heroic)",
+    "Substance Morph: Dark Shadow Vishwada (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -477,6 +642,12 @@
      "deity": "Yustiel",
      "value": 3
     }
+   ],
+   "sources": [
+    "Substance Morph: Dawn Legion Base (Artwork)"
+   ],
+   "origins": [
+    "Substance Morph"
    ]
   },
   {
@@ -494,6 +665,14 @@
      "deity": "Marchutan",
      "value": 3
     }
+   ],
+   "sources": [
+    "Deceiver Trid (Heroic)",
+    "Substance Morph: Deceiver Trid (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -516,6 +695,14 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "Desecrator Newbold (Heroic)",
+    "Substance Morph: Desecrator Newbold (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -533,6 +720,12 @@
      "deity": "Marchutan",
      "value": 3
     }
+   ],
+   "sources": [
+    "Quest: Lest We Forget (Regional)"
+   ],
+   "origins": [
+    "Quest"
    ]
   },
   {
@@ -555,6 +748,12 @@
      "deity": "Lumiel",
      "value": 4
     }
+   ],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
    ]
   },
   {
@@ -577,6 +776,14 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "Drakan Battalion Weapon Guruta (Heroic)",
+    "Substance Morph: Drakan Battalion Weapon Guruta (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -599,6 +806,12 @@
      "deity": "Lumiel",
      "value": 4
     }
+   ],
+   "sources": [
+    "Expedition: Draupnir (Conquest)"
+   ],
+   "origins": [
+    "Expedition"
    ]
   },
   {
@@ -616,6 +829,12 @@
      "deity": "Lumiel",
      "value": 3
     }
+   ],
+   "sources": [
+    "Trade Shop: Shugo Festival (Artwork)"
+   ],
+   "origins": [
+    "Trade Shop"
    ]
   },
   {
@@ -633,6 +852,12 @@
      "deity": "Yustiel",
      "value": 3
     }
+   ],
+   "sources": [
+    "Substance Morph: Ellun River Marsh (Artwork)"
+   ],
+   "origins": [
+    "Substance Morph"
    ]
   },
   {
@@ -650,6 +875,12 @@
      "deity": "Lumiel",
      "value": 3
     }
+   ],
+   "sources": [
+    "Substance Morph: Ellun River Midstream (Artwork)"
+   ],
+   "origins": [
+    "Substance Morph"
    ]
   },
   {
@@ -677,6 +908,12 @@
      "deity": "Marchutan",
      "value": 5
     }
+   ],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
    ]
   },
   {
@@ -699,6 +936,14 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "Executioner Barthien (Heroic)",
+    "Substance Morph: Executioner Barthien (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -738,6 +983,14 @@
      "deity": "Marchutan",
      "value": 2
     }
+   ],
+   "sources": [
+    "Faithful Rajit (Heroic)",
+    "Substance Morph: Faithful Rajit (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -760,6 +1013,12 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "Expedition: Ferocious Horn Den (Conquest)"
+   ],
+   "origins": [
+    "Expedition"
    ]
   },
   {
@@ -782,6 +1041,12 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "Expedition: Fire Temple (Conquest)"
+   ],
+   "origins": [
+    "Expedition"
    ]
   },
   {
@@ -804,13 +1069,25 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
    ]
   },
   {
    "type": "artwork",
    "name": "Fortress Guardian Notun",
    "rarity": "Heroic",
-   "effects": []
+   "effects": [],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
+   ]
   },
   {
    "type": "artwork",
@@ -827,6 +1104,12 @@
      "deity": "Marchutan",
      "value": 3
     }
+   ],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
    ]
   },
   {
@@ -849,6 +1132,12 @@
      "deity": "Marchutan",
      "value": 5
     }
+   ],
+   "sources": [
+    "Guardian Lord Nahma (Heroic)"
+   ],
+   "origins": [
+    "Monster Loot"
    ]
   },
   {
@@ -866,6 +1155,12 @@
      "deity": "Lumiel",
      "value": 3
     }
+   ],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
    ]
   },
   {
@@ -883,6 +1178,12 @@
      "deity": "Marchutan",
      "value": 3
     }
+   ],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
    ]
   },
   {
@@ -905,6 +1206,14 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "High Commander Lagta (Heroic)",
+    "Substance Morph: High Commander Lagta (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -922,6 +1231,14 @@
      "deity": "Lumiel",
      "value": 3
     }
+   ],
+   "sources": [
+    "High Overseer Nutah (Heroic)",
+    "Substance Morph: High Overseer Nutah (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -949,6 +1266,14 @@
      "deity": "Marchutan",
      "value": 5
     }
+   ],
+   "sources": [
+    "Immortal Isle",
+    "Substance Morph: Immortal Gartua (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -971,6 +1296,12 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "Trade Shop: Shugo Festival (Artwork)"
+   ],
+   "origins": [
+    "Trade Shop"
    ]
   },
   {
@@ -988,6 +1319,12 @@
      "deity": "Marchutan",
      "value": 2
     }
+   ],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
    ]
   },
   {
@@ -1010,6 +1347,12 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "Expedition: Krao Cave (Conquest)"
+   ],
+   "origins": [
+    "Expedition"
    ]
   },
   {
@@ -1027,6 +1370,12 @@
      "deity": "Marchutan",
      "value": 3
     }
+   ],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
    ]
   },
   {
@@ -1044,6 +1393,14 @@
      "deity": "Marchutan",
      "value": 2
     }
+   ],
+   "sources": [
+    "Melted Danar (Heroic)",
+    "Substance Morph: Melted Danar (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -1061,6 +1418,12 @@
      "deity": "Marchutan",
      "value": 3
     }
+   ],
+   "sources": [
+    "Trade Shop: Shugo Festival (Artwork)"
+   ],
+   "origins": [
+    "Trade Shop"
    ]
   },
   {
@@ -1078,6 +1441,12 @@
      "deity": "Yustiel",
      "value": 3
     }
+   ],
+   "sources": [
+    "Trade Shop: Shugo Festival (Artwork)"
+   ],
+   "origins": [
+    "Trade Shop"
    ]
   },
   {
@@ -1095,6 +1464,12 @@
      "deity": "Marchutan",
      "value": 2
     }
+   ],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
    ]
   },
   {
@@ -1117,6 +1492,12 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
    ]
   },
   {
@@ -1134,6 +1515,12 @@
      "deity": "Marchutan",
      "value": 3
     }
+   ],
+   "sources": [
+    "Substance Morph: Pilgrim's Ridge (Artwork)"
+   ],
+   "origins": [
+    "Substance Morph"
    ]
   },
   {
@@ -1151,6 +1538,14 @@
      "deity": "Yustiel",
      "value": 3
     }
+   ],
+   "sources": [
+    "Predator Garsan (Heroic)",
+    "Substance Morph: Predator Garsan (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -1168,6 +1563,12 @@
      "deity": "Lumiel",
      "value": 3
     }
+   ],
+   "sources": [
+    "Trade Shop: Shugo Festival (Artwork)"
+   ],
+   "origins": [
+    "Trade Shop"
    ]
   },
   {
@@ -1185,6 +1586,12 @@
      "deity": "Yustiel",
      "value": 2
     }
+   ],
+   "sources": [
+    "Quest: Farewell, My Instructor (Regional)"
+   ],
+   "origins": [
+    "Quest"
    ]
   },
   {
@@ -1207,6 +1614,12 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
    ]
   },
   {
@@ -1224,6 +1637,12 @@
      "deity": "Marchutan",
      "value": 3
     }
+   ],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
    ]
   },
   {
@@ -1241,6 +1660,12 @@
      "deity": "Marchutan",
      "value": 2
     }
+   ],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
    ]
   },
   {
@@ -1258,6 +1683,12 @@
      "deity": "Yustiel",
      "value": 3
     }
+   ],
+   "sources": [
+    "Trade Shop: Shugo Festival (Artwork)"
+   ],
+   "origins": [
+    "Trade Shop"
    ]
   },
   {
@@ -1275,6 +1706,12 @@
      "deity": "Marchutan",
      "value": 3
     }
+   ],
+   "sources": [
+    "Trade Shop: Shugo Festival (Artwork)"
+   ],
+   "origins": [
+    "Trade Shop"
    ]
   },
   {
@@ -1292,6 +1729,12 @@
      "deity": "Lumiel",
      "value": 3
     }
+   ],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
    ]
   },
   {
@@ -1314,6 +1757,12 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
    ]
   },
   {
@@ -1336,6 +1785,14 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "Sharp Shylak (Heroic)",
+    "Substance Morph: Sharp Shylak (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -1353,6 +1810,12 @@
      "deity": "Marchutan",
      "value": 3
     }
+   ],
+   "sources": [
+    "Trade Shop: Shugo Festival (Artwork)"
+   ],
+   "origins": [
+    "Trade Shop"
    ]
   },
   {
@@ -1370,6 +1833,12 @@
      "deity": "Marchutan",
      "value": 3
     }
+   ],
+   "sources": [
+    "TBD"
+   ],
+   "origins": [
+    "Unknown"
    ]
   },
   {
@@ -1392,6 +1861,14 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "Silent Dartan (Heroic)",
+    "Substance Morph: Silent Dartan (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -1414,6 +1891,14 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "Soul Ruler Kashapa (Heroic)",
+    "Substance Morph: Soul Ruler Kashapa (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -1431,6 +1916,14 @@
      "deity": "Lumiel",
      "value": 3
     }
+   ],
+   "sources": [
+    "Special Operations Leader Linx (Heroic)",
+    "Substance Morph: Special Operations Leader Linx (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -1453,6 +1946,14 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "Specter Archon Axios (Heroic)",
+    "Substance Morph: Specter Archon Axios (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -1470,6 +1971,12 @@
      "deity": "Marchutan",
      "value": 3
     }
+   ],
+   "sources": [
+    "Quest: Until I Hold You Again"
+   ],
+   "origins": [
+    "Quest"
    ]
   },
   {
@@ -1487,6 +1994,12 @@
      "deity": "Marchutan",
      "value": 3
     }
+   ],
+   "sources": [
+    "Substance Morph: Tolbas Forest (Artwork)"
+   ],
+   "origins": [
+    "Substance Morph"
    ]
   },
   {
@@ -1509,6 +2022,12 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "Expedition: Urugugu Canyon (Conquest)"
+   ],
+   "origins": [
+    "Expedition"
    ]
   },
   {
@@ -1531,6 +2050,12 @@
      "deity": "Lumiel",
      "value": 4
     }
+   ],
+   "sources": [
+    "Expedition: Vakron Sky Island (Conquest)"
+   ],
+   "origins": [
+    "Expedition"
    ]
   },
   {
@@ -1548,6 +2073,12 @@
      "deity": "Marchutan",
      "value": 3
     }
+   ],
+   "sources": [
+    "Substance Morph: Verteron Fortress Ruins (Artwork)"
+   ],
+   "origins": [
+    "Substance Morph"
    ]
   },
   {
@@ -1565,6 +2096,12 @@
      "deity": "Lumiel",
      "value": 3
     }
+   ],
+   "sources": [
+    "Substance Morph: Veteran Shujakan (Artwork)"
+   ],
+   "origins": [
+    "Substance Morph"
    ]
   },
   {
@@ -1587,6 +2124,14 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "Visionary Karuka (Heroic)",
+    "Substance Morph: Visionary Karuka (Artwork)"
+   ],
+   "origins": [
+    "Monster Loot",
+    "Substance Morph"
    ]
   },
   {
@@ -1609,6 +2154,13 @@
      "deity": "Marchutan",
      "value": 4
     }
+   ],
+   "sources": [
+    "Watcher Kaira (Heroic)",
+    "Executor Kaira (Heroic)"
+   ],
+   "origins": [
+    "Monster Loot"
    ]
   },
   {
@@ -1626,6 +2178,12 @@
      "deity": "Yustiel",
      "value": 2
     }
+   ],
+   "sources": [
+    "Quest: Names Lost in the Wind"
+   ],
+   "origins": [
+    "Quest"
    ]
   },
   {
@@ -1643,6 +2201,12 @@
      "deity": "Marchutan",
      "value": 3
     }
+   ],
+   "sources": [
+    "Substance Morph: Zumion Stone Gate (Artwork)"
+   ],
+   "origins": [
+    "Substance Morph"
    ]
   },
   {
@@ -1660,6 +2224,12 @@
      "deity": "Triniel",
      "value": 10
     }
+   ],
+   "sources": [
+    "Ascension: The One Who Dreams"
+   ],
+   "origins": [
+    "Quest"
    ]
   },
   {
@@ -1677,6 +2247,12 @@
      "deity": "Israphel",
      "value": 10
     }
+   ],
+   "sources": [
+    "Ascension: The One Who Witnesses the Nightmare"
+   ],
+   "origins": [
+    "Quest"
    ]
   },
   {
@@ -1694,6 +2270,12 @@
      "deity": "Triniel",
      "value": 8
     }
+   ],
+   "sources": [
+    "Ascension: The One Who Hears the Voice"
+   ],
+   "origins": [
+    "Quest"
    ]
   },
   {
@@ -1711,6 +2293,12 @@
      "deity": "Triniel",
      "value": 8
     }
+   ],
+   "sources": [
+    "Trade Shop: Nightmare (Statue)"
+   ],
+   "origins": [
+    "Trade Shop"
    ]
   },
   {
@@ -1728,6 +2316,12 @@
      "deity": "Israphel",
      "value": 10
     }
+   ],
+   "sources": [
+    "Trade Shop: Nightmare (Statue)"
+   ],
+   "origins": [
+    "Trade Shop"
    ]
   },
   {
@@ -1745,6 +2339,12 @@
      "deity": "Israphel",
      "value": 8
     }
+   ],
+   "sources": [
+    "Trade Shop: Nightmare (Statue)"
+   ],
+   "origins": [
+    "Trade Shop"
    ]
   },
   {
@@ -1762,6 +2362,12 @@
      "deity": "Israphel",
      "value": 8
     }
+   ],
+   "sources": [
+    "Trade Shop: Nightmare (Statue)"
+   ],
+   "origins": [
+    "Trade Shop"
    ]
   },
   {
@@ -1779,6 +2385,12 @@
      "deity": "Israphel",
      "value": 10
     }
+   ],
+   "sources": [
+    "Trade Shop: Nightmare (Statue)"
+   ],
+   "origins": [
+    "Trade Shop"
    ]
   },
   {
@@ -1796,6 +2408,12 @@
      "deity": "Israphel",
      "value": 8
     }
+   ],
+   "sources": [
+    "Substance Morph: Glorious Wings (Statue)"
+   ],
+   "origins": [
+    "Substance Morph"
    ]
   },
   {
@@ -1813,6 +2431,12 @@
      "deity": "Israphel",
      "value": 8
     }
+   ],
+   "sources": [
+    "Quest: Contaminated Sacred Tree (Episode)"
+   ],
+   "origins": [
+    "Quest"
    ]
   },
   {
@@ -1830,6 +2454,12 @@
      "deity": "Israphel",
      "value": 10
     }
+   ],
+   "sources": [
+    "Achievement: Altgard Binding Veteran"
+   ],
+   "origins": [
+    "Achievement"
    ]
   },
   {
@@ -1847,6 +2477,12 @@
      "deity": "Israphel",
      "value": 8
     }
+   ],
+   "sources": [
+    "Achievement: Fire Temple Conquest Clear IV"
+   ],
+   "origins": [
+    "Achievement"
    ]
   },
   {
@@ -1864,6 +2500,12 @@
      "deity": "Israphel",
      "value": 8
     }
+   ],
+   "sources": [
+    "Substance Morph: Statue: Sealing Wings (Bound)"
+   ],
+   "origins": [
+    "Substance Morph"
    ]
   },
   {
@@ -1876,6 +2518,12 @@
      "deity": "Vaizel",
      "value": 6
     }
+   ],
+   "sources": [
+    "Quest: In the Fang Legion's Name"
+   ],
+   "origins": [
+    "Quest"
    ]
   },
   {
@@ -1893,6 +2541,12 @@
      "deity": "Israphel",
      "value": 8
     }
+   ],
+   "sources": [
+    "Quest: Time Takes Its Toll"
+   ],
+   "origins": [
+    "Quest"
    ]
   },
   {
@@ -1905,6 +2559,12 @@
      "deity": "Triniel",
      "value": 6
     }
+   ],
+   "sources": [
+    "Quest: Questionable Methods (Regional)"
+   ],
+   "origins": [
+    "Quest"
    ]
   },
   {
@@ -1927,6 +2587,12 @@
      "deity": "Israphel",
      "value": 12
     }
+   ],
+   "sources": [
+    "Achievement: Drapnir Conquest Clear IV"
+   ],
+   "origins": [
+    "Achievement"
    ]
   },
   {
@@ -1939,6 +2605,12 @@
      "deity": "Triniel",
      "value": 6
     }
+   ],
+   "sources": [
+    "Quest: An Invitation to the Past: Part 2"
+   ],
+   "origins": [
+    "Quest"
    ]
   },
   {
@@ -1956,6 +2628,12 @@
      "deity": "Israphel",
      "value": 8
     }
+   ],
+   "sources": [
+    "Trade Shop: Nightmare (Statue)"
+   ],
+   "origins": [
+    "Trade Shop"
    ]
   },
   {
@@ -1978,6 +2656,12 @@
      "deity": "Zikel",
      "value": 55
     }
+   ],
+   "sources": [
+    "Guardian Lord Nahma"
+   ],
+   "origins": [
+    "Monster Loot"
    ]
   },
   {
@@ -1995,6 +2679,12 @@
      "deity": "Siel",
      "value": 35
     }
+   ],
+   "sources": [
+    "Quest: Zumion's Ward"
+   ],
+   "origins": [
+    "Quest"
    ]
   },
   {
@@ -2012,6 +2702,12 @@
      "deity": "Siel",
      "value": 35
     }
+   ],
+   "sources": [
+    "Quest: Last of the Destruction Archons"
+   ],
+   "origins": [
+    "Quest"
    ]
   },
   {
@@ -2034,6 +2730,12 @@
      "deity": "Zikel",
      "value": 45
     }
+   ],
+   "sources": [
+    "Trade Shop: Nightmare (Statue)"
+   ],
+   "origins": [
+    "Trade Shop"
    ]
   }
  ]

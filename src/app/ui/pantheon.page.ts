@@ -2,7 +2,7 @@ import { DecimalPipe } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppStore } from '../core/app-store';
-import { artworkAttributes, filterArtwork, linkArtwork, PantheonType } from '../core/pantheon';
+import { artworkAttributes, artworkOrigins, filterArtwork, linkArtwork, PantheonType } from '../core/pantheon';
 import { ItemIcon } from '../core/item-icon';
 import { TrPipe } from '../core/tr.pipe';
 
@@ -26,6 +26,10 @@ import { TrPipe } from '../core/tr.pipe';
         <option value="and">{{ 'All selected (AND)' | tr }}</option>
         <option value="or">{{ 'Any selected (OR)' | tr }}</option>
       </select>
+      <select name="origin" [ngModel]="origin()" (ngModelChange)="origin.set($event)" [attr.aria-label]="'Source' | tr">
+        <option value="">{{ 'All sources' | tr }}</option>
+        @for (o of origins(); track o) { <option [value]="o">{{ o | tr }}</option> }
+      </select>
       <select name="rarity" [ngModel]="rarity()" (ngModelChange)="rarity.set($event)" [attr.aria-label]="'Rarity' | tr">
         <option value="">{{ 'All rarities' | tr }}</option>
         @for (r of rarities; track r) { <option [value]="r">{{ r }}</option> }
@@ -36,13 +40,14 @@ import { TrPipe } from '../core/tr.pipe';
     <h3>{{ 'Decor' | tr }} <small class="muted">({{ rows().length }})</small></h3>
     @if (rows().length) {
       <table>
-        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Rarity' | tr }}</th><th>{{ 'Effects' | tr }}</th><th>{{ 'Current price' | tr }}</th></tr></thead>
+        <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Rarity' | tr }}</th><th>{{ 'Effects' | tr }}</th><th>{{ 'Source' | tr }}</th><th>{{ 'Current price' | tr }}</th></tr></thead>
         <tbody>
           @for (r of rows(); track r.name) {
             <tr>
               <td>@if (r.itemId) { <app-ico [id]="r.itemId" /> }{{ r.name }}</td>
               <td>{{ r.rarity }}</td>
               <td>@for (e of r.effects; track e.attribute) { <span class="chip">{{ e.attribute }} +{{ e.value }}</span> }</td>
+              <td class="muted"><small>{{ (r.sources ?? []).join(' · ') || '–' }}</small></td>
               <td>
                 @if (price(r.itemId); as p) { <strong>{{ p | number: '1.0-0' }}</strong> }
                 @else if (r.itemId) { <small class="muted">{{ 'Not listed' | tr }}</small> }
@@ -59,6 +64,7 @@ export class PantheonPage {
   protected readonly store = inject(AppStore);
   readonly selected = signal<string[]>([]);
   readonly rarity = signal('');
+  readonly origin = signal('');
   readonly mode = signal<'and' | 'or'>('and');
   readonly type = signal<PantheonType | ''>('');
   readonly types: { id: PantheonType | ''; label: string }[] = [
@@ -71,10 +77,11 @@ export class PantheonPage {
   readonly rarities = ['Heroic', 'Unique', 'Epic', 'Rare', 'Common'];
 
   private readonly linked = computed(() => linkArtwork(this.store.artwork(), this.store.items()));
+  readonly origins = computed(() => artworkOrigins(this.linked()));
   readonly attributes = computed(() => artworkAttributes(this.linked()));
   readonly rows = computed(() => {
     const price = (id?: string) => (id ? (this.store.serverPrices()[id]?.sellListingPrice ?? Infinity) : Infinity);
-    return filterArtwork(this.linked(), this.selected(), this.rarity(), this.query(), this.type(), this.mode()).sort(
+    return filterArtwork(this.linked(), this.selected(), this.rarity(), this.query(), this.type(), this.mode(), this.origin()).sort(
       (a, b) => price(a.itemId) - price(b.itemId) || a.name.localeCompare(b.name),
     );
   });
