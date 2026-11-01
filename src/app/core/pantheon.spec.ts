@@ -22,6 +22,11 @@ describe('artwork', () => {
     expect(filterArtwork(rows, [], '', 'chef').length).toBe(1);
   });
 
+  it('supports OR matching', () => {
+    expect(filterArtwork(rows, ['Illusion', 'Life'], '', '', '', 'or').length).toBe(2);
+    expect(filterArtwork(rows, ['Illusion', 'Life'], '', '', '', 'and').length).toBe(1);
+  });
+
   it('filters by type', () => {
     expect(filterArtwork(rows, [], '', '', 'statue').length).toBe(0);
     expect(filterArtwork(rows, [], '', '', 'artwork').length).toBe(2);

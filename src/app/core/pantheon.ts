@@ -36,12 +36,12 @@ export function artworkAttributes(rows: readonly ArtworkEntry[]): string[] {
   return [...new Set(rows.flatMap((r) => r.effects.map((e) => e.attribute)))].sort();
 }
 
-/** Keeps artwork granting every selected attribute (empty selection keeps all), optionally by rarity and name. */
-export function filterArtwork(rows: readonly ArtworkRow[], attributes: readonly string[], rarity = '', query = '', type: PantheonType | '' = ''): ArtworkRow[] {
+/** Keeps artwork granting every ('and') or any ('or') selected attribute (empty selection keeps all), optionally by rarity and name. */
+export function filterArtwork(rows: readonly ArtworkRow[], attributes: readonly string[], rarity = '', query = '', type: PantheonType | '' = '', mode: 'and' | 'or' = 'and'): ArtworkRow[] {
   const q = query.trim().toLowerCase();
   return rows.filter(
     (r) =>
-      attributes.every((a) => r.effects.some((e) => e.attribute === a)) &&
+      (mode === 'or' ? !attributes.length || attributes.some((a) => r.effects.some((e) => e.attribute === a)) : attributes.every((a) => r.effects.some((e) => e.attribute === a))) &&
       (!type || r.type === type) &&
       (!rarity || r.rarity === rarity) &&
       (!q || r.name.toLowerCase().includes(q)),

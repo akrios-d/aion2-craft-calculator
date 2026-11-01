@@ -22,6 +22,10 @@ import { TrPipe } from '../core/tr.pipe';
       @for (a of attributes(); track a) {
         <button type="button" class="chip" [class.primary]="selected().includes(a)" (click)="toggle(a)">{{ a }}</button>
       }
+      <select name="mode" [ngModel]="mode()" (ngModelChange)="mode.set($event)" [attr.aria-label]="'Match attributes' | tr">
+        <option value="and">{{ 'All selected (AND)' | tr }}</option>
+        <option value="or">{{ 'Any selected (OR)' | tr }}</option>
+      </select>
       <select name="rarity" [ngModel]="rarity()" (ngModelChange)="rarity.set($event)" [attr.aria-label]="'Rarity' | tr">
         <option value="">{{ 'All rarities' | tr }}</option>
         @for (r of rarities; track r) { <option [value]="r">{{ r }}</option> }
@@ -55,6 +59,7 @@ export class PantheonPage {
   protected readonly store = inject(AppStore);
   readonly selected = signal<string[]>([]);
   readonly rarity = signal('');
+  readonly mode = signal<'and' | 'or'>('and');
   readonly type = signal<PantheonType | ''>('');
   readonly types: { id: PantheonType | ''; label: string }[] = [
     { id: '', label: 'All' },
@@ -69,7 +74,7 @@ export class PantheonPage {
   readonly attributes = computed(() => artworkAttributes(this.linked()));
   readonly rows = computed(() => {
     const price = (id?: string) => (id ? (this.store.serverPrices()[id]?.sellListingPrice ?? Infinity) : Infinity);
-    return filterArtwork(this.linked(), this.selected(), this.rarity(), this.query(), this.type()).sort(
+    return filterArtwork(this.linked(), this.selected(), this.rarity(), this.query(), this.type(), this.mode()).sort(
       (a, b) => price(a.itemId) - price(b.itemId) || a.name.localeCompare(b.name),
     );
   });
