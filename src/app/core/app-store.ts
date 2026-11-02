@@ -21,6 +21,7 @@ import { findAlerts, newAlerts, PriceAlert } from './engine/alerts';
 import { ArtworkEntry } from './pantheon';
 import { ArmorySnapshot, upsertSnapshot } from './armory';
 import { BisList, applyBisImport } from './bis';
+import { KiskSnapshot } from './kisk';
 import { BaselineLoad, ShareTable, applyShareImport, loadShareBaseline } from './share-score';
 import { MarketServer, parseMarketItems, parseServers } from './io/market';
 import { listingsOf, withListings } from './listings';
@@ -64,6 +65,16 @@ function loadCachedMarketItems(): Item[] {
   }
 }
 
+const KISK_KEY = 'aion2-craft-lab.kisk-cache.v1';
+function readKiskCache(): KiskSnapshot[] {
+  try {
+    const v = JSON.parse(localStorage.getItem(KISK_KEY) ?? '[]');
+    return Array.isArray(v) ? v.filter((s) => s && typeof s.url === 'string' && s.report && Array.isArray(s.report.gear)) : [];
+  } catch {
+    return [];
+  }
+}
+
 @Injectable({ providedIn: 'root' })
 export class AppStore {
   private readonly storage = new UserDataStorage(getBrowserStorage());
@@ -85,6 +96,18 @@ export class AppStore {
   readonly artwork = signal<ArtworkEntry[]>([]);
   private readonly marketIcons = signal<Record<string, string>>({});
   readonly shareBaseline = signal<BaselineLoad | null>(null);
+  /** Cache of kisk.app character lookups (LocalStorage only, not part of the backup). */
+  readonly kiskCache = signal<KiskSnapshot[]>(readKiskCache());
+  saveKisk(snap: KiskSnapshot): void {
+    const next = [snap, ...this.kiskCache().filter((s) => s.url !== snap.url)].slice(0, 8);
+    this.kiskCache.set(next);
+    try { localStorage.setItem(KISK_KEY, JSON.stringify(next)); } catch { /* cache only */ }
+  }
+  removeKisk(url: string): void {
+    const next = this.kiskCache().filter((s) => s.url !== url);
+    this.kiskCache.set(next);
+    try { localStorage.setItem(KISK_KEY, JSON.stringify(next)); } catch { /* cache only */ }
+  }
 
   /** Every known item, including both faction variants; used to name items already stored in user data. */
   private readonly allItems = computed<Item[]>(() => {

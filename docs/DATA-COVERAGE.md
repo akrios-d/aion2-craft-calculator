@@ -33,3 +33,7 @@ Verification status: **0 of 722 recipes verified**
 - Gear share tables (`public/data/gear-shares.json`): **9 classes x 13 slots = 948 parsed lines, all counted by the importer, no warnings**; source kisk.app/scoring (which cites cielui.com), kisk snapshot 2026-10-19, fetched 2026-11-02; sample sizes: gladiator n=838, templar n=727, assassin n=792, ranger n=1158, sorcerer n=774, spiritmaster n=528, cleric n=856, chanter n=656, fighter n=578 (Korean top PvE players). Not provided by the page and therefore NOT included: Arcana tables, largest roll per slot (scores are approximate, shown with a tilde-equals mark). Data may be outdated or differ from Global. User-imported tables override it per class/slot. Armory rows sampled carry no per-line stats, so scores need stats the armory may not provide.
 - The armory exposes no materials/inventory; only equipped gear can be added to the Inventory, matched by exact name to the catalogue (unmatched pieces are reported).
 
+
+## kisk.app character pages
+
+On demand only (user click, via api/kisk.mjs). Verified live for Akrios / Zikel / LA: header (faction, level, class, server, legion, CP, overall grade), 16 gear slots with name, level/grade/exceed, enchant, lines (value, max, share %), score, letter and Ideal card (lines, shares, check marks), 4 Unscored items and 5 Arcana cards. Third-party data (kisk.app / cielui.com), may be inaccurate; cached in LocalStorage only, not bundled.

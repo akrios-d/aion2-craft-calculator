@@ -10,6 +10,8 @@ import { pickCandidate, planEquipmentInventory } from './armory';
 import { parseCsv } from './io/csv';
 import { applyInventoryImport } from './io/imports';
 import { CLASSES, DEFAULT_BANDS, effectiveShareTable, loadShareBaseline, EMPTY_TEMPLATE, EXAMPLE_JSON, ShareTable, applyShareImport, letterFor, observedMaxRolls, overallScore, parseShareCsv, parseShareJson, scorePiece, shareSlotOf } from './share-score';
+import { KiskParseError, kiskToShareTable, parseKiskGear } from './kisk';
+import { slimHtml, validateKisk } from '../../../api/kisk-lib.mjs';
 import { starterBisList, parseStatCell, applyBisImport, compareBis, parseBisCsv, parseBisJson, BisList } from './bis';
 import { MIGRATIONS, emptyUserData, migrateUserData } from './storage/schema';
 
@@ -365,5 +367,51 @@ describe('baseline loading and merging', () => {
     expect(e.table.slots.weapon).toEqual([{ stat: 'Mine', share: 50 }]);
     expect(e.table.slots.torso?.length).toBe(10);
     expect(effectiveShareTable('cleric', [user], [])?.origin).toBe('user');
+  });
+});
+
+describe('kisk.app character page (saved fixture)', () => {
+  const html = readFileSync('scripts/fixtures/kisk-akrios-gear.html', 'utf8');
+  const r = parseKiskGear(html);
+  it('parses the header', () => {
+    expect(r).toMatchObject({ name: 'Akrios', faction: 'Asmodians', level: '45', className: 'Cleric', server: 'Zikel', legion: 'Lotus', cp: '189,572', overallLetter: 'A' });
+  });
+  it('parses equipped cards with lines, shares, score and letter', () => {
+    expect(r.gear.map((c) => c.slot)).toEqual(['MainHand', 'SubHand', 'Torso', 'Pants', 'Helmet', 'Shoulder', 'Gloves', 'Boots', 'Cape', 'Necklace', 'Earring2', 'Earring1', 'Ring2', 'Ring1', 'Bracelet1', 'Bracelet2']);
+    const w = r.gear[0];
+    expect(w).toMatchObject({ name: 'Splendent Dark Dragon Lord Mace', subtitle: 'Lv 86 Unique, exceed 3', enchant: '+15', score: 62, letter: 'S+' });
+    expect(w.lines[0]).toEqual({ stat: 'Combat Speed', value: '11.9%', max: '11.9%', share: 100 });
+    expect(r.gear[1].lines[2]).toEqual({ stat: 'Might', value: '17', max: '25', share: 100 });
+  });
+  it('parses the ideal card and check marks', () => {
+    const i = r.gear[0].ideal!;
+    expect(i).toMatchObject({ title: 'Ideal Cleric Weapon', subtitle: 'Best in slot', score: 100, letter: 'BiS' });
+    expect(i.lines.length).toBe(6);
+    expect(i.lines.filter((l) => l.have).length).toBe(4);
+    expect(i.lines[3]).toMatchObject({ stat: 'Damage Boost', value: '7.3%', share: 100, have: false });
+  });
+  it('parses unscored items and arcana', () => {
+    expect(r.unscored.map((u) => u.name)).toEqual(['Noble Belt', 'Clash Rune', 'Clash Rune', 'Revelation Amulet']);
+    expect(r.arcana.length).toBe(5);
+    expect(r.arcana[0].lines[0]).toEqual({ stat: 'Prayer of Concentration', value: '+3', max: '+4', share: 3 });
+    expect(r.arcana[0].ideal!.lines[0]).toMatchObject({ stat: 'Empyrean Lord\'s Grace', value: '+4', have: false });
+  });
+  it('turns ideal cards into a BiS share table for the class', () => {
+    const t = kiskToShareTable(r, '2026-11-02T00:00:00.000Z')!;
+    expect(t.className).toBe('cleric');
+    expect(t.slots.weapon![0]).toEqual({ stat: 'Combat Speed', share: 100, maxRoll: 13 });
+    expect(t.slots.arcana?.length).toBe(4);
+    expect(t.slots.earrings).toBeDefined();
+  });
+  it('fails clearly on unexpected markup instead of inventing data', () => {
+    expect(() => parseKiskGear('<html>nope</html>')).toThrow(KiskParseError);
+    expect(() => parseKiskGear('<div id="report"><section class="hero"><h1>X</h1></section><h2>Gear</h2></div>')).toThrow(KiskParseError);
+  });
+  it('validates the proxy input and slims the html', () => {
+    expect(validateKisk(new URLSearchParams('region=la&server=Zikel&name=Akrios'))).toEqual({ ok: true, url: 'https://kisk.app/c/la/zikel/Akrios/gear' });
+    for (const q of ['region=xx&server=zikel&name=Akrios', 'region=la&server=zi/kel&name=Akrios', 'region=la&server=zikel&name=a%2Fb', 'region=la&server=zikel&name=A', 'region=la&server=zikel&name=']) {
+      expect(validateKisk(new URLSearchParams(q)).ok).toBe(false);
+    }
+    expect(slimHtml('a<script>x</script>b<style>y</style>c<svg><path/></svg>d')).toBe('abcd');
   });
 });

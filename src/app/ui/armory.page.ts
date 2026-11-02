@@ -6,6 +6,7 @@ import { applyInventoryImport } from '../core/io/imports';
 import { ArmorySnapshot, planEquipmentInventory, SearchCandidate, armoryLinks, buildSnapshot, parseArmoryJson, pickCandidate } from '../core/armory';
 import { BisEntry, BisList, BisImportResult, BIS_SLOTS, compareBis, starterBisList, parseBisCsv, parseBisJson } from '../core/bis';
 import { parseCsv } from '../core/io/csv';
+import { KISK_REGIONS, KiskCard, KiskLine, KiskSnapshot, kiskToShareTable, parseKiskGear } from '../core/kisk';
 import { CLASSES, DEFAULT_BANDS, effectiveShareTable, EMPTY_TEMPLATE, EXAMPLE_JSON, PieceScore, SHARE_SLOTS, ShareImportResult, ShareTable, observedMaxRolls, overallScore, parseShareCsv, parseShareJson, scorePiece, shareSlotOf } from '../core/share-score';
 import { TrPipe } from '../core/tr.pipe';
 
@@ -66,7 +67,115 @@ import { TrPipe } from '../core/tr.pipe';
   `,
   template: `
     <h2>{{ 'Armory and BiS' | tr }}</h2>
-    <p class="muted"><small>{{ 'UX inspired by kisk.app (no kisk data used).' | tr }} <a href="https://kisk.app" target="_blank" rel="noopener noreferrer">kisk.app</a></small></p>
+    <p class="muted"><small>{{ 'UX inspired by kisk.app.' | tr }} <a href="https://kisk.app" target="_blank" rel="noopener noreferrer">kisk.app</a></small></p>
+
+    <section class="panel">
+      <h3>{{ 'kisk.app lookup' | tr }}</h3>
+      <div class="row">
+        <select [ngModel]="kRegion()" (ngModelChange)="kRegion.set($event)" [attr.aria-label]="'Region' | tr">
+          @for (r of kiskRegions; track r) { <option [value]="r">{{ r.toUpperCase() }}</option> }
+        </select>
+        <input [ngModel]="kServer()" (ngModelChange)="kServer.set($event)" [placeholder]="'Server' | tr" size="12" />
+        <input [ngModel]="kName()" (ngModelChange)="kName.set($event)" (keydown.enter)="kiskLookup()" [placeholder]="'Character name' | tr" />
+        <button (click)="kiskLookup()" [disabled]="kBusy() || kName().trim().length < 2">{{ kBusy() ? ('Looking up…' | tr) : ('Look up on kisk.app' | tr) }}</button>
+      </div>
+      <p class="muted"><small>{{ 'One click fetches one kisk.app page through a small serverless function (no polling). kisk.app data is third-party and may be inaccurate; we are not affiliated with kisk.app or NCSOFT. Gear data originates from the official armory, shares from cielui.com via kisk.app.' | tr }}</small></p>
+      @if (kError()) { <p class="err">{{ kError() | tr }}</p> }
+    </section>
+
+    @if (store.kiskCache().length) {
+      <section class="row">
+        @for (s of store.kiskCache(); track s.url) {
+          <span class="row">
+            <button class="tog" [class.on]="s.url === kSnap()?.url" (click)="kSel.set(s.url)">{{ s.report.name }} ({{ s.report.server }})</button>
+            <button class="mini" (click)="store.removeKisk(s.url)" [attr.aria-label]="'Remove' | tr">✕</button>
+          </span>
+        }
+      </section>
+    }
+
+    @if (kSnap(); as k) {
+      <section class="panel">
+        <header class="gh">
+          <div class="gh-main">
+            <div class="chips">
+              @if (k.report.faction) { <span class="gchip">{{ k.report.faction }}</span> }
+              <span class="gchip">Lv {{ k.report.level }} {{ k.report.className }}</span>
+              <span class="gchip">{{ k.report.server }}</span>
+              @if (k.report.legion) { <span class="gchip">{{ k.report.legion }}</span> }
+            </div>
+            <h3 class="gname">{{ k.report.name }} @if (k.report.cp) { <span class="cp">{{ k.report.cp }} CP</span> }</h3>
+            <small class="muted">{{ 'Source: kisk.app' | tr }} · <a [href]="k.url" target="_blank" rel="noopener noreferrer">{{ 'Open on kisk.app' | tr }}</a> · {{ 'Fetched on' | tr }} {{ k.fetchedAt | date: 'short' }}</small>
+          </div>
+          @if (k.report.overallLetter) {
+            <div class="otile lc-{{ lc(k.report.overallLetter) }}" [attr.aria-label]="('Overall gear grade' | tr) + ': ' + k.report.overallLetter">
+              <b>{{ k.report.overallLetter }}</b><small>{{ 'Gear' | tr }}</small>
+            </div>
+          }
+        </header>
+        <p class="muted"><small>{{ 'Scores, grades, shares and Ideal cards below are kisk.app data (cielui.com, Korea PvE, may be outdated or inaccurate), not our own calculation. The Ideal lists also act as the BiS for this class unless you import your own table.' | tr }}</small></p>
+        @for (g of kGroups(); track g.title) {
+          @if (g.cards.length) {
+            <h4>{{ g.title | tr }}</h4>
+            <div class="cards">
+              @for (c of g.cards; track c.slot) {
+                @let flip = kFlipped(c);
+                <article class="card {{ kClass(c) }}">
+                  <div class="ch">
+                    <span class="cico" [class.star]="flip">
+                      @if (flip) { <span aria-hidden="true">★</span> } @else {
+                        @if (c.icon) { <img [src]="c.icon" alt="" loading="lazy" referrerpolicy="no-referrer" /> }
+                        @if (c.enchant) { <i class="plus">{{ c.enchant }}</i> }
+                      }
+                    </span>
+                    <div class="ct">
+                      <b class="nm" [title]="flip ? c.ideal!.title : c.name">{{ flip ? c.ideal!.title : c.name }}</b>
+                      <small>{{ flip ? c.ideal!.subtitle : c.subtitle }}</small>
+                      @if ((flip ? c.ideal!.score : c.score) !== null) { <span class="sc">{{ 'Score' | tr }} {{ flip ? c.ideal!.score : c.score }}</span> }
+                    </div>
+                    @if (flip ? c.ideal!.letter : c.letter) { <span class="lt lc-{{ lc(flip ? c.ideal!.letter : c.letter) }}">{{ flip ? c.ideal!.letter : c.letter }}</span> }
+                  </div>
+                  <ul class="rows">
+                    @for (l of (flip ? c.ideal!.lines : c.lines); track $index) {
+                      <li [class.miss]="flip && !l.have">
+                        @if (flip) {
+                          <span class="ck" [class.on]="l.have" role="img" [attr.aria-label]="(l.have ? 'Equipped item has this line' : 'Equipped item lacks this line') | tr">{{ l.have ? '✓' : '' }}</span>
+                        }
+                        <span class="lb">{{ l.stat }} <small>{{ flip ? l.value : kLine(l) }}</small></span>
+                        <span class="pc">{{ l.share }}%</span>
+                        <div class="pb"><i [class.hi]="l.share >= 70" [style.width.%]="l.share"></i></div>
+                      </li>
+                    }
+                  </ul>
+                  @if (c.ideal) {
+                    <div class="cf">
+                      <small>{{ flip ? ('Yours has {a} of these {b}' | tr: { a: kHave(c), b: c.ideal.lines.length }) : ('{a} of {b} ideal lines' | tr: { a: kHave(c), b: c.ideal.lines.length }) }}</small>
+                      <button type="button" class="flipbtn" [attr.aria-pressed]="flip" (click)="kToggle(c)">{{ flip ? ('Yours' | tr) : ('Ideal' | tr) }} ⟳</button>
+                    </div>
+                  }
+                </article>
+              }
+            </div>
+          }
+        }
+        @if (k.report.unscored.length) {
+          <h4>{{ 'Unscored' | tr }}</h4>
+          <div class="cards">
+            @for (u of k.report.unscored; track $index) {
+              <article class="card">
+                <div class="ch">
+                  <span class="cico">
+                    @if (u.icon) { <img [src]="u.icon" alt="" loading="lazy" referrerpolicy="no-referrer" /> }
+                    @if (u.enchant) { <i class="plus">{{ u.enchant }}</i> }
+                  </span>
+                  <div class="ct"><b class="nm" [title]="u.name">{{ u.name }}</b><small>{{ u.subtitle }}</small></div>
+                </div>
+              </article>
+            }
+          </div>
+        }
+      </section>
+    }
 
     <section class="panel">
       <h3>{{ 'Character lookup' | tr }}</h3>
@@ -350,6 +459,43 @@ export class ArmoryPage {
   });
 
   readonly example = EXAMPLE_JSON;
+  readonly kiskRegions = KISK_REGIONS;
+  readonly kRegion = signal('la');
+  readonly kServer = signal('zikel');
+  readonly kName = signal('Akrios');
+  readonly kBusy = signal(false);
+  readonly kError = signal('');
+  readonly kSel = signal('');
+  readonly kSnap = computed(() => { const c = this.store.kiskCache(); return c.find((s) => s.url === this.kSel()) ?? c[0] ?? null; });
+  readonly kFlip = signal<ReadonlySet<string>>(new Set());
+  readonly kGroups = computed(() => { const r = this.kSnap()?.report; return r ? [{ title: 'Gear', cards: r.gear }, { title: 'Arcana', cards: r.arcana }] : []; });
+  kFlipped(c: KiskCard): boolean { return !!c.ideal && this.kFlip().has(c.slot); }
+  kToggle(c: KiskCard): void { const n = new Set(this.kFlip()); if (!n.delete(c.slot)) n.add(c.slot); this.kFlip.set(n); }
+  kHave(c: KiskCard): number { return c.ideal?.lines.filter((l) => l.have).length ?? 0; }
+  kClass(c: KiskCard): string { return this.kFlipped(c) ? 'bis' : 'lb-' + this.lc(c.letter); }
+  kLine(l: KiskLine): string { return l.max !== undefined && l.max !== l.value ? `${l.value} / ${l.max}` : l.value; }
+
+  async kiskLookup(): Promise<void> {
+    const name = this.kName().trim();
+    this.kError.set('');
+    this.kBusy.set(true);
+    try {
+      const q = new URLSearchParams({ region: this.kRegion(), server: this.kServer().trim(), name });
+      const res = await fetch(`/api/kisk?${q}`);
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(res.status === 429 ? 'Too many lookups, wait a minute.' : (body as { error?: string }).error ?? 'kisk.app lookup failed.');
+      const snap: KiskSnapshot = { url: body.url, fetchedAt: body.fetchedAt, region: this.kRegion(), server: this.kServer().trim().toLowerCase(), report: parseKiskGear(body.html) };
+      this.store.saveKisk(snap);
+      this.kSel.set(snap.url);
+      this.kFlip.set(new Set());
+    } catch (e) {
+      const m = e instanceof Error ? e.message : '';
+      this.kError.set(e instanceof SyntaxError || m.includes('kisk') || m.includes('Too many') || m.includes('invalid') || m.includes('not found') || m.includes('unavailable') || m.includes('large') ? m : 'Could not read the kisk.app page (its layout may have changed): ' + m);
+    } finally {
+      this.kBusy.set(false);
+    }
+  }
+
   readonly flipped = signal<ReadonlySet<number>>(new Set());
   isFlipped(slot: number): boolean {
     return this.flipped().has(slot);
@@ -383,7 +529,13 @@ export class ArmoryPage {
   readonly shareText = signal('');
   readonly sharePreview = signal<ShareImportResult | null>(null);
   readonly cls = computed(() => (this.snap()?.profile.className ?? '').toLowerCase());
-  private readonly eff = computed(() => effectiveShareTable(this.cls(), this.store.data().shareTables, this.store.shareBaseline()?.tables ?? []));
+  private readonly kiskTables = computed(() => this.store.kiskCache().flatMap((s) => { const t = kiskToShareTable(s.report, s.fetchedAt); return t ? [t] : []; }));
+  /** Priority per slot: user-imported tables > kisk.app ideal cards > shipped baseline. */
+  private readonly eff = computed(() => {
+    const base = this.store.shareBaseline()?.tables ?? [];
+    const k = effectiveShareTable(this.cls(), this.kiskTables(), base);
+    return effectiveShareTable(this.cls(), this.store.data().shareTables, k ? [k.table] : base);
+  });
   readonly table = computed(() => this.eff()?.table);
   readonly shareCredit = computed(() => {
     const e = this.eff();
