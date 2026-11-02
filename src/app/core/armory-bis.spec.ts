@@ -10,7 +10,7 @@ import { pickCandidate, planEquipmentInventory } from './armory';
 import { parseCsv } from './io/csv';
 import { applyInventoryImport } from './io/imports';
 import { CLASSES, DEFAULT_BANDS, effectiveShareTable, loadShareBaseline, EMPTY_TEMPLATE, EXAMPLE_JSON, ShareTable, applyShareImport, letterFor, observedMaxRolls, overallScore, parseShareCsv, parseShareJson, scorePiece, shareSlotOf } from './share-score';
-import { KiskParseError, kiskToShareTable, parseKiskGear } from './kisk';
+import { KiskParseError, kiskBisSummaries, kiskToShareTable, parseKiskGear } from './kisk';
 import { slimHtml, validateKisk } from '../../../api/kisk-lib.mjs';
 import { starterBisList, parseStatCell, applyBisImport, compareBis, parseBisCsv, parseBisJson, BisList } from './bis';
 import { MIGRATIONS, emptyUserData, migrateUserData } from './storage/schema';
@@ -398,6 +398,14 @@ describe('kisk.app character page (saved fixture)', () => {
   });
   it('turns ideal cards into a BiS share table for the class', () => {
     const t = kiskToShareTable(r, '2026-11-02T00:00:00.000Z')!;
+    const snap = { url: 'u', fetchedAt: '2026-11-02T00:00:00.000Z', region: 'la', server: 'zikel', report: r };
+    const old = { ...snap, fetchedAt: '2026-01-01T00:00:00.000Z', report: { ...r, arcana: [] } };
+    const [b] = kiskBisSummaries([old, snap]);
+    expect(b.className).toBe('cleric');
+    expect(b.gearSlots).toBe(16);
+    expect(b.arcanaSlots).toBe(5);
+    expect(b.fetchedAt).toBe(snap.fetchedAt);
+    expect(kiskBisSummaries([old, snap]).length).toBe(1);
     expect(t.className).toBe('cleric');
     expect(t.slots.weapon![0]).toEqual({ stat: 'Combat Speed', share: 100, maxRoll: 13 });
     expect(t.slots.arcana?.length).toBe(4);

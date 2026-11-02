@@ -175,3 +175,21 @@ export function kiskToShareTable(r: KiskReport, fetchedAt: string): ShareTable |
 export function kiskCacheKey(region: string, server: string, name: string): string {
   return `${region}/${server}/${name}`.toLowerCase();
 }
+
+export interface KiskBisSummary { className: string; gearSlots: number; arcanaSlots: number; lines: number; fetchedAt: string; source: KiskSnapshot }
+
+/** Per class, the BiS auto-populated from the latest kisk lookup of that class (Ideal cards: gear and arcana). */
+export function kiskBisSummaries(snaps: readonly KiskSnapshot[]): KiskBisSummary[] {
+  const out = new Map<string, KiskBisSummary>();
+  for (const s of snaps) {
+    const cls = s.report.className?.toLowerCase();
+    if (!cls) continue;
+    const g = s.report.gear.filter((c) => c.ideal?.lines.length);
+    const a = s.report.arcana.filter((c) => c.ideal?.lines.length);
+    if (!g.length && !a.length) continue;
+    const prev = out.get(cls);
+    if (prev && prev.fetchedAt >= s.fetchedAt) continue;
+    out.set(cls, { className: cls, gearSlots: g.length, arcanaSlots: a.length, lines: [...g, ...a].reduce((n, c) => n + (c.ideal?.lines.length ?? 0), 0), fetchedAt: s.fetchedAt, source: s });
+  }
+  return [...out.values()].sort((x, y) => x.className.localeCompare(y.className));
+}

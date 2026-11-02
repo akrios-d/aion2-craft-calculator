@@ -6,7 +6,7 @@ import { applyInventoryImport } from '../core/io/imports';
 import { ArmorySnapshot, planEquipmentInventory, SearchCandidate, armoryLinks, buildSnapshot, parseArmoryJson, pickCandidate } from '../core/armory';
 import { BisEntry, BisList, BisImportResult, BIS_SLOTS, compareBis, starterBisList, parseBisCsv, parseBisJson } from '../core/bis';
 import { parseCsv } from '../core/io/csv';
-import { KISK_REGIONS, KiskCard, KiskLine, KiskSnapshot, kiskToShareTable, parseKiskGear } from '../core/kisk';
+import { kiskBisSummaries, KISK_REGIONS, KiskCard, KiskLine, KiskSnapshot, kiskToShareTable, parseKiskGear } from '../core/kisk';
 import { CLASSES, DEFAULT_BANDS, effectiveShareTable, EMPTY_TEMPLATE, EXAMPLE_JSON, PieceScore, SHARE_SLOTS, ShareImportResult, ShareTable, observedMaxRolls, overallScore, parseShareCsv, parseShareJson, scorePiece, shareSlotOf } from '../core/share-score';
 import { TrPipe } from '../core/tr.pipe';
 
@@ -337,7 +337,22 @@ import { TrPipe } from '../core/tr.pipe';
 
     <section class="panel">
       <h3>{{ 'Best in Slot (BiS)' | tr }}</h3>
-      <p class="muted">{{ 'No BiS data is shipped: there is no verified source. Define lists yourself or import JSON/CSV (columns: class, slot, item, id, notes).' | tr }}</p>
+      @for (b of bisSummaries(); track b.className) {
+        <p class="row">
+          <span><b>{{ b.className }}</b>: {{ 'BiS source: kisk.app, last refreshed' | tr }} {{ b.fetchedAt | date: 'short' }}, {{ b.gearSlots }} {{ 'gear slots' | tr }} + {{ b.arcanaSlots }} Arcana ({{ b.lines }} {{ 'lines' | tr }})</span>
+          <button (click)="refreshBis(b.source)" [disabled]="kBusy()">{{ 'Refresh from kisk.app' | tr }}</button>
+        </p>
+      } @empty {
+        <p class="muted">{{ 'No BiS loaded yet: look up a character on kisk.app above; its Ideal cards become that class BiS automatically.' | tr }}</p>
+      }
+      <p class="muted"><small>{{ 'The Ideal cards of each kisk.app lookup are stored per class and refreshed on every lookup of that class. Shares baseline: kisk.app/scoring (cielui.com).' | tr }}</small></p>
+    </section>
+
+    <details class="panel">
+      <summary>{{ 'Advanced: custom overrides' | tr }}</summary>
+    <section class="panel">
+      <h3>{{ 'Custom BiS lists' | tr }}</h3>
+      <p class="muted">{{ 'Optional manual lists (JSON/CSV: class, slot, item, id, notes) for power users; they are not needed and never replace kisk data unless you add them.' | tr }}</p>
       <div class="row">
         <label>{{ 'Class' | tr }}
           <input list="classes" [ngModel]="className()" (ngModelChange)="className.set($event)" />
@@ -409,7 +424,7 @@ import { TrPipe } from '../core/tr.pipe';
     </section>
 
     <section class="panel">
-      <h3>{{ 'Score tables' | tr }}</h3>
+      <h3>{{ 'Custom score tables' | tr }}</h3>
       <p class="muted">{{ 'Import, per class, the share of top players carrying each stat line on each slot (JSON, or CSV: class, slot, stat, share, maxRoll). Slots: weapon, guard, torso, pants, helmet, shoulders, gloves, boots, cape, necklace, earrings, rings, bracelet, arcana. The app already loads a baseline (kisk.app / cielui.com snapshot); tables you import override it per class and slot. The empty template and the example below use fake numbers. Without maxRoll the observed maximum is used and the score is marked approximate (≈). Optional "bands" override the letter thresholds.' | tr }}</p>
       <div class="row">
         @for (t of store.data().shareTables; track t.className) {
@@ -429,6 +444,7 @@ import { TrPipe } from '../core/tr.pipe';
         }
       }
     </section>
+    </details>
   `,
 })
 export class ArmoryPage {
@@ -489,6 +505,8 @@ export class ArmoryPage {
     e.preventDefault(); this.setKTab(keys[i]);
     setTimeout(() => document.getElementById('ktab-' + keys[i])?.focus());
   }
+  readonly bisSummaries = computed(() => kiskBisSummaries(this.store.kiskCache()));
+  refreshBis(s: KiskSnapshot): void { this.kRegion.set(s.region); this.kServer.set(s.server); this.kName.set(s.report.name); void this.kiskLookup(); }
   readonly kFlip = signal<ReadonlySet<string>>(new Set());
   readonly kGroups = computed(() => { const r = this.kSnap()?.report; return r ? [{ key: 'gear', title: 'Gear', cards: r.gear }, { key: 'arcana', title: 'Arcana', cards: r.arcana }] : []; });
   kFlipped(c: KiskCard): boolean { return !!c.ideal && this.kFlip().has(c.slot); }
