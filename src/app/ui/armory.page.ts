@@ -2,11 +2,9 @@ import { DatePipe, NgTemplateOutlet } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppStore } from '../core/app-store';
-import { ArmoryItem, ArmoryParseResult, ArmoryProfile, ArmorySnapshot, SearchCandidate, armoryLinks, buildSnapshot, parseArmoryJson, searchLink } from '../core/armory';
-import { BisEntry, BisList, BisImportResult, StatCheck, compareBis, isScoredSlot, overallGrade, scoreItem, slotGroup, parseBisCsv, parseBisJson } from '../core/bis';
+import { ArmoryItem, ArmoryParseResult, ArmoryProfile, ArmorySnapshot, SearchCandidate, armoryLinks, buildSnapshot, parseArmoryJson, pickCandidate, searchLink } from '../core/armory';
+import { BisEntry, BisList, BisImportResult, StatCheck, BIS_SLOTS, compareBis, isScoredSlot, starterBisList, overallGrade, scoreItem, slotGroup, parseBisCsv, parseBisJson } from '../core/bis';
 import { TrPipe } from '../core/tr.pipe';
-
-const SLOTS = ['MainHand', 'SubHand', 'Helmet', 'Shoulder', 'Torso', 'Pants', 'Gloves', 'Boots', 'Necklace', 'Earring1', 'Earring2', 'Ring1', 'Ring2', 'Bracelet1', 'Bracelet2', 'Belt', 'Cape', 'Amulet', 'Rune1', 'Rune2', 'Arcana1', 'Arcana2', 'Arcana3', 'Arcana4', 'Arcana5'];
 
 @Component({
   selector: 'app-armory',
@@ -36,35 +34,41 @@ const SLOTS = ['MainHand', 'SubHand', 'Helmet', 'Shoulder', 'Torso', 'Pants', 'G
   `,
   template: `
     <h2>{{ 'Armory and BiS' | tr }}</h2>
+    <p class="muted"><small>{{ 'UX inspired by kisk.app (no kisk data used).' | tr }} <a href="https://kisk.app" target="_blank" rel="noopener noreferrer">kisk.app</a></small></p>
 
     <section class="panel">
       <h3>{{ 'Character lookup' | tr }}</h3>
       <p class="muted">
-        {{ 'The NCSOFT armory does not allow browser requests from other sites (CORS), and this app has no proxy. So nothing is fetched automatically: open the links in your own browser, copy the JSON and paste it below.' | tr }}
-        {{ 'Use is on demand only; NCSOFT terms forbid automated access outside published interfaces.' | tr }}
+        {{ 'Looks the character up in the official NCSOFT armory through a small serverless function (the browser cannot call it directly because of CORS). Only when you click; no polling. Not affiliated with NCSOFT; their terms forbid automated access outside published interfaces, so use it sparingly.' | tr }}
       </p>
       <div class="row">
         <select [ngModel]="region()" (ngModelChange)="region.set($event)">
-          <option value="eu">EU</option><option value="na">NA</option><option value="asia">ASIA</option>
+          <option value="la">LA</option><option value="eu">EU</option><option value="na">NA</option><option value="asia">ASIA</option>
         </select>
-        <input [ngModel]="keyword()" (ngModelChange)="keyword.set($event)" [placeholder]="'Character name' | tr" />
-        <a class="chip" [href]="search()" target="_blank" rel="noopener noreferrer">{{ '1. Open name search' | tr }}</a>
+        <input [ngModel]="server()" (ngModelChange)="server.set($event)" [placeholder]="'Server' | tr" size="12" />
+        <input [ngModel]="keyword()" (ngModelChange)="keyword.set($event)" (keydown.enter)="lookup()" [placeholder]="'Character name' | tr" />
+        <button (click)="lookup()" [disabled]="loading() || keyword().trim().length < 2">{{ loading() ? ('Looking up…' | tr) : ('Look up' | tr) }}</button>
       </div>
-      <textarea [ngModel]="pasted()" (ngModelChange)="pasted.set($event)" [placeholder]="'Paste the JSON of the search, /api/character/info or /api/character/equipment' | tr"></textarea>
-      <div class="row">
-        <button (click)="parse()" [disabled]="!pasted().trim()">{{ 'Validate and preview' | tr }}</button>
-        <button (click)="clearPending()" [disabled]="!pasted() && !pendingItems()">{{ 'Clear' | tr }}</button>
-      </div>
-      @if (parseError()) { <p class="err">{{ parseError() | tr }}</p> }
+      @if (lookupError()) { <p class="err">{{ lookupError() | tr }}</p> }
+      <details>
+        <summary>{{ 'Advanced / fallback: paste armory JSON' | tr }}</summary>
+        <p class="muted">{{ 'If the lookup is unavailable (for example under ng serve without the proxy), open these links in your browser and paste the JSON here.' | tr }} <a class="chip" [href]="search()" target="_blank" rel="noopener noreferrer">{{ '1. Open name search' | tr }}</a></p>
+        <textarea [ngModel]="pasted()" (ngModelChange)="pasted.set($event)" [placeholder]="'Paste the JSON of the search, /api/character/info or /api/character/equipment' | tr"></textarea>
+        <div class="row">
+          <button (click)="parse()" [disabled]="!pasted().trim()">{{ 'Validate and preview' | tr }}</button>
+          <button (click)="clearPending()" [disabled]="!pasted() && !pendingItems()">{{ 'Clear' | tr }}</button>
+        </div>
+      </details>      @if (parseError()) { <p class="err">{{ parseError() | tr }}</p> }
       @for (w of warnings(); track $index) { <p class="warn">{{ w }}</p> }
       @if (candidates().length) {
         <table>
-          <thead><tr><th>{{ 'Name' | tr }}</th><th>{{ 'Server' | tr }}</th><th>{{ 'Level' | tr }}</th><th>{{ '2. Open and copy the JSON' | tr }}</th></tr></thead>
+          <thead><tr><th>{{ 'Name' | tr }}</th><th>{{ 'Server' | tr }}</th><th>{{ 'Level' | tr }}</th><th></th></tr></thead>
           <tbody>
             @for (c of candidates(); track c.characterId) {
               <tr>
                 <td>{{ c.name }}</td><td>{{ c.serverName }}</td><td>{{ c.level }}</td>
                 <td>
+                  <button (click)="load(c)" [disabled]="loading()">{{ 'Load' | tr }}</button>
                   <a class="chip" [href]="links(c).info" target="_blank" rel="noopener noreferrer">info</a>
                   <a class="chip" [href]="links(c).equipment" target="_blank" rel="noopener noreferrer">equipment</a>
                 </td>
@@ -168,7 +172,7 @@ const SLOTS = ['MainHand', 'SubHand', 'Helmet', 'Shoulder', 'Torso', 'Pants', 'G
               </div>
               <div class="gear ideal">
                 <small>{{ 'Ideal' | tr }} {{ cls() }} {{ r.entry.slot }} · <b>{{ 'Best in slot' | tr }}</b> <button class="mini" (click)="removeEntry(r.entry)">✕</button></small>
-                <b>{{ r.entry.itemName }}</b>
+                @if (r.entry.itemName) { <b>{{ r.entry.itemName }}</b> } @else { <input [placeholder]="'Item name' | tr" (change)="setItem(r.entry, $any($event.target).value)" /> }
                 @for (sc of checks(r); track sc.name) {
                   <small>@if (r.equipped?.stats) { <span [class]="sc.have ? 'ok' : 'err'">{{ sc.have ? '✓' : '✗' }}</span> } {{ sc.name }}@if (sc.max) { +{{ sc.max }} }</small>
                 }
@@ -193,7 +197,10 @@ const SLOTS = ['MainHand', 'SubHand', 'Helmet', 'Shoulder', 'Torso', 'Pants', 'G
           </tbody>
         </table>
         <p class="muted">{{ 'Paste a character above to compare with this list.' | tr }}</p>
-      } @else { <p class="muted">{{ 'No BiS list for this class yet.' | tr }}</p> }
+      } @else {
+        <p class="muted">{{ 'No BiS list for this class yet.' | tr }}</p>
+        <button (click)="createStarter()" [disabled]="!currentClass()">{{ 'Create starter list (all slots)' | tr }}</button>
+      }
 
       <h4>{{ 'Import BiS' | tr }}</h4>
       <textarea [ngModel]="bisText()" (ngModelChange)="bisText.set($event)" placeholder='[{"className":"gladiator","entries":[{"slot":"MainHand","name":"..."}]}]'></textarea>
@@ -214,8 +221,11 @@ const SLOTS = ['MainHand', 'SubHand', 'Helmet', 'Shoulder', 'Torso', 'Pants', 'G
 })
 export class ArmoryPage {
   readonly store = inject(AppStore);
-  readonly slots = SLOTS;
-  readonly region = signal('eu');
+  readonly slots = BIS_SLOTS;
+  readonly region = signal('la');
+  readonly server = signal('Zikel');
+  readonly loading = signal(false);
+  readonly lookupError = signal('');
   readonly keyword = signal('');
   readonly pasted = signal('');
   readonly parseError = signal('');
@@ -225,7 +235,7 @@ export class ArmoryPage {
   readonly pendingItems = signal<ArmoryItem[] | undefined>(undefined);
   readonly selectedKey = signal('');
   readonly className = signal('');
-  readonly slot = signal(SLOTS[0]);
+  readonly slot = signal(BIS_SLOTS[0]);
   readonly itemName = signal('');
   readonly itemId = signal('');
   readonly notes = signal('');
@@ -256,7 +266,7 @@ export class ArmoryPage {
   });
 
   readonly cls = computed(() => this.list()?.className ?? '');
-  readonly scored = computed(() => (this.comparison()?.rows ?? []).map((r) => ({ ...r, sc: r.equipped ? scoreItem(r.equipped, r.entry) : undefined })));
+  readonly scored = computed(() => (this.comparison()?.rows ?? []).map((r) => ({ ...r, sc: r.equipped && r.entry.itemName ? scoreItem(r.equipped, r.entry) : undefined })));
   readonly overall = computed(() => overallGrade(this.scored().map((r) => ({ item: r.equipped, score: r.sc }))));
   readonly groups = computed(() => {
     const rows = this.scored();
@@ -280,7 +290,57 @@ export class ArmoryPage {
     return !!s && /^https:\/\//i.test(s);
   }
   statusLabel(s: string) {
-    return s === 'match' ? 'Equipped' : s === 'mismatch' ? 'Different item' : 'Empty slot';
+    return s === 'match' ? 'Equipped' : s === 'mismatch' ? 'Different item' : s === 'unset' ? 'Not set' : 'Empty slot';
+  }
+
+  async lookup(): Promise<void> {
+    const name = this.keyword().trim();
+    this.lookupError.set('');
+    this.candidates.set([]);
+    this.loading.set(true);
+    try {
+      const res = await fetch(`/api/armory?region=${this.region()}&keyword=${encodeURIComponent(name)}`);
+      if (!res.ok) throw new Error(res.status === 429 ? 'Too many lookups, wait a minute.' : 'Armory lookup failed. Try again later or use the paste fallback.');
+      const r = parseArmoryJson(await res.text());
+      const list = r.candidates ?? [];
+      const hit = pickCandidate(list, name, this.server());
+      if (hit) await this.load(hit);
+      else if (list.length) this.candidates.set(list);
+      else this.lookupError.set('No character found. Check the region, server and name.');
+    } catch (e) {
+      this.lookupError.set(e instanceof Error && !(e instanceof TypeError) ? e.message : 'Armory lookup unavailable (the serverless function does not run under plain ng serve). Use the paste fallback.');
+    } finally {
+      this.loading.set(false);
+    }
+  }
+  async load(c: SearchCandidate): Promise<void> {
+    this.loading.set(true);
+    this.lookupError.set('');
+    try {
+      const res = await fetch(`/api/armory?region=${this.region()}&characterId=${encodeURIComponent(c.characterId)}&serverId=${c.serverId}`);
+      if (!res.ok) throw new Error('Armory lookup failed. Try again later or use the paste fallback.');
+      const r = parseArmoryJson(await res.text());
+      if (r.error || !r.items) throw new Error(r.error ?? 'The armory returned no equipment.');
+      const snap = buildSnapshot(r.profile, r.items);
+      this.store.saveSnapshot(snap);
+      this.selectedKey.set(snap.key);
+      this.candidates.set([]);
+    } catch (e) {
+      this.lookupError.set(e instanceof Error && !(e instanceof TypeError) ? e.message : 'Armory lookup unavailable. Use the paste fallback.');
+    } finally {
+      this.loading.set(false);
+    }
+  }
+  createStarter(): void {
+    const cls = this.currentClass();
+    if (!cls) return;
+    this.store.saveBisList(starterBisList(cls));
+    this.className.set(cls);
+  }
+  setItem(e: BisEntry, name: string): void {
+    const l = this.list();
+    if (!l) return;
+    this.store.saveBisList({ ...l, entries: l.entries.map((x) => (x.slot === e.slot ? { ...x, itemName: name.trim() } : x)), updatedAt: new Date().toISOString() });
   }
 
   parse(): void {
@@ -311,7 +371,7 @@ export class ArmoryPage {
   canAdd(): boolean {
     return !!this.itemName().trim() && !!(this.className().trim() || this.snap()?.profile.className);
   }
-  private currentClass(): string {
+  currentClass(): string {
     return (this.className().trim() || this.snap()?.profile.className || '').toLowerCase();
   }
   addEntry(): void {

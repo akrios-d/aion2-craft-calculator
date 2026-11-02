@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { applyBackup, buildBackup, parseBackup } from './io/backup';
 import { buildSnapshot, normalizeSnapshot, parseArmoryJson, upsertSnapshot, MAX_SNAPSHOTS } from './armory';
-import { letterGrade, overallGrade, parseStatCell, scoreItem, applyBisImport, compareBis, parseBisCsv, parseBisJson, BisList } from './bis';
+import { makeLimiter, validate } from '../../../api/armory-lib.mjs';
+import { pickCandidate } from './armory';
+import { starterBisList, letterGrade, overallGrade, parseStatCell, scoreItem, applyBisImport, compareBis, parseBisCsv, parseBisJson, BisList } from './bis';
 import { MIGRATIONS, emptyUserData, migrateUserData } from './storage/schema';
 
 const equipmentJson = JSON.stringify({
@@ -159,5 +161,51 @@ describe('BiS scoring (own heuristic)', () => {
     const r = parseBisJson(JSON.stringify([{ className: 'c', entries: [{ slot: 'Ring1', name: 'R', stats: ['A', { name: 'B', max: 3 }] }] }]));
     expect(r.lists[0].entries[0].stats).toEqual([{ name: 'A' }, { name: 'B', max: 3 }]);
     expect(parseBisCsv('class,slot,item,stats\nc,Ring1,R,A:2').lists[0].entries[0].stats).toEqual([{ name: 'A', max: 2 }]);
+  });
+});
+
+describe('armory function validation', () => {
+  const v = (q: string) => validate(new URLSearchParams(q));
+  it('builds fixed-host search and character URLs', () => {
+    const s = v('region=la&keyword=Akrios');
+    expect(s.ok && s.urls[0]).toBe('https://api-search.plaync.com/aion2global/search/v2/character?keyword=Akrios&region=la&localeInfo=en-US');
+    const c = v('region=la&characterId=QXqaL3Kug_lIiNDi%3D&serverId=2402');
+    expect(c.ok && c.urls.length).toBe(2);
+    expect(c.ok && c.urls.every((u) => u.startsWith('https://aion2.plaync.com/api/character/'))).toBe(true);
+  });
+  it('rejects bad input', () => {
+    for (const q of ['region=xx&keyword=ab', 'region=la&keyword=a', 'region=la&keyword=' + 'a'.repeat(30), 'region=la&keyword=a<b>', 'region=la&characterId=../../x&serverId=2402', 'region=la&characterId=abcdefghij&serverId=12', 'region=la', '']) {
+      expect(v(q).ok, q).toBe(false);
+    }
+  });
+  it('rate limits per key within a window', () => {
+    let t = 0;
+    const allow = makeLimiter(2, 1000, () => t);
+    expect([allow('a'), allow('a'), allow('a'), allow('b')]).toEqual([true, true, false, true]);
+    t = 1500;
+    expect(allow('a')).toBe(true);
+  });
+});
+
+describe('lookup helpers and starter template', () => {
+  it('picks an exact name on the chosen server only when unique', () => {
+    const l = [
+      { characterId: '1', name: 'Akrios', serverId: 2402, serverName: 'Zikel' },
+      { characterId: '2', name: 'Akrios', serverId: 2311, serverName: 'Ludra' },
+      { characterId: '3', name: 'Akrios2', serverId: 2402, serverName: 'Zikel' },
+    ];
+    expect(pickCandidate(l, 'akrios', 'Zikel')?.characterId).toBe('1');
+    expect(pickCandidate(l, 'Akrios', '')).toBeNull();
+  });
+  it('creates an all-slots starter list that survives normalization and is not scored', () => {
+    const s = starterBisList('Cleric');
+    expect(s.className).toBe('cleric');
+    expect(s.entries.length).toBeGreaterThan(20);
+    expect(s.entries.every((e) => e.itemName === '')).toBe(true);
+    const { data } = migrateUserData({ ...emptyUserData(), bisLists: [s] });
+    expect(data.bisLists[0].entries.length).toBe(s.entries.length);
+    const c = compareBis(s, snap);
+    expect(c.total).toBe(0);
+    expect(c.rows.every((r) => r.status === 'unset')).toBe(true);
   });
 });

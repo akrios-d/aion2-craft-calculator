@@ -27,7 +27,7 @@ Verification status: **0 of 722 recipes verified**
 ## Armory and BiS
 
 - BiS data: **none shipped** (no verified source); lists are user-defined.
-- Armory data: not bundled; pasted by the user from NCSOFT's undocumented armory endpoints (CORS blocks direct browser access). Only fields observed in real responses are parsed (slot, name, grade, enchant/exceed level, id, icon, profile basics).
+- Armory data: not bundled; fetched on demand through the pi/armory.mjs function from NCSOFT's undocumented armory endpoints (CORS blocks direct browser access), with a paste-JSON fallback. Only fields observed in real responses are parsed (slot, name, grade, enchant/exceed level, id, icon, profile basics).
 - Armory item ids are NCSOFT ids and are not linked to the recipe catalogue; BiS-to-recipe matching is by item name or an id the user enters.
-- NCSOFT terms forbid automated access; the app performs no automated requests.
+- NCSOFT terms forbid automated access; lookups are user-triggered only, never polled.
 

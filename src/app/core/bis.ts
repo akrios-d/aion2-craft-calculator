@@ -22,7 +22,7 @@ export interface BisList {
   updatedAt: string;
 }
 
-export type BisStatus = 'match' | 'mismatch' | 'missing';
+export type BisStatus = 'match' | 'mismatch' | 'missing' | 'unset';
 
 export interface BisRow {
   entry: BisEntry;
@@ -49,11 +49,18 @@ const txt = (v: unknown) => (typeof v === 'string' || typeof v === 'number' ? St
 const norm = (s: string) => s.trim().toLowerCase();
 export const slotGroup = (slot: string) => norm(slot).replace(/\d+$/, '');
 
-export function normalizeBisEntry(raw: unknown): BisEntry | null {
+export const BIS_SLOTS = ['MainHand', 'SubHand', 'Helmet', 'Shoulder', 'Torso', 'Pants', 'Gloves', 'Boots', 'Cape', 'Necklace', 'Earring1', 'Earring2', 'Ring1', 'Ring2', 'Bracelet1', 'Bracelet2', 'Belt', 'Amulet', 'Rune1', 'Rune2', 'Arcana1', 'Arcana2', 'Arcana3', 'Arcana4', 'Arcana5'];
+
+/** A starter list: every slot pre-listed with an empty item for the user to fill in. */
+export function starterBisList(className: string, now = new Date()): BisList {
+  return { className: norm(className), entries: BIS_SLOTS.map((slot) => ({ slot, itemName: '' })), updatedAt: now.toISOString() };
+}
+
+export function normalizeBisEntry(raw: unknown, allowEmpty = false): BisEntry | null {
   if (!isObj(raw)) return null;
   const slot = txt(raw['slot']);
   const itemName = txt(raw['itemName'] ?? raw['name'] ?? raw['item']);
-  if (!slot || !itemName) return null;
+  if (!slot || (!itemName && !allowEmpty)) return null;
   const id = Number(raw['armoryId'] ?? raw['id']);
   const entry: BisEntry = { slot, itemName };
   if (Number.isFinite(id) && id > 0) entry.armoryId = id;
@@ -69,13 +76,13 @@ export function normalizeBisEntry(raw: unknown): BisEntry | null {
   return entry;
 }
 
-export function normalizeBisList(raw: unknown): BisList | null {
+export function normalizeBisList(raw: unknown, allowEmpty = false): BisList | null {
   if (!isObj(raw)) return null;
   const className = norm(txt(raw['className'] ?? raw['class']));
   if (!className || !Array.isArray(raw['entries'])) return null;
   const bySlot = new Map<string, BisEntry>();
   for (const e of raw['entries']) {
-    const n = normalizeBisEntry(e);
+    const n = normalizeBisEntry(e, allowEmpty);
     if (n) bySlot.set(norm(n.slot), n);
   }
   const t = txt(raw['updatedAt']);
@@ -85,7 +92,7 @@ export function normalizeBisList(raw: unknown): BisList | null {
 export function normalizeBisLists(raw: unknown): BisList[] {
   const map = new Map<string, BisList>();
   for (const r of Array.isArray(raw) ? raw : []) {
-    const l = normalizeBisList(r);
+    const l = normalizeBisList(r, true);
     if (l) map.set(l.className, l);
   }
   return [...map.values()];
@@ -100,6 +107,7 @@ function itemMatches(entry: BisEntry, eq: ArmoryItem): boolean {
 export function compareBis(list: BisList, snap: ArmorySnapshot): BisComparison {
   const equipped = [...snap.gear, ...snap.arcana];
   const rows: BisRow[] = list.entries.map((entry) => {
+    if (!entry.itemName) return { entry, status: 'unset', equipped: equipped.find((e) => norm(e.slotName) === norm(entry.slot)) };
     const same = equipped.find((e) => norm(e.slotName) === norm(entry.slot));
     if (same && itemMatches(entry, same)) return { entry, status: 'match', equipped: same };
     const group = slotGroup(entry.slot);
@@ -107,8 +115,9 @@ export function compareBis(list: BisList, snap: ArmorySnapshot): BisComparison {
     if (other) return { entry, status: 'match', equipped: other };
     return { entry, status: same ? 'mismatch' : 'missing', equipped: same };
   });
-  const missing = rows.filter((r) => r.status !== 'match');
-  return { rows, matched: rows.length - missing.length, total: rows.length, missing };
+  const set = rows.filter((r) => r.status !== 'unset');
+  const missing = set.filter((r) => r.status !== 'match');
+  return { rows, matched: set.length - missing.length, total: set.length, missing };
 }
 
 export function parseBisJson(text: string): BisImportResult {

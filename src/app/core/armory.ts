@@ -214,6 +214,14 @@ export function normalizeSnapshot(raw: unknown): ArmorySnapshot | null {
   return { key: snapshotKey(profile.serverId, name), profile, gear: asItems(raw['gear']), arcana: asItems(raw['arcana']), fetchedAt };
 }
 
+/** Picks the search hit for an exact character name on the given server (case-insensitive); null if not unique. */
+export function pickCandidate(list: SearchCandidate[], name: string, server: string): SearchCandidate | null {
+  const n = name.trim().toLowerCase();
+  const s = server.trim().toLowerCase();
+  const hits = list.filter((c) => c.name.toLowerCase() === n && (!s || c.serverName.toLowerCase() === s));
+  return hits.length === 1 ? hits[0] : null;
+}
+
 /** Links the user can open in the browser to copy the JSON from. Nothing is requested by the app itself. */
 export function armoryLinks(region: string, c: SearchCandidate, lang = 'en-US'): { info: string; equipment: string; page: string } {
   const q = `lang=${encodeURIComponent(lang)}&region=${encodeURIComponent(region)}&characterId=${encodeURIComponent(c.characterId)}&serverId=${c.serverId}`;
