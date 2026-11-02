@@ -16,24 +16,53 @@ import { TrPipe } from '../core/tr.pipe';
     .panel { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: .75rem 1rem; display: grid; gap: .6rem; margin: .75rem 0 1rem; }
     .row { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; }
     textarea { width: 100%; min-height: 6rem; font-family: monospace; font-size: .8rem; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: .5rem; }
-    .gear { border: 1px solid var(--line); border-radius: var(--radius); padding: .45rem .6rem; background: #ffffff08; display: grid; gap: .1rem; border-left-width: 4px; }
-    .gear.empty { border-style: dashed; opacity: .6; }
-    .gear small { color: var(--muted); }
-    .gear b { font-size: .9rem; }
-    .g-Legend { border-left-color: #ff9d3c; } .g-Unique { border-left-color: #ffc94d; } .g-Epic { border-left-color: #b784ff; } .g-Rare { border-left-color: #5cb3ff; } .g-Common { border-left-color: #aebac8; }
-    .ico { width: 32px; height: 32px; border-radius: 4px; background: #0006; float: right; }
+    .gh { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; padding: .9rem 1rem; border-radius: 12px; background: linear-gradient(135deg, #1a1b4b, #2b1a4f 60%, #141a3a); border: 1px solid #4b4a8f; }
+    .chips { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: .3rem; }
+    .gchip { padding: .1rem .6rem; border-radius: 999px; background: #ffffff14; border: 1px solid #ffffff2e; font-size: .8rem; }
+    .gname { margin: 0; font-size: 1.8rem; line-height: 1.2; }
+    .cp { font-size: .8rem; vertical-align: middle; padding: .1rem .5rem; border-radius: 6px; background: #ebb71922; color: #ffd966; border: 1px solid #ebb71977; }
+    .otile { display: grid; justify-items: center; padding: .4rem .9rem; border-radius: 10px; border: 2px solid currentColor; background: #0b0c2a; min-width: 6rem; }
+    .otile b { font-size: 2rem; line-height: 1; }
+    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; }
+    @media (max-width: 960px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 600px) { .cards { grid-template-columns: 1fr; } .gh { flex-direction: column; } }
+    .card { display: flex; flex-direction: column; gap: .5rem; padding: .7rem .8rem; border-radius: 12px; background: linear-gradient(160deg, #1b1c4a, #15163a); border: 1px solid #3c3d7a; min-height: 11rem; color: #eef; }
+    .rar-Legend { border-color: #ff9d3c88; } .rar-Unique { border-color: #ffc94d88; } .rar-Epic { border-color: #b784ff88; } .rar-Rare { border-color: #5cb3ff88; }
+    .lb-A { border-color: #dfe3ee; } .lb-B { border-color: #2f4fa8; } .lb-C, .lb-D { border-color: #3c3d7a; }
+    .lb-S, .lb-Sp { border-color: #ffc94d; box-shadow: 0 0 .9rem #ffc94d55; }
+    .lb-BIS, .card.bis { border-color: #ffd966; box-shadow: 0 0 1rem #ffd96688, 0 0 1.6rem #b784ff55; }
+    .ch { display: flex; gap: .6rem; align-items: flex-start; }
+    .ct { display: grid; gap: .15rem; min-width: 0; flex: 1; }
+    .ct small { color: #b9bbe6; }
+    .nm { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .cico { position: relative; flex: none; width: 44px; height: 44px; border-radius: 8px; background: #0008; display: grid; place-items: center; border: 1px solid #ffffff22; }
+    .cico img { width: 100%; height: 100%; border-radius: 8px; }
+    .cico.star { color: #ffd966; font-size: 1.6rem; }
+    .plus { position: absolute; right: -6px; bottom: -6px; font-style: normal; font-size: .7rem; font-weight: 700; background: #ebb719; color: #1a1300; border-radius: 6px; padding: 0 .25rem; }
+    .sc { width: fit-content; font-size: .75rem; padding: 0 .45rem; border-radius: 999px; background: #ffffff14; border: 1px solid #ffffff2e; color: #eef; }
+    .lt { flex: none; font-weight: 800; font-size: 1.1rem; padding: .1rem .55rem; border-radius: 8px; border: 2px solid currentColor; background: #0b0c2a; }
+    .lc-Sp, .lc-S { color: #ffd966; } .lc-A { color: #eceff7; } .lc-B { color: #7fa2ff; } .lc-C { color: #e0a43a; } .lc-D { color: #ff8a8a; } .lc-BIS { color: #ffd966; }
+    .rows { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem; flex: 1; }
+    .rows li { display: grid; grid-template-columns: auto 1fr auto; column-gap: .45rem; align-items: center; }
+    .rows li > .lb { grid-column: 1 / 3; } .rows li > .ck + .lb { grid-column: 2; } .rows li > .pc { grid-column: 3; }
+    .rows li > .pb { grid-column: 1 / -1; }
+    .lb small { color: #b9bbe6; } .pc { font-size: .85rem; font-variant-numeric: tabular-nums; }
+    .pb { height: 5px; border-radius: 3px; background: #ffffff1c; overflow: hidden; margin-top: .2rem; }
+    .pb > i { display: block; height: 100%; background: #5b78d6; }
+    .pb > i.hi { background: linear-gradient(90deg, #a46bff, #ffd966); }
+    .ck { width: 1.1rem; height: 1.1rem; border-radius: 50%; border: 2px solid #7a7cc0; display: grid; place-items: center; font-size: .7rem; color: #1a1300; }
+    .ck.on { background: #ffd966; border-color: #ffd966; font-weight: 800; }
+    li.miss { opacity: .7; }
+    .cf { display: flex; justify-content: space-between; align-items: center; gap: .5rem; border-top: 1px solid #ffffff1c; padding-top: .45rem; min-height: 1.8rem; }
+    .cf small { color: #b9bbe6; }
+    .flipbtn { padding: .15rem .7rem; border-radius: 999px; background: #ffffff10; border: 1px solid #ffffff44; color: #fff; cursor: pointer; }
+    .flipbtn:hover, .flipbtn:focus-visible, .flipbtn[aria-pressed='true'] { background: #ffd96633; border-color: #ffd966; }
     .st-match { color: var(--ok); } .st-mismatch { color: var(--warn); } .st-missing { color: var(--err); }
     .ok { color: var(--ok); } .err { color: var(--err); } .warn { color: var(--warn); }
     .bar { height: .5rem; background: #ffffff18; border-radius: 4px; overflow: hidden; } .bar > i { display: block; height: 100%; background: var(--ok); }
     .tog { padding: .2rem .75rem; border-radius: 999px; background: transparent; border: 1px solid var(--line); color: var(--fg); cursor: pointer; }
     .tog.on { background: linear-gradient(180deg, #ebb719, #ac770c); color: var(--gold-ink); border-color: var(--gold); font-weight: 700; }
     td { vertical-align: middle; }
-    .cmp { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-bottom: .4rem; } .cmp.one { grid-template-columns: 1fr; }
-    .ideal { border-left-color: var(--gold); }
-    .lt { font-weight: 800; padding: 0 .4rem; border-radius: 4px; border: 1px solid currentColor; width: fit-content; }
-    .lt-S { color: #ffc94d; } .lt-A { color: #5cd68a; } .lt-B { color: #5cb3ff; } .lt-C { color: #e0a43a; } .lt-D { color: #e05c5c; }
-    .ovl { font-size: 1.1rem; }
   `,
   template: `
     <h2>{{ 'Armory and BiS' | tr }}</h2>
@@ -82,12 +111,24 @@ import { TrPipe } from '../core/tr.pipe';
 
     @if (snap(); as s) {
       <section class="panel">
-        <h3>{{ s.profile.name }}
-          <small class="muted">{{ s.profile.className }} @if (s.profile.level) { · Lv {{ s.profile.level }} } @if (s.profile.combatPower) { · CP {{ s.profile.combatPower }} } @if (s.profile.serverName) { · {{ s.profile.serverName }} } @if (s.profile.raceName) { · {{ s.profile.raceName }} }</small>
-        </h3>
-        <small class="muted">{{ 'Fetched on' | tr }} {{ s.fetchedAt | date: 'short' }}</small>
-        @if (table(); as tb) {
-          @if (overall(); as o) { <p class="ovl">{{ 'Overall gear grade' | tr }}: <b class="lt lt-{{ o.letter.charAt(0) }}">{{ o.letter }}</b> <small class="muted">({{ o.percent | number: '1.0-1' }}%, {{ o.pieces }} {{ 'Items' | tr }})</small></p> }
+        <header class="gh">
+          <div class="gh-main">
+            <div class="chips">
+              @if (s.profile.raceName) { <span class="gchip">{{ s.profile.raceName }}</span> }
+              <span class="gchip">@if (s.profile.level) { Lv {{ s.profile.level }} }{{ s.profile.className }}</span>
+              @if (s.profile.serverName) { <span class="gchip">{{ s.profile.serverName }}</span> }
+            </div>
+            <h3 class="gname">{{ s.profile.name }} @if (s.profile.combatPower) { <span class="cp">CP {{ s.profile.combatPower }}</span> }</h3>
+            <small class="muted">{{ 'Fetched on' | tr }} {{ s.fetchedAt | date: 'short' }}</small>
+          </div>
+          @if (overall(); as o) {
+            <div class="otile lc-{{ lc(o.letter) }}" [attr.aria-label]="('Overall gear grade' | tr) + ': ' + o.letter">
+              <b>{{ o.letter }}</b><small>{{ 'Gear' | tr }}</small>
+              <small>{{ o.percent | number: '1.0-1' }}% · {{ o.pieces }} {{ 'Items' | tr }}</small>
+            </div>
+          }
+        </header>
+        @if (table()) {
           <p class="muted"><small>{{ 'Share-based score following the method publicly described at kisk.app/scoring, computed from the table you imported. The app ships no share data.' | tr }}</small></p>
         } @else {
           <p class="warn">{{ 'No share table imported for this class: items are shown unscored. Import one below (Score tables).' | tr }}</p>
@@ -95,26 +136,60 @@ import { TrPipe } from '../core/tr.pipe';
         @for (grp of groups(); track grp.title) {
           <h4>{{ grp.title | tr }}</h4>
           @if (!grp.views.length && grp.title === 'Arcana') { <p class="muted">{{ 'No arcana returned by the armory.' | tr }}</p> }
-          @for (v of grp.views; track v.item.slot) {
-            <div class="cmp" [class.one]="!v.ideal.length">
-              <div class="gear g-{{ v.item.grade }}">
-                @if (isUrl(v.item.icon)) { <img class="ico" [src]="v.item.icon" referrerpolicy="no-referrer" alt="" loading="lazy" /> }
-                <small>{{ v.item.slotName }} · {{ 'Equipped' | tr }}</small>
-                <b>{{ v.item.name }}</b>
-                <small>{{ v.item.grade }}@if (v.item.enchant) { · +{{ v.item.enchant }} }@if (v.item.exceed) { · ★{{ v.item.exceed }} }</small>
-                @for (st of v.item.stats ?? []; track st.name) { <small>{{ st.name }} {{ st.value }}@if (shareOf(v, st.name) !== null) { · {{ shareOf(v, st.name) }}% }</small> }
-                @if (v.ps; as ps) { <span class="lt lt-{{ ps.letter.charAt(0) }}">{{ ps.letter }} <small>{{ ps.percent | number: '1.0-1' }}%@if (ps.approximate) { ≈ }</small></span> }
-              </div>
-              @if (v.ideal.length) {
-                <div class="gear ideal">
-                  <small>{{ 'Ideal' | tr }} {{ cls() }} {{ v.item.slotName }} · <b>{{ 'Best in slot' | tr }}</b></small>
-                  @for (l of v.ideal; track l.stat) {
-                    <small>@if (v.item.stats) { <span [class]="have(v, l.stat) ? 'ok' : 'err'">{{ have(v, l.stat) ? '✓' : '✗' }}</span> } {{ l.stat }} · {{ l.share }}%@if (l.maxRoll) { · max {{ l.maxRoll }} }</small>
-                  }
+          <div class="cards">
+            @for (v of grp.views; track v.item.slot) {
+              @let flip = v.ideal.length > 0 && isFlipped(v.item.slot);
+              @let got = haveCount(v);
+              <article class="card" [class.flip]="flip" [class]="cardClass(v, flip)">
+                <div class="ch">
+                  @if (flip) { <span class="cico star" aria-hidden="true">★</span> }
+                  @else if (isUrl(v.item.icon)) { <span class="cico"><img [src]="v.item.icon" referrerpolicy="no-referrer" alt="" loading="lazy" />@if (v.item.enchant) { <i class="plus">+{{ v.item.enchant }}</i> }</span> }
+                  @else { <span class="cico" aria-hidden="true">@if (v.item.enchant) { <i class="plus">+{{ v.item.enchant }}</i> }</span> }
+                  <div class="ct">
+                    @if (flip) {
+                      <b class="nm">{{ 'Ideal' | tr }} {{ cls() }} {{ v.item.slotName }}</b>
+                      <small>{{ 'Best in slot' | tr }}</small>
+                    } @else {
+                      <b class="nm" [title]="v.item.name">{{ v.item.name }}</b>
+                      <small>{{ v.item.slotName }} · {{ v.item.grade }}@if (v.item.exceed) { , {{ 'exceed' | tr }} {{ v.item.exceed }} }</small>
+                    }
+                    @if (flip) { <span class="sc">{{ 'Score' | tr }} 100</span> }
+                    @else if (v.ps) { <span class="sc">{{ 'Score' | tr }} {{ v.ps.percent | number: '1.0-0' }}@if (v.ps.approximate) { ≈ }</span> }
+                  </div>
+                  @if (flip) { <span class="lt lc-BIS">BiS</span> }
+                  @else if (v.ps) { <span class="lt lc-{{ lc(v.ps.letter) }}">{{ v.ps.letter }}</span> }
                 </div>
-              }
-            </div>
-          }
+                @if (flip) {
+                  <ul class="rows">
+                    @for (l of v.ideal; track l.stat) {
+                      <li [class.miss]="!hasLine(v, l.stat)">
+                        <span class="ck" [class.on]="hasLine(v, l.stat)" role="img" [attr.aria-label]="(hasLine(v, l.stat) ? 'Equipped item has this line' : 'Equipped item lacks this line') | tr">{{ hasLine(v, l.stat) ? '✓' : '' }}</span>
+                        <span class="lb">{{ l.stat }}@if (l.maxRoll) { <small> {{ l.maxRoll }}</small> }</span>
+                        <span class="pc">{{ l.share }}%</span>
+                        <span class="pb"><i [class.hi]="l.share >= 50" [style.width.%]="l.share"></i></span>
+                      </li>
+                    }
+                  </ul>
+                } @else {
+                  <ul class="rows">
+                    @for (st of v.item.stats ?? []; track st.name) {
+                      @let sh = shareOf(v, st.name);
+                      <li>
+                        <span class="lb">{{ st.name }} <small>{{ st.value }}@if (st.max) { / {{ st.max }} }</small></span>
+                        @if (sh !== null) { <span class="pc">{{ sh }}%</span><span class="pb"><i [class.hi]="sh >= 50" [style.width.%]="sh"></i></span> }
+                      </li>
+                    }
+                  </ul>
+                }
+                <footer class="cf">
+                  @if (v.ideal.length) {
+                    <small>@if (flip) { {{ 'Yours has {a} of these {b}' | tr: { a: got, b: v.ideal.length } }} } @else { {{ '{a} of {b} ideal lines' | tr: { a: got, b: v.ideal.length } }} }</small>
+                    <button type="button" class="flipbtn" [attr.aria-pressed]="flip" (click)="toggleFlip(v.item.slot)">{{ flip ? ('Yours' | tr) : ('Ideal' | tr) }} ⟳</button>
+                  }
+                </footer>
+              </article>
+            }
+          </div>
         }
         @if (table() && !anyStats()) { <p class="muted"><small>{{ 'The armory data has no per-line stats, so lines count as 0 until the armory provides them.' | tr }}</small></p> }
         <h4>{{ 'Add equipped items to inventory' | tr }}</h4>
@@ -272,6 +347,27 @@ export class ArmoryPage {
   });
 
   readonly example = EXAMPLE_JSON;
+  readonly flipped = signal<ReadonlySet<number>>(new Set());
+  isFlipped(slot: number): boolean {
+    return this.flipped().has(slot);
+  }
+  toggleFlip(slot: number): void {
+    const n = new Set(this.flipped());
+    if (!n.delete(slot)) n.add(slot);
+    this.flipped.set(n);
+  }
+  lc(letter: string): string {
+    return letter === 'S+' ? 'Sp' : letter === 'BiS' ? 'BIS' : letter.charAt(0);
+  }
+  cardClass(v: { item: { grade: string }; ps: PieceScore | null }, flip: boolean): string {
+    return flip ? 'card bis flip' : `card rar-${v.item.grade}${v.ps ? ' lb-' + this.lc(v.ps.letter) : ''}`;
+  }
+  hasLine(v: { ps: PieceScore | null }, stat: string): boolean {
+    return !!v.ps?.lines.find((l) => l.stat === stat)?.have;
+  }
+  haveCount(v: { ps: PieceScore | null }): number {
+    return v.ps?.lines.filter((l) => l.have).length ?? 0;
+  }
   readonly invMode = signal<'merge' | 'replace' | null>(null);
   readonly invPreview = computed(() => {
     const mode = this.invMode();
@@ -315,9 +411,6 @@ export class ArmoryPage {
   }
   shareOf(v: { ps: PieceScore | null }, stat: string): number | null {
     return v.ps?.lines.find((l) => l.stat.toLowerCase() === stat.toLowerCase())?.share ?? null;
-  }
-  have(v: { ps: PieceScore | null }, stat: string): boolean {
-    return !!v.ps?.lines.find((l) => l.stat === stat)?.have;
   }
   lineCount(t: ShareTable): number {
     return Object.values(t.slots).reduce((a, l) => a + (l?.length ?? 0), 0);
