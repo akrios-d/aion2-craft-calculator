@@ -3,6 +3,8 @@ import { Item, PriceEntry, Recipe, UserData } from '../models';
 import { MAX_PRICE_HISTORY, SchemaError, migrateUserData } from '../storage/schema';
 import { validateRecipe } from '../engine/craft-engine';
 import { toCsv } from './csv';
+import { upsertSnapshot } from '../armory';
+import { applyBisImport } from '../bis';
 import { ApplyResult, ChangeRow, ImportIssue, ImportMode, appendHistory } from './imports';
 
 export const BACKUP_FORMAT = 'aion2-craft-lab-backup';
@@ -80,6 +82,8 @@ export function applyBackup(current: UserData, incoming: UserData, mode: ImportM
       recipeChoices: { ...current.recipeChoices, ...incoming.recipeChoices },
       customItems: mergeById(current.customItems, incoming.customItems),
       customRecipes: mergeById(current.customRecipes, incoming.customRecipes),
+      bisLists: applyBisImport(current.bisLists, incoming.bisLists, 'merge'),
+      armoryCache: incoming.armoryCache.reduce((c, s) => upsertSnapshot(c, s), current.armoryCache),
     };
   }
   next.schemaVersion = current.schemaVersion;
@@ -89,6 +93,8 @@ export function applyBackup(current: UserData, incoming: UserData, mode: ImportM
   count('Saved plans', current.plans.length, next.plans.length);
   count('Custom items', current.customItems.length, next.customItems.length);
   count('Custom recipes', current.customRecipes.length, next.customRecipes.length);
+  count('BiS lists', current.bisLists.length, next.bisLists.length);
+  count('Cached characters', current.armoryCache.length, next.armoryCache.length);
   if (mode === 'replace') changes.push({ kind: 'updated', label: 'Settings', note: 'Settings are replaced by the backup settings.' });
   return { data: next, changes };
 }

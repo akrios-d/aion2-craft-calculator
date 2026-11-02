@@ -1,3 +1,5 @@
+import type { ArmorySnapshot } from './armory';
+import type { BisList } from './bis';
 export type VerificationStatus = 'verified' | 'unverified' | 'user-entered';
 export type Strategy = 'auto' | 'craft' | 'buy';
 
@@ -156,6 +158,10 @@ export interface UserData {
   customRecipes: Recipe[];
   /** Static dataset version the user data was last reconciled against. */
   lastSeenDataVersion: string | null;
+  /** User-defined BiS lists, one per class. */
+  bisLists: BisList[];
+  /** Last looked-up armory characters (pasted by the user), newest first. */
+  armoryCache: ArmorySnapshot[];
 }
 
 export const DEFAULT_SERVER = 'Zikel SA';

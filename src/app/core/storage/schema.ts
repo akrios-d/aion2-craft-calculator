@@ -13,8 +13,10 @@ import {
   UserData,
   priceKey,
 } from '../models';
+import { ArmorySnapshot, MAX_SNAPSHOTS, normalizeSnapshot } from '../armory';
+import { normalizeBisLists } from '../bis';
 
-export const CURRENT_SCHEMA_VERSION = 4;
+export const CURRENT_SCHEMA_VERSION = 5;
 export const MAX_PRICE_HISTORY = 5000;
 
 export const DEFAULT_KINA_CHESTS: { kinah: number; price: number }[] = [
@@ -62,6 +64,8 @@ export function emptyUserData(): UserData {
     customItems: [],
     customRecipes: [],
     lastSeenDataVersion: null,
+    bisLists: [],
+    armoryCache: [],
   };
 }
 
@@ -140,6 +144,9 @@ MIGRATIONS[3] = (d) => {
   delete settings['qunaPacks'];
   return { ...d, schemaVersion: 4, settings };
 };
+
+// v5: BiS lists and cached armory characters.
+MIGRATIONS[4] = (d) => ({ ...d, schemaVersion: 5, bisLists: [], armoryCache: [] });
 
 export class SchemaError extends Error {}
 
@@ -329,6 +336,8 @@ export function normalizeUserData(raw: Raw, warnings: string[] = []): UserData {
   const ids = new Set(characters.map((c) => c.id));
   for (const p of base.plans) if (!ids.has(p.characterId)) p.characterId = active.id;
   base.kinah = isNum(raw['kinah']) && raw['kinah'] >= 0 && Number.isInteger(raw['kinah']) ? raw['kinah'] : 0;
+  base.bisLists = normalizeBisLists(raw['bisLists']);
+  base.armoryCache = (Array.isArray(raw['armoryCache']) ? raw['armoryCache'] : []).map(normalizeSnapshot).filter((s): s is ArmorySnapshot => !!s).slice(0, MAX_SNAPSHOTS);
   base.lastSeenDataVersion = typeof raw['lastSeenDataVersion'] === 'string' ? raw['lastSeenDataVersion'] : null;
   return base;
 }

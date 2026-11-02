@@ -19,6 +19,8 @@ import { addCharacter, deleteCharacter, renameCharacter, switchCharacter, syncAc
 import { appendHistory, applyPriceImport } from './io/imports';
 import { findAlerts, newAlerts, PriceAlert } from './engine/alerts';
 import { ArtworkEntry } from './pantheon';
+import { ArmorySnapshot, upsertSnapshot } from './armory';
+import { BisList, applyBisImport } from './bis';
 import { MarketServer, parseMarketItems, parseServers } from './io/market';
 import { listingsOf, withListings } from './listings';
 import { LoadResult, UserDataStorage, getBrowserStorage } from './storage/user-data-storage';
@@ -453,6 +455,26 @@ export class AppStore {
 
   deleteCustomRecipe(id: string): void {
     this.update((d) => ({ ...d, customRecipes: d.customRecipes.filter((r) => r.id !== id) }));
+  }
+
+  saveSnapshot(snap: ArmorySnapshot): void {
+    this.update((d) => ({ ...d, armoryCache: upsertSnapshot(d.armoryCache, snap) }));
+  }
+
+  removeSnapshot(key: string): void {
+    this.update((d) => ({ ...d, armoryCache: d.armoryCache.filter((s) => s.key !== key) }));
+  }
+
+  saveBisList(list: BisList): void {
+    this.update((d) => ({ ...d, bisLists: [...d.bisLists.filter((l) => l.className !== list.className), list] }));
+  }
+
+  removeBisList(className: string): void {
+    this.update((d) => ({ ...d, bisLists: d.bisLists.filter((l) => l.className !== className) }));
+  }
+
+  importBis(lists: BisList[], mode: 'merge' | 'replace'): void {
+    this.update((d) => ({ ...d, bisLists: applyBisImport(d.bisLists, lists, mode) }));
   }
 
   deleteCustomItem(id: string): void {

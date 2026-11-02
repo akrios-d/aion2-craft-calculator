@@ -45,6 +45,15 @@ Deployment itself has not been performed from this repository; only configuratio
 
 - Item icons are linked from the Aion2.gg image CDN (not bundled); refresh with `node scripts/fetch-aion2gg-icons.mjs`. The calculator's item picker is a searchable list.
 
+## Armory and BiS
+
+The **Armory and BiS** page shows a character's equipped gear and arcana cards and compares them with BiS lists that you define.
+
+- **No automatic fetch.** CORS was verified with real requests: `api-search.plaync.com` rejects foreign origins (403) and `aion2.plaync.com/api/character/{info,equipment}` answers without `Access-Control-Allow-Origin`, so a browser cannot read them from this site. As requested, no proxy or serverless function was added for this feature. The page gives you the exact armory links; you open them in your own browser, copy the JSON and paste it into the page, which validates it and shows a preview before saving. (The separate, older proxy used by the Damage research page is unrelated to this feature.)
+- **Only what the armory returns.** Items are read from `equipment.equipmentList` (slot, name, grade, enchant/exceed level, id, icon); arcana are slots 41-45. Nothing else is invented. Items carry NCSOFT ids, not catalogue ids, so BiS matching uses the armory id when you provide one, otherwise the item name.
+- **Terms of use.** NCSOFT's terms (section 6) forbid automated access outside published interfaces, and the endpoints are undocumented and may change. This app only offers user-triggered, manual lookups, with no polling or scheduling. Characters you paste are cached in LocalStorage (last 10).
+- **BiS data is yours.** No verified BiS source exists, so none is shipped. Create lists per class in the page, or import JSON (`[{"className","entries":[{"slot","name","id?","notes?"}]}]`) or CSV (columns `class,slot,item,id,notes`) with validation, preview, duplicate detection and merge/replace. Paired slots (rings, earrings, bracelets, runes, arcana) match in any slot of the pair/group. Missing BiS pieces that have a recipe in the catalogue can be added to your crafting plans.
+- BiS lists and cached characters are stored in LocalStorage (schema v5), and included in JSON backup/restore.
 ## Characters
 
 The inventory is account-wide. Each character has its own buy/craft strategies, recipe choices and saved craft plans. Inventory, prices, price history and settings are shared. Use the character selector in the header to create, rename, switch or delete characters; JSON backups include all characters.
