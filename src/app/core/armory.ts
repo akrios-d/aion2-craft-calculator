@@ -2,7 +2,7 @@
  * Parsing and validation of NCSOFT armory (aion2.plaync.com) JSON responses.
  *
  * Only fields observed in real responses are read. The armory is an undocumented interface and its
- * CORS policy only allows NCSOFT origins, so the app never fetches it: the user pastes the JSON.
+ * CORS policy only allows NCSOFT origins, so lookups go through the small serverless function in api/.
  */
 
 export interface ArmoryItem {
@@ -234,4 +234,32 @@ export function armoryLinks(region: string, c: SearchCandidate, lang = 'en-US'):
 
 export function searchLink(region: string, keyword: string, lang = 'en-US'): string {
   return `https://api-search.plaync.com/aion2global/search/v2/character?keyword=${encodeURIComponent(keyword)}&region=${encodeURIComponent(region)}&localeInfo=${encodeURIComponent(lang)}`;
+}
+
+export interface EquipmentInventoryPlan {
+  records: { itemId: string; quantity: number }[];
+  unresolved: { name: string; slotName: string; reason: string }[];
+}
+
+/**
+ * Maps the equipped gear (arcana excluded) to catalogue items by exact, unique name. Quantities are how many
+ * equipped pieces share the item. Anything that cannot be matched is returned in `unresolved`, never dropped.
+ * In 'merge' mode an existing larger quantity is kept; the caller still shows a preview before applying.
+ */
+export function planEquipmentInventory(
+  gear: ArmoryItem[],
+  catalogue: { id: string; name: string }[],
+  existing: Record<string, { quantity: number }>,
+  mode: 'merge' | 'replace',
+): EquipmentInventoryPlan {
+  const counts = new Map<string, number>();
+  const unresolved: EquipmentInventoryPlan['unresolved'] = [];
+  for (const g of gear) {
+    const name = g.name.trim().toLowerCase();
+    const hits = catalogue.filter((i) => i.name.trim().toLowerCase() === name);
+    if (hits.length === 1) counts.set(hits[0].id, (counts.get(hits[0].id) ?? 0) + 1);
+    else unresolved.push({ name: g.name, slotName: g.slotName, reason: hits.length ? 'Ambiguous name in the catalogue' : 'Not in the recipe catalogue' });
+  }
+  const records = [...counts].map(([itemId, n]) => ({ itemId, quantity: mode === 'merge' ? Math.max(n, existing[itemId]?.quantity ?? 0) : n }));
+  return { records, unresolved };
 }

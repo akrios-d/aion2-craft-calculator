@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AppStore } from './core/app-store';
 import { AutofocusDirective, DialogService } from './core/dialog';
 import { downloadText } from './core/download';
@@ -22,7 +22,7 @@ import { TrPipe } from './core/tr.pipe';
                 <option [value]="c.id" [selected]="c.id === store.activeCharacter().id">{{ c.name }}</option>
               }
             </select>
-            <button type="button" class="icon" [title]="'New' | tr" [attr.aria-label]="'New' | tr" (click)="newCharacter()">+</button>
+            <button type="button" class="icon" [title]="'Import character from the armory' | tr" [attr.aria-label]="'Import character from the armory' | tr" (click)="newCharacter()">+</button>
             <button type="button" class="icon" [title]="'Rename' | tr" [attr.aria-label]="'Rename' | tr" (click)="renameCharacter()">✎</button>
             <button type="button" class="icon" [title]="'Delete' | tr" [attr.aria-label]="'Delete' | tr" [disabled]="store.characters().length < 2" (click)="removeCharacter()">✕</button>
           </div>
@@ -108,12 +108,14 @@ import { TrPipe } from './core/tr.pipe';
     <footer>
       {{ 'Fully client-side. Your data stays in this browser (LocalStorage).' | tr }}
       {{ 'Not affiliated with NCSOFT or Aion2.gg.' | tr }}
+      {{ 'Armory lookups are on demand only; NCSOFT terms forbid automated access outside published interfaces.' | tr }}
     </footer>
   `,
 })
 export class App {
   protected readonly store = inject(AppStore);
   protected readonly dialog = inject(DialogService);
+  private readonly router = inject(Router);
   readonly restoreError = signal('');
 
   private t(text: string, params = {}): string {
@@ -130,9 +132,8 @@ export class App {
     ev.preventDefault();
   }
 
-  async newCharacter(): Promise<void> {
-    const name = await this.dialog.prompt(this.t('Character name'));
-    if (name?.trim()) this.store.createCharacter(name);
+  newCharacter(): void {
+    void this.router.navigateByUrl('/armory');
   }
 
   async renameCharacter(): Promise<void> {

@@ -27,7 +27,9 @@ Verification status: **0 of 722 recipes verified**
 ## Armory and BiS
 
 - BiS data: **none shipped** (no verified source); lists are user-defined.
-- Armory data: not bundled; fetched on demand through the api/armory.mjs function from NCSOFT's undocumented armory endpoints (CORS blocks direct browser access), with a paste-JSON fallback. Only fields observed in real responses are parsed (slot, name, grade, enchant/exceed level, id, icon, profile basics).
+- Armory data: not bundled; fetched on demand through the api/armory.mjs function from NCSOFT's undocumented armory endpoints (CORS blocks direct browser access). Only fields observed in real responses are parsed (slot, name, grade, enchant/exceed level, id, icon, profile basics).
 - Armory item ids are NCSOFT ids and are not linked to the recipe catalogue; BiS-to-recipe matching is by item name or an id the user enters.
 - NCSOFT terms forbid automated access; lookups are user-triggered only, never polled.
+- Share score tables: **none shipped**. The formula follows the public description at kisk.app/scoring; kisk.app (UX inspiration) cites cielui.com as its data source, and neither is bundled or scraped. Tables are imported by the user per class; the armory rows sampled carry no per-line stats, so scores need stats the armory may not provide.
+- The armory exposes no materials/inventory; only equipped gear can be added to the Inventory, matched by exact name to the catalogue (unmatched pieces are reported).
 

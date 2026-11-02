@@ -21,6 +21,7 @@ import { findAlerts, newAlerts, PriceAlert } from './engine/alerts';
 import { ArtworkEntry } from './pantheon';
 import { ArmorySnapshot, upsertSnapshot } from './armory';
 import { BisList, applyBisImport } from './bis';
+import { ShareTable, applyShareImport } from './share-score';
 import { MarketServer, parseMarketItems, parseServers } from './io/market';
 import { listingsOf, withListings } from './listings';
 import { LoadResult, UserDataStorage, getBrowserStorage } from './storage/user-data-storage';
@@ -319,6 +320,12 @@ export class AppStore {
     this.update((d) => addCharacter(d, name, crypto.randomUUID()));
   }
 
+  selectOrCreateCharacter(name: string): void {
+    const hit = this.characters().find((c) => c.name.trim().toLowerCase() === name.trim().toLowerCase());
+    if (hit) this.selectCharacter(hit.id);
+    else this.createCharacter(name);
+  }
+
   renameActiveCharacter(name: string): void {
     this.update((d) => renameCharacter(d, d.activeCharacterId, name));
   }
@@ -463,6 +470,14 @@ export class AppStore {
 
   removeSnapshot(key: string): void {
     this.update((d) => ({ ...d, armoryCache: d.armoryCache.filter((s) => s.key !== key) }));
+  }
+
+  importShareTables(tables: ShareTable[], mode: 'merge' | 'replace'): void {
+    this.update((d) => ({ ...d, shareTables: applyShareImport(d.shareTables, tables, mode) }));
+  }
+
+  removeShareTable(className: string): void {
+    this.update((d) => ({ ...d, shareTables: d.shareTables.filter((t) => t.className !== className) }));
   }
 
   saveBisList(list: BisList): void {

@@ -1,5 +1,6 @@
 import type { ArmorySnapshot } from './armory';
 import type { BisList } from './bis';
+import type { ShareTable } from './share-score';
 export type VerificationStatus = 'verified' | 'unverified' | 'user-entered';
 export type Strategy = 'auto' | 'craft' | 'buy';
 
@@ -162,6 +163,8 @@ export interface UserData {
   bisLists: BisList[];
   /** Last looked-up armory characters (pasted by the user), newest first. */
   armoryCache: ArmorySnapshot[];
+  /** User-imported share tables (per class) for the gear score. */
+  shareTables: ShareTable[];
 }
 
 export const DEFAULT_SERVER = 'Zikel SA';

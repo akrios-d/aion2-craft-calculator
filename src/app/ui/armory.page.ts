@@ -1,14 +1,17 @@
-import { DatePipe, NgTemplateOutlet } from '@angular/common';
+import { DatePipe, DecimalPipe } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppStore } from '../core/app-store';
-import { ArmoryItem, ArmoryParseResult, ArmoryProfile, ArmorySnapshot, SearchCandidate, armoryLinks, buildSnapshot, parseArmoryJson, pickCandidate, searchLink } from '../core/armory';
-import { BisEntry, BisList, BisImportResult, StatCheck, BIS_SLOTS, compareBis, isScoredSlot, starterBisList, overallGrade, scoreItem, slotGroup, parseBisCsv, parseBisJson } from '../core/bis';
+import { applyInventoryImport } from '../core/io/imports';
+import { ArmorySnapshot, planEquipmentInventory, SearchCandidate, armoryLinks, buildSnapshot, parseArmoryJson, pickCandidate } from '../core/armory';
+import { BisEntry, BisList, BisImportResult, BIS_SLOTS, compareBis, starterBisList, parseBisCsv, parseBisJson } from '../core/bis';
+import { parseCsv } from '../core/io/csv';
+import { CLASSES, DEFAULT_BANDS, EMPTY_TEMPLATE, EXAMPLE_JSON, PieceScore, SHARE_SLOTS, ShareImportResult, ShareTable, observedMaxRolls, overallScore, parseShareCsv, parseShareJson, scorePiece, shareSlotOf } from '../core/share-score';
 import { TrPipe } from '../core/tr.pipe';
 
 @Component({
   selector: 'app-armory',
-  imports: [TrPipe, FormsModule, DatePipe, NgTemplateOutlet],
+  imports: [TrPipe, FormsModule, DatePipe, DecimalPipe],
   styles: `
     .panel { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: .75rem 1rem; display: grid; gap: .6rem; margin: .75rem 0 1rem; }
     .row { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; }
@@ -26,7 +29,7 @@ import { TrPipe } from '../core/tr.pipe';
     .tog { padding: .2rem .75rem; border-radius: 999px; background: transparent; border: 1px solid var(--line); color: var(--fg); cursor: pointer; }
     .tog.on { background: linear-gradient(180deg, #ebb719, #ac770c); color: var(--gold-ink); border-color: var(--gold); font-weight: 700; }
     td { vertical-align: middle; }
-    .cmp { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-bottom: .4rem; }
+    .cmp { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-bottom: .4rem; } .cmp.one { grid-template-columns: 1fr; }
     .ideal { border-left-color: var(--gold); }
     .lt { font-weight: 800; padding: 0 .4rem; border-radius: 4px; border: 1px solid currentColor; width: fit-content; }
     .lt-S { color: #ffc94d; } .lt-A { color: #5cd68a; } .lt-B { color: #5cb3ff; } .lt-C { color: #e0a43a; } .lt-D { color: #e05c5c; }
@@ -38,9 +41,6 @@ import { TrPipe } from '../core/tr.pipe';
 
     <section class="panel">
       <h3>{{ 'Character lookup' | tr }}</h3>
-      <p class="muted">
-        {{ 'Looks the character up in the official NCSOFT armory through a small serverless function (the browser cannot call it directly because of CORS). Only when you click; no polling. Not affiliated with NCSOFT; their terms forbid automated access outside published interfaces, so use it sparingly.' | tr }}
-      </p>
       <div class="row">
         <select [ngModel]="region()" (ngModelChange)="region.set($event)">
           <option value="la">LA</option><option value="eu">EU</option><option value="na">NA</option><option value="asia">ASIA</option>
@@ -50,16 +50,6 @@ import { TrPipe } from '../core/tr.pipe';
         <button (click)="lookup()" [disabled]="loading() || keyword().trim().length < 2">{{ loading() ? ('Looking up…' | tr) : ('Look up' | tr) }}</button>
       </div>
       @if (lookupError()) { <p class="err">{{ lookupError() | tr }}</p> }
-      <details>
-        <summary>{{ 'Advanced / fallback: paste armory JSON' | tr }}</summary>
-        <p class="muted">{{ 'If the lookup is unavailable (for example under ng serve without the proxy), open these links in your browser and paste the JSON here.' | tr }} <a class="chip" [href]="search()" target="_blank" rel="noopener noreferrer">{{ '1. Open name search' | tr }}</a></p>
-        <textarea [ngModel]="pasted()" (ngModelChange)="pasted.set($event)" [placeholder]="'Paste the JSON of the search, /api/character/info or /api/character/equipment' | tr"></textarea>
-        <div class="row">
-          <button (click)="parse()" [disabled]="!pasted().trim()">{{ 'Validate and preview' | tr }}</button>
-          <button (click)="clearPending()" [disabled]="!pasted() && !pendingItems()">{{ 'Clear' | tr }}</button>
-        </div>
-      </details>      @if (parseError()) { <p class="err">{{ parseError() | tr }}</p> }
-      @for (w of warnings(); track $index) { <p class="warn">{{ w }}</p> }
       @if (candidates().length) {
         <table>
           <thead><tr><th>{{ 'Name' | tr }}</th><th>{{ 'Server' | tr }}</th><th>{{ 'Level' | tr }}</th><th></th></tr></thead>
@@ -76,19 +66,6 @@ import { TrPipe } from '../core/tr.pipe';
             }
           </tbody>
         </table>
-      }
-      @if (pendingProfile() || pendingItems()) {
-        <div class="panel">
-          <b>{{ 'Preview' | tr }}: {{ pendingProfile()?.name ?? ('Unknown character' | tr) }}
-            @if (pendingProfile()?.className) { · {{ pendingProfile()?.className }} }
-            @if (pendingProfile()?.level) { · Lv {{ pendingProfile()?.level }} }
-            @if (pendingProfile()?.serverName) { · {{ pendingProfile()?.serverName }} }
-          </b>
-          <span>{{ 'Items' | tr }}: {{ pendingItems()?.length ?? 0 }}</span>
-          @if (!pendingProfile()) { <span class="warn">{{ 'Paste the /api/character/info response too, to get name and class.' | tr }}</span> }
-          @if (!pendingItems()) { <span class="warn">{{ 'Paste the /api/character/equipment response too, to get gear and arcana.' | tr }}</span> }
-          <div class="row"><button (click)="savePending()" [disabled]="!pendingItems()">{{ 'Save character' | tr }}</button></div>
-        </div>
       }
     </section>
 
@@ -108,28 +85,55 @@ import { TrPipe } from '../core/tr.pipe';
         <h3>{{ s.profile.name }}
           <small class="muted">{{ s.profile.className }} @if (s.profile.level) { · Lv {{ s.profile.level }} } @if (s.profile.combatPower) { · CP {{ s.profile.combatPower }} } @if (s.profile.serverName) { · {{ s.profile.serverName }} } @if (s.profile.raceName) { · {{ s.profile.raceName }} }</small>
         </h3>
-        <small class="muted">{{ 'Pasted on' | tr }} {{ s.fetchedAt | date: 'short' }}</small>
-        <h4>{{ 'Equipment' | tr }}</h4>
-        <div class="grid">
-          @for (g of s.gear; track g.slot) { <ng-container [ngTemplateOutlet]="card" [ngTemplateOutletContext]="{ $implicit: g }" /> }
+        <small class="muted">{{ 'Fetched on' | tr }} {{ s.fetchedAt | date: 'short' }}</small>
+        @if (table(); as tb) {
+          @if (overall(); as o) { <p class="ovl">{{ 'Overall gear grade' | tr }}: <b class="lt lt-{{ o.letter.charAt(0) }}">{{ o.letter }}</b> <small class="muted">({{ o.percent | number: '1.0-1' }}%, {{ o.pieces }} {{ 'Items' | tr }})</small></p> }
+          <p class="muted"><small>{{ 'Share-based score following the method publicly described at kisk.app/scoring, computed from the table you imported. The app ships no share data.' | tr }}</small></p>
+        } @else {
+          <p class="warn">{{ 'No share table imported for this class: items are shown unscored. Import one below (Score tables).' | tr }}</p>
+        }
+        @for (grp of groups(); track grp.title) {
+          <h4>{{ grp.title | tr }}</h4>
+          @if (!grp.views.length && grp.title === 'Arcana') { <p class="muted">{{ 'No arcana returned by the armory.' | tr }}</p> }
+          @for (v of grp.views; track v.item.slot) {
+            <div class="cmp" [class.one]="!v.ideal.length">
+              <div class="gear g-{{ v.item.grade }}">
+                @if (isUrl(v.item.icon)) { <img class="ico" [src]="v.item.icon" referrerpolicy="no-referrer" alt="" loading="lazy" /> }
+                <small>{{ v.item.slotName }} · {{ 'Equipped' | tr }}</small>
+                <b>{{ v.item.name }}</b>
+                <small>{{ v.item.grade }}@if (v.item.enchant) { · +{{ v.item.enchant }} }@if (v.item.exceed) { · ★{{ v.item.exceed }} }</small>
+                @for (st of v.item.stats ?? []; track st.name) { <small>{{ st.name }} {{ st.value }}@if (shareOf(v, st.name) !== null) { · {{ shareOf(v, st.name) }}% }</small> }
+                @if (v.ps; as ps) { <span class="lt lt-{{ ps.letter.charAt(0) }}">{{ ps.letter }} <small>{{ ps.percent | number: '1.0-1' }}%@if (ps.approximate) { ≈ }</small></span> }
+              </div>
+              @if (v.ideal.length) {
+                <div class="gear ideal">
+                  <small>{{ 'Ideal' | tr }} {{ cls() }} {{ v.item.slotName }} · <b>{{ 'Best in slot' | tr }}</b></small>
+                  @for (l of v.ideal; track l.stat) {
+                    <small>@if (v.item.stats) { <span [class]="have(v, l.stat) ? 'ok' : 'err'">{{ have(v, l.stat) ? '✓' : '✗' }}</span> } {{ l.stat }} · {{ l.share }}%@if (l.maxRoll) { · max {{ l.maxRoll }} }</small>
+                  }
+                </div>
+              }
+            </div>
+          }
+        }
+        @if (table() && !anyStats()) { <p class="muted"><small>{{ 'The armory data has no per-line stats, so lines count as 0 until the armory provides them.' | tr }}</small></p> }
+        <h4>{{ 'Add equipped items to inventory' | tr }}</h4>
+        <p class="muted"><small>{{ 'Only the equipped gear is added (quantity 1 per piece), matched by exact name to the recipe catalogue; unmatched pieces are listed below, never dropped. The armory does not expose materials or warehouse contents, so those are not imported.' | tr }}</small></p>
+        <div class="row">
+          <button (click)="invMode.set('merge')">{{ 'Preview merge' | tr }}</button>
+          <button (click)="invMode.set('replace')">{{ 'Preview replace' | tr }}</button>
         </div>
-        <h4>{{ 'Arcana' | tr }}</h4>
-        @if (s.arcana.length) {
-          <div class="grid">
-            @for (g of s.arcana; track g.slot) { <ng-container [ngTemplateOutlet]="card" [ngTemplateOutletContext]="{ $implicit: g }" /> }
-          </div>
-        } @else { <p class="muted">{{ 'No arcana returned by the armory.' | tr }}</p> }
+        @if (invPreview(); as ip) {
+          <table>
+            <thead><tr><th>{{ 'Item' | tr }}</th><th>{{ 'Before' | tr }}</th><th>{{ 'After' | tr }}</th><th></th></tr></thead>
+            <tbody>@for (c of ip.res.changes; track $index) { <tr><td>{{ c.label }}</td><td>{{ c.before ?? '' }}</td><td>{{ c.after ?? '' }}</td><td>{{ c.kind }}</td></tr> }</tbody>
+          </table>
+          @for (u of ip.plan.unresolved; track $index) { <p class="warn">{{ u.slotName }}: {{ u.name }} - {{ u.reason | tr }}</p> }
+          @if (invMode() === 'replace') { <p class="warn">{{ 'Replace removes every inventory item not equipped by this character.' | tr }}</p> }
+          <div class="row"><button (click)="applyInv()" [disabled]="!ip.plan.records.length">{{ 'Apply to inventory' | tr }}</button><button (click)="invMode.set(null)">{{ 'Cancel' | tr }}</button></div>
+        }
       </section>
     }
-
-    <ng-template #card let-g>
-      <div class="gear g-{{ g.grade }}">
-        @if (isUrl(g.icon)) { <img class="ico" [src]="g.icon" referrerpolicy="no-referrer" alt="" loading="lazy" /> }
-        <small>{{ g.slotName }}</small>
-        <b>{{ g.name }}</b>
-        <small>{{ g.grade }}@if (g.enchant) { · +{{ g.enchant }} }@if (g.exceed) { · ★{{ g.exceed }} }</small>
-      </div>
-    </ng-template>
 
     <section class="panel">
       <h3>{{ 'Best in Slot (BiS)' | tr }}</h3>
@@ -154,34 +158,20 @@ import { TrPipe } from '../core/tr.pipe';
       @if (comparison(); as c) {
         <div class="bar"><i [style.width.%]="c.total ? (100 * c.matched) / c.total : 0"></i></div>
         <b>{{ c.matched }} / {{ c.total }} {{ 'BiS pieces equipped' | tr }}</b>
-        @if (overall(); as o) { <p class="ovl">{{ 'Overall gear grade' | tr }}: <b class="lt lt-{{ o.letter.charAt(0) }}">{{ o.letter }}</b> <small class="muted">({{ o.score }}/100)</small></p> }
-        <p class="muted"><small>{{ 'Score is our own heuristic (grade, enchant, exceed, ideal stats, BiS match), not kisk or NCSOFT. See the README.' | tr }}</small></p>
-        @for (grp of groups(); track grp.title) {
-          <h4>{{ grp.title | tr }}</h4>
-          @for (r of grp.rows; track r.entry.slot) {
-            <div class="cmp">
-              <div class="gear" [class.empty]="!r.equipped">
-                <small>{{ r.entry.slot }} · {{ 'Equipped' | tr }}</small>
-                @if (r.equipped; as q) {
-                  <b>{{ q.name }}</b>
-                  <small>{{ q.grade }}@if (q.enchant) { · +{{ q.enchant }} }@if (q.exceed) { · ★{{ q.exceed }} }</small>
-                  @for (st of q.stats ?? []; track st.name) { <small>{{ st.name }} {{ st.value }}@if (st.max) { / {{ st.max }} }</small> }
-                  @if (r.sc; as sc) { <span class="lt lt-{{ sc.letter.charAt(0) }}">{{ sc.letter }} <small>{{ sc.score }}</small></span> }
-                } @else { <b>—</b> }
-                <small class="st-{{ r.status }}">{{ statusLabel(r.status) | tr }}</small>
-              </div>
-              <div class="gear ideal">
-                <small>{{ 'Ideal' | tr }} {{ cls() }} {{ r.entry.slot }} · <b>{{ 'Best in slot' | tr }}</b> <button class="mini" (click)="removeEntry(r.entry)">✕</button></small>
-                @if (r.entry.itemName) { <b>{{ r.entry.itemName }}</b> } @else { <input [placeholder]="'Item name' | tr" (change)="setItem(r.entry, $any($event.target).value)" /> }
-                @for (sc of checks(r); track sc.name) {
-                  <small>@if (r.equipped?.stats) { <span [class]="sc.have ? 'ok' : 'err'">{{ sc.have ? '✓' : '✗' }}</span> } {{ sc.name }}@if (sc.max) { +{{ sc.max }} }</small>
-                }
-                @if (r.entry.notes) { <small class="muted">{{ r.entry.notes }}</small> }
-              </div>
-            </div>
-          }
-        }
-        @if (craftable().length) {
+        <table>
+          <thead><tr><th>{{ 'Slot' | tr }}</th><th>BiS</th><th>{{ 'Equipped' | tr }}</th><th>{{ 'Status' | tr }}</th><th></th></tr></thead>
+          <tbody>
+            @for (r of c.rows; track r.entry.slot) {
+              <tr>
+                <td>{{ r.entry.slot }}</td>
+                <td>@if (r.entry.itemName) { {{ r.entry.itemName }}@if (r.entry.notes) { <small class="muted"> · {{ r.entry.notes }}</small> } } @else { <input [placeholder]="'Item name' | tr" (change)="setItem(r.entry, $any($event.target).value)" /> }</td>
+                <td>{{ r.equipped?.name ?? '—' }}</td>
+                <td class="st-{{ r.status }}">{{ statusLabel(r.status) | tr }}</td>
+                <td><button class="mini" (click)="removeEntry(r.entry)">✕</button></td>
+              </tr>
+            }
+          </tbody>
+        </table>        @if (craftable().length) {
           <div class="row">
             <span>{{ 'Missing pieces with a known recipe' | tr }}: {{ craftable().length }}</span>
             <button (click)="addToPlans()">{{ 'Add to crafting plans' | tr }}</button>
@@ -196,7 +186,7 @@ import { TrPipe } from '../core/tr.pipe';
             }
           </tbody>
         </table>
-        <p class="muted">{{ 'Paste a character above to compare with this list.' | tr }}</p>
+        <p class="muted">{{ 'Look up a character above to compare with this list.' | tr }}</p>
       } @else {
         <p class="muted">{{ 'No BiS list for this class yet.' | tr }}</p>
         <button (click)="createStarter()" [disabled]="!currentClass()">{{ 'Create starter list (all slots)' | tr }}</button>
@@ -217,6 +207,28 @@ import { TrPipe } from '../core/tr.pipe';
         }
       }
     </section>
+
+    <section class="panel">
+      <h3>{{ 'Score tables' | tr }}</h3>
+      <p class="muted">{{ 'Import, per class, the share of top players carrying each stat line on each slot (JSON, or CSV: class, slot, stat, share, maxRoll). Slots: weapon, guard, torso, pants, helmet, shoulders, gloves, boots, cape, necklace, earrings, rings, bracelet, arcana. The app ships no data: the empty template and the example below use fake numbers. Without maxRoll the observed maximum is used and the score is marked approximate (≈). Optional "bands" override the letter thresholds.' | tr }}</p>
+      <div class="row">
+        @for (t of store.data().shareTables; track t.className) {
+          <span class="chip">{{ t.className }} <button class="mini" (click)="store.removeShareTable(t.className)" [attr.aria-label]="'Remove' | tr">✕</button></span>
+        }
+        <button (click)="shareText.set(example)">{{ 'Load fake example' | tr }}</button>
+        <button (click)="shareText.set(template())">{{ 'Load empty template' | tr }}</button>
+      </div>
+      <textarea [ngModel]="shareText()" (ngModelChange)="shareText.set($event)"></textarea>
+      <div class="row"><button (click)="previewShare()" [disabled]="!shareText().trim()">{{ 'Validate and preview' | tr }}</button></div>
+      @if (sharePreview(); as p) {
+        @for (e of p.errors; track $index) { <p class="err">{{ e }}</p> }
+        @for (w of p.warnings; track $index) { <p class="warn">{{ w }}</p> }
+        @for (x of p.tables; track x.className) { <p class="ok">{{ x.className }}: {{ lineCount(x) }} {{ 'Items' | tr }}</p> }
+        @if (p.tables.length) {
+          <div class="row"><button (click)="applyShare('merge')">{{ 'Merge' | tr }}</button><button (click)="applyShare('replace')">{{ 'Replace' | tr }}</button></div>
+        }
+      }
+    </section>
   `,
 })
 export class ArmoryPage {
@@ -227,12 +239,7 @@ export class ArmoryPage {
   readonly loading = signal(false);
   readonly lookupError = signal('');
   readonly keyword = signal('');
-  readonly pasted = signal('');
-  readonly parseError = signal('');
-  readonly warnings = signal<string[]>([]);
   readonly candidates = signal<SearchCandidate[]>([]);
-  readonly pendingProfile = signal<ArmoryProfile | undefined>(undefined);
-  readonly pendingItems = signal<ArmoryItem[] | undefined>(undefined);
   readonly selectedKey = signal('');
   readonly className = signal('');
   readonly slot = signal(BIS_SLOTS[0]);
@@ -242,7 +249,6 @@ export class ArmoryPage {
   readonly bisText = signal('');
   readonly bisPreview = signal<BisImportResult | null>(null);
 
-  readonly search = computed(() => searchLink(this.region(), this.keyword().trim() || 'name'));
   readonly snap = computed<ArmorySnapshot | undefined>(() => {
     const cache = this.store.data().armoryCache;
     return cache.find((s) => s.key === this.selectedKey()) ?? cache[0];
@@ -265,24 +271,69 @@ export class ArmoryPage {
     return [...new Set(ids)];
   });
 
-  readonly cls = computed(() => this.list()?.className ?? '');
-  readonly scored = computed(() => (this.comparison()?.rows ?? []).map((r) => ({ ...r, sc: r.equipped && r.entry.itemName ? scoreItem(r.equipped, r.entry) : undefined })));
-  readonly overall = computed(() => overallGrade(this.scored().map((r) => ({ item: r.equipped, score: r.sc }))));
-  readonly groups = computed(() => {
-    const rows = this.scored();
-    const arc = (r: { entry: BisEntry }) => slotGroup(r.entry.slot) === 'arcana';
-    const uns = (r: { entry: BisEntry }) => !arc(r) && !isScoredSlot(r.entry.slot);
-    return [
-      { title: 'Scored slots', rows: rows.filter((r) => !arc(r) && !uns(r)) },
-      { title: 'Unscored', rows: rows.filter(uns) },
-      { title: 'Arcana', rows: rows.filter(arc) },
-    ].filter((g) => g.rows.length);
+  readonly example = EXAMPLE_JSON;
+  readonly invMode = signal<'merge' | 'replace' | null>(null);
+  readonly invPreview = computed(() => {
+    const mode = this.invMode();
+    const s = this.snap();
+    if (!mode || !s) return null;
+    const d = this.store.data();
+    const plan = planEquipmentInventory(s.gear, this.store.items(), d.inventory, mode);
+    return { plan, res: applyInventoryImport(d, plan.records, mode, this.store.nameOf) };
   });
-
-  checks(r: { entry: BisEntry; sc?: { statChecks: StatCheck[] } }): StatCheck[] {
-    return r.sc?.statChecks ?? (r.entry.stats ?? []).map((s) => ({ ...s, have: false }));
+  readonly shareText = signal('');
+  readonly sharePreview = signal<ShareImportResult | null>(null);
+  readonly cls = computed(() => (this.snap()?.profile.className ?? '').toLowerCase());
+  readonly table = computed(() => this.store.data().shareTables.find((t) => t.className === this.cls()));
+  private readonly observed = computed(() => observedMaxRolls(this.store.data().armoryCache.flatMap((s) => [...s.gear, ...s.arcana])));
+  readonly views = computed(() => {
+    const s = this.snap();
+    const tb = this.table();
+    return [...(s?.gear ?? []), ...(s?.arcana ?? [])].map((item) => {
+      const slot = shareSlotOf(item.slotName);
+      return { item, slot, ps: tb ? scorePiece(item, tb, this.observed()) : null, ideal: (slot && tb?.slots[slot]) || [] };
+    });
+  });
+  readonly overall = computed(() => overallScore(this.views().map((v) => v.ps), this.table()?.bands));
+  readonly anyStats = computed(() => this.views().some((v) => v.item.stats?.length));
+  readonly groups = computed(() => {
+    const v = this.views();
+    return [
+      { title: 'Scored slots', views: v.filter((x) => x.slot && x.slot !== 'arcana') },
+      { title: 'Unscored', views: v.filter((x) => !x.slot) },
+      { title: 'Arcana', views: v.filter((x) => x.slot === 'arcana') },
+    ].filter((g) => g.views.length || (g.title === 'Arcana' && !!this.snap()));
+  });
+  applyInv(): void {
+    const ip = this.invPreview();
+    if (!ip) return;
+    this.store.update(() => ip.res.data);
+    this.invMode.set(null);
   }
-
+  template() {
+    return JSON.stringify(CLASSES.map((c) => EMPTY_TEMPLATE(c)).map(({ className }) => ({ className, bands: DEFAULT_BANDS, slots: Object.fromEntries(SHARE_SLOTS.map((s) => [s, []])) })), null, 2);
+  }
+  shareOf(v: { ps: PieceScore | null }, stat: string): number | null {
+    return v.ps?.lines.find((l) => l.stat.toLowerCase() === stat.toLowerCase())?.share ?? null;
+  }
+  have(v: { ps: PieceScore | null }, stat: string): boolean {
+    return !!v.ps?.lines.find((l) => l.stat === stat)?.have;
+  }
+  lineCount(t: ShareTable): number {
+    return Object.values(t.slots).reduce((a, l) => a + (l?.length ?? 0), 0);
+  }
+  previewShare(): void {
+    const t = this.shareText().trim();
+    this.sharePreview.set(t.startsWith('[') || t.startsWith('{') ? parseShareJson(t) : parseShareCsv(t, parseCsv));
+  }
+  applyShare(mode: 'merge' | 'replace'): void {
+    const p = this.sharePreview();
+    if (!p?.tables.length) return;
+    this.store.importShareTables(p.tables, mode);
+    this.sharePreview.set(null);
+    this.shareText.set('');
+  }
+  readonly craftableDummy = 0;
   links(c: SearchCandidate) {
     return armoryLinks(this.region(), c);
   }
@@ -300,7 +351,7 @@ export class ArmoryPage {
     this.loading.set(true);
     try {
       const res = await fetch(`/api/armory?region=${this.region()}&keyword=${encodeURIComponent(name)}`);
-      if (!res.ok) throw new Error(res.status === 429 ? 'Too many lookups, wait a minute.' : 'Armory lookup failed. Try again later or use the paste fallback.');
+      if (!res.ok) throw new Error(res.status === 429 ? 'Too many lookups, wait a minute.' : 'Armory lookup failed. Try again later.');
       const r = parseArmoryJson(await res.text());
       const list = r.candidates ?? [];
       const hit = pickCandidate(list, name, this.server());
@@ -308,7 +359,7 @@ export class ArmoryPage {
       else if (list.length) this.candidates.set(list);
       else this.lookupError.set('No character found. Check the region, server and name.');
     } catch (e) {
-      this.lookupError.set(e instanceof Error && !(e instanceof TypeError) ? e.message : 'Armory lookup unavailable (the serverless function does not run under plain ng serve). Use the paste fallback.');
+      this.lookupError.set(e instanceof Error && !(e instanceof TypeError) ? e.message : 'Armory lookup unavailable (the serverless function does not run under plain ng serve).');
     } finally {
       this.loading.set(false);
     }
@@ -318,15 +369,16 @@ export class ArmoryPage {
     this.lookupError.set('');
     try {
       const res = await fetch(`/api/armory?region=${this.region()}&characterId=${encodeURIComponent(c.characterId)}&serverId=${c.serverId}`);
-      if (!res.ok) throw new Error('Armory lookup failed. Try again later or use the paste fallback.');
+      if (!res.ok) throw new Error('Armory lookup failed. Try again later.');
       const r = parseArmoryJson(await res.text());
       if (r.error || !r.items) throw new Error(r.error ?? 'The armory returned no equipment.');
       const snap = buildSnapshot(r.profile, r.items);
       this.store.saveSnapshot(snap);
+      this.store.selectOrCreateCharacter(snap.profile.name);
       this.selectedKey.set(snap.key);
       this.candidates.set([]);
     } catch (e) {
-      this.lookupError.set(e instanceof Error && !(e instanceof TypeError) ? e.message : 'Armory lookup unavailable. Use the paste fallback.');
+      this.lookupError.set(e instanceof Error && !(e instanceof TypeError) ? e.message : 'Armory lookup unavailable.');
     } finally {
       this.loading.set(false);
     }
@@ -341,31 +393,6 @@ export class ArmoryPage {
     const l = this.list();
     if (!l) return;
     this.store.saveBisList({ ...l, entries: l.entries.map((x) => (x.slot === e.slot ? { ...x, itemName: name.trim() } : x)), updatedAt: new Date().toISOString() });
-  }
-
-  parse(): void {
-    const r: ArmoryParseResult = parseArmoryJson(this.pasted());
-    this.parseError.set(r.error ?? '');
-    this.warnings.set(r.warnings);
-    if (r.error) return;
-    if (r.candidates) this.candidates.set(r.candidates);
-    if (r.profile) this.pendingProfile.set(r.profile);
-    if (r.items) this.pendingItems.set(r.items);
-    this.pasted.set('');
-  }
-  clearPending(): void {
-    this.pasted.set('');
-    this.parseError.set('');
-    this.warnings.set([]);
-    this.candidates.set([]);
-    this.pendingProfile.set(undefined);
-    this.pendingItems.set(undefined);
-  }
-  savePending(): void {
-    const snap = buildSnapshot(this.pendingProfile(), this.pendingItems() ?? []);
-    this.store.saveSnapshot(snap);
-    this.selectedKey.set(snap.key);
-    this.clearPending();
   }
 
   canAdd(): boolean {
