@@ -27,7 +27,7 @@ Verification status: **0 of 722 recipes verified**
 ## Armory and BiS
 
 - BiS data: **none shipped** (no verified source); lists are user-defined.
-- Armory data: not bundled; fetched on demand through the api/armory.mjs function from NCSOFT's undocumented armory endpoints (CORS blocks direct browser access). Only fields observed in real responses are parsed (slot, name, grade, enchant/exceed level, id, icon, profile basics).
+- NCSOFT armory lookup: removed from the UI and the api/ folder (it returned no stat lines); character data comes from kisk.app (see below).
 - Armory item ids are NCSOFT ids and are not linked to the recipe catalogue; BiS-to-recipe matching is by item name or an id the user enters.
 - NCSOFT terms forbid automated access; lookups are user-triggered only, never polled.
 - Gear share tables (`public/data/gear-shares.json`): **9 classes x 13 slots = 948 parsed lines, all counted by the importer, no warnings**; source kisk.app/scoring (which cites cielui.com), kisk snapshot 2026-10-19, fetched 2026-11-02; sample sizes: gladiator n=838, templar n=727, assassin n=792, ranger n=1158, sorcerer n=774, spiritmaster n=528, cleric n=856, chanter n=656, fighter n=578 (Korean top PvE players). Not provided by the page and therefore NOT included: Arcana tables, largest roll per slot (scores are approximate, shown with a tilde-equals mark). Data may be outdated or differ from Global. User-imported tables override it per class/slot. Armory rows sampled carry no per-line stats, so scores need stats the armory may not provide.
