@@ -129,7 +129,7 @@ import { TrPipe } from '../core/tr.pipe';
           }
         </header>
         @if (table()) {
-          <p class="muted"><small>{{ 'Share-based score following the method publicly described at kisk.app/scoring. Our own implementation: scores are not kisk''s. Largest rolls are unknown, so values are approximate (≈).' | tr }}</small>
+          <p class="muted"><small>{{ 'Share-based score following the method publicly described at kisk.app/scoring. Our own implementation: scores are not the same as kisk. Largest rolls are unknown, so values are approximate (≈).' | tr }}</small>
             @if (shareCredit()) { <br /><small>{{ shareCredit() }} · <a href="https://kisk.app/scoring" target="_blank" rel="noopener noreferrer">kisk.app</a> / <a href="https://cielui.com/stats/engrave" target="_blank" rel="noopener noreferrer">cielui.com</a> · {{ 'Korea PvE data, may be outdated or differ from Global.' | tr }}</small> }
             @if (tableOrigin() === 'merged' || tableOrigin() === 'user') { <br /><small>{{ 'Your imported table overrides the baseline for the slots it defines.' | tr }}</small> }
           </p>
