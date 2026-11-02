@@ -24,6 +24,9 @@ import { TrPipe } from '../core/tr.pipe';
     .cp { font-size: .8rem; vertical-align: middle; padding: .1rem .5rem; border-radius: 6px; background: #ebb71922; color: #ffd966; border: 1px solid #ebb71977; }
     .otile { display: grid; justify-items: center; padding: .4rem .9rem; border-radius: 10px; border: 2px solid currentColor; background: var(--bg); min-width: 6rem; }
     .otile b { font-size: 2rem; line-height: 1; }
+    .tabs { display: flex; gap: .4rem; margin: .5rem 0; flex-wrap: wrap; }
+    .tab { padding: .35rem .8rem; border-radius: 6px; border: 1px solid var(--gold); background: var(--panel); color: var(--fg); cursor: pointer; }
+    .tab.on { background: var(--gold); color: var(--bg); font-weight: 600; }
     .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; }
     @media (max-width: 960px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 600px) { .cards { grid-template-columns: 1fr; } .gh { flex-direction: column; } }
@@ -114,9 +117,14 @@ import { TrPipe } from '../core/tr.pipe';
           }
         </header>
         <p class="muted"><small>{{ 'Scores, grades, shares and Ideal cards below are kisk.app data (cielui.com, Korea PvE, may be outdated or inaccurate), not our own calculation. The Ideal lists also act as the BiS for this class unless you import your own table.' | tr }}</small></p>
+        <div class="tabs" role="tablist" [attr.aria-label]="'Character sections' | tr" (keydown)="kTabKey($event)">
+          @for (t of kTabs(); track t.key) {
+            <button type="button" role="tab" class="tab" [id]="'ktab-' + t.key" [class.on]="kTab() === t.key" [attr.aria-selected]="kTab() === t.key" [attr.aria-controls]="'kpanel'" [attr.tabindex]="kTab() === t.key ? 0 : -1" (click)="setKTab(t.key)">{{ t.label | tr }} ({{ t.count }})</button>
+          }
+        </div>
+        <div id="kpanel" role="tabpanel" [attr.aria-labelledby]="'ktab-' + kTab()">
         @for (g of kGroups(); track g.title) {
-          @if (g.cards.length) {
-            <h4>{{ g.title | tr }}</h4>
+          @if (g.cards.length && g.key === kTab()) {
             <div class="cards">
               @for (c of g.cards; track c.slot) {
                 @let flip = kFlipped(c);
@@ -158,8 +166,7 @@ import { TrPipe } from '../core/tr.pipe';
             </div>
           }
         }
-        @if (k.report.unscored.length) {
-          <h4>{{ 'Unscored' | tr }}</h4>
+        @if (kTab() === 'unscored' && k.report.unscored.length) {
           <div class="cards">
             @for (u of k.report.unscored; track $index) {
               <article class="card">
@@ -174,6 +181,7 @@ import { TrPipe } from '../core/tr.pipe';
             }
           </div>
         }
+        </div>
       </section>
     }
 
@@ -467,8 +475,17 @@ export class ArmoryPage {
   readonly kError = signal('');
   readonly kSel = signal('');
   readonly kSnap = computed(() => { const c = this.store.kiskCache(); return c.find((s) => s.url === this.kSel()) ?? c[0] ?? null; });
+  readonly kTabs = computed(() => { const r = this.kSnap()?.report; return [{ key: 'gear', label: 'Gear', count: r?.gear.length ?? 0 }, { key: 'unscored', label: 'Unscored', count: r?.unscored.length ?? 0 }, { key: 'arcana', label: 'Arcana', count: r?.arcana.length ?? 0 }]; });
+  readonly kTab = signal<string>(((): string => { try { const v = localStorage.getItem('aion2-craft-lab.armory-tab'); return v === 'unscored' || v === 'arcana' ? v : 'gear'; } catch { return 'gear'; } })());
+  setKTab(k: string): void { this.kTab.set(k); try { localStorage.setItem('aion2-craft-lab.armory-tab', k); } catch { /* ignore */ } }
+  kTabKey(e: KeyboardEvent): void {
+    const keys = this.kTabs().map((t) => t.key); let i = keys.indexOf(this.kTab());
+    if (e.key === 'ArrowRight') i = (i + 1) % keys.length; else if (e.key === 'ArrowLeft') i = (i + keys.length - 1) % keys.length; else if (e.key === 'Home') i = 0; else if (e.key === 'End') i = keys.length - 1; else return;
+    e.preventDefault(); this.setKTab(keys[i]);
+    setTimeout(() => document.getElementById('ktab-' + keys[i])?.focus());
+  }
   readonly kFlip = signal<ReadonlySet<string>>(new Set());
-  readonly kGroups = computed(() => { const r = this.kSnap()?.report; return r ? [{ title: 'Gear', cards: r.gear }, { title: 'Arcana', cards: r.arcana }] : []; });
+  readonly kGroups = computed(() => { const r = this.kSnap()?.report; return r ? [{ key: 'gear', title: 'Gear', cards: r.gear }, { key: 'arcana', title: 'Arcana', cards: r.arcana }] : []; });
   kFlipped(c: KiskCard): boolean { return !!c.ideal && this.kFlip().has(c.slot); }
   kToggle(c: KiskCard): void { const n = new Set(this.kFlip()); if (!n.delete(c.slot)) n.add(c.slot); this.kFlip.set(n); }
   kHave(c: KiskCard): number { return c.ideal?.lines.filter((l) => l.have).length ?? 0; }
