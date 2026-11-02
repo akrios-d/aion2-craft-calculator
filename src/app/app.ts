@@ -1,6 +1,9 @@
-import { Component, inject, signal } from '@angular/core';
+﻿import { Component, inject, signal } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AppStore } from './core/app-store';
+
+/** Feature flag: set to true to show the Damage research link in the top nav again (the route stays registered). */
+const SHOW_DAMAGE_RESEARCH = false;
 import { AutofocusDirective, DialogService } from './core/dialog';
 import { downloadText } from './core/download';
 import { parseBackup } from './core/io/backup';
@@ -63,7 +66,7 @@ import { TrPipe } from './core/tr.pipe';
           <a routerLink="/pantheon" routerLinkActive="active">{{ 'Pantheon' | tr }}</a>
           <a routerLink="/armory" routerLinkActive="active">{{ 'Armory and BiS' | tr }}</a>
           <a routerLink="/kina" routerLinkActive="active">{{ 'Kina chests' | tr }}</a>
-          <a routerLink="/damage" routerLinkActive="active">{{ 'Damage research' | tr }}</a>
+          @if (showDamageResearch) { <a routerLink="/damage" routerLinkActive="active">{{ 'Damage research' | tr }}</a> }
           <a routerLink="/settings" routerLinkActive="active">{{ 'Settings' | tr }}</a>
         </div>
       </nav>
@@ -113,6 +116,7 @@ import { TrPipe } from './core/tr.pipe';
   `,
 })
 export class App {
+  readonly showDamageResearch = SHOW_DAMAGE_RESEARCH;
   protected readonly store = inject(AppStore);
   protected readonly dialog = inject(DialogService);
   private readonly router = inject(Router);

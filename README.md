@@ -64,7 +64,7 @@ The inventory is account-wide. Each character has its own buy/craft strategies, 
 
 ## Character lookup (the only serverless exception)
 
-The optional **Search character by name** box on the Damage research page calls pi/character.ts, a tiny Vercel function that proxies two read-only endpoints of the official NCSOFT site (search and character info). It needs no env vars or credentials, validates all input and only contacts those two hosts. It uses undocumented endpoints that may change or be restricted by NCSOFT, and it returns only profile and base attributes, not total attack, crit or amp. It does not work under `ng serve`; the rest of the app stays fully client-side.
+The optional **Search character by name** box on the Damage research page (currently hidden from the nav; set `SHOW_DAMAGE_RESEARCH` in `src/app/app.ts` to re-enable, the `/damage` route stays) calls pi/character.ts, a tiny Vercel function that proxies two read-only endpoints of the official NCSOFT site (search and character info). It needs no env vars or credentials, validates all input and only contacts those two hosts. It uses undocumented endpoints that may change or be restricted by NCSOFT, and it returns only profile and base attributes, not total attack, crit or amp. It does not work under `ng serve`; the rest of the app stays fully client-side.
 
 ## Market import (the only serverless exception)
 
