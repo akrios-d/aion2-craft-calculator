@@ -24,6 +24,8 @@ import { TrPipe } from '../core/tr.pipe';
     .cp { font-size: .8rem; vertical-align: middle; padding: .1rem .5rem; border-radius: 6px; background: #ebb71922; color: #ffd966; border: 1px solid #ebb71977; }
     .otile { display: grid; justify-items: center; padding: .4rem .9rem; border-radius: 10px; border: 2px solid currentColor; background: var(--bg); min-width: 6rem; }
     .otile b { font-size: 2rem; line-height: 1; }
+    .linkbtn { background: none; border: 0; padding: 0; color: var(--gold); text-decoration: underline; cursor: pointer; font: inherit; }
+    .hint { margin: .3rem 0; }
     .tabs { display: flex; gap: .4rem; margin: .5rem 0; flex-wrap: wrap; }
     .tab { padding: .35rem .8rem; border-radius: 6px; border: 1px solid var(--gold); background: var(--panel); color: var(--fg); cursor: pointer; }
     .tab.on { background: var(--gold); color: var(--bg); font-weight: 600; }
@@ -291,6 +293,9 @@ import { TrPipe } from '../core/tr.pipe';
                     }
                   </ul>
                 } @else {
+                  @if (!v.item.stats?.length) {
+                    <p class="hint"><small>{{ 'No stat lines in the armory data.' | tr }} <button type="button" class="linkbtn" (click)="kiskFromArmory()" [disabled]="kBusy()">{{ 'Load details from kisk.app' | tr }}</button></small></p>
+                  }
                   <ul class="rows">
                     @for (st of v.item.stats ?? []; track st.name) {
                       @let sh = shareOf(v, st.name);
@@ -311,7 +316,7 @@ import { TrPipe } from '../core/tr.pipe';
             }
           </div>
         }
-        @if (table() && !anyStats()) { <p class="muted"><small>{{ 'The armory data has no per-line stats, so lines count as 0 until the armory provides them.' | tr }}</small></p> }
+        @if (!anyStats()) { <p class="muted"><small>{{ 'The NCSOFT armory returns the equipped items but no per-line stats or arcana skill lines; kisk.app provides them (current / max and share %).' | tr }} <button type="button" class="linkbtn" (click)="kiskFromArmory()" [disabled]="kBusy()">{{ 'Load details from kisk.app' | tr }}</button></small></p> }
         <h4>{{ 'Add equipped items to inventory' | tr }}</h4>
         <p class="muted"><small>{{ 'Only the equipped gear is added (quantity 1 per piece), matched by exact name to the recipe catalogue; unmatched pieces are listed below, never dropped. The armory does not expose materials or warehouse contents, so those are not imported.' | tr }}</small></p>
         <div class="row">
@@ -491,6 +496,14 @@ export class ArmoryPage {
   kHave(c: KiskCard): number { return c.ideal?.lines.filter((l) => l.have).length ?? 0; }
   kClass(c: KiskCard): string { return this.kFlipped(c) ? 'bis' : 'lb-' + this.lc(c.letter); }
   kLine(l: KiskLine): string { return l.max !== undefined && l.max !== l.value ? `${l.value} / ${l.max}` : l.value; }
+
+  kiskFromArmory(): void {
+    const s = this.snap();
+    if (!s) return;
+    this.kName.set(s.profile.name);
+    if (s.profile.serverName) this.kServer.set(s.profile.serverName.toLowerCase());
+    void this.kiskLookup();
+  }
 
   async kiskLookup(): Promise<void> {
     const name = this.kName().trim();
