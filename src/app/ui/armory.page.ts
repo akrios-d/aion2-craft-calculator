@@ -6,7 +6,7 @@ import { applyInventoryImport } from '../core/io/imports';
 import { ArmorySnapshot, planEquipmentInventory, SearchCandidate, armoryLinks, buildSnapshot, parseArmoryJson, pickCandidate } from '../core/armory';
 import { BisEntry, BisList, BisImportResult, BIS_SLOTS, compareBis, starterBisList, parseBisCsv, parseBisJson } from '../core/bis';
 import { parseCsv } from '../core/io/csv';
-import { CLASSES, DEFAULT_BANDS, EMPTY_TEMPLATE, EXAMPLE_JSON, PieceScore, SHARE_SLOTS, ShareImportResult, ShareTable, observedMaxRolls, overallScore, parseShareCsv, parseShareJson, scorePiece, shareSlotOf } from '../core/share-score';
+import { CLASSES, DEFAULT_BANDS, effectiveShareTable, EMPTY_TEMPLATE, EXAMPLE_JSON, PieceScore, SHARE_SLOTS, ShareImportResult, ShareTable, observedMaxRolls, overallScore, parseShareCsv, parseShareJson, scorePiece, shareSlotOf } from '../core/share-score';
 import { TrPipe } from '../core/tr.pipe';
 
 @Component({
@@ -16,45 +16,45 @@ import { TrPipe } from '../core/tr.pipe';
     .panel { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: .75rem 1rem; display: grid; gap: .6rem; margin: .75rem 0 1rem; }
     .row { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; }
     textarea { width: 100%; min-height: 6rem; font-family: monospace; font-size: .8rem; }
-    .gh { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; padding: .9rem 1rem; border-radius: 12px; background: linear-gradient(135deg, #1a1b4b, #2b1a4f 60%, #141a3a); border: 1px solid #4b4a8f; }
+    .gh { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; padding: .9rem 1rem; border-radius: 12px; background: linear-gradient(135deg, var(--win), var(--panel)); border: 1px solid var(--line); }
     .chips { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: .3rem; }
     .gchip { padding: .1rem .6rem; border-radius: 999px; background: #ffffff14; border: 1px solid #ffffff2e; font-size: .8rem; }
     .gname { margin: 0; font-size: 1.8rem; line-height: 1.2; }
     .cp { font-size: .8rem; vertical-align: middle; padding: .1rem .5rem; border-radius: 6px; background: #ebb71922; color: #ffd966; border: 1px solid #ebb71977; }
-    .otile { display: grid; justify-items: center; padding: .4rem .9rem; border-radius: 10px; border: 2px solid currentColor; background: #0b0c2a; min-width: 6rem; }
+    .otile { display: grid; justify-items: center; padding: .4rem .9rem; border-radius: 10px; border: 2px solid currentColor; background: var(--bg); min-width: 6rem; }
     .otile b { font-size: 2rem; line-height: 1; }
     .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; }
     @media (max-width: 960px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 600px) { .cards { grid-template-columns: 1fr; } .gh { flex-direction: column; } }
-    .card { display: flex; flex-direction: column; gap: .5rem; padding: .7rem .8rem; border-radius: 12px; background: linear-gradient(160deg, #1b1c4a, #15163a); border: 1px solid #3c3d7a; min-height: 11rem; color: #eef; }
-    .rar-Legend { border-color: #ff9d3c88; } .rar-Unique { border-color: #ffc94d88; } .rar-Epic { border-color: #b784ff88; } .rar-Rare { border-color: #5cb3ff88; }
-    .lb-A { border-color: #dfe3ee; } .lb-B { border-color: #2f4fa8; } .lb-C, .lb-D { border-color: #3c3d7a; }
+    .card { display: flex; flex-direction: column; gap: .5rem; padding: .7rem .8rem; border-radius: 12px; background: linear-gradient(160deg, var(--win), var(--panel)); border: 1px solid #ffffff26; min-height: 11rem; color: var(--fg); }
+    .rar-Legend { border-color: #ff9d3c88; } .rar-Unique { border-color: #ffc94d88; } .rar-Epic { border-color: #c79a4a88; } .rar-Rare { border-color: #8aa0b588; }
+    .lb-A { border-color: #dfe3ee; } .lb-B { border-color: #6d7b8c; } .lb-C, .lb-D { border-color: #ffffff26; }
     .lb-S, .lb-Sp { border-color: #ffc94d; box-shadow: 0 0 .9rem #ffc94d55; }
-    .lb-BIS, .card.bis { border-color: #ffd966; box-shadow: 0 0 1rem #ffd96688, 0 0 1.6rem #b784ff55; }
+    .lb-BIS, .card.bis { border-color: #ffd966; box-shadow: 0 0 1rem #ffd96688, 0 0 1.6rem #ebb71955; }
     .ch { display: flex; gap: .6rem; align-items: flex-start; }
     .ct { display: grid; gap: .15rem; min-width: 0; flex: 1; }
-    .ct small { color: #b9bbe6; }
+    .ct small { color: var(--muted); }
     .nm { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .cico { position: relative; flex: none; width: 44px; height: 44px; border-radius: 8px; background: #0008; display: grid; place-items: center; border: 1px solid #ffffff22; }
     .cico img { width: 100%; height: 100%; border-radius: 8px; }
     .cico.star { color: #ffd966; font-size: 1.6rem; }
     .plus { position: absolute; right: -6px; bottom: -6px; font-style: normal; font-size: .7rem; font-weight: 700; background: #ebb719; color: #1a1300; border-radius: 6px; padding: 0 .25rem; }
-    .sc { width: fit-content; font-size: .75rem; padding: 0 .45rem; border-radius: 999px; background: #ffffff14; border: 1px solid #ffffff2e; color: #eef; }
-    .lt { flex: none; font-weight: 800; font-size: 1.1rem; padding: .1rem .55rem; border-radius: 8px; border: 2px solid currentColor; background: #0b0c2a; }
-    .lc-Sp, .lc-S { color: #ffd966; } .lc-A { color: #eceff7; } .lc-B { color: #7fa2ff; } .lc-C { color: #e0a43a; } .lc-D { color: #ff8a8a; } .lc-BIS { color: #ffd966; }
+    .sc { width: fit-content; font-size: .75rem; padding: 0 .45rem; border-radius: 999px; background: #ffffff14; border: 1px solid #ffffff2e; color: var(--fg); }
+    .lt { flex: none; font-weight: 800; font-size: 1.1rem; padding: .1rem .55rem; border-radius: 8px; border: 2px solid currentColor; background: var(--bg); }
+    .lc-Sp, .lc-S { color: #ffd966; } .lc-A { color: #eceff7; } .lc-B { color: #9fb3c8; } .lc-C { color: #e0a43a; } .lc-D { color: #ff8a8a; } .lc-BIS { color: #ffd966; }
     .rows { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem; flex: 1; }
     .rows li { display: grid; grid-template-columns: auto 1fr auto; column-gap: .45rem; align-items: center; }
     .rows li > .lb { grid-column: 1 / 3; } .rows li > .ck + .lb { grid-column: 2; } .rows li > .pc { grid-column: 3; }
     .rows li > .pb { grid-column: 1 / -1; }
-    .lb small { color: #b9bbe6; } .pc { font-size: .85rem; font-variant-numeric: tabular-nums; }
+    .lb small { color: var(--muted); } .pc { font-size: .85rem; font-variant-numeric: tabular-nums; }
     .pb { height: 5px; border-radius: 3px; background: #ffffff1c; overflow: hidden; margin-top: .2rem; }
-    .pb > i { display: block; height: 100%; background: #5b78d6; }
-    .pb > i.hi { background: linear-gradient(90deg, #a46bff, #ffd966); }
-    .ck { width: 1.1rem; height: 1.1rem; border-radius: 50%; border: 2px solid #7a7cc0; display: grid; place-items: center; font-size: .7rem; color: #1a1300; }
+    .pb > i { display: block; height: 100%; background: #7d8796; }
+    .pb > i.hi { background: linear-gradient(90deg, var(--gold), #ffd966); }
+    .ck { width: 1.1rem; height: 1.1rem; border-radius: 50%; border: 2px solid var(--muted); display: grid; place-items: center; font-size: .7rem; color: #1a1300; }
     .ck.on { background: #ffd966; border-color: #ffd966; font-weight: 800; }
     li.miss { opacity: .7; }
     .cf { display: flex; justify-content: space-between; align-items: center; gap: .5rem; border-top: 1px solid #ffffff1c; padding-top: .45rem; min-height: 1.8rem; }
-    .cf small { color: #b9bbe6; }
+    .cf small { color: var(--muted); }
     .flipbtn { padding: .15rem .7rem; border-radius: 999px; background: #ffffff10; border: 1px solid #ffffff44; color: #fff; cursor: pointer; }
     .flipbtn:hover, .flipbtn:focus-visible, .flipbtn[aria-pressed='true'] { background: #ffd96633; border-color: #ffd966; }
     .st-match { color: var(--ok); } .st-mismatch { color: var(--warn); } .st-missing { color: var(--err); }
@@ -129,9 +129,12 @@ import { TrPipe } from '../core/tr.pipe';
           }
         </header>
         @if (table()) {
-          <p class="muted"><small>{{ 'Share-based score following the method publicly described at kisk.app/scoring, computed from the table you imported. The app ships no share data.' | tr }}</small></p>
+          <p class="muted"><small>{{ 'Share-based score following the method publicly described at kisk.app/scoring. Our own implementation: scores are not kisk''s. Largest rolls are unknown, so values are approximate (≈).' | tr }}</small>
+            @if (shareCredit()) { <br /><small>{{ shareCredit() }} · <a href="https://kisk.app/scoring" target="_blank" rel="noopener noreferrer">kisk.app</a> / <a href="https://cielui.com/stats/engrave" target="_blank" rel="noopener noreferrer">cielui.com</a> · {{ 'Korea PvE data, may be outdated or differ from Global.' | tr }}</small> }
+            @if (tableOrigin() === 'merged' || tableOrigin() === 'user') { <br /><small>{{ 'Your imported table overrides the baseline for the slots it defines.' | tr }}</small> }
+          </p>
         } @else {
-          <p class="warn">{{ 'No share table imported for this class: items are shown unscored. Import one below (Score tables).' | tr }}</p>
+          <p class="warn">{{ 'No share table available for this class: items are shown unscored. Import one below (Score tables).' | tr }}</p>
         }
         @for (grp of groups(); track grp.title) {
           <h4>{{ grp.title | tr }}</h4>
@@ -285,7 +288,7 @@ import { TrPipe } from '../core/tr.pipe';
 
     <section class="panel">
       <h3>{{ 'Score tables' | tr }}</h3>
-      <p class="muted">{{ 'Import, per class, the share of top players carrying each stat line on each slot (JSON, or CSV: class, slot, stat, share, maxRoll). Slots: weapon, guard, torso, pants, helmet, shoulders, gloves, boots, cape, necklace, earrings, rings, bracelet, arcana. The app ships no data: the empty template and the example below use fake numbers. Without maxRoll the observed maximum is used and the score is marked approximate (≈). Optional "bands" override the letter thresholds.' | tr }}</p>
+      <p class="muted">{{ 'Import, per class, the share of top players carrying each stat line on each slot (JSON, or CSV: class, slot, stat, share, maxRoll). Slots: weapon, guard, torso, pants, helmet, shoulders, gloves, boots, cape, necklace, earrings, rings, bracelet, arcana. The app already loads a baseline (kisk.app / cielui.com snapshot); tables you import override it per class and slot. The empty template and the example below use fake numbers. Without maxRoll the observed maximum is used and the score is marked approximate (≈). Optional "bands" override the letter thresholds.' | tr }}</p>
       <div class="row">
         @for (t of store.data().shareTables; track t.className) {
           <span class="chip">{{ t.className }} <button class="mini" (click)="store.removeShareTable(t.className)" [attr.aria-label]="'Remove' | tr">✕</button></span>
@@ -380,7 +383,16 @@ export class ArmoryPage {
   readonly shareText = signal('');
   readonly sharePreview = signal<ShareImportResult | null>(null);
   readonly cls = computed(() => (this.snap()?.profile.className ?? '').toLowerCase());
-  readonly table = computed(() => this.store.data().shareTables.find((t) => t.className === this.cls()));
+  private readonly eff = computed(() => effectiveShareTable(this.cls(), this.store.data().shareTables, this.store.shareBaseline()?.tables ?? []));
+  readonly table = computed(() => this.eff()?.table);
+  readonly shareCredit = computed(() => {
+    const e = this.eff();
+    const b = this.store.shareBaseline();
+    if (!e || e.origin === 'user') return '';
+    const n = b?.samples[this.cls()];
+    return (b?.credit ?? '') + (n ? ' · n=' + n : '');
+  });
+  readonly tableOrigin = computed(() => this.eff()?.origin ?? null);
   private readonly observed = computed(() => observedMaxRolls(this.store.data().armoryCache.flatMap((s) => [...s.gear, ...s.arcana])));
   readonly views = computed(() => {
     const s = this.snap();

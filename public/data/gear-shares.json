@@ -1,0 +1,4131 @@
+{
+ "schema": 1,
+ "source": "kisk.app/scoring",
+ "sourceUrl": "https://kisk.app/scoring",
+ "upstream": {
+  "name": "cielui.com",
+  "url": "https://cielui.com/stats/engrave"
+ },
+ "snapshotDate": "2026-10-19",
+ "fetchedAt": "2026-11-02",
+ "credit": "Shares: kisk.app / cielui.com, snapshot 2026-10-19 (per kisk), fetched 2026-11-02",
+ "notes": [
+  "Share = % of top Korean PvE players of the class carrying that stat line on that slot, as listed by kisk.app/scoring (which cites cielui.com).",
+  "Each slot lists only the most carried lines; rarer lines are not listed and count as 0.",
+  "The page gives no largest roll per slot (maxRoll), so scores use the observed maximum and are flagged approximate.",
+  "No Arcana table is listed on the page.",
+  "Korea is patches ahead of Global and PvE-only: the data may be outdated or not apply to Global. Not affiliated with kisk.app, cielui.com or NCSOFT."
+ ],
+ "bands": [
+  {
+   "letter": "D",
+   "min": 0
+  },
+  {
+   "letter": "C",
+   "min": 5
+  },
+  {
+   "letter": "B",
+   "min": 12
+  },
+  {
+   "letter": "A",
+   "min": 22
+  },
+  {
+   "letter": "S",
+   "min": 35
+  },
+  {
+   "letter": "S+",
+   "min": 55
+  },
+  {
+   "letter": "BiS",
+   "min": 90
+  }
+ ],
+ "classes": [
+  {
+   "className": "gladiator",
+   "sample": 838,
+   "slots": {
+    "weapon": [
+     {
+      "stat": "Weapon Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Damage Boost",
+      "share": 99
+     },
+     {
+      "stat": "Precision",
+      "share": 94
+     },
+     {
+      "stat": "Multi-hit Chance",
+      "share": 94
+     },
+     {
+      "stat": "Attack",
+      "share": 82
+     },
+     {
+      "stat": "Status Effect Accuracy",
+      "share": 11
+     }
+    ],
+    "guard": [
+     {
+      "stat": "Weapon Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Multi-hit Chance",
+      "share": 99
+     },
+     {
+      "stat": "Precision",
+      "share": 94
+     },
+     {
+      "stat": "Attack",
+      "share": 83
+     },
+     {
+      "stat": "Status Effect Accuracy",
+      "share": 11
+     }
+    ],
+    "torso": [
+     {
+      "stat": "Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 95
+     },
+     {
+      "stat": "Attack",
+      "share": 94
+     },
+     {
+      "stat": "Accuracy",
+      "share": 18
+     },
+     {
+      "stat": "Defense increase",
+      "share": 15
+     },
+     {
+      "stat": "Dexterity",
+      "share": 11
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 9
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 8
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 7
+     },
+     {
+      "stat": "Endurance",
+      "share": 5
+     }
+    ],
+    "pants": [
+     {
+      "stat": "Attack increase",
+      "share": 99
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 94
+     },
+     {
+      "stat": "Damage Tolerance",
+      "share": 87
+     },
+     {
+      "stat": "Attack",
+      "share": 84
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 5
+     },
+     {
+      "stat": "Dexterity",
+      "share": 5
+     },
+     {
+      "stat": "Accuracy",
+      "share": 4
+     },
+     {
+      "stat": "Endurance",
+      "share": 3
+     }
+    ],
+    "helmet": [
+     {
+      "stat": "Attack increase",
+      "share": 99
+     },
+     {
+      "stat": "Double Chance",
+      "share": 99
+     },
+     {
+      "stat": "Attack",
+      "share": 91
+     },
+     {
+      "stat": "Incoming Heal",
+      "share": 20
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 7
+     },
+     {
+      "stat": "Accuracy",
+      "share": 5
+     },
+     {
+      "stat": "Dexterity",
+      "share": 4
+     },
+     {
+      "stat": "Endurance",
+      "share": 3
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 2
+     }
+    ],
+    "shoulders": [
+     {
+      "stat": "Critical Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Double Chance",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 96
+     },
+     {
+      "stat": "Accuracy",
+      "share": 19
+     },
+     {
+      "stat": "Defense increase",
+      "share": 14
+     },
+     {
+      "stat": "Dexterity",
+      "share": 9
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 8
+     },
+     {
+      "stat": "Endurance",
+      "share": 4
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 2
+     }
+    ],
+    "gloves": [
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 95
+     },
+     {
+      "stat": "Attack",
+      "share": 91
+     },
+     {
+      "stat": "Defense increase",
+      "share": 10
+     },
+     {
+      "stat": "Accuracy",
+      "share": 8
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 4
+     },
+     {
+      "stat": "Dexterity",
+      "share": 3
+     }
+    ],
+    "boots": [
+     {
+      "stat": "Move Speed",
+      "share": 100
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 95
+     },
+     {
+      "stat": "Attack",
+      "share": 91
+     },
+     {
+      "stat": "Defense increase",
+      "share": 11
+     },
+     {
+      "stat": "Accuracy",
+      "share": 9
+     },
+     {
+      "stat": "Dexterity",
+      "share": 4
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 3
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 1
+     }
+    ],
+    "cape": [
+     {
+      "stat": "Double Chance",
+      "share": 100
+     },
+     {
+      "stat": "Attack increase",
+      "share": 99
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 94
+     },
+     {
+      "stat": "Attack",
+      "share": 67
+     },
+     {
+      "stat": "Critical Damage Tolerance",
+      "share": 12
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 7
+     },
+     {
+      "stat": "Accuracy",
+      "share": 2
+     },
+     {
+      "stat": "Dexterity",
+      "share": 1
+     }
+    ],
+    "necklace": [
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 94
+     },
+     {
+      "stat": "Accuracy",
+      "share": 63
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 42
+     },
+     {
+      "stat": "Block",
+      "share": 12
+     }
+    ],
+    "earrings": [
+     {
+      "stat": "Move Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 94
+     },
+     {
+      "stat": "Accuracy",
+      "share": 70
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 47
+     },
+     {
+      "stat": "Block",
+      "share": 13
+     }
+    ],
+    "rings": [
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 99
+     },
+     {
+      "stat": "Precision",
+      "share": 94
+     },
+     {
+      "stat": "Accuracy",
+      "share": 55
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 46
+     },
+     {
+      "stat": "Block",
+      "share": 12
+     },
+     {
+      "stat": "Defense",
+      "share": 1
+     }
+    ],
+    "bracelet": [
+     {
+      "stat": "Destruction [Zikel]",
+      "share": 100
+     },
+     {
+      "stat": "Time [Siel]",
+      "share": 100
+     },
+     {
+      "stat": "Wisdom [Lumiel]",
+      "share": 99
+     },
+     {
+      "stat": "Illusion [Kaisinel]",
+      "share": 99
+     },
+     {
+      "stat": "Justice [Nezekan]",
+      "share": 88
+     },
+     {
+      "stat": "Freedom [Vaizel]",
+      "share": 61
+     },
+     {
+      "stat": "Death [Triniel]",
+      "share": 37
+     },
+     {
+      "stat": "Space [Israphel]",
+      "share": 26
+     }
+    ]
+   }
+  },
+  {
+   "className": "templar",
+   "sample": 727,
+   "slots": {
+    "weapon": [
+     {
+      "stat": "Weapon Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Damage Boost",
+      "share": 99
+     },
+     {
+      "stat": "Precision",
+      "share": 98
+     },
+     {
+      "stat": "Multi-hit Chance",
+      "share": 92
+     },
+     {
+      "stat": "Attack",
+      "share": 80
+     },
+     {
+      "stat": "Status Effect Accuracy",
+      "share": 11
+     }
+    ],
+    "guard": [
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Weapon Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Damage Boost",
+      "share": 99
+     },
+     {
+      "stat": "Multi-hit Chance",
+      "share": 98
+     },
+     {
+      "stat": "Precision",
+      "share": 98
+     },
+     {
+      "stat": "Attack",
+      "share": 82
+     },
+     {
+      "stat": "Status Effect Accuracy",
+      "share": 11
+     }
+    ],
+    "torso": [
+     {
+      "stat": "Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 93
+     },
+     {
+      "stat": "Attack",
+      "share": 93
+     },
+     {
+      "stat": "Dexterity",
+      "share": 52
+     },
+     {
+      "stat": "Block",
+      "share": 42
+     },
+     {
+      "stat": "Defense increase",
+      "share": 27
+     },
+     {
+      "stat": "Endurance",
+      "share": 22
+     },
+     {
+      "stat": "Accuracy",
+      "share": 21
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 19
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 6
+     }
+    ],
+    "pants": [
+     {
+      "stat": "Attack increase",
+      "share": 99
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 93
+     },
+     {
+      "stat": "Damage Tolerance",
+      "share": 91
+     },
+     {
+      "stat": "Attack",
+      "share": 84
+     },
+     {
+      "stat": "Dexterity",
+      "share": 18
+     },
+     {
+      "stat": "Endurance",
+      "share": 14
+     },
+     {
+      "stat": "Block",
+      "share": 7
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 6
+     }
+    ],
+    "helmet": [
+     {
+      "stat": "Double Chance",
+      "share": 100
+     },
+     {
+      "stat": "Attack increase",
+      "share": 99
+     },
+     {
+      "stat": "Attack",
+      "share": 92
+     },
+     {
+      "stat": "Dexterity",
+      "share": 32
+     },
+     {
+      "stat": "Incoming Heal",
+      "share": 30
+     },
+     {
+      "stat": "Endurance",
+      "share": 15
+     },
+     {
+      "stat": "Block",
+      "share": 14
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 10
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 6
+     }
+    ],
+    "shoulders": [
+     {
+      "stat": "Critical Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Double Chance",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 95
+     },
+     {
+      "stat": "Dexterity",
+      "share": 50
+     },
+     {
+      "stat": "Block",
+      "share": 35
+     },
+     {
+      "stat": "Defense increase",
+      "share": 24
+     },
+     {
+      "stat": "Accuracy",
+      "share": 23
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 22
+     },
+     {
+      "stat": "Endurance",
+      "share": 17
+     }
+    ],
+    "gloves": [
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 94
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 93
+     },
+     {
+      "stat": "Dexterity",
+      "share": 29
+     },
+     {
+      "stat": "Defense increase",
+      "share": 20
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 15
+     },
+     {
+      "stat": "Block",
+      "share": 11
+     },
+     {
+      "stat": "Accuracy",
+      "share": 11
+     }
+    ],
+    "boots": [
+     {
+      "stat": "Move Speed",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 94
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 94
+     },
+     {
+      "stat": "Dexterity",
+      "share": 24
+     },
+     {
+      "stat": "Defense increase",
+      "share": 22
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 15
+     },
+     {
+      "stat": "Block",
+      "share": 12
+     },
+     {
+      "stat": "Accuracy",
+      "share": 12
+     }
+    ],
+    "cape": [
+     {
+      "stat": "Attack increase",
+      "share": 100
+     },
+     {
+      "stat": "Double Chance",
+      "share": 100
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 94
+     },
+     {
+      "stat": "Attack",
+      "share": 78
+     },
+     {
+      "stat": "Critical Damage Tolerance",
+      "share": 14
+     },
+     {
+      "stat": "Dexterity",
+      "share": 9
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 6
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 5
+     }
+    ],
+    "necklace": [
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 98
+     },
+     {
+      "stat": "Accuracy",
+      "share": 88
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 86
+     },
+     {
+      "stat": "Block",
+      "share": 63
+     },
+     {
+      "stat": "Defense",
+      "share": 3
+     }
+    ],
+    "earrings": [
+     {
+      "stat": "Move Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 98
+     },
+     {
+      "stat": "Accuracy",
+      "share": 93
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 89
+     },
+     {
+      "stat": "Block",
+      "share": 64
+     },
+     {
+      "stat": "Defense",
+      "share": 4
+     }
+    ],
+    "rings": [
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 98
+     },
+     {
+      "stat": "Attack",
+      "share": 98
+     },
+     {
+      "stat": "Block",
+      "share": 53
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 51
+     },
+     {
+      "stat": "Accuracy",
+      "share": 50
+     },
+     {
+      "stat": "Defense",
+      "share": 2
+     }
+    ],
+    "bracelet": [
+     {
+      "stat": "Destruction [Zikel]",
+      "share": 100
+     },
+     {
+      "stat": "Time [Siel]",
+      "share": 100
+     },
+     {
+      "stat": "Wisdom [Lumiel]",
+      "share": 97
+     },
+     {
+      "stat": "Illusion [Kaisinel]",
+      "share": 94
+     },
+     {
+      "stat": "Justice [Nezekan]",
+      "share": 83
+     },
+     {
+      "stat": "Space [Israphel]",
+      "share": 54
+     },
+     {
+      "stat": "Freedom [Vaizel]",
+      "share": 38
+     },
+     {
+      "stat": "Death [Triniel]",
+      "share": 34
+     }
+    ]
+   }
+  },
+  {
+   "className": "assassin",
+   "sample": 792,
+   "slots": {
+    "weapon": [
+     {
+      "stat": "Weapon Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Multi-hit Chance",
+      "share": 97
+     },
+     {
+      "stat": "Precision",
+      "share": 93
+     },
+     {
+      "stat": "Attack",
+      "share": 90
+     },
+     {
+      "stat": "Status Effect Accuracy",
+      "share": 6
+     }
+    ],
+    "guard": [
+     {
+      "stat": "Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Weapon Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Multi-hit Chance",
+      "share": 99
+     },
+     {
+      "stat": "Precision",
+      "share": 94
+     },
+     {
+      "stat": "Attack",
+      "share": 91
+     },
+     {
+      "stat": "Status Effect Accuracy",
+      "share": 4
+     }
+    ],
+    "torso": [
+     {
+      "stat": "Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 98
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 94
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 18
+     },
+     {
+      "stat": "Defense increase",
+      "share": 17
+     },
+     {
+      "stat": "Accuracy",
+      "share": 16
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 6
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 4
+     },
+     {
+      "stat": "Constitution",
+      "share": 3
+     },
+     {
+      "stat": "Willpower",
+      "share": 3
+     }
+    ],
+    "pants": [
+     {
+      "stat": "Attack increase",
+      "share": 100
+     },
+     {
+      "stat": "Damage Tolerance",
+      "share": 95
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 93
+     },
+     {
+      "stat": "Attack",
+      "share": 89
+     },
+     {
+      "stat": "Accuracy",
+      "share": 3
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 3
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 2
+     },
+     {
+      "stat": "Constitution",
+      "share": 1
+     }
+    ],
+    "helmet": [
+     {
+      "stat": "Attack increase",
+      "share": 100
+     },
+     {
+      "stat": "Double Chance",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 93
+     },
+     {
+      "stat": "Incoming Heal",
+      "share": 23
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 4
+     },
+     {
+      "stat": "Accuracy",
+      "share": 3
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 2
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 1
+     }
+    ],
+    "shoulders": [
+     {
+      "stat": "Critical Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Double Chance",
+      "share": 99
+     },
+     {
+      "stat": "Attack",
+      "share": 98
+     },
+     {
+      "stat": "Defense increase",
+      "share": 15
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 15
+     },
+     {
+      "stat": "Accuracy",
+      "share": 10
+     },
+     {
+      "stat": "Endurance Penetration",
+      "share": 3
+     },
+     {
+      "stat": "Endurance",
+      "share": 2
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 1
+     }
+    ],
+    "gloves": [
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 96
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 93
+     },
+     {
+      "stat": "Defense increase",
+      "share": 6
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 6
+     },
+     {
+      "stat": "Accuracy",
+      "share": 3
+     }
+    ],
+    "boots": [
+     {
+      "stat": "Move Speed",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 96
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 95
+     },
+     {
+      "stat": "Defense increase",
+      "share": 5
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 4
+     },
+     {
+      "stat": "Accuracy",
+      "share": 4
+     }
+    ],
+    "cape": [
+     {
+      "stat": "Attack increase",
+      "share": 100
+     },
+     {
+      "stat": "Double Chance",
+      "share": 99
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 93
+     },
+     {
+      "stat": "Attack",
+      "share": 75
+     },
+     {
+      "stat": "Critical Damage Tolerance",
+      "share": 7
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 4
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 2
+     },
+     {
+      "stat": "Accuracy",
+      "share": 2
+     }
+    ],
+    "necklace": [
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 93
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 69
+     },
+     {
+      "stat": "Accuracy",
+      "share": 41
+     }
+    ],
+    "earrings": [
+     {
+      "stat": "Move Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 93
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 75
+     },
+     {
+      "stat": "Accuracy",
+      "share": 47
+     }
+    ],
+    "rings": [
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 99
+     },
+     {
+      "stat": "Precision",
+      "share": 93
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 47
+     },
+     {
+      "stat": "Accuracy",
+      "share": 24
+     }
+    ],
+    "bracelet": [
+     {
+      "stat": "Destruction [Zikel]",
+      "share": 100
+     },
+     {
+      "stat": "Illusion [Kaisinel]",
+      "share": 100
+     },
+     {
+      "stat": "Time [Siel]",
+      "share": 100
+     },
+     {
+      "stat": "Wisdom [Lumiel]",
+      "share": 99
+     },
+     {
+      "stat": "Justice [Nezekan]",
+      "share": 84
+     },
+     {
+      "stat": "Death [Triniel]",
+      "share": 69
+     },
+     {
+      "stat": "Freedom [Vaizel]",
+      "share": 41
+     },
+     {
+      "stat": "Space [Israphel]",
+      "share": 14
+     }
+    ]
+   }
+  },
+  {
+   "className": "ranger",
+   "sample": 1158,
+   "slots": {
+    "weapon": [
+     {
+      "stat": "Weapon Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 99
+     },
+     {
+      "stat": "Multi-hit Chance",
+      "share": 98
+     },
+     {
+      "stat": "Attack",
+      "share": 86
+     },
+     {
+      "stat": "Status Effect Accuracy",
+      "share": 10
+     }
+    ],
+    "guard": [
+     {
+      "stat": "Weapon Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Multi-hit Chance",
+      "share": 99
+     },
+     {
+      "stat": "Precision",
+      "share": 98
+     },
+     {
+      "stat": "Attack",
+      "share": 89
+     },
+     {
+      "stat": "Status Effect Accuracy",
+      "share": 3
+     }
+    ],
+    "torso": [
+     {
+      "stat": "Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 97
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 94
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 86
+     },
+     {
+      "stat": "Accuracy",
+      "share": 67
+     },
+     {
+      "stat": "Defense increase",
+      "share": 30
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 12
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 10
+     },
+     {
+      "stat": "Constitution",
+      "share": 8
+     },
+     {
+      "stat": "Endurance",
+      "share": 7
+     }
+    ],
+    "pants": [
+     {
+      "stat": "Attack increase",
+      "share": 100
+     },
+     {
+      "stat": "Damage Tolerance",
+      "share": 97
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 94
+     },
+     {
+      "stat": "Attack",
+      "share": 93
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 40
+     },
+     {
+      "stat": "Accuracy",
+      "share": 13
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 5
+     },
+     {
+      "stat": "Endurance",
+      "share": 3
+     }
+    ],
+    "helmet": [
+     {
+      "stat": "Double Chance",
+      "share": 100
+     },
+     {
+      "stat": "Attack increase",
+      "share": 99
+     },
+     {
+      "stat": "Attack",
+      "share": 96
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 59
+     },
+     {
+      "stat": "Incoming Heal",
+      "share": 54
+     },
+     {
+      "stat": "Accuracy",
+      "share": 24
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 10
+     },
+     {
+      "stat": "Endurance",
+      "share": 4
+     },
+     {
+      "stat": "Constitution",
+      "share": 2
+     }
+    ],
+    "shoulders": [
+     {
+      "stat": "Critical Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Double Chance",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 98
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 87
+     },
+     {
+      "stat": "Accuracy",
+      "share": 64
+     },
+     {
+      "stat": "Defense increase",
+      "share": 26
+     },
+     {
+      "stat": "Endurance Penetration",
+      "share": 6
+     },
+     {
+      "stat": "Endurance",
+      "share": 6
+     },
+     {
+      "stat": "Constitution",
+      "share": 4
+     }
+    ],
+    "gloves": [
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 97
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 95
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 70
+     },
+     {
+      "stat": "Accuracy",
+      "share": 32
+     },
+     {
+      "stat": "Defense increase",
+      "share": 21
+     },
+     {
+      "stat": "Endurance Penetration",
+      "share": 3
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 1
+     }
+    ],
+    "boots": [
+     {
+      "stat": "Move Speed",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 97
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 94
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 69
+     },
+     {
+      "stat": "Accuracy",
+      "share": 29
+     },
+     {
+      "stat": "Defense increase",
+      "share": 21
+     },
+     {
+      "stat": "Constitution",
+      "share": 2
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 2
+     }
+    ],
+    "cape": [
+     {
+      "stat": "Double Chance",
+      "share": 100
+     },
+     {
+      "stat": "Attack increase",
+      "share": 99
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 95
+     },
+     {
+      "stat": "Attack",
+      "share": 87
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 28
+     },
+     {
+      "stat": "Critical Damage Tolerance",
+      "share": 23
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 10
+     },
+     {
+      "stat": "Accuracy",
+      "share": 7
+     }
+    ],
+    "necklace": [
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 100
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 99
+     },
+     {
+      "stat": "Precision",
+      "share": 99
+     },
+     {
+      "stat": "Accuracy",
+      "share": 97
+     },
+     {
+      "stat": "Defense",
+      "share": 6
+     },
+     {
+      "stat": "HP",
+      "share": 4
+     },
+     {
+      "stat": "Evasion",
+      "share": 1
+     }
+    ],
+    "earrings": [
+     {
+      "stat": "Move Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 100
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 99
+     },
+     {
+      "stat": "Accuracy",
+      "share": 99
+     },
+     {
+      "stat": "Defense",
+      "share": 7
+     },
+     {
+      "stat": "HP",
+      "share": 5
+     },
+     {
+      "stat": "Intelligence",
+      "share": 2
+     },
+     {
+      "stat": "Evasion",
+      "share": 1
+     }
+    ],
+    "rings": [
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 99
+     },
+     {
+      "stat": "Attack",
+      "share": 96
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 54
+     },
+     {
+      "stat": "Accuracy",
+      "share": 21
+     }
+    ],
+    "bracelet": [
+     {
+      "stat": "Destruction [Zikel]",
+      "share": 100
+     },
+     {
+      "stat": "Time [Siel]",
+      "share": 100
+     },
+     {
+      "stat": "Illusion [Kaisinel]",
+      "share": 100
+     },
+     {
+      "stat": "Wisdom [Lumiel]",
+      "share": 98
+     },
+     {
+      "stat": "Justice [Nezekan]",
+      "share": 85
+     },
+     {
+      "stat": "Death [Triniel]",
+      "share": 79
+     },
+     {
+      "stat": "Freedom [Vaizel]",
+      "share": 33
+     },
+     {
+      "stat": "Space [Israphel]",
+      "share": 14
+     }
+    ]
+   }
+  },
+  {
+   "className": "sorcerer",
+   "sample": 774,
+   "slots": {
+    "weapon": [
+     {
+      "stat": "Weapon Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Multi-hit Chance",
+      "share": 99
+     },
+     {
+      "stat": "Precision",
+      "share": 98
+     },
+     {
+      "stat": "Attack",
+      "share": 85
+     },
+     {
+      "stat": "Status Effect Accuracy",
+      "share": 13
+     }
+    ],
+    "guard": [
+     {
+      "stat": "Weapon Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Multi-hit Chance",
+      "share": 99
+     },
+     {
+      "stat": "Precision",
+      "share": 95
+     },
+     {
+      "stat": "Attack",
+      "share": 88
+     },
+     {
+      "stat": "Status Effect Accuracy",
+      "share": 3
+     }
+    ],
+    "torso": [
+     {
+      "stat": "Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 97
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 94
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 75
+     },
+     {
+      "stat": "Accuracy",
+      "share": 72
+     },
+     {
+      "stat": "Defense increase",
+      "share": 58
+     },
+     {
+      "stat": "Constitution",
+      "share": 34
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 27
+     },
+     {
+      "stat": "Endurance",
+      "share": 23
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 22
+     }
+    ],
+    "pants": [
+     {
+      "stat": "Attack increase",
+      "share": 100
+     },
+     {
+      "stat": "Damage Tolerance",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 96
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 94
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 46
+     },
+     {
+      "stat": "Accuracy",
+      "share": 35
+     },
+     {
+      "stat": "Constitution",
+      "share": 20
+     },
+     {
+      "stat": "Endurance",
+      "share": 16
+     }
+    ],
+    "helmet": [
+     {
+      "stat": "Double Chance",
+      "share": 100
+     },
+     {
+      "stat": "Attack increase",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 98
+     },
+     {
+      "stat": "Incoming Heal",
+      "share": 72
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 59
+     },
+     {
+      "stat": "Accuracy",
+      "share": 44
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 27
+     },
+     {
+      "stat": "Endurance",
+      "share": 17
+     },
+     {
+      "stat": "Constitution",
+      "share": 17
+     }
+    ],
+    "shoulders": [
+     {
+      "stat": "Critical Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Double Chance",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 99
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 82
+     },
+     {
+      "stat": "Accuracy",
+      "share": 70
+     },
+     {
+      "stat": "Defense increase",
+      "share": 55
+     },
+     {
+      "stat": "Constitution",
+      "share": 25
+     },
+     {
+      "stat": "Endurance",
+      "share": 16
+     },
+     {
+      "stat": "Endurance Penetration",
+      "share": 8
+     }
+    ],
+    "gloves": [
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 99
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 94
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 71
+     },
+     {
+      "stat": "Accuracy",
+      "share": 58
+     },
+     {
+      "stat": "Defense increase",
+      "share": 45
+     },
+     {
+      "stat": "Constitution",
+      "share": 17
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 4
+     }
+    ],
+    "boots": [
+     {
+      "stat": "Move Speed",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 98
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 93
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 70
+     },
+     {
+      "stat": "Accuracy",
+      "share": 54
+     },
+     {
+      "stat": "Defense increase",
+      "share": 48
+     },
+     {
+      "stat": "Constitution",
+      "share": 16
+     },
+     {
+      "stat": "Regeneration",
+      "share": 4
+     }
+    ],
+    "cape": [
+     {
+      "stat": "Double Chance",
+      "share": 100
+     },
+     {
+      "stat": "Attack increase",
+      "share": 100
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 95
+     },
+     {
+      "stat": "Attack",
+      "share": 95
+     },
+     {
+      "stat": "Critical Damage Tolerance",
+      "share": 48
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 33
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 27
+     },
+     {
+      "stat": "Accuracy",
+      "share": 19
+     }
+    ],
+    "necklace": [
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 100
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 99
+     },
+     {
+      "stat": "Precision",
+      "share": 98
+     },
+     {
+      "stat": "Accuracy",
+      "share": 98
+     },
+     {
+      "stat": "HP",
+      "share": 10
+     },
+     {
+      "stat": "Defense",
+      "share": 10
+     },
+     {
+      "stat": "Intelligence",
+      "share": 3
+     }
+    ],
+    "earrings": [
+     {
+      "stat": "Move Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 100
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 100
+     },
+     {
+      "stat": "Accuracy",
+      "share": 99
+     },
+     {
+      "stat": "Precision",
+      "share": 98
+     },
+     {
+      "stat": "Defense",
+      "share": 14
+     },
+     {
+      "stat": "HP",
+      "share": 12
+     },
+     {
+      "stat": "Intelligence",
+      "share": 4
+     },
+     {
+      "stat": "Critical Hit Resist",
+      "share": 2
+     }
+    ],
+    "rings": [
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 98
+     },
+     {
+      "stat": "Attack",
+      "share": 86
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 11
+     },
+     {
+      "stat": "Accuracy",
+      "share": 3
+     }
+    ],
+    "bracelet": [
+     {
+      "stat": "Destruction [Zikel]",
+      "share": 100
+     },
+     {
+      "stat": "Time [Siel]",
+      "share": 100
+     },
+     {
+      "stat": "Illusion [Kaisinel]",
+      "share": 100
+     },
+     {
+      "stat": "Wisdom [Lumiel]",
+      "share": 99
+     },
+     {
+      "stat": "Justice [Nezekan]",
+      "share": 83
+     },
+     {
+      "stat": "Death [Triniel]",
+      "share": 73
+     },
+     {
+      "stat": "Freedom [Vaizel]",
+      "share": 31
+     },
+     {
+      "stat": "Space [Israphel]",
+      "share": 22
+     }
+    ]
+   }
+  },
+  {
+   "className": "spiritmaster",
+   "sample": 528,
+   "slots": {
+    "weapon": [
+     {
+      "stat": "Weapon Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 99
+     },
+     {
+      "stat": "Multi-hit Chance",
+      "share": 97
+     },
+     {
+      "stat": "Attack",
+      "share": 76
+     },
+     {
+      "stat": "Status Effect Accuracy",
+      "share": 18
+     }
+    ],
+    "guard": [
+     {
+      "stat": "Weapon Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 99
+     },
+     {
+      "stat": "Multi-hit Chance",
+      "share": 97
+     },
+     {
+      "stat": "Attack",
+      "share": 85
+     },
+     {
+      "stat": "Status Effect Accuracy",
+      "share": 4
+     }
+    ],
+    "torso": [
+     {
+      "stat": "Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 97
+     },
+     {
+      "stat": "Attack",
+      "share": 96
+     },
+     {
+      "stat": "Accuracy",
+      "share": 36
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 31
+     },
+     {
+      "stat": "Defense increase",
+      "share": 24
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 7
+     },
+     {
+      "stat": "Constitution",
+      "share": 7
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 5
+     },
+     {
+      "stat": "Endurance",
+      "share": 5
+     }
+    ],
+    "pants": [
+     {
+      "stat": "Attack increase",
+      "share": 99
+     },
+     {
+      "stat": "Damage Tolerance",
+      "share": 98
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 96
+     },
+     {
+      "stat": "Attack",
+      "share": 85
+     },
+     {
+      "stat": "Accuracy",
+      "share": 8
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 7
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 5
+     },
+     {
+      "stat": "Endurance",
+      "share": 4
+     }
+    ],
+    "helmet": [
+     {
+      "stat": "Attack increase",
+      "share": 100
+     },
+     {
+      "stat": "Double Chance",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 90
+     },
+     {
+      "stat": "Incoming Heal",
+      "share": 38
+     },
+     {
+      "stat": "Accuracy",
+      "share": 10
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 9
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 5
+     },
+     {
+      "stat": "Endurance",
+      "share": 4
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 3
+     }
+    ],
+    "shoulders": [
+     {
+      "stat": "Critical Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Double Chance",
+      "share": 99
+     },
+     {
+      "stat": "Attack",
+      "share": 97
+     },
+     {
+      "stat": "Accuracy",
+      "share": 33
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 30
+     },
+     {
+      "stat": "Defense increase",
+      "share": 20
+     },
+     {
+      "stat": "Constitution",
+      "share": 3
+     },
+     {
+      "stat": "Endurance",
+      "share": 3
+     },
+     {
+      "stat": "Endurance Penetration",
+      "share": 3
+     }
+    ],
+    "gloves": [
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 97
+     },
+     {
+      "stat": "Attack",
+      "share": 94
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 17
+     },
+     {
+      "stat": "Defense increase",
+      "share": 15
+     },
+     {
+      "stat": "Accuracy",
+      "share": 14
+     },
+     {
+      "stat": "Endurance Penetration",
+      "share": 1
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 1
+     }
+    ],
+    "boots": [
+     {
+      "stat": "Move Speed",
+      "share": 100
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 96
+     },
+     {
+      "stat": "Attack",
+      "share": 93
+     },
+     {
+      "stat": "Accuracy",
+      "share": 16
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 15
+     },
+     {
+      "stat": "Defense increase",
+      "share": 15
+     },
+     {
+      "stat": "Regeneration",
+      "share": 1
+     }
+    ],
+    "cape": [
+     {
+      "stat": "Attack increase",
+      "share": 99
+     },
+     {
+      "stat": "Double Chance",
+      "share": 99
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 97
+     },
+     {
+      "stat": "Attack",
+      "share": 76
+     },
+     {
+      "stat": "Critical Damage Tolerance",
+      "share": 12
+     },
+     {
+      "stat": "Accuracy",
+      "share": 5
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 5
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 3
+     }
+    ],
+    "necklace": [
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 99
+     },
+     {
+      "stat": "Accuracy",
+      "share": 87
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 83
+     }
+    ],
+    "earrings": [
+     {
+      "stat": "Move Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 99
+     },
+     {
+      "stat": "Accuracy",
+      "share": 89
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 89
+     },
+     {
+      "stat": "HP",
+      "share": 1
+     }
+    ],
+    "rings": [
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 99
+     },
+     {
+      "stat": "Attack",
+      "share": 97
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 34
+     },
+     {
+      "stat": "Accuracy",
+      "share": 25
+     }
+    ],
+    "bracelet": [
+     {
+      "stat": "Destruction [Zikel]",
+      "share": 100
+     },
+     {
+      "stat": "Illusion [Kaisinel]",
+      "share": 100
+     },
+     {
+      "stat": "Time [Siel]",
+      "share": 100
+     },
+     {
+      "stat": "Wisdom [Lumiel]",
+      "share": 98
+     },
+     {
+      "stat": "Justice [Nezekan]",
+      "share": 90
+     },
+     {
+      "stat": "Freedom [Vaizel]",
+      "share": 59
+     },
+     {
+      "stat": "Death [Triniel]",
+      "share": 51
+     },
+     {
+      "stat": "Space [Israphel]",
+      "share": 20
+     }
+    ]
+   }
+  },
+  {
+   "className": "cleric",
+   "sample": 856,
+   "slots": {
+    "weapon": [
+     {
+      "stat": "Weapon Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 98
+     },
+     {
+      "stat": "Multi-hit Chance",
+      "share": 97
+     },
+     {
+      "stat": "Attack",
+      "share": 85
+     },
+     {
+      "stat": "Status Effect Accuracy",
+      "share": 6
+     }
+    ],
+    "guard": [
+     {
+      "stat": "Weapon Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Multi-hit Chance",
+      "share": 98
+     },
+     {
+      "stat": "Precision",
+      "share": 98
+     },
+     {
+      "stat": "Attack",
+      "share": 83
+     },
+     {
+      "stat": "Status Effect Accuracy",
+      "share": 3
+     }
+    ],
+    "torso": [
+     {
+      "stat": "Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 93
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 90
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 57
+     },
+     {
+      "stat": "Defense increase",
+      "share": 55
+     },
+     {
+      "stat": "Accuracy",
+      "share": 48
+     },
+     {
+      "stat": "Endurance",
+      "share": 21
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 19
+     },
+     {
+      "stat": "Constitution",
+      "share": 15
+     },
+     {
+      "stat": "Regeneration",
+      "share": 13
+     }
+    ],
+    "pants": [
+     {
+      "stat": "Attack increase",
+      "share": 98
+     },
+     {
+      "stat": "Damage Tolerance",
+      "share": 98
+     },
+     {
+      "stat": "Attack",
+      "share": 90
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 89
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 26
+     },
+     {
+      "stat": "Endurance",
+      "share": 18
+     },
+     {
+      "stat": "Accuracy",
+      "share": 14
+     },
+     {
+      "stat": "Constitution",
+      "share": 6
+     }
+    ],
+    "helmet": [
+     {
+      "stat": "Double Chance",
+      "share": 99
+     },
+     {
+      "stat": "Attack increase",
+      "share": 99
+     },
+     {
+      "stat": "Attack",
+      "share": 93
+     },
+     {
+      "stat": "Incoming Heal",
+      "share": 76
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 32
+     },
+     {
+      "stat": "Accuracy",
+      "share": 20
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 19
+     },
+     {
+      "stat": "Endurance",
+      "share": 17
+     },
+     {
+      "stat": "Constitution",
+      "share": 7
+     }
+    ],
+    "shoulders": [
+     {
+      "stat": "Critical Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Double Chance",
+      "share": 99
+     },
+     {
+      "stat": "Attack",
+      "share": 95
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 62
+     },
+     {
+      "stat": "Accuracy",
+      "share": 49
+     },
+     {
+      "stat": "Defense increase",
+      "share": 49
+     },
+     {
+      "stat": "Endurance",
+      "share": 18
+     },
+     {
+      "stat": "Constitution",
+      "share": 10
+     },
+     {
+      "stat": "Regeneration",
+      "share": 10
+     }
+    ],
+    "gloves": [
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 95
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 89
+     },
+     {
+      "stat": "Defense increase",
+      "share": 44
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 43
+     },
+     {
+      "stat": "Accuracy",
+      "share": 32
+     },
+     {
+      "stat": "Regeneration",
+      "share": 9
+     },
+     {
+      "stat": "Constitution",
+      "share": 6
+     }
+    ],
+    "boots": [
+     {
+      "stat": "Move Speed",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 93
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 91
+     },
+     {
+      "stat": "Defense increase",
+      "share": 46
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 40
+     },
+     {
+      "stat": "Accuracy",
+      "share": 29
+     },
+     {
+      "stat": "Regeneration",
+      "share": 8
+     },
+     {
+      "stat": "Constitution",
+      "share": 7
+     }
+    ],
+    "cape": [
+     {
+      "stat": "Double Chance",
+      "share": 99
+     },
+     {
+      "stat": "Attack increase",
+      "share": 98
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 90
+     },
+     {
+      "stat": "Attack",
+      "share": 84
+     },
+     {
+      "stat": "Critical Damage Tolerance",
+      "share": 39
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 19
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 18
+     },
+     {
+      "stat": "Accuracy",
+      "share": 12
+     }
+    ],
+    "necklace": [
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 99
+     },
+     {
+      "stat": "Precision",
+      "share": 98
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 93
+     },
+     {
+      "stat": "Accuracy",
+      "share": 91
+     },
+     {
+      "stat": "HP",
+      "share": 4
+     },
+     {
+      "stat": "Defense",
+      "share": 4
+     },
+     {
+      "stat": "Block",
+      "share": 2
+     }
+    ],
+    "earrings": [
+     {
+      "stat": "Move Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 98
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 96
+     },
+     {
+      "stat": "Accuracy",
+      "share": 95
+     },
+     {
+      "stat": "Defense",
+      "share": 6
+     },
+     {
+      "stat": "HP",
+      "share": 6
+     },
+     {
+      "stat": "Block",
+      "share": 2
+     }
+    ],
+    "rings": [
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 98
+     },
+     {
+      "stat": "Attack",
+      "share": 81
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 17
+     },
+     {
+      "stat": "Accuracy",
+      "share": 8
+     }
+    ],
+    "bracelet": [
+     {
+      "stat": "Illusion [Kaisinel]",
+      "share": 100
+     },
+     {
+      "stat": "Time [Siel]",
+      "share": 100
+     },
+     {
+      "stat": "Destruction [Zikel]",
+      "share": 100
+     },
+     {
+      "stat": "Wisdom [Lumiel]",
+      "share": 99
+     },
+     {
+      "stat": "Justice [Nezekan]",
+      "share": 77
+     },
+     {
+      "stat": "Death [Triniel]",
+      "share": 68
+     },
+     {
+      "stat": "Space [Israphel]",
+      "share": 39
+     },
+     {
+      "stat": "Freedom [Vaizel]",
+      "share": 29
+     }
+    ]
+   }
+  },
+  {
+   "className": "chanter",
+   "sample": 656,
+   "slots": {
+    "weapon": [
+     {
+      "stat": "Weapon Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Damage Boost",
+      "share": 99
+     },
+     {
+      "stat": "Precision",
+      "share": 97
+     },
+     {
+      "stat": "Multi-hit Chance",
+      "share": 93
+     },
+     {
+      "stat": "Attack",
+      "share": 82
+     },
+     {
+      "stat": "Status Effect Accuracy",
+      "share": 8
+     }
+    ],
+    "guard": [
+     {
+      "stat": "Weapon Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 97
+     },
+     {
+      "stat": "Multi-hit Chance",
+      "share": 97
+     },
+     {
+      "stat": "Attack",
+      "share": 87
+     },
+     {
+      "stat": "Status Effect Accuracy",
+      "share": 8
+     }
+    ],
+    "torso": [
+     {
+      "stat": "Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 96
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 95
+     },
+     {
+      "stat": "Defense increase",
+      "share": 32
+     },
+     {
+      "stat": "Accuracy",
+      "share": 27
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 19
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 10
+     },
+     {
+      "stat": "Endurance",
+      "share": 9
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 7
+     },
+     {
+      "stat": "Regeneration",
+      "share": 5
+     }
+    ],
+    "pants": [
+     {
+      "stat": "Attack increase",
+      "share": 99
+     },
+     {
+      "stat": "Damage Tolerance",
+      "share": 96
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 94
+     },
+     {
+      "stat": "Attack",
+      "share": 85
+     },
+     {
+      "stat": "Accuracy",
+      "share": 6
+     },
+     {
+      "stat": "Endurance",
+      "share": 5
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 4
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 3
+     }
+    ],
+    "helmet": [
+     {
+      "stat": "Double Chance",
+      "share": 100
+     },
+     {
+      "stat": "Attack increase",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 88
+     },
+     {
+      "stat": "Incoming Heal",
+      "share": 53
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 10
+     },
+     {
+      "stat": "Accuracy",
+      "share": 8
+     },
+     {
+      "stat": "Endurance",
+      "share": 6
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 5
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 1
+     }
+    ],
+    "shoulders": [
+     {
+      "stat": "Critical Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Double Chance",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 94
+     },
+     {
+      "stat": "Defense increase",
+      "share": 28
+     },
+     {
+      "stat": "Accuracy",
+      "share": 24
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 18
+     },
+     {
+      "stat": "Endurance",
+      "share": 6
+     },
+     {
+      "stat": "Regeneration",
+      "share": 3
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 2
+     }
+    ],
+    "gloves": [
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 95
+     },
+     {
+      "stat": "Attack",
+      "share": 92
+     },
+     {
+      "stat": "Defense increase",
+      "share": 19
+     },
+     {
+      "stat": "Accuracy",
+      "share": 13
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 8
+     },
+     {
+      "stat": "Regeneration",
+      "share": 2
+     },
+     {
+      "stat": "Endurance Penetration",
+      "share": 1
+     }
+    ],
+    "boots": [
+     {
+      "stat": "Move Speed",
+      "share": 100
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 96
+     },
+     {
+      "stat": "Attack",
+      "share": 92
+     },
+     {
+      "stat": "Defense increase",
+      "share": 21
+     },
+     {
+      "stat": "Accuracy",
+      "share": 12
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 9
+     },
+     {
+      "stat": "Regeneration",
+      "share": 2
+     },
+     {
+      "stat": "Constitution",
+      "share": 1
+     }
+    ],
+    "cape": [
+     {
+      "stat": "Attack increase",
+      "share": 100
+     },
+     {
+      "stat": "Double Chance",
+      "share": 100
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 95
+     },
+     {
+      "stat": "Attack",
+      "share": 76
+     },
+     {
+      "stat": "Critical Damage Tolerance",
+      "share": 19
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 10
+     },
+     {
+      "stat": "Accuracy",
+      "share": 4
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 2
+     }
+    ],
+    "necklace": [
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 97
+     },
+     {
+      "stat": "Accuracy",
+      "share": 76
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 60
+     }
+    ],
+    "earrings": [
+     {
+      "stat": "Move Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 97
+     },
+     {
+      "stat": "Accuracy",
+      "share": 85
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 66
+     }
+    ],
+    "rings": [
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 97
+     },
+     {
+      "stat": "Attack",
+      "share": 97
+     },
+     {
+      "stat": "Accuracy",
+      "share": 38
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 37
+     }
+    ],
+    "bracelet": [
+     {
+      "stat": "Time [Siel]",
+      "share": 100
+     },
+     {
+      "stat": "Destruction [Zikel]",
+      "share": 100
+     },
+     {
+      "stat": "Wisdom [Lumiel]",
+      "share": 100
+     },
+     {
+      "stat": "Illusion [Kaisinel]",
+      "share": 99
+     },
+     {
+      "stat": "Justice [Nezekan]",
+      "share": 85
+     },
+     {
+      "stat": "Death [Triniel]",
+      "share": 57
+     },
+     {
+      "stat": "Freedom [Vaizel]",
+      "share": 48
+     },
+     {
+      "stat": "Space [Israphel]",
+      "share": 23
+     }
+    ]
+   }
+  },
+  {
+   "className": "fighter",
+   "sample": 578,
+   "slots": {
+    "weapon": [
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Damage Boost",
+      "share": 98
+     },
+     {
+      "stat": "Precision",
+      "share": 92
+     },
+     {
+      "stat": "Weapon Damage Boost",
+      "share": 75
+     },
+     {
+      "stat": "Multi-hit Chance",
+      "share": 64
+     },
+     {
+      "stat": "Attack",
+      "share": 48
+     },
+     {
+      "stat": "Status Effect Accuracy",
+      "share": 10
+     }
+    ],
+    "guard": [
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Damage Boost",
+      "share": 99
+     },
+     {
+      "stat": "Precision",
+      "share": 93
+     },
+     {
+      "stat": "Weapon Damage Boost",
+      "share": 74
+     },
+     {
+      "stat": "Multi-hit Chance",
+      "share": 65
+     },
+     {
+      "stat": "Attack",
+      "share": 48
+     },
+     {
+      "stat": "Front Attack",
+      "share": 6
+     }
+    ],
+    "torso": [
+     {
+      "stat": "Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 95
+     },
+     {
+      "stat": "Attack",
+      "share": 92
+     },
+     {
+      "stat": "Accuracy",
+      "share": 49
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 40
+     },
+     {
+      "stat": "Defense increase",
+      "share": 12
+     },
+     {
+      "stat": "Dexterity",
+      "share": 8
+     },
+     {
+      "stat": "Block",
+      "share": 6
+     },
+     {
+      "stat": "Endurance",
+      "share": 6
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 5
+     }
+    ],
+    "pants": [
+     {
+      "stat": "Attack increase",
+      "share": 99
+     },
+     {
+      "stat": "Damage Tolerance",
+      "share": 98
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 94
+     },
+     {
+      "stat": "Attack",
+      "share": 80
+     },
+     {
+      "stat": "Endurance",
+      "share": 4
+     },
+     {
+      "stat": "Status Effect Resist",
+      "share": 3
+     },
+     {
+      "stat": "Dexterity",
+      "share": 3
+     },
+     {
+      "stat": "Accuracy",
+      "share": 2
+     }
+    ],
+    "helmet": [
+     {
+      "stat": "Attack increase",
+      "share": 99
+     },
+     {
+      "stat": "Double Chance",
+      "share": 99
+     },
+     {
+      "stat": "Attack",
+      "share": 88
+     },
+     {
+      "stat": "Endurance",
+      "share": 35
+     },
+     {
+      "stat": "Incoming Heal",
+      "share": 19
+     },
+     {
+      "stat": "Dexterity",
+      "share": 6
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 5
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 3
+     },
+     {
+      "stat": "Accuracy",
+      "share": 3
+     }
+    ],
+    "shoulders": [
+     {
+      "stat": "Critical Damage Boost",
+      "share": 100
+     },
+     {
+      "stat": "Double Chance",
+      "share": 99
+     },
+     {
+      "stat": "Attack",
+      "share": 91
+     },
+     {
+      "stat": "Accuracy",
+      "share": 44
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 40
+     },
+     {
+      "stat": "Defense increase",
+      "share": 12
+     },
+     {
+      "stat": "Dexterity",
+      "share": 8
+     },
+     {
+      "stat": "Endurance",
+      "share": 7
+     },
+     {
+      "stat": "Block",
+      "share": 7
+     }
+    ],
+    "gloves": [
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 96
+     },
+     {
+      "stat": "Attack",
+      "share": 86
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 35
+     },
+     {
+      "stat": "Defense increase",
+      "share": 8
+     },
+     {
+      "stat": "Dexterity",
+      "share": 6
+     },
+     {
+      "stat": "Accuracy",
+      "share": 4
+     },
+     {
+      "stat": "Block",
+      "share": 2
+     }
+    ],
+    "boots": [
+     {
+      "stat": "Move Speed",
+      "share": 100
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 94
+     },
+     {
+      "stat": "Attack",
+      "share": 82
+     },
+     {
+      "stat": "Defense increase",
+      "share": 48
+     },
+     {
+      "stat": "Dexterity",
+      "share": 4
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 4
+     },
+     {
+      "stat": "Accuracy",
+      "share": 3
+     },
+     {
+      "stat": "Block",
+      "share": 3
+     }
+    ],
+    "cape": [
+     {
+      "stat": "Double Chance",
+      "share": 100
+     },
+     {
+      "stat": "Attack increase",
+      "share": 99
+     },
+     {
+      "stat": "Attack",
+      "share": 71
+     },
+     {
+      "stat": "Perfect Chance",
+      "share": 54
+     },
+     {
+      "stat": "Accuracy",
+      "share": 32
+     },
+     {
+      "stat": "Critical Damage Tolerance",
+      "share": 7
+     },
+     {
+      "stat": "Weapon Damage Tolerance",
+      "share": 5
+     },
+     {
+      "stat": "Dexterity",
+      "share": 3
+     }
+    ],
+    "necklace": [
+     {
+      "stat": "Combat Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 97
+     },
+     {
+      "stat": "Precision",
+      "share": 92
+     },
+     {
+      "stat": "Accuracy",
+      "share": 71
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 64
+     },
+     {
+      "stat": "Block",
+      "share": 11
+     },
+     {
+      "stat": "MP",
+      "share": 2
+     },
+     {
+      "stat": "Critical Hit Resist",
+      "share": 2
+     },
+     {
+      "stat": "HP",
+      "share": 2
+     },
+     {
+      "stat": "Natural MP Regen",
+      "share": 1
+     }
+    ],
+    "earrings": [
+     {
+      "stat": "Move Speed",
+      "share": 100
+     },
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Attack",
+      "share": 98
+     },
+     {
+      "stat": "Precision",
+      "share": 92
+     },
+     {
+      "stat": "Accuracy",
+      "share": 74
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 66
+     },
+     {
+      "stat": "Block",
+      "share": 13
+     },
+     {
+      "stat": "Natural HP Regen",
+      "share": 4
+     },
+     {
+      "stat": "Defense",
+      "share": 3
+     },
+     {
+      "stat": "HP",
+      "share": 3
+     },
+     {
+      "stat": "MP",
+      "share": 3
+     }
+    ],
+    "rings": [
+     {
+      "stat": "Might",
+      "share": 100
+     },
+     {
+      "stat": "Precision",
+      "share": 92
+     },
+     {
+      "stat": "Attack",
+      "share": 67
+     },
+     {
+      "stat": "Accuracy",
+      "share": 21
+     },
+     {
+      "stat": "Critical Hit",
+      "share": 19
+     },
+     {
+      "stat": "Block",
+      "share": 5
+     },
+     {
+      "stat": "HP",
+      "share": 3
+     },
+     {
+      "stat": "Critical Hit Resist",
+      "share": 3
+     },
+     {
+      "stat": "Natural HP Regen",
+      "share": 3
+     },
+     {
+      "stat": "MP",
+      "share": 2
+     }
+    ],
+    "bracelet": [
+     {
+      "stat": "Destruction [Zikel]",
+      "share": 100
+     },
+     {
+      "stat": "Time [Siel]",
+      "share": 100
+     },
+     {
+      "stat": "Wisdom [Lumiel]",
+      "share": 99
+     },
+     {
+      "stat": "Illusion [Kaisinel]",
+      "share": 74
+     },
+     {
+      "stat": "Freedom [Vaizel]",
+      "share": 67
+     },
+     {
+      "stat": "Justice [Nezekan]",
+      "share": 46
+     },
+     {
+      "stat": "Death [Triniel]",
+      "share": 29
+     },
+     {
+      "stat": "Space [Israphel]",
+      "share": 15
+     }
+    ]
+   }
+  }
+ ]
+}

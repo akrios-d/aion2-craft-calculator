@@ -1,11 +1,15 @@
 import { describe, expect, it } from 'vitest';
+import { parseKiskScoring, parseLines } from '../../../scripts/kisk-shares-lib.mjs';
+
+// The app tsconfig has no Node types; Vitest runs in Node, so read fixtures through the built-in module.
+const readFileSync = (p: string, _enc: string): string => (globalThis as any).process.getBuiltinModule('node:fs').readFileSync(p, 'utf8');
 import { applyBackup, buildBackup, parseBackup } from './io/backup';
 import { buildSnapshot, normalizeSnapshot, parseArmoryJson, upsertSnapshot, MAX_SNAPSHOTS } from './armory';
 import { makeLimiter, validate } from '../../../api/armory-lib.mjs';
 import { pickCandidate, planEquipmentInventory } from './armory';
 import { parseCsv } from './io/csv';
 import { applyInventoryImport } from './io/imports';
-import { CLASSES, EMPTY_TEMPLATE, EXAMPLE_JSON, ShareTable, applyShareImport, letterFor, observedMaxRolls, overallScore, parseShareCsv, parseShareJson, scorePiece, shareSlotOf } from './share-score';
+import { CLASSES, DEFAULT_BANDS, effectiveShareTable, loadShareBaseline, EMPTY_TEMPLATE, EXAMPLE_JSON, ShareTable, applyShareImport, letterFor, observedMaxRolls, overallScore, parseShareCsv, parseShareJson, scorePiece, shareSlotOf } from './share-score';
 import { starterBisList, parseStatCell, applyBisImport, compareBis, parseBisCsv, parseBisJson, BisList } from './bis';
 import { MIGRATIONS, emptyUserData, migrateUserData } from './storage/schema';
 
@@ -307,5 +311,59 @@ describe('lookup helpers and starter template', () => {
     const c = compareBis(s, snap);
     expect(c.total).toBe(0);
     expect(c.rows.every((r) => r.status === 'unset')).toBe(true);
+  });
+});
+
+describe('kisk.app/scoring parser (saved fixture)', () => {
+  const html = readFileSync('scripts/fixtures/kisk-scoring.html', 'utf8');
+  const p = parseKiskScoring(html);
+  it('parses all 9 classes with sample sizes and 13 slots each, no warnings', () => {
+    expect(p.classes.map((c) => c.className)).toEqual(['gladiator', 'templar', 'assassin', 'ranger', 'sorcerer', 'spiritmaster', 'cleric', 'chanter', 'fighter']);
+    expect(p.classes.map((c) => c.sample)).toEqual([838, 727, 792, 1158, 774, 528, 856, 656, 578]);
+    for (const c of p.classes) expect(Object.keys(c.slots).length).toBe(13);
+    expect(p.warnings).toEqual([]);
+    expect(p.snapshotDate).toBe('2026-10-19');
+  });
+  it('reads lines and shares exactly as listed', () => {
+    const gl = p.classes[0].slots['weapon'];
+    expect(gl.length).toBe(8);
+    expect(gl[0]).toEqual({ stat: 'Weapon Damage Boost', share: 100 });
+    expect(gl[7]).toEqual({ stat: 'Status Effect Accuracy', share: 11 });
+    expect(p.classes[0].slots['bracelet'][0]).toEqual({ stat: 'Destruction [Zikel]', share: 100 });
+    expect(p.classes[0].slots['arcana']).toBeUndefined();
+  });
+  it('reads the letter bands and matches the defaults', () => {
+    expect(p.bands).toEqual(DEFAULT_BANDS);
+  });
+  it('rejects pages without tables and reports duplicates', () => {
+    expect(parseKiskScoring('<html></html>').classes).toEqual([]);
+    const w: string[] = [];
+    expect(parseLines('A <span class="note">10%</span>, a <span class="note">20%</span>, B <span class="note">150%</span>', w, 'x')).toEqual([{ stat: 'A', share: 10 }]);
+    expect(w.length).toBe(2);
+  });
+});
+
+describe('baseline loading and merging', () => {
+  const raw = { source: 'kisk.app/scoring', snapshotDate: '2026-10-19', credit: 'Shares: kisk.app / cielui.com, snapshot 2026-10-19', bands: DEFAULT_BANDS, classes: parseKiskScoring(readFileSync('scripts/fixtures/kisk-scoring.html', 'utf8')).classes };
+  it('loads the shipped file (9 classes) and validates it', () => {
+    const shipped = JSON.parse(readFileSync('public/data/gear-shares.json', 'utf8'));
+    const b = loadShareBaseline(shipped)!;
+    expect(b.tables.length).toBe(9);
+    expect(b.samples['gladiator']).toBe(838);
+    expect(b.credit).toContain('kisk.app / cielui.com');
+    expect(b.snapshotDate).toBe('2026-10-19');
+    expect(loadShareBaseline({ classes: [] })).toBeNull();
+    expect(loadShareBaseline('x')).toBeNull();
+  });
+  it('uses the baseline when the user has no table, and lets user slots override per class', () => {
+    const b = loadShareBaseline(raw)!;
+    expect(effectiveShareTable('Cleric', [], b.tables)?.origin).toBe('baseline');
+    expect(effectiveShareTable('unknown', [], b.tables)).toBeNull();
+    const user: ShareTable = { className: 'cleric', slots: { weapon: [{ stat: 'Mine', share: 50 }] }, updatedAt: new Date(0).toISOString() };
+    const e = effectiveShareTable('cleric', [user], b.tables)!;
+    expect(e.origin).toBe('merged');
+    expect(e.table.slots.weapon).toEqual([{ stat: 'Mine', share: 50 }]);
+    expect(e.table.slots.torso?.length).toBe(10);
+    expect(effectiveShareTable('cleric', [user], [])?.origin).toBe('user');
   });
 });

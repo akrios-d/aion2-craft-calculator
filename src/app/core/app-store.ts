@@ -21,7 +21,7 @@ import { findAlerts, newAlerts, PriceAlert } from './engine/alerts';
 import { ArtworkEntry } from './pantheon';
 import { ArmorySnapshot, upsertSnapshot } from './armory';
 import { BisList, applyBisImport } from './bis';
-import { ShareTable, applyShareImport } from './share-score';
+import { BaselineLoad, ShareTable, applyShareImport, loadShareBaseline } from './share-score';
 import { MarketServer, parseMarketItems, parseServers } from './io/market';
 import { listingsOf, withListings } from './listings';
 import { LoadResult, UserDataStorage, getBrowserStorage } from './storage/user-data-storage';
@@ -84,6 +84,7 @@ export class AppStore {
   readonly listedIds = signal<Set<string> | null>(loadCachedListed());
   readonly artwork = signal<ArtworkEntry[]>([]);
   private readonly marketIcons = signal<Record<string, string>>({});
+  readonly shareBaseline = signal<BaselineLoad | null>(null);
 
   /** Every known item, including both faction variants; used to name items already stored in user data. */
   private readonly allItems = computed<Item[]>(() => {
@@ -226,6 +227,7 @@ export class AppStore {
       ]);
       this.catalog.set({ items, recipes, professions, manifest });
       void get<Record<string, string>>('market-icons.json').then((m) => this.marketIcons.set(m), () => undefined);
+      void get<unknown>('gear-shares.json').then((m) => this.shareBaseline.set(loadShareBaseline(m)), () => undefined);
       void get<{ items: ArtworkEntry[] }>('pantheon.json').then((m) => this.artwork.set(m.items), () => undefined);
       this.catalogError.set(null);
       this.reconcileWithCatalog();

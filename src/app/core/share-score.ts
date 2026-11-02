@@ -1,6 +1,7 @@
 /**
  * Share-based gear score following the method publicly described at https://kisk.app/scoring.
- * The app ships NO share data: tables are imported by the user (JSON/CSV), per class and slot.
+ * Baseline tables come from public/data/gear-shares.json (a one-shot import of kisk.app/scoring, credited to kisk.app / cielui.com);
+ * tables the user imports (JSON/CSV) override them per class and slot.
  *
  *   line value  = share x (roll / largest roll)          (roll capped at the largest roll)
  *   piece score = sum(line values) / sum(share of every table line)   -> 0..100 %
@@ -265,4 +266,53 @@ export function overallScore(pieces: (PieceScore | null)[], bands?: BandDef[]): 
   if (!p.length) return null;
   const percent = p.reduce((a, b) => a + b.percent, 0) / p.length;
   return { percent, letter: letterFor(percent, bands), pieces: p.length };
+}
+
+/** Provenance block of public/data/gear-shares.json. */
+export interface ShareBaseline {
+  source: string;
+  sourceUrl: string;
+  snapshotDate: string | null;
+  fetchedAt: string;
+  credit: string;
+  notes: string[];
+  bands?: BandDef[];
+  classes: (ShareTable & { sample?: number | null })[];
+}
+
+export interface BaselineLoad {
+  tables: ShareTable[];
+  samples: Record<string, number>;
+  credit: string;
+  snapshotDate: string | null;
+  source: string;
+}
+
+/** Validates the shipped baseline file; returns null when it is not usable. */
+export function loadShareBaseline(raw: unknown): BaselineLoad | null {
+  if (!isObj(raw) || !Array.isArray(raw['classes'])) return null;
+  const bands = normalizeBands(raw['bands']);
+  const samples: Record<string, number> = {};
+  for (const c of raw['classes']) {
+    if (isObj(c) && typeof c['className'] === 'string' && Number.isFinite(Number(c['sample']))) samples[norm(c['className'])] = Number(c['sample']);
+  }
+  const tables = normalizeShareTables(raw['classes']).map((t) => ({ ...t, ...(bands && !t.bands ? { bands } : {}) }));
+  if (!tables.length) return null;
+  const snapshotDate = typeof raw['snapshotDate'] === 'string' ? raw['snapshotDate'] : null;
+  const credit = typeof raw['credit'] === 'string' && raw['credit'] ? raw['credit'] : `Shares: kisk.app / cielui.com${snapshotDate ? `, snapshot ${snapshotDate}` : ''}`;
+  return { tables, samples, credit, snapshotDate, source: typeof raw['source'] === 'string' ? raw['source'] : 'kisk.app/scoring' };
+}
+
+export type TableOrigin = 'baseline' | 'user' | 'merged';
+
+/** Effective table for a class: user slots override baseline slots (lines are never mixed inside a slot); user bands win. */
+export function effectiveShareTable(className: string, user: ShareTable[], baseline: ShareTable[]): { table: ShareTable; origin: TableOrigin } | null {
+  const k = norm(className);
+  const u = user.find((t) => t.className === k);
+  const b = baseline.find((t) => t.className === k);
+  if (!u && !b) return null;
+  if (!b) return { table: u!, origin: 'user' };
+  if (!u) return { table: b, origin: 'baseline' };
+  const bands = u.bands ?? b.bands;
+  return { table: { className: k, slots: { ...b.slots, ...u.slots }, ...(bands ? { bands } : {}), updatedAt: u.updatedAt }, origin: 'merged' };
 }
