@@ -3,7 +3,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppStore } from '../core/app-store';
 import { ArmoryItem, ArmoryParseResult, ArmoryProfile, ArmorySnapshot, SearchCandidate, armoryLinks, buildSnapshot, parseArmoryJson, searchLink } from '../core/armory';
-import { BisEntry, BisList, BisImportResult, compareBis, parseBisCsv, parseBisJson } from '../core/bis';
+import { BisEntry, BisList, BisImportResult, StatCheck, compareBis, isScoredSlot, overallGrade, scoreItem, slotGroup, parseBisCsv, parseBisJson } from '../core/bis';
 import { TrPipe } from '../core/tr.pipe';
 
 const SLOTS = ['MainHand', 'SubHand', 'Helmet', 'Shoulder', 'Torso', 'Pants', 'Gloves', 'Boots', 'Necklace', 'Earring1', 'Earring2', 'Ring1', 'Ring2', 'Bracelet1', 'Bracelet2', 'Belt', 'Cape', 'Amulet', 'Rune1', 'Rune2', 'Arcana1', 'Arcana2', 'Arcana3', 'Arcana4', 'Arcana5'];
@@ -28,6 +28,11 @@ const SLOTS = ['MainHand', 'SubHand', 'Helmet', 'Shoulder', 'Torso', 'Pants', 'G
     .tog { padding: .2rem .75rem; border-radius: 999px; background: transparent; border: 1px solid var(--line); color: var(--fg); cursor: pointer; }
     .tog.on { background: linear-gradient(180deg, #ebb719, #ac770c); color: var(--gold-ink); border-color: var(--gold); font-weight: 700; }
     td { vertical-align: middle; }
+    .cmp { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-bottom: .4rem; }
+    .ideal { border-left-color: var(--gold); }
+    .lt { font-weight: 800; padding: 0 .4rem; border-radius: 4px; border: 1px solid currentColor; width: fit-content; }
+    .lt-S { color: #ffc94d; } .lt-A { color: #5cd68a; } .lt-B { color: #5cb3ff; } .lt-C { color: #e0a43a; } .lt-D { color: #e05c5c; }
+    .ovl { font-size: 1.1rem; }
   `,
   template: `
     <h2>{{ 'Armory and BiS' | tr }}</h2>
@@ -145,20 +150,33 @@ const SLOTS = ['MainHand', 'SubHand', 'Helmet', 'Shoulder', 'Torso', 'Pants', 'G
       @if (comparison(); as c) {
         <div class="bar"><i [style.width.%]="c.total ? (100 * c.matched) / c.total : 0"></i></div>
         <b>{{ c.matched }} / {{ c.total }} {{ 'BiS pieces equipped' | tr }}</b>
-        <table>
-          <thead><tr><th>{{ 'Slot' | tr }}</th><th>BiS</th><th>{{ 'Equipped' | tr }}</th><th>{{ 'Status' | tr }}</th><th></th></tr></thead>
-          <tbody>
-            @for (r of c.rows; track r.entry.slot) {
-              <tr>
-                <td>{{ r.entry.slot }}</td>
-                <td>{{ r.entry.itemName }}@if (r.entry.notes) { <small class="muted"> · {{ r.entry.notes }}</small> }</td>
-                <td>{{ r.equipped?.name ?? '—' }}</td>
-                <td class="st-{{ r.status }}">{{ statusLabel(r.status) | tr }}</td>
-                <td><button class="mini" (click)="removeEntry(r.entry)">✕</button></td>
-              </tr>
-            }
-          </tbody>
-        </table>
+        @if (overall(); as o) { <p class="ovl">{{ 'Overall gear grade' | tr }}: <b class="lt lt-{{ o.letter.charAt(0) }}">{{ o.letter }}</b> <small class="muted">({{ o.score }}/100)</small></p> }
+        <p class="muted"><small>{{ 'Score is our own heuristic (grade, enchant, exceed, ideal stats, BiS match), not kisk or NCSOFT. See the README.' | tr }}</small></p>
+        @for (grp of groups(); track grp.title) {
+          <h4>{{ grp.title | tr }}</h4>
+          @for (r of grp.rows; track r.entry.slot) {
+            <div class="cmp">
+              <div class="gear" [class.empty]="!r.equipped">
+                <small>{{ r.entry.slot }} · {{ 'Equipped' | tr }}</small>
+                @if (r.equipped; as q) {
+                  <b>{{ q.name }}</b>
+                  <small>{{ q.grade }}@if (q.enchant) { · +{{ q.enchant }} }@if (q.exceed) { · ★{{ q.exceed }} }</small>
+                  @for (st of q.stats ?? []; track st.name) { <small>{{ st.name }} {{ st.value }}@if (st.max) { / {{ st.max }} }</small> }
+                  @if (r.sc; as sc) { <span class="lt lt-{{ sc.letter.charAt(0) }}">{{ sc.letter }} <small>{{ sc.score }}</small></span> }
+                } @else { <b>—</b> }
+                <small class="st-{{ r.status }}">{{ statusLabel(r.status) | tr }}</small>
+              </div>
+              <div class="gear ideal">
+                <small>{{ 'Ideal' | tr }} {{ cls() }} {{ r.entry.slot }} · <b>{{ 'Best in slot' | tr }}</b> <button class="mini" (click)="removeEntry(r.entry)">✕</button></small>
+                <b>{{ r.entry.itemName }}</b>
+                @for (sc of checks(r); track sc.name) {
+                  <small>@if (r.equipped?.stats) { <span [class]="sc.have ? 'ok' : 'err'">{{ sc.have ? '✓' : '✗' }}</span> } {{ sc.name }}@if (sc.max) { +{{ sc.max }} }</small>
+                }
+                @if (r.entry.notes) { <small class="muted">{{ r.entry.notes }}</small> }
+              </div>
+            </div>
+          }
+        }
         @if (craftable().length) {
           <div class="row">
             <span>{{ 'Missing pieces with a known recipe' | tr }}: {{ craftable().length }}</span>
@@ -236,6 +254,24 @@ export class ArmoryPage {
     const ids = c.missing.map((r) => (r.entry.itemId && byId.has(r.entry.itemId) ? r.entry.itemId : byName.get(r.entry.itemName.toLowerCase()))).filter((x): x is string => !!x);
     return [...new Set(ids)];
   });
+
+  readonly cls = computed(() => this.list()?.className ?? '');
+  readonly scored = computed(() => (this.comparison()?.rows ?? []).map((r) => ({ ...r, sc: r.equipped ? scoreItem(r.equipped, r.entry) : undefined })));
+  readonly overall = computed(() => overallGrade(this.scored().map((r) => ({ item: r.equipped, score: r.sc }))));
+  readonly groups = computed(() => {
+    const rows = this.scored();
+    const arc = (r: { entry: BisEntry }) => slotGroup(r.entry.slot) === 'arcana';
+    const uns = (r: { entry: BisEntry }) => !arc(r) && !isScoredSlot(r.entry.slot);
+    return [
+      { title: 'Scored slots', rows: rows.filter((r) => !arc(r) && !uns(r)) },
+      { title: 'Unscored', rows: rows.filter(uns) },
+      { title: 'Arcana', rows: rows.filter(arc) },
+    ].filter((g) => g.rows.length);
+  });
+
+  checks(r: { entry: BisEntry; sc?: { statChecks: StatCheck[] } }): StatCheck[] {
+    return r.sc?.statChecks ?? (r.entry.stats ?? []).map((s) => ({ ...s, have: false }));
+  }
 
   links(c: SearchCandidate) {
     return armoryLinks(this.region(), c);

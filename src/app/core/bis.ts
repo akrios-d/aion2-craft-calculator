@@ -11,6 +11,8 @@ export interface BisEntry {
   /** Catalogue item id, to feed the craft calculator. */
   itemId?: string;
   notes?: string;
+  /** Desired stats for this slot (names as shown by the armory); max is the ideal value. */
+  stats?: { name: string; max?: number }[];
 }
 
 export interface BisList {
@@ -57,6 +59,13 @@ export function normalizeBisEntry(raw: unknown): BisEntry | null {
   if (Number.isFinite(id) && id > 0) entry.armoryId = id;
   if (txt(raw['itemId'])) entry.itemId = txt(raw['itemId']);
   if (txt(raw['notes'])) entry.notes = txt(raw['notes']);
+  const stats = (Array.isArray(raw['stats']) ? raw['stats'] : []).flatMap((s: unknown) => {
+    const o = isObj(s) ? s : { name: s };
+    const name = txt(o['name']);
+    const max = Number(o['max']);
+    return name ? [Number.isFinite(max) && o['max'] !== undefined && o['max'] !== '' ? { name, max } : { name }] : [];
+  });
+  if (stats.length) entry.stats = stats;
   return entry;
 }
 
@@ -126,7 +135,15 @@ export function parseBisJson(text: string): BisImportResult {
   return out;
 }
 
-/** CSV columns: class, slot, item, id (optional), notes (optional). */
+/** Stats cell: Name:max;Name2 (max optional). */
+export function parseStatCell(cell?: string): { name: string; max?: number }[] {
+  return (cell ?? '').split(';').flatMap((p) => {
+    const [n, m] = p.split(':');
+    return n?.trim() ? [{ name: n.trim(), max: m?.trim() ? Number(m) : undefined }] : [];
+  });
+}
+
+/** CSV columns: class, slot, item, id, notes, stats (the last three optional). */
 export function parseBisCsv(text: string): BisImportResult {
   const out: BisImportResult = { lists: [], errors: [], warnings: [] };
   const { rows, lines, error } = parseCsv(text);
@@ -145,6 +162,7 @@ export function parseBisCsv(text: string): BisImportResult {
   const ni = col('item', 'itemname', 'name');
   const ii = col('id', 'armoryid');
   const oi = col('notes', 'note');
+  const ti = col('stats');
   if (ci < 0 || si < 0 || ni < 0) {
     out.errors.push('Header must contain class, slot and item columns.');
     return out;
@@ -153,7 +171,7 @@ export function parseBisCsv(text: string): BisImportResult {
   rows.slice(1).forEach((r, k) => {
     const line = lines[k + 1] ?? k + 2;
     const cls = norm(r[ci] ?? '');
-    const entry = normalizeBisEntry({ slot: r[si], itemName: r[ni], armoryId: ii >= 0 ? r[ii] : undefined, notes: oi >= 0 ? r[oi] : undefined });
+    const entry = normalizeBisEntry({ slot: r[si], itemName: r[ni], armoryId: ii >= 0 ? r[ii] : undefined, notes: oi >= 0 ? r[oi] : undefined, stats: ti >= 0 ? parseStatCell(r[ti]) : undefined });
     if (!cls || !entry) return void out.errors.push(`Line ${line}: class, slot and item are required.`);
     const m = lists.get(cls) ?? new Map<string, BisEntry>();
     if (m.has(norm(entry.slot))) return void out.errors.push(`Line ${line}: duplicate slot "${entry.slot}" for ${cls}.`);
@@ -177,4 +195,61 @@ export function applyBisImport(existing: BisList[], imported: BisList[], mode: '
     } else map.set(l.className, l);
   }
   return [...map.values()];
+}
+
+// ---- Scoring: our own heuristic, not kisk's or NCSOFT's. ----
+export const GRADE_RANK: Record<string, number> = { common: 1, rare: 2, unique: 3, legend: 4, epic: 4, heroic: 5 };
+export const MAX_GRADE_RANK = 4;
+export const ENCHANT_CAP = 15;
+export const EXCEED_CAP = 5;
+export const WEIGHTS = { grade: 0.3, enchant: 0.25, exceed: 0.15, stats: 0.3, bis: 0.3 };
+export const UNSCORED_SLOTS = ['belt', 'amulet', 'rune'];
+export type Letter = 'S+' | 'S' | 'A' | 'B' | 'C' | 'D';
+
+export function letterGrade(score: number): Letter {
+  return score >= 95 ? 'S+' : score >= 88 ? 'S' : score >= 75 ? 'A' : score >= 60 ? 'B' : score >= 40 ? 'C' : 'D';
+}
+
+export const isScoredSlot = (slotName: string) => !UNSCORED_SLOTS.includes(slotGroup(slotName));
+
+export interface StatCheck {
+  name: string;
+  max?: number;
+  have: boolean;
+  current?: number;
+}
+
+export interface ItemScore {
+  score: number;
+  letter: Letter;
+  statChecks: StatCheck[];
+}
+
+/** Weighted mean (0-100) of the components that can be evaluated for this item. */
+export function scoreItem(item: ArmoryItem, entry?: BisEntry): ItemScore {
+  const parts: [number, number][] = [];
+  const rank = GRADE_RANK[norm(item.grade)];
+  if (rank) parts.push([Math.min(rank / MAX_GRADE_RANK, 1), WEIGHTS.grade]);
+  parts.push([Math.min(item.enchant / ENCHANT_CAP, 1), WEIGHTS.enchant]);
+  parts.push([Math.min(item.exceed / EXCEED_CAP, 1), WEIGHTS.exceed]);
+  const statChecks: StatCheck[] = (entry?.stats ?? []).map((s) => {
+    const cur = item.stats?.find((x) => norm(x.name) === norm(s.name));
+    return { name: s.name, max: s.max, have: !!cur, current: cur?.value };
+  });
+  if (item.stats && statChecks.length) {
+    const f = statChecks.reduce((a, c) => a + (c.have ? (c.max && c.current !== undefined ? Math.min(c.current / c.max, 1) : 1) : 0), 0) / statChecks.length;
+    parts.push([f, WEIGHTS.stats]);
+  }
+  if (entry) parts.push([itemMatches(entry, item) ? 1 : 0, WEIGHTS.bis]);
+  const w = parts.reduce((a, p) => a + p[1], 0);
+  const score = Math.round((100 * parts.reduce((a, p) => a + p[0] * p[1], 0)) / w);
+  return { score, letter: letterGrade(score), statChecks };
+}
+
+/** Overall grade: mean score of equipped, scored slots (belt, amulet and runes are shown but not scored). */
+export function overallGrade(rows: { item?: ArmoryItem; score?: ItemScore }[]): { score: number; letter: Letter } | null {
+  const s = rows.filter((r) => r.item && r.score && isScoredSlot(r.item.slotName)).map((r) => r.score!.score);
+  if (!s.length) return null;
+  const score = Math.round(s.reduce((a, b) => a + b, 0) / s.length);
+  return { score, letter: letterGrade(score) };
 }

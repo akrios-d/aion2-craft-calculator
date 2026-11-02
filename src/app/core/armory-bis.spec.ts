@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { applyBackup, buildBackup, parseBackup } from './io/backup';
 import { buildSnapshot, normalizeSnapshot, parseArmoryJson, upsertSnapshot, MAX_SNAPSHOTS } from './armory';
-import { applyBisImport, compareBis, parseBisCsv, parseBisJson, BisList } from './bis';
+import { letterGrade, overallGrade, parseStatCell, scoreItem, applyBisImport, compareBis, parseBisCsv, parseBisJson, BisList } from './bis';
 import { MIGRATIONS, emptyUserData, migrateUserData } from './storage/schema';
 
 const equipmentJson = JSON.stringify({
@@ -131,5 +131,33 @@ describe('schema v5 and backup', () => {
     const r = applyBackup(emptyUserData(), data, 'merge');
     expect(r.data.bisLists.length).toBe(1);
     expect(r.data.armoryCache.length).toBe(1);
+  });
+});
+
+describe('BiS scoring (own heuristic)', () => {
+  const item = { slot: 1, slotName: 'MainHand', id: 100, name: 'Sword', grade: 'Legend', enchant: 15, exceed: 5, stats: [{ name: 'Attack', value: 50, max: 100 }] };
+  it('maps scores to letters', () => {
+    expect([100, 90, 80, 65, 45, 10].map(letterGrade)).toEqual(['S+', 'S', 'A', 'B', 'C', 'D']);
+  });
+  it('scores a maxed BiS item at 100 and flags stats', () => {
+    const e = { slot: 'MainHand', itemName: 'Sword', armoryId: 100, stats: [{ name: 'Attack' }, { name: 'Crit' }] };
+    const r = scoreItem({ ...item, stats: [{ name: 'Attack', value: 100 }] }, e);
+    expect(r.statChecks.map((s) => s.have)).toEqual([true, false]);
+    expect(r.score).toBe(Math.round((100 * (0.3 + 0.25 + 0.15 + 0.15 + 0.3)) / 1.3));
+    expect(scoreItem({ ...item, enchant: 0, exceed: 0 }).score).toBeLessThan(60);
+  });
+  it('penalises a non-BiS item and ignores unscored slots in the overall grade', () => {
+    const e = { slot: 'MainHand', itemName: 'Other' };
+    expect(scoreItem(item, e).score).toBeLessThan(scoreItem(item).score);
+    const belt = { ...item, slotName: 'Belt' };
+    const o = overallGrade([{ item, score: scoreItem(item) }, { item: belt, score: { score: 0, letter: 'D', statChecks: [] } }]);
+    expect(o?.score).toBe(scoreItem(item).score);
+    expect(overallGrade([])).toBeNull();
+  });
+  it('parses stat cells and JSON stat lists', () => {
+    expect(parseStatCell('Attack:10;Crit')).toEqual([{ name: 'Attack', max: 10 }, { name: 'Crit', max: undefined }]);
+    const r = parseBisJson(JSON.stringify([{ className: 'c', entries: [{ slot: 'Ring1', name: 'R', stats: ['A', { name: 'B', max: 3 }] }] }]));
+    expect(r.lists[0].entries[0].stats).toEqual([{ name: 'A' }, { name: 'B', max: 3 }]);
+    expect(parseBisCsv('class,slot,item,stats\nc,Ring1,R,A:2').lists[0].entries[0].stats).toEqual([{ name: 'A', max: 2 }]);
   });
 });

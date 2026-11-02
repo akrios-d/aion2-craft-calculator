@@ -14,6 +14,14 @@ export interface ArmoryItem {
   enchant: number;
   exceed: number;
   icon?: string;
+  /** Only present if the pasted JSON carries a stats array; the sampled equipmentList rows do not. */
+  stats?: ItemStat[];
+}
+
+export interface ItemStat {
+  name: string;
+  value: number;
+  max?: number;
 }
 
 export interface ArmoryProfile {
@@ -84,6 +92,11 @@ function parseProfile(p: Record<string, any>): ArmoryProfile | undefined {
   };
 }
 
+export function parseStats(raw: unknown): ItemStat[] | undefined {
+  const out = (Array.isArray(raw) ? raw : []).flatMap((s) => (isObj(s) && str(s['name']) && num(s['value']) !== undefined ? [{ name: str(s['name']) as string, value: num(s['value']) as number, max: num(s['max']) }] : []));
+  return out.length ? out : undefined;
+}
+
 export function parseEquipmentList(list: unknown, warnings: string[]): ArmoryItem[] {
   const items: ArmoryItem[] = [];
   const seen = new Set<number>();
@@ -108,6 +121,7 @@ export function parseEquipmentList(list: unknown, warnings: string[]): ArmoryIte
       enchant: num(e['enchantLevel']) ?? 0,
       exceed: num(e['exceedLevel']) ?? 0,
       icon: str(e['icon']),
+      stats: parseStats(e['stats']),
     });
   });
   return items.sort((a, b) => a.slot - b.slot);
@@ -191,7 +205,7 @@ export function normalizeSnapshot(raw: unknown): ArmorySnapshot | null {
   const asItems = (l: unknown) =>
     (Array.isArray(l) ? l : []).flatMap((e) =>
       isObj(e) && num(e['slot']) !== undefined && str(e['name'])
-        ? [{ slot: e['slot'] as number, slotName: str(e['slotName']) ?? `Slot${e['slot']}`, id: num(e['id']) ?? 0, name: str(e['name']) as string, grade: str(e['grade']) ?? '', enchant: num(e['enchant']) ?? 0, exceed: num(e['exceed']) ?? 0, icon: str(e['icon']) }]
+        ? [{ slot: e['slot'] as number, slotName: str(e['slotName']) ?? `Slot${e['slot']}`, id: num(e['id']) ?? 0, name: str(e['name']) as string, grade: str(e['grade']) ?? '', enchant: num(e['enchant']) ?? 0, exceed: num(e['exceed']) ?? 0, icon: str(e['icon']), stats: parseStats(e['stats']) }]
         : [],
     );
   const p = raw['profile'];
